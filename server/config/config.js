@@ -28,18 +28,19 @@ knex.schema.createTableIfNotExists('events', function(table){
   table.integer('total_number_of_people_req');
   table.integer('price_per_person');
   table.string('description');
+  table.integer('creator').references('users.user_id');
 });
 
 var User = bookshelf.Model.extend({
   tableName: 'users',
   events: function(){
-    return this.belongsToMany(Event).through(users_events);
+    return this.belongsToMany(Event).through(users_joined_events);
   }
 });
 
 var Event = bookshelf.Model.extend({
-  tableName = 'events',
+  tableName: 'events',
   users: function(){
-    return this.belongsToMany(User).through(users_events);
+    return this.belongsToMany(User).through(users_joined_events);
   }
 });

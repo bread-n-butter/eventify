@@ -2,13 +2,15 @@ var express = require('express');
 var path = require('path');
 var webpack = require('webpack');
 var port = process.env.PORT || 8080;
-var WebpackDevServer = require('webpack-dev-server');
 
 var app = express();
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
-var static_path = path.join(__dirname, '/../public');
 console.log(process.env.NODE_ENV);
+
+
+var static_path = path.join(__dirname, '../');
+console.log(static_path);
 
 app.use(express.static(static_path))
 .get('/', function(req, res) {
@@ -24,9 +26,11 @@ app.use(express.static(static_path))
 });
 
 if (isDevelopment) {
+  var WebpackDevServer = require('webpack-dev-server');
   var config = require('../webpack.config');
   var webpackDevServer = require('webpack-dev-server');
 
+  console.log(config);
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true

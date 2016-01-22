@@ -1,4 +1,24 @@
-import React from 'react';
-import App from './components/app.js';
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 
-// React.render(<App />, document.body);
+import Hello from './components/hello';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      firstState: 'Hello world'
+    }
+  }
+
+  render() {
+    return React.createElement(
+      "div",
+      null,
+      "Hello world"
+    );
+  }
+}
+
+ReactDOM.render(React.createElement(App, null), document.body);

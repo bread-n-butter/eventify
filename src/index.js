@@ -1,24 +1,10 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import Hello from './components/hello';
+import { hashHistory, Router } from 'react-router';
+import {routes} from './config/routes';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      firstState: 'Hello world'
-    }
-  }
-
-  render() {
-    return React.createElement(
-      "div",
-      null,
-      "Hello world"
-    );
-  }
-}
-
-ReactDOM.render(React.createElement(App, null), document.body);
+ReactDOM.render(
+  <Router history={hashHistory}>{routes}</Router>,
+  document.getElementById('app')
+)

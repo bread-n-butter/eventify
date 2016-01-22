@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import { hashHistory } from 'react-router';
+import { hashHistory, Router } from 'react-router';
 import {routes} from './config/routes';
 
 ReactDOM.render(

@@ -11,9 +11,8 @@ import React from 'react';
 const Main = ({history, children}) => {
   return (
     //TODO: Delphine's Navbar here.
-    <navbar />
-    
+    <div>Hello World</div>
   )
 }
 
-export default Hello
+export default Main

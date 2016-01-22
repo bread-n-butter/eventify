@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var webpack = require('webpack');
 var port = process.env.PORT || 8080;
-var WebpackDevServer = require('webpack-dev-server');
 
 var app = express();
 
@@ -27,6 +26,7 @@ app.use(express.static(static_path))
 });
 
 if (isDevelopment) {
+  var WebpackDevServer = require('webpack-dev-server');
   var config = require('../webpack.config');
   var webpackDevServer = require('webpack-dev-server');
 

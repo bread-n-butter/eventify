@@ -1,8 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 
-var componetn = require('./component.');
-
 module.exports = {
   devtool: 'source-map',
   entry: [
@@ -11,7 +9,8 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/public/'
   },
 
   resolve: {
@@ -20,8 +19,12 @@ module.exports = {
 
   module: {
     loaders: [{
+      test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel'
-      }]
+      loader: 'babel',
+      query: {
+        presets: ['es2015']
+      }
+    }]
   }
 }

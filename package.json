@@ -1,0 +1,36 @@
+{
+  "name": "eventify",
+  "version": "1.0.0",
+  "description": "Eventify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bread-n-butter/eventify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bread-n-butter/eventify/issues"
+  },
+  "homepage": "https://github.com/bread-n-butter/eventify#readme",
+  "dependencies": {
+    "babel": "^6.3.26",
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "express": "^4.13.3",
+    "path": "^0.12.7",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "webpack": "^1.12.11"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "react-hot-loader": "^1.3.0",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

@@ -1,5 +1,8 @@
 ### node etc ###
 
+# Compiled by webpack
+/public
+
 # Logs
 logs
 *.log

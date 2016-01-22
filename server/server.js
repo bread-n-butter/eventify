@@ -10,7 +10,7 @@ var isDevelopment = (process.env.NODE_ENV !== 'production');
 console.log(process.env.NODE_ENV);
 
 
-var static_path = path.join(__dirname, '../');
+var static_path = path.join(__dirname, '../public');
 console.log(static_path);
 
 app.use(express.static(static_path))

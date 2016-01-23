@@ -2,13 +2,14 @@ import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
-import SignupBtn from '../navBar/SignupBtn';
-import TextField from 'material-ui/lib/text-field';
+import SignupBtn from './SignupBtn';
+import SignupForm from './SignupForm';
 
 
 const customContentStyle = {
   width: '50%',
-  maxWidth: '450px'
+  maxWidth: '450px',
+  textAlign: 'center'
 
 };
 
@@ -61,16 +62,7 @@ class SignupModal extends React.Component {
           onRequestClose={this.handleClose}>
           <SignupBtn />
           OR
-          <TextField
-            hintText="Email"
-            hintStyle={{color: '#a0a6bf'}}
-            fullWidth={true} />
-          <TextField
-            hintText="Password"
-            hintStyle={{color: '#a0a6bf'}}
-            fullWidth={true} />
-
-
+          <SignupForm />
         </Dialog>
       </div>
     );

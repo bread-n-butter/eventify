@@ -13,7 +13,6 @@ const Main = ({history, children}) => {
     //TODO: Delphine's Navbar here.
     <div className="main-container">
       <NavBar />
-      <div>Hello World</div>
     </div>
   );
 };

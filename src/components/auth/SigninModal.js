@@ -2,8 +2,8 @@ import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
-import SignupBtn from './SignupBtn';
-import SignupForm from './SignupForm';
+import SigninBtn from './SigninBtn';
+import SigninForm from './SigninForm';
 
 
 const customContentStyle = {
@@ -40,7 +40,7 @@ class SignupModal extends React.Component {
   render() {
     const actions = [
       <FlatButton
-        label="Sign Up"
+        label="Log In"
         primary={true}
         onClick={() => this.handleClose()} />,
       <FlatButton
@@ -52,7 +52,7 @@ class SignupModal extends React.Component {
     return (
       <div>
         <FlatButton
-          label = "Sign Up"
+          label = "Log In"
           onClick = {() => this.handleOpen()}
           style = {{color: '#53b3cb'}} />
         <Dialog
@@ -63,9 +63,9 @@ class SignupModal extends React.Component {
           contentStyle = {customContentStyle}
           titleStyle = {titleStyle}
           onRequestClose={this.handleClose}>
-          <SignupBtn />
+          <SigninBtn />
           OR
-          <SignupForm />
+          <SigninForm />
         </Dialog>
       </div>
     );

@@ -12,7 +12,7 @@ class Banner extends React.Component {
   render() {
     return (
       <div className="col s12">
-        <img className="responsive-img" src="http://wallpaperstock.net/mountains-green-fields--sky-wallpapers_47567_1280x800.jpg" />
+        <img className="responsive-img" src="http://assets3.thrillist.com/v1/image/1439210/size/tmg-article_main_wide_2x" />
       </div>
     )
   }

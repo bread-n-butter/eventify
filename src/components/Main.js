@@ -6,16 +6,44 @@
  *
  */
 import React from 'react';
-import NavBar from './navBar/navBar';
 
-const Main = ({history, children}) => {
-  return (
-    //TODO: Delphine's Navbar here.
-    <div className="main-container">
+//components
+import NavBar from './navBar/navBar';
+import Banner from './landing-page/Banner';
+import EventList from './landing-page/FeatEvents';
+import SearchBar from './landing-page/SearchBar'
+
+console.log(SearchBar);
+
+class Main extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      events : [{title: "Event1", desc: "cool", img: "http://lorempixel.com/640/480/nightlife"}, 
+                {title: "Event2", desc: "awesome", img: "http://lorempixel.com/640/480/nightlife" }, 
+                {title: "Event3", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" },
+                {title: "Event4", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" },
+                {title: "Event5", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" },
+                {title: "Event6", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" }]
+    }
+  }
+  
+  render() {
+    return (
+      <div>
         <NavBar />
-      <div>Hello World</div>
-    </div>
-  );
-};
+        <SearchBar />
+        <div className="row">
+          <Banner /> 
+        </div>
+        <div className="container">
+          <EventList events={this.state.events} />
+        </div>
+      </div>
+    )
+  }
+
+}
 
 export default Main;

@@ -10,13 +10,12 @@ import React from 'react'
 class Banner extends React.Component {
   
   render() {
-    return 
-    
+    return (
+      <div className="col s12">
+        <img className="responsive-img" src="http://wallpaperstock.net/mountains-green-fields--sky-wallpapers_47567_1280x800.jpg" />
+      </div>
+    )
   }
 }
 
 export default Banner
-
-
-
-// http://wallpaperstock.net/mountains-green-fields--sky-wallpapers_47567_1280x800.jpg

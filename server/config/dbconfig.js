@@ -41,7 +41,7 @@ knex.schema.hasTable('events').then(function(exists){
       events.string('description');
       events.integer('creator').references('users.user_id');
     }).then(function(table){
-      console.log('Create Table', table);
+      console.log('Created Table', table);
     });
   }
 });

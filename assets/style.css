@@ -2,6 +2,10 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+/*
+  NAV COMPONENTS
+ */
+
 .nav-wrapper {
   background-color: #fff;
 }
@@ -13,4 +17,13 @@ nav .brand-logo, nav ul a{
 nav .brand-logo {
   font-weight: bold;
   padding-left: 15px;
+}
+
+/*
+  FEATURE EVENT CARD COMPONENT
+ */
+
+.feat-cards {
+  padding-top : 20px;
+  padding-bottom : 20px;
 }

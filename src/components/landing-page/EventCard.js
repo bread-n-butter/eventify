@@ -18,15 +18,13 @@ import CardText from 'material-ui/lib/card/card-text';
 
 
 const EventCard = ({event}) => (
-  <div className="col-sm-4">
+  <div className="col-sm-4 feat-cards">
     <Card>
       <CardMedia>
         <img src={event.img} />
       </CardMedia>
       <CardTitle title={event.title} subtitle={event.desc}/>
-      <CardText>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </CardText>
+      <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</CardText>
     </Card>
   </div>
 )

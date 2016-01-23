@@ -8,14 +8,19 @@
 import React from 'react';
 import NavBar from './navBar/navBar';
 
+import Banner from './landing-page/Banner';
+import featuredEvents from './landing-page/featuredEvents'
+
+
 const Main = ({history, children}) => {
   return (
     //TODO: Delphine's Navbar here.
-    <div className="main-container">
-        <NavBar />
-      <div>Hello World</div>
+    <div>
+      <Navbar />
+      <Banner /> 
+      <featuredEvents />
     </div>
-  );
-};
+  )
+}
 
 export default Main;

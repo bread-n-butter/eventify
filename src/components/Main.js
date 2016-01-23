@@ -12,8 +12,7 @@ const Main = ({history, children}) => {
   return (
     //TODO: Delphine's Navbar here.
     <div className="main-container">
-        <NavBar />
-      <div>Hello World</div>
+      <NavBar />
     </div>
   );
 };

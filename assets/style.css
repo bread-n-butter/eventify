@@ -1,0 +1,16 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.nav-wrapper {
+  background-color: #fff;
+}
+
+nav .brand-logo, nav ul a{
+  color: #db436c;
+}
+
+nav .brand-logo {
+  font-weight: bold;
+  padding-left: 15px;
+}

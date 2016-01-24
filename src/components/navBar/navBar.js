@@ -1,6 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
-// import SignupBtn from './SignupBtn';
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 

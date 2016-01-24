@@ -1,0 +1,142 @@
+var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+// load up the user model
+// TODO: change this to query using Bookshelf/mySQL
+var User = require('../config/models/user');
+
+// load the auth variables
+var configAuth = require('../config/authConfig');
+
+module.exports = function(passport) {
+
+  // =========================================================================
+  // passport session setup ==================================================
+  // =========================================================================
+  // required for persistent login sessions
+  // passport needs ability to serialize and unserialize users out of session
+
+  // used to serialize the user for the session
+//TODO: IS THE ID ONE GIVEN BY PASSPORT, OR FETCHED FROM DB?
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  // used to deserialize the user
+  // TODO: change to Bookshelf query
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
+  /*passport.use('local-signup', new LocalStrategy({
+    // by default, local strategy uses username and password, we will override with email
+    usernameField : 'username',
+    passwordField : 'password',
+    passReqToCallback : true // allows us to pass back the entire request to the callback
+  },
+  function(req, username, password, done) {
+    // asynchronous
+    // User.findOne wont fire unless data is sent back
+    process.nextTick(function() {
+      // find a user whose email is the same as the forms email
+      // we are checking to see if the user trying to login already exists
+      new User({'username': username})
+        .fetch()
+        .then(function(model) {
+          if (model) {
+      //TODO: REPLACE FLASH MESSAGE
+            req.flash('signupMessage', 'That username is already taken.');
+          } else {
+            // if there is no user with that email create the user
+            new User({
+              username: username,
+              //TODO: ENCRYPT PASSWORD
+              password: password
+            }).save()
+              .then(function(model) {
+                console.log('New user saved', model);
+              }, function(error) {
+                console.log('error');
+              });
+          }
+        });
+    });
+  }));*/
+
+  // =========================================================================
+  // LOCAL LOGIN =============================================================
+  // =========================================================================
+
+ /* passport.use('local-login', new LocalStrategy({
+    // by default, local strategy uses username and password, we will override with email
+    usernameField : 'username',
+    passwordField : 'password',
+    passReqToCallback : true // allows us to pass back the entire request to the callback
+  },
+  function(req, email, password, done) { // callback with email and password from our form
+    // find a user whose email is the same as the forms email
+    // we are checking to see if the user trying to login already exists
+    new User({'username': username})
+      .fetch() //TODO: will this fail if there is no username, or will it just pass 'null'?
+      .then(function(model))
+
+            return done(err);
+
+        // if no user is found, return the message
+        if (!user)
+            return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+
+        // if the user is found but the password is wrong
+        if (!user.validPassword(password))
+            return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); // create the loginMessage and save it to session as flashdata
+
+        // all is well, return successful user
+        return done(null, user);
+    });
+
+  }));*/
+
+  // =========================================================================
+  // FACEBOOK ================================================================
+  // =========================================================================
+  passport.use(new FacebookStrategy({
+    // pull in our app id and secret from our authConfig.js file
+    clientID        : configAuth.facebookAuth.clientID,
+    clientSecret    : configAuth.facebookAuth.clientSecret,
+    callbackURL     : configAuth.facebookAuth.callbackURL
+  },
+    // facebook will send back the token and profile
+    function(token, refreshToken, profile, done) {
+      // asynchronous
+      process.nextTick(function() {
+        // find the user in the database based on their facebook id
+        //TODO: add facebook.id to schema
+        new User({ 'facebook.id' : profile.id })
+          .fetch()
+          .then(function(userModel) {
+            if (userModel) {
+              return userModel;
+            } else {
+              new User({
+                //TODO: make the db schema match these fields
+                facebook_id: profile.id,
+                facebook_token: token,
+                first_name: profile.name.givenName,
+                last_name: profile.name.familyName
+              }).save()
+                .then(function(model) {
+                  console.log('New user saved', model);
+                }, function(error) {
+                  console.log('Error saving new user: ', error);
+                });
+            }
+          }, function(error) {
+            console.log('Error: ', error);
+          });
+      });
+
+    }));
+
+};

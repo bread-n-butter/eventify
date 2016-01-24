@@ -1,7 +1,7 @@
 
 var knex = require('knex')({
   client: 'mysql',
-  connection: {
+  connection: process.env.DATABASE_URL || {
     host     : '127.0.0.1',
     user     : 'root',
     password : '',
@@ -33,12 +33,13 @@ knex.schema.hasTable('events').then(function(exists){
   if(!exists) {
     knex.schema.createTable('events', function(events){
       events.increments('event_id').primary();
-      events.string('event_name');
+      events.string('event_name', 100);
       events.date('event_date');
       events.integer('num_of_people_joined');
       events.integer('total_number_of_people_req');
       events.integer('price_per_person');
-      events.string('description');
+      events.string('description', 250);
+      events.string('image_url');
       events.integer('creator').references('users.user_id');
     }).then(function(table){
       console.log('Created Table', table);

@@ -10,7 +10,7 @@ const helper = {
    *    Grabs list of events
    */
   getEvents() {
-    return axios.get('/api/events');
+    return axios.get('/api/events').then(function(data) { return data.data });
   },
 
   /**

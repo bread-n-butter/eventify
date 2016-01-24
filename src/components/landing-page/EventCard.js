@@ -21,10 +21,10 @@ const EventCard = ({event}) => (
   <div className="col s4 feat-cards">
     <Card>
       <CardMedia>
-        <img src={event.img} />
+        <img src='http://lorempixel.com/640/480/nightlife' />
       </CardMedia>
-      <CardTitle title={event.title} subtitle={event.desc}/>
-      <CardText>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</CardText>
+      <CardTitle title={event.event_name} subtitle={event.num_of_people_joined}/>
+      <CardText>{event.description}</CardText>
     </Card>
   </div>
 )

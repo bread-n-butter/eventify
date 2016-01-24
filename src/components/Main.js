@@ -44,11 +44,10 @@ class Main extends React.Component {
     console.log("Inside of Init");
     const that = this;
     helper.getEvents()
-      .then( ({data}) => {
+      .then( (data) => {
         that.setState({
-          events: {data}
+          events: data.data
         });
-        console.log("Data is ", {data});
       });
   }
   

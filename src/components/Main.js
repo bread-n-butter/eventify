@@ -13,7 +13,8 @@ import Banner from './landing-page/Banner';
 import EventList from './landing-page/FeatEvents';
 import SearchBar from './landing-page/SearchBar'
 
-console.log(SearchBar);
+//helper for HTTP requests
+import helper from '../helpers/helpers.js'
 
 class Main extends React.Component {
   
@@ -27,6 +28,28 @@ class Main extends React.Component {
                 {title: "Event5", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" },
                 {title: "Event6", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" }]
     }
+  }
+  
+  /**
+   *    Run init when components mount
+   */
+  componentDidMount() {
+    this.init();
+  }
+  
+  /**
+   *    Get data from backend about events
+   */
+  init() {
+    console.log("Inside of Init");
+    const that = this;
+    helper.getEvents()
+      .then( ({data}) => {
+        that.setState({
+          events: {data}
+        });
+        console.log("Data is ", {data});
+      });
   }
   
   render() {

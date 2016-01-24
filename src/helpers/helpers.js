@@ -9,7 +9,7 @@ const helper = {
   /**
    *    Grabs list of events
    */
-  function getEvents() {
+  getEvents() {
     return axios.get('/api/events');
   },
 
@@ -18,7 +18,7 @@ const helper = {
    *    
    *    @param id
    */
-  function getEventById(id) {
+  getEventById(id) {
     return axios.get('/api/events/' + id);
   }
   

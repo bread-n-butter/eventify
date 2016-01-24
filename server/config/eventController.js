@@ -1,6 +1,8 @@
 var User = require('./models/user.js');
 var Event = require('./models/event.js');
 
+console.log('Event is ', Event);
+
 module.exports = {
 
   getAllEvents: function(req, res, next) {
@@ -30,5 +32,23 @@ module.exports = {
   }
 };
 
-//curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:3000/api/events
-//curl -H "Content-Type: application/json" -X POST -d '{"eventName":"matts guitar stuff","numOfPeopleJoined":"10"}' http://localhost:8080/api/events
+//curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events
+
+/**
+ *    DummyData
+ */
+
+ //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"matts guitar stuff","numOfPeopleJoined":"10", "totalPeople","20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
+ 
+ //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Seattle Career Fair","numOfPeopleJoined":"2", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
+ 
+ //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Mini Medical School","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
+ 
+ //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Walla Walla Wine","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
+ 
+ //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Northwest Flower & Garden Show","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
+ 
+
+
+
+

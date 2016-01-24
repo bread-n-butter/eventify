@@ -2,8 +2,8 @@ var User = require('./models/user.js');
 var Event = require('./models/event.js');
 
 module.exports = {
-
-  signup: function(req, res, next){
+  //TODO: fill these out
+  /*signup: function(req, res, next){
     console.log('routing works cuz youre a genius');
     Event.fetchAll()
     .then(function(collection){
@@ -20,7 +20,7 @@ module.exports = {
       price_per_person: data.pricePerPerson,
       description: data.description
     });
-  },
+  },*/
 
   logout: function(req, res){
     req.logout();

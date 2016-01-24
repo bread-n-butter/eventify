@@ -7,10 +7,10 @@ var port = process.env.PORT || 8080;
 var app = express();
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
+console.log("IsDevelopment is ", isDevelopment);
 console.log(process.env.NODE_ENV);
 
 var static_path = path.join(__dirname, '../');
-console.log(static_path);
 
 require('./middleware.js')(app, express);
 

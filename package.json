@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/bread-n-butter/eventify#readme",
   "dependencies": {
+    "axios": "^0.9.0",
     "babel": "^6.3.26",
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",

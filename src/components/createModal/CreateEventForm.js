@@ -11,8 +11,6 @@ import DatePicker from 'material-ui/lib/date-picker/date-picker'
 
 class CreateEventForm extends React.Component {
   
-  //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"matts guitar stuff","numOfPeopleJoined":"10", "totalPeople","20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
-  
   constructor(props) {
     super(props);
     this.state = {

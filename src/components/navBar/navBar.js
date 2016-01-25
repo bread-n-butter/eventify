@@ -17,7 +17,7 @@ class NavBar extends React.Component {
         <div className="nav-wrapper">
           <a href="#" className="brand-logo">Eventify</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><CreateEventModal /></li>
+            <li><CreateEventModal renderMain={this.props.renderMain}/></li>
             <li><SignupModal /></li>
             <li><SigninModal /></li>
           </ul>

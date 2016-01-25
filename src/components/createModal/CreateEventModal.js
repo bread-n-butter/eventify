@@ -86,7 +86,16 @@ class CreateEventModal extends React.Component {
     //make http request to server with data. 
     //then if successful, give a message. 
     //if not, Error out and do something
-    helper.postEvent(this.state.data);
+    helper.postEvent(this.state.data)
+    .then((response) => {
+      //rerender the Main page
+      this.props.renderMain();
+      console.log("POSTed successfully!");
+      this.handleClose();
+    })
+    .catch((response) => {
+      console.log(response);
+    });
   }
 
   render() {

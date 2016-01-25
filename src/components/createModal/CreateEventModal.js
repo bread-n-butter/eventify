@@ -20,7 +20,6 @@ const customContentStyle = {
   width: '50%',
   maxWidth: '450px',
   textAlign: 'center'
-
 };
 
 const titleStyle = {

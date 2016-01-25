@@ -19,15 +19,16 @@ module.exports = function(passport) {
   // used to serialize the user for the session
 //TODO: IS THE ID ONE GIVEN BY PASSPORT, OR FETCHED FROM DB?
   passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user.user_id);
   });
 
   // used to deserialize the user
-  // TODO: change to Bookshelf query
+  // TODO: check if this is the correct way to query Bookshelf
   passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
+    new User.fetch({user_id: id})
+      .then(function(user) {
+        done(user);
+      });
   });
 
   /*passport.use('local-signup', new LocalStrategy({
@@ -109,14 +110,17 @@ module.exports = function(passport) {
   },
     // facebook will send back the token and profile
     function(token, refreshToken, profile, done) {
+      console.log(arguments);
       // asynchronous
       process.nextTick(function() {
+        console.log('looking for user from fb');
         // find the user in the database based on their facebook id
         //TODO: add facebook.id to schema
-        new User({ 'facebook.id' : profile.id })
+        new User({ 'facebook_id' : profile.id })
           .fetch()
           .then(function(userModel) {
             if (userModel) {
+              console.log(userModel);
               return userModel;
             } else {
               new User({
@@ -128,12 +132,16 @@ module.exports = function(passport) {
               }).save()
                 .then(function(model) {
                   console.log('New user saved', model);
+                  return done(null, model);
                 }, function(error) {
                   console.log('Error saving new user: ', error);
+                  return done(error);
                 });
             }
+            return done(null, userModel);
           }, function(error) {
             console.log('Error: ', error);
+            return done(error);
           });
       });
 

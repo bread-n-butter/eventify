@@ -1,7 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router';
+
+// import SignupBtn from './SignupBtn';
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 
+// import CreateEventModal
+import CreateEventModal from '../createModal/CreateEventModal'
 
 class NavBar extends React.Component {
 
@@ -12,6 +17,7 @@ class NavBar extends React.Component {
         <div className="nav-wrapper">
           <a href="#" className="brand-logo">Eventify</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li><CreateEventModal /></li>
             <li><SignupModal /></li>
             <li><SigninModal /></li>
           </ul>

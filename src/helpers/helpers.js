@@ -6,6 +6,8 @@ import axios from 'axios';
 
 
 const helper = {
+  
+  
   /**
    *    Grabs list of events
    */
@@ -15,11 +17,20 @@ const helper = {
 
   /**
    *    Grabs events by ID
-   *
-   *    @param id
+   *    
+   *    @param [String or Number] id
    */
   getEventById(id) {
     return axios.get('/api/events/' + id);
+  },
+  
+  /**
+   *    Posts a event
+   *    
+   *    @param [Object] Object with properties for data fields. See CreateEventModal for example.
+   */
+  postEvent(data) {
+    return axios.post('/api/events/', data);
   }
 
 };

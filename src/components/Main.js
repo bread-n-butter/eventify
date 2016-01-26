@@ -1,13 +1,12 @@
 /**
  *    Template for landing page as of now,
- *    which will contain the NAV bar
+ *    which will contain the NAV bar, Featured Events, and Banner
  *
- *    Might extend to templating for the Dashboard.
  *
  */
 import React from 'react';
 
-//components
+//Import Components
 import NavBar from './navBar/navBar';
 import Banner from './landing-page/Banner';
 import EventList from './landing-page/FeatEvents';
@@ -41,7 +40,6 @@ class Main extends React.Component {
    *    Get data from backend about events
    */
   init() {
-    console.log("Inside of Init");
     const that = this;
     helper.getEvents()
       .then( (data) => {
@@ -54,7 +52,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar renderMain={() => this.init()}/>
         <SearchBar />
         <div className="row">
           <Banner /> 

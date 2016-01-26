@@ -11,7 +11,9 @@ const Helpers = {
    *    Grabs list of events
    */
   getEvents() {
-    return axios.get('/api/events').then(function(data) { return data.data; });
+    return axios.get('/api/events/').then(function(data) { 
+      console.log("data straight from server is ", data);
+      return data.data; });
   },
 
   /**

@@ -10,7 +10,8 @@ module.exports = function (apiRouter, passport) {
   apiRouter.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email ', 'public_profile', 'user_friends']}));
   apiRouter.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-      failureRedirect: '/'
+      failureRedirect: '/#/',
+      failureFlash: true
     }), function(req, res) {
       res.redirect('/api/events');
     });
@@ -26,6 +27,7 @@ module.exports = function (apiRouter, passport) {
 
   function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
+    console.log(req.isAuthenticated());
     if (req.isAuthenticated())
       return next();
     // if they aren't redirect them to the home page

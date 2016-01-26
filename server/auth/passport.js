@@ -17,24 +17,21 @@ module.exports = function(passport) {
   // passport needs ability to serialize and unserialize users out of session
 
   // used to serialize the user for the session
-//TODO: IS THE ID ONE GIVEN BY PASSPORT, OR FETCHED FROM DB?
   passport.serializeUser(function(user, done) {
-    console.log('serialize function', user.user_id);
+    console.log('serialize function', user.attributes.user_id);
     return done(null, user.attributes.user_id);
   });
 
   // used to deserialize the user
-  // TODO: check if this is the correct way to query Bookshelf
   passport.deserializeUser(function(obj, done) {
-    /*new User({user_id: obj.facebook_id})
+    console.log(obj);
+    new User({user_id: obj})
       .fetch()
       .then(function(user) {
-        return done(user);
-      }, function(error) {
+        return done(null, user);
+      }, function(error){
         return done(error);
-      });*/
-    done(null, false);
-    //done(null, obj);
+      });
   });
 
   /*passport.use('local-signup', new LocalStrategy({

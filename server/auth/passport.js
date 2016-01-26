@@ -19,13 +19,22 @@ module.exports = function(passport) {
   // used to serialize the user for the session
 //TODO: IS THE ID ONE GIVEN BY PASSPORT, OR FETCHED FROM DB?
   passport.serializeUser(function(user, done) {
-    done(null, user);
+    console.log('serialize function', user.user_id);
+    return done(null, user.attributes.user_id);
   });
 
   // used to deserialize the user
   // TODO: check if this is the correct way to query Bookshelf
   passport.deserializeUser(function(obj, done) {
-    done(null, obj);
+    /*new User({user_id: obj.facebook_id})
+      .fetch()
+      .then(function(user) {
+        return done(user);
+      }, function(error) {
+        return done(error);
+      });*/
+    done(null, false);
+    //done(null, obj);
   });
 
   /*passport.use('local-signup', new LocalStrategy({
@@ -107,7 +116,6 @@ module.exports = function(passport) {
   },
     // facebook will send back the token and profile
     function(token, refreshToken, profile, done) {
-      console.log(profile);
       // asynchronous
       process.nextTick(function() {
         console.log('looking for user from fb');
@@ -118,7 +126,6 @@ module.exports = function(passport) {
           .fetch()
           .then(function(userModel) {
             if (userModel) {
-              console.log(userModel);
               return done(null, userModel);
             } else {
               new User({

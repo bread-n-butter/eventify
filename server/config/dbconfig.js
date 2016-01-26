@@ -21,6 +21,7 @@ knex.schema.hasTable('users').then(function(exists){
       users.string('first_name', 100);
       users.string('last_name', 100);
       users.integer('zipcode', 5);
+      users.string('facebook_id');
       users.string('username').unique();
       users.string('facebook_token');
     }).then(function(table){

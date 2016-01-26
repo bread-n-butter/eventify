@@ -17,6 +17,8 @@ class SignupBtn extends React.Component {
       <FlatButton
         label = "Sign Up With Facebook"
         style = {style}
+        linkButton = {true}
+        href = "/api/auth/facebook"
       />
     );
   }

@@ -9,6 +9,9 @@
 logs
 *.log
 
+# Auth config
+server/config/authConfig.js
+
 # Runtime data
 pids
 *.pid

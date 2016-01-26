@@ -4,15 +4,16 @@ var authController = require('./config/authController.js');
 module.exports = function (apiRouter, passport) {
   //TODO: check if user is logged in for get and post event calls
   //Don't we need a route to '/'?
-  apiRouter.get('/events', eventController.getAllEvents);
+  apiRouter.get('/events', isLoggedIn, eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
 
   apiRouter.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email ', 'public_profile', 'user_friends']}));
   apiRouter.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
-      failureRedirect: '/',
-      successRedirect: '/events'
-    }));
+      failureRedirect: '/'
+    }), function(req, res) {
+      res.redirect('/api/events');
+    });
 
   /*Local auth routes:
   apiRouter.post('/auth/signup', passport.authenticate('local-signup', {

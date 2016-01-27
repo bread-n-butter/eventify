@@ -25,7 +25,10 @@ module.exports = function (apiRouter, passport) {
     failureFlash : true // allow flash messages
   }));
   apiRouter.post('/auth/login', authController.login);*/
-  apiRouter.get('/auth/logout', authController.logout);
+  apiRouter.get('/auth/logout', function(req, res) {
+    req.logout();
+    res.redirect('/#/');
+  });
 
   function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on

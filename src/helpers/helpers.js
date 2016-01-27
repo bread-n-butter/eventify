@@ -37,6 +37,10 @@ const Helpers = {
     return axios.get('/api/loggedin').then(function(result){
       return result.data.isLoggedIn;
     });
+  },
+
+  logout() {
+    return axios.get('/api/auth/logout');
   }
 };
 

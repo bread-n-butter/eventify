@@ -7,13 +7,15 @@ module.exports = function (apiRouter, passport) {
   apiRouter.get('/events', isLoggedIn, eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
 
+  apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req.isAuthenticated() }); });
+
   apiRouter.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email ', 'public_profile', 'user_friends']}));
   apiRouter.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
       failureRedirect: '/#/',
       failureFlash: true
     }), function(req, res) {
-      res.redirect('/api/events');
+      res.redirect('/#/dashboard/');
     });
 
   /*Local auth routes:
@@ -27,7 +29,7 @@ module.exports = function (apiRouter, passport) {
 
   function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
-    console.log(req.isAuthenticated());
+    console.log('isauthed?', req.isAuthenticated());
     if (req.isAuthenticated())
       return next();
     // if they aren't redirect them to the home page

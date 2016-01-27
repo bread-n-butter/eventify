@@ -5,9 +5,9 @@
 import axios from 'axios';
 
 
-const helper = {
-  
-  
+const Helpers = {
+
+
   /**
    *    Grabs list of events
    */
@@ -17,24 +17,29 @@ const helper = {
 
   /**
    *    Grabs events by ID
-   *    
+   *
    *    @param [String or Number] id
    */
   getEventById(id) {
     return axios.get('/api/events/' + id);
   },
-  
+
   /**
    *    Posts a event
-   *    
+   *
    *    @param [Object] Object with properties for data fields. See CreateEventModal for example.
    */
   postEvent(data) {
     return axios.post('/api/events/', data);
-  }
+  },
 
+  requireAuth() {
+    return axios.get('/api/loggedin').then(function(result){
+      return result.data.isLoggedIn;
+    });
+  }
 };
 
 
 
-export default helper;
+export default Helpers;

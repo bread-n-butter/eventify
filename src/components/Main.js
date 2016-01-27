@@ -10,58 +10,63 @@ import React from 'react';
 import NavBar from './navBar/navBar';
 import Banner from './landing-page/Banner';
 import EventList from './landing-page/FeatEvents';
-import SearchBar from './landing-page/SearchBar'
+import SearchBar from './landing-page/SearchBar';
 
-//helper for HTTP requests
-import helper from '../helpers/helpers.js'
+//Helpers for HTTP requests
+import Helpers from '../helpers/helpers.js';
 
 class Main extends React.Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
-      events : [{title: "Event1", desc: "cool", img: "http://lorempixel.com/640/480/nightlife"}, 
-                {title: "Event2", desc: "awesome", img: "http://lorempixel.com/640/480/nightlife" }, 
-                {title: "Event3", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" },
-                {title: "Event4", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" },
-                {title: "Event5", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" },
-                {title: "Event6", desc: "nice", img: "http://lorempixel.com/640/480/nightlife" }]
-    }
+      events : [{title: 'Event1', desc: 'cool', img: 'http://lorempixel.com/640/480/nightlife'},
+                {title: 'Event2', desc: 'awesome', img: 'http://lorempixel.com/640/480/nightlife' },
+                {title: 'Event3', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' },
+                {title: 'Event4', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife'},
+                {title: 'Event5', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' },
+                {title: 'Event6', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' }],
+      isLoggedIn: false
+    };
   }
-  
+
   /**
    *    Run init when components mount
    */
   componentDidMount() {
+    Helpers.requireAuth().then((isLoggedIn) => {
+      this.setState({ isLoggedIn: isLoggedIn });
+    });
     this.init();
   }
-  
+
   /**
    *    Get data from backend about events
    */
   init() {
     const that = this;
-    helper.getEvents()
+    Helpers.getEvents()
       .then( (data) => {
         that.setState({
           events: data.data
         });
       });
   }
-  
+
   render() {
     return (
       <div>
         <NavBar renderMain={() => this.init()}/>
         <SearchBar />
         <div className="row">
-          <Banner /> 
+          <Banner />
         </div>
+        {this.props.children}
         <div className="container">
           <EventList events={this.state.events} />
         </div>
       </div>
-    )
+    );
   }
 
 }

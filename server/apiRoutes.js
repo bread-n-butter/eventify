@@ -4,7 +4,7 @@ var authController = require('./config/authController.js');
 module.exports = function (apiRouter, passport) {
   //TODO: check if user is logged in for get and post event calls
   //Don't we need a route to '/'?
-  apiRouter.get('/events', isLoggedIn, eventController.getAllEvents);
+  apiRouter.get('/events', eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
 
   apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req.isAuthenticated() }); });

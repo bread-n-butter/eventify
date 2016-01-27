@@ -24,7 +24,7 @@ module.exports = function(passport) {
 
   // used to deserialize the user
   passport.deserializeUser(function(obj, done) {
-    console.log(obj);
+    console.log('deserialize', obj);
     new User({user_id: obj})
       .fetch()
       .then(function(user) {

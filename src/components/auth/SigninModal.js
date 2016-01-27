@@ -19,7 +19,7 @@ const titleStyle = {
   color: '#db436c'
 };
 
-class SignupModal extends React.Component {
+class SigninModal extends React.Component {
 
   constructor(props) {
     super(props);
@@ -71,4 +71,4 @@ class SignupModal extends React.Component {
   }
 }
 
-export default SignupModal;
+export default SigninModal;

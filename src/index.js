@@ -5,14 +5,21 @@
  *
  */
 
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { browserHistory, Router } from 'react-router';
 
-import { hashHistory, Router, Route, Link } from 'react-router';
 import routes from './config/routes';
+import reducers from './reducers';
+
+const createStoreWithMiddlewaree = applyMiddleware()(createStore);
 
 //render the DOM based on the routes.js file replacing the DIV element with 'id' in the index.html
 ReactDOM.render(
-  <Router history={hashHistory}>{routes}</Router>,
-  document.getElementById('app')
+  <Provider store={ createStoreWithMiddlewaree(reducers) }>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>
+  ,document.getElementById('app')
 );

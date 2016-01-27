@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 var authConfig = require('./config/authConfig');
+var cors = require('express-cors');
+var url = require('url');
+var myproxy = require('http-proxy-middleware');
 //var mysql = require('mysql');
 
 var app = express();
@@ -17,6 +20,7 @@ console.log('IsDevelopment is ', isDevelopment);
 console.log(process.env.NODE_ENV);
 
 var static_path = path.join(__dirname, '../');
+
 
 
 app.use(morgan('dev'));
@@ -46,16 +50,48 @@ app.use(express.static(static_path))
    });
 
 if (isDevelopment) {
+
+  app.use(cors({
+    allowedOrigins: [
+      'http://localhost:8080',
+      'http://localhost:3000'
+    ]
+  }));
+
+  var options = {
+    target: 'http://localhost:3000', // target host
+    changeOrigin: true,               // needed for virtual hosted sites
+    ws: true,                         // proxy websockets
+    proxyTable: {
+      'http://localhost:8080' : 'http://localhost:3000'
+    }
+  };
+
+  var proxy = myproxy('/sockjs-node', options);
+  app.use(proxy);
+
   var WebpackDevServer = require('webpack-dev-server');
   var config = require('../webpack.config');
 
-  new WebpackDevServer(webpack(config), {
+
+  var devServer = new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
-    hot: true
-  }).listen(3000, 'localhost', function (err, result) {
+    inline: true,
+    hot: true,
+    quiet: false,
+    noInfo: false,
+    stats: {colors: true},
+    proxy: [{
+      path:   /\/api(.*)/,
+      target:  'http://localhost:8080/'
+    }]
+  });
+   // devServer.use('/api/events', myproxy(url.parse('http//localhost:8080')));
+  devServer.listen(3000, 'localhost', function (err) {
     if (err) console.log(err);
     console.log('Listening at localhost:3000');
   });
+
 }
 
 

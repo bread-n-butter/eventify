@@ -11,6 +11,6 @@ import AutoComplete from 'material-ui/lib/auto-complete'
 
 const SearchBar = () => (
     <AutoComplete dataSource={["Seattle", "Houston", "New Orleans", "Santa Cruz"]} />
-)
+);
 
-export default SearchBar
+export default SearchBar;

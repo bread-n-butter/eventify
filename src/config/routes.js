@@ -14,4 +14,3 @@ export default (
     <Route path='dashboard/' component={Dashboard} />
   </Route>
 );
-

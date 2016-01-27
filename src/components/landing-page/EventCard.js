@@ -27,6 +27,6 @@ const EventCard = ({event}) => (
       <CardText>{event.description}</CardText>
     </Card>
   </div>
-)
+);
 
-export default EventCard
+export default EventCard;

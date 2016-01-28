@@ -16,7 +16,7 @@ class FeatEvents extends React.Component {
             <Card key={index} event={event}/>
         ))}
       </div>
-    )
+    );
   }
 
 }

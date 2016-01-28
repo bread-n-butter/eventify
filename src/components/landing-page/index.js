@@ -26,6 +26,7 @@ class Landing extends React.Component {
                 {title: 'Event4', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife'},
                 {title: 'Event5', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' },
                 {title: 'Event6', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' }],
+      filteredEvents: [],
       isLoggedIn: false
     };
   }
@@ -48,9 +49,28 @@ class Landing extends React.Component {
     Helpers.getEvents()
       .then( (data) => {
         that.setState({
-          events: data.data
+          events: data.data,
+          filteredEvents: data.data
         });
       });
+  }
+  
+  /**
+   *    
+   *    Sets the 'filteredEvents' state of this Component,
+   *    based on search box input and then re-renders the this page.
+   *    
+   *    Currently only searches the title only.
+   *    
+   */
+  filterList(e) {
+    let updatedList = this.state.events;
+    updatedList = updatedList.filter(function(event){
+      return event.event_name.toLowerCase().search(
+        e.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({filteredEvents: updatedList});
+    this.render();
   }
 
   render() {
@@ -58,12 +78,13 @@ class Landing extends React.Component {
       <div>
         <NavBar renderMain={() => this.init()}/>
         <SearchBar />
+        <input type="text" placeholder='search' onChange={(e) => this.filterList(e)} />
         <div className="row">
           <Banner />
         </div>
         {this.props.children}
         <div className="container">
-          <EventList events={this.state.events} />
+          <EventList events={this.state.filteredEvents} />
         </div>
       </div>
     );

@@ -3,9 +3,9 @@
  *    
  */
 
-import React from 'react'
+import React from 'react';
 
-import Card from './EventCard'
+import Card from './EventCard';
 
 class FeatEvents extends React.Component {
   
@@ -18,12 +18,12 @@ class FeatEvents extends React.Component {
       </div>
     );
   }
-
 }
+
 
 //make sure this.props.events is an array
-FeatEvents.propTypes = {
-  events : React.PropTypes.array.isRequired
-}
+// FeatEvents.propTypes = {
+//   events : React.PropTypes.array.isRequired
+// }
 
-export default FeatEvents
+export default FeatEvents;

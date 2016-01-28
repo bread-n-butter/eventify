@@ -30,3 +30,17 @@ nav .brand-logo {
 .feat-cards {
   margin-bottom: 50px;
 }
+
+/*
+  Banner and Search Box components
+ */
+
+#search-box {
+  position: absolute;
+  width: 30%;
+  left: 35%;
+  top: 30%;
+  background-color: white;
+}
+
+

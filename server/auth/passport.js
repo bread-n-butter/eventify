@@ -6,7 +6,11 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('../config/models/user');
 
 // load the auth variables
-var configAuth = require('../config/authConfig');
+var isDevelopment = (process.env.NODE_ENV !== 'production');
+
+if (isDevelopment) {
+  var configAuth = require('../config/authConfig');
+}
 
 module.exports = function(passport) {
 

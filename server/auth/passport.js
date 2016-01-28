@@ -107,8 +107,8 @@ module.exports = function(passport) {
   // =========================================================================
   passport.use(new FacebookStrategy({
     // pull in our app id and secret from our authConfig.js file
-    clientID        : configAuth.facebookAuth.clientID,
-    clientSecret    : configAuth.facebookAuth.clientSecret,
+    clientID        : configAuth.facebookAuth.clientID || FACEBOOK_APP_ID,
+    clientSecret    : configAuth.facebookAuth.clientSecret || FACEBOOK_SECRET,
     callbackURL     : configAuth.facebookAuth.callbackURL || 'https://breadnbutter.herokuapp.com/api/auth/facebook/callback'
   },
     // facebook will send back the token and profile

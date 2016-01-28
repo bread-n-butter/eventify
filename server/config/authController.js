@@ -2,7 +2,7 @@ var User = require('./models/user.js');
 var Event = require('./models/event.js');
 
 module.exports = {
-  //TODO: fill these out
+  //TODO: fill these out for local login/signup
   // signup: function(req, res, next){
 
   // },
@@ -13,6 +13,7 @@ module.exports = {
 
   logout: function(req, res){
     req.logout();
+    console.log(req.logout);
     res.redirect('/');
   }
 };

@@ -6,20 +6,21 @@ class Dashboard extends React.Component {
   /*static contextTypes = {
     router: React.PropTypes.object
   };*/
-  /*constructor(props, context) {
+  constructor(props, context) {
     super(props);
-    context.router
-    console.log(context.router);
-  }*/
+    context.router;
+    this.state = {
+      isLoggedIn: false
+    };
+  }
+
 
   componentDidMount() {
-    console.log('dashboard mounted');
     Helper.requireAuth().then((isLoggedIn) => {
       this.setState({ isLoggedIn: isLoggedIn });
-      console.log(this.state.isLoggedIn);
       if (!this.state.isLoggedIn) {
         console.log('leaving!');
-        this.props.history.push('/#/');
+        this.context.router.push('/#/');
       }
     });
   }
@@ -28,5 +29,9 @@ class Dashboard extends React.Component {
     return <div>If you can see this, you're logged in!</div>;
   }
 }
+
+Dashboard.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default Dashboard;

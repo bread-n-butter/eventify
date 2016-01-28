@@ -8,10 +8,6 @@ var User = require('../config/models/user');
 // load the auth variables
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 
-if (isDevelopment) {
-  var configAuth = require('../config/authConfig');
-}
-
 module.exports = function(passport) {
 
   // =========================================================================
@@ -21,6 +17,7 @@ module.exports = function(passport) {
   // passport needs ability to serialize and unserialize users out of session
 
   // used to serialize the user for the session
+
   passport.serializeUser(function(user, done) {
     console.log('serialize function', user.attributes.user_id);
     return done(null, user.attributes.user_id);
@@ -109,46 +106,91 @@ module.exports = function(passport) {
   // =========================================================================
   // FACEBOOK ================================================================
   // =========================================================================
-  passport.use(new FacebookStrategy({
-    // pull in our app id and secret from our authConfig.js file
-    clientID        : configAuth.facebookAuth.clientID,
-    clientSecret    : configAuth.facebookAuth.clientSecret,
-    callbackURL     : configAuth.facebookAuth.callbackURL || 'https://breadnbutter.herokuapp.com/api/auth/facebook/callback'
-  },
-    // facebook will send back the token and profile
-    function(token, refreshToken, profile, done) {
-      // asynchronous
-      process.nextTick(function() {
-        console.log('looking for user from fb');
+  if (isDevelopment) {
+    var configAuth = require ('../config/authConfig');
+    passport.use(new FacebookStrategy({
+      // pull in our app id and secret from our authConfig.js file
+      clientID        : configAuth.facebookAuth.clientID,
+      clientSecret    : configAuth.facebookAuth.clientSecret,
+      callbackURL     : configAuth.facebookAuth.callbackURL
+    },
+      // facebook will send back the token and profile
+      function(token, refreshToken, profile, done) {
+        // asynchronous
+        process.nextTick(function() {
+          console.log('looking for user from fb');
 
-        // find the user in the database based on their facebook id
-        new User({ 'facebook_id' : profile.id })
-          .fetch()
-          .then(function(userModel) {
-            if (userModel) {
-              return done(null, userModel);
-            } else {
-              new User({
-                //TODO: make the db schema match these fields
-                facebook_id: profile.id,
-                facebook_token: token,
-                first_name: profile.name.givenName,
-                last_name: profile.name.familyName
-              }).save()
-                .then(function(model) {
-                  console.log('New user saved', model);
-                  return done(null, model);
-                }, function(error) {
-                  console.log('Error saving new user: ', error);
-                  return done(error);
-                });
-            }
-          }, function(error) {
-            console.log('Error: ', error);
-            return done(error);
-          });
-      });
+          // find the user in the database based on their facebook id
+          new User({ 'facebook_id' : profile.id })
+            .fetch()
+            .then(function(userModel) {
+              if (userModel) {
+                return done(null, userModel);
+              } else {
+                new User({
+                  //TODO: make the db schema match these fields
+                  facebook_id: profile.id,
+                  facebook_token: token,
+                  first_name: profile.name.givenName,
+                  last_name: profile.name.familyName
+                }).save()
+                  .then(function(model) {
+                    console.log('New user saved', model);
+                    return done(null, model);
+                  }, function(error) {
+                    console.log('Error saving new user: ', error);
+                    return done(error);
+                  });
+              }
+            }, function(error) {
+              console.log('Error: ', error);
+              return done(error);
+            });
+        });
 
-    }));
+      }));
+  } else {
+    passport.use(new FacebookStrategy({
+      // pull in our app id and secret from our authConfig.js file
+      clientID        : process.env.FACEBOOK_APP_ID,
+      clientSecret    : process.env.FACEBOOK_SECRET,
+      callbackURL     : 'https://breadnbutter.herokuapp.com/api/auth/facebook/callback'
+    },
+      // facebook will send back the token and profile
+      function(token, refreshToken, profile, done) {
+        // asynchronous
+        process.nextTick(function() {
+          console.log('looking for user from fb');
+
+          // find the user in the database based on their facebook id
+          new User({ 'facebook_id' : profile.id })
+            .fetch()
+            .then(function(userModel) {
+              if (userModel) {
+                return done(null, userModel);
+              } else {
+                new User({
+                  //TODO: make the db schema match these fields
+                  facebook_id: profile.id,
+                  facebook_token: token,
+                  first_name: profile.name.givenName,
+                  last_name: profile.name.familyName
+                }).save()
+                  .then(function(model) {
+                    console.log('New user saved', model);
+                    return done(null, model);
+                  }, function(error) {
+                    console.log('Error saving new user: ', error);
+                    return done(error);
+                  });
+              }
+            }, function(error) {
+              console.log('Error: ', error);
+              return done(error);
+            });
+        });
+
+      }));
+  }
 
 };

@@ -12,7 +12,7 @@ const Helpers = {
    */
   getEvents() {
     return axios.get('/api/events/').then(function(data) { 
-      console.log("data straight from server is ", data);
+      console.log('data straight from server is ', data);
       return data.data; });
   },
 

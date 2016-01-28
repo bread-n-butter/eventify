@@ -10,7 +10,12 @@ import React from 'react';
 import NavBar from './navBar/navBar';
 import Banner from './landing-page/Banner';
 import EventList from './landing-page/FeatEvents';
-import SearchBar from './landing-page/SearchBar'
+import SearchBar from './landing-page/SearchBar';
+
+//Imports for SearchBar
+
+
+
 
 //helper for HTTP requests
 import helper from '../helpers/helpers.js'

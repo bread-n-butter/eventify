@@ -8,7 +8,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
-var authConfig = require('./config/authConfig');
 var cors = require('express-cors');
 var url = require('url');
 var myproxy = require('http-proxy-middleware');
@@ -27,7 +26,13 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
 
-app.use(session({ secret: authConfig.localAuth.secret })); // session secret
+if (isDevelopment) {
+  var authConfig = require('./config/authConfig');
+  app.use(session({ secret: authConfig.localAuth.secret })); // session secret
+} else {
+  app.use(session({ secret: process.env.LOCAL_SECRET }));
+}
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());

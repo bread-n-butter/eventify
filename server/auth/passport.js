@@ -118,7 +118,6 @@ module.exports = function(passport) {
         console.log('looking for user from fb');
 
         // find the user in the database based on their facebook id
-        //TODO: add facebook.id to schema
         new User({ 'facebook_id' : profile.id })
           .fetch()
           .then(function(userModel) {

@@ -40,14 +40,14 @@ app.use(express.static(static_path))
      res.sendFile('index.html', {
        root: static_path
      });
-   })
-   .listen(port, function(err) {
-     if (err) {
-       console.log(err);
-     } else {
-       console.log('listening at ' + port);
-     }
    });
+app.listen(port, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('listening at ' + port);
+  }
+});
 
 if (isDevelopment) {
 

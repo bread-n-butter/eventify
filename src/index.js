@@ -9,17 +9,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { browserHistory, Router } from 'react-router';
+import { browserHistory, Router, hashHistory } from 'react-router';
+import promise from 'redux-promise';
+import createLogger from 'redux-logger';
 
 import routes from './config/routes';
 import reducers from './reducers';
 
-const createStoreWithMiddlewaree = applyMiddleware()(createStore);
+const logger = createLogger();
+const createStoreWithMiddleware = applyMiddleware(
+  promise,
+  logger
+)(createStore);
 
-//render the DOM based on the routes.js file replacing the DIV element with 'id' in the index.html
+// render the DOM based on the routes.js file replacing the DIV element with 'id' in the index.html
 ReactDOM.render(
-  <Provider store={ createStoreWithMiddlewaree(reducers) }>
-    <Router history={browserHistory} routes={routes} />
+  <Provider store={ createStoreWithMiddleware(reducers) }>
+    <Router history={ hashHistory } routes={routes}></Router>
   </Provider>
   ,document.getElementById('app')
 );

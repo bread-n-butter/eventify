@@ -7,15 +7,15 @@
 import React from 'react';
 
 //Import Components
-import NavBar from './navBar/navBar';
-import Banner from './landing-page/Banner';
-import EventList from './landing-page/FeatEvents';
-import SearchBar from './landing-page/SearchBar';
+import NavBar from '../navBar/navBar';
+import Banner from './Banner';
+import EventList from './FeatEvents';
+import SearchBar from './SearchBar';
 
 //Helpers for HTTP requests
-import Helpers from '../helpers/helpers.js';
+import Helpers from '../../helpers/helpers.js';
 
-class Main extends React.Component {
+class Landing extends React.Component {
 
   constructor(props) {
     super(props);
@@ -71,4 +71,4 @@ class Main extends React.Component {
 
 }
 
-export default Main;
+export default Landing;

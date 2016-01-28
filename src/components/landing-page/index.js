@@ -1,8 +1,9 @@
 /**
- *    Template for landing page as of now,
- *    which will contain the NAV bar, Featured Events, and Banner
+ *    
+ *    LANDING PAGE
  *
- *
+ *    Contains Navigation Bar, Banner, Search Box, and Featured Events
+ *    
  */
 import React from 'react';
 
@@ -10,29 +11,37 @@ import React from 'react';
 import NavBar from '../navBar/navBar';
 import Banner from './Banner';
 import EventList from './FeatEvents';
-import SearchBar from './SearchBar';
 
 //Helpers for HTTP requests
 import Helpers from '../../helpers/helpers.js';
 
 class Landing extends React.Component {
-
+  
+  //Set initial State for this Component
   constructor(props) {
     super(props);
     this.state = {
+      //dummy events
       events : [{title: 'Event1', desc: 'cool', img: 'http://lorempixel.com/640/480/nightlife'},
                 {title: 'Event2', desc: 'awesome', img: 'http://lorempixel.com/640/480/nightlife' },
                 {title: 'Event3', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' },
                 {title: 'Event4', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife'},
                 {title: 'Event5', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' },
                 {title: 'Event6', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' }],
+      //filteredEvents is used for Search box filtering
       filteredEvents: [],
+      //when user is logged in
       isLoggedIn: false
     };
   }
 
   /**
-   *    Run init when components mount
+   *    
+   *    When all the Components mount
+   *    
+   *    1) Check to see if user is Authorized, if so set State to true
+   *    2) Call init()
+   *    
    */
   componentDidMount() {
     Helpers.requireAuth().then((isLoggedIn) => {
@@ -73,6 +82,10 @@ class Landing extends React.Component {
     this.render();
   }
 
+  /**
+   *    Renders this Component with children of this Component
+   *    
+   */
   render() {
     return (
       <div>
@@ -80,7 +93,7 @@ class Landing extends React.Component {
         <div className="row">
           <Banner filterList={(e) => this.filterList(e)} />
         </div>
-        {this.props.children}
+          {this.props.children}
         <div className="container">
           <EventList events={this.state.filteredEvents} />
         </div>

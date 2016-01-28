@@ -60,7 +60,7 @@ class Landing extends React.Component {
    *    Sets the 'filteredEvents' state of this Component,
    *    based on search box input and then re-renders the this page.
    *    
-   *    Currently only searches the title only.
+   *    Currently only searches the title only. Can be easily updated though.
    *    
    */
   filterList(e) {
@@ -77,10 +77,8 @@ class Landing extends React.Component {
     return (
       <div>
         <NavBar renderMain={() => this.init()}/>
-        <SearchBar />
-        <input type="text" placeholder='search' onChange={(e) => this.filterList(e)} />
         <div className="row">
-          <Banner />
+          <Banner filterList={(e) => this.filterList(e)} />
         </div>
         {this.props.children}
         <div className="container">

@@ -1,6 +1,6 @@
 /**
  *    
- *    SearchBar component.
+ *    SearchBar component. Currently not in Use. TODO: delete later.
  *    
  *    Imported from Material UI.
  *    

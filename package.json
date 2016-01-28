@@ -55,7 +55,7 @@
     "redux-logger": "^2.4.0",
     "redux-promise": "^0.5.1",
     "webpack": "^1.12.11",
-    "express-cors": "0.0.3",
+    "express-cors": "0.0.3"
   },
   "devDependencies": {
     "babel-eslint": "^5.0.0-beta6",

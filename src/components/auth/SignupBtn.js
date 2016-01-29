@@ -20,7 +20,7 @@ class SignupBtn extends Component {
   };
 
   componentWillMount() {
-    console.log('authorized?', this.props.auth());
+    console.log('signup button auth check', this.props.auth());
   }
 
   render() {

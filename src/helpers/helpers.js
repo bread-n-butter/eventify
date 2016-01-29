@@ -11,8 +11,7 @@ const Helpers = {
    *    Grabs list of events
    */
   getEvents() {
-    return axios.get('/api/events/').then(function(data) { 
-      console.log('data straight from server is ', data);
+    return axios.get('/api/events/').then(function(data) {
       return data.data; });
   },
 
@@ -32,17 +31,8 @@ const Helpers = {
    */
   postEvent(data) {
     return axios.post('/api/events/', data);
-  },
-
-  requireAuth() {
-    return axios.get('/api/loggedin').then(function(result){
-      return result.data.isLoggedIn;
-    });
-  },
-
-  logout() {
-    return axios.get('/api/auth/logout');
   }
+
 };
 
 

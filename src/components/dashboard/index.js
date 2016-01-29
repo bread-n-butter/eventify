@@ -32,8 +32,8 @@ const styles = {
 class Dashboard extends Component {
 
   componentWillMount() {
+    console.log('authCheck in dashboard:', this.props.auth());
     this.props.fetchEvents();
-    console.log('authorized?', this.props.auth());
     // console.log(this.props.events.data);
   }
   renderEvents() {

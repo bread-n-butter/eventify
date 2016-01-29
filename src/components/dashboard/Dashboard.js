@@ -1,6 +1,9 @@
 import React from 'react';
 import Router from 'react-router';
-import Helper from '../../helpers/helpers';
+// import Helper from '../../helpers/helpers';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { requireAuth } from '../../actions/index';
 
 class Dashboard extends React.Component {
   /*static contextTypes = {
@@ -9,20 +12,22 @@ class Dashboard extends React.Component {
   constructor(props, context) {
     super(props);
     context.router;
-    this.state = {
+    /*this.state = {
       isLoggedIn: false
-    };
+    };*/
   }
 
 
   componentDidMount() {
-    Helper.requireAuth().then((isLoggedIn) => {
+    //check if user is logged in by looking at state
+
+   /* Helper.requireAuth().then((isLoggedIn) => {
       this.setState({ isLoggedIn: isLoggedIn });
       if (!this.state.isLoggedIn) {
         console.log('leaving!');
         this.context.router.push('/#/');
       }
-    });
+    });*/
   }
 
   render() {
@@ -31,7 +36,12 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.contextTypes = {
-  router: React.PropTypes.object.isRequired
+  router: React.PropTypes.object
 };
 
-export default Dashboard;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ requireAuth }, dispatch);
+}
+
+export default connect(null, { requireAuth })(Dashboard);
+

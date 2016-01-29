@@ -19,13 +19,11 @@ module.exports = function(passport) {
   // used to serialize the user for the session
 
   passport.serializeUser(function(user, done) {
-    console.log('serialize function', user.attributes.user_id);
     return done(null, user.attributes.user_id);
   });
 
   // used to deserialize the user
   passport.deserializeUser(function(obj, done) {
-    console.log('deserialize', obj);
     new User({user_id: obj})
       .fetch()
       .then(function(user) {

@@ -12,8 +12,8 @@ module.exports = {
   // },
 
   logout: function(req, res){
+    console.log('logging out');
     req.logout();
-    console.log(req.logout);
     res.redirect('/');
   }
 };

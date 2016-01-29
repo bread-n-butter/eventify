@@ -43,7 +43,7 @@ class NavBar extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { isLoggedin: state.events.isLoggedin };
+  return { isLoggedin: state.events.isLoggedIn };
 }
 
 export default connect(mapStateToProps)(NavBar);

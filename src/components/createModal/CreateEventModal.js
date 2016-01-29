@@ -14,7 +14,7 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 
 //Import Helper
-import helper from '../../helpers/helpers'
+import helper from '../../helpers/helpers';
 
 const customContentStyle = {
   width: '50%',

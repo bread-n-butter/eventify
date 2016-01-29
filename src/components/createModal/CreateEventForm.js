@@ -7,7 +7,7 @@ import React from 'react';
 
 //Import Material-UI elements
 import TextField from 'material-ui/lib/text-field';
-import DatePicker from 'material-ui/lib/date-picker/date-picker'
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 class CreateEventForm extends React.Component {
   

@@ -30,7 +30,6 @@ class Dashboard extends Component {
     if (events.length === 0) {
       return (
         <div>
-          <NavBar />
           <div className='center-align'>
             <CircularProgress size={2} />
           </div>

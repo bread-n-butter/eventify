@@ -8,17 +8,12 @@ import { Route, IndexRoute } from 'react-router';
 import App from '../components/app/index';
 import Landing from '../components/landing-page/';
 import Dashboard from '../components/dashboard/';
-// import Helpers from '../helpers/helpers';
-
-const Hello = () => {
-  return <div>Hey There</div>;
-};
+import CreateEvent from '../components/create-event/create-event';
 
 export default (
   <Route path="/" component={App}>
      <IndexRoute component={Landing} />
-     <Route path="hello" component={Hello} />
      <Route path="dashboard" component={Dashboard} />
-     <Route path="*" component={Hello} />
+     <Route path='create' component={CreateEvent} />
   </Route>
 );

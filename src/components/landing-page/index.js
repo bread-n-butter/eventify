@@ -86,7 +86,6 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
-        <NavBar renderMain={() => this.init()}/>
         <div className="row">
           <Banner filterList={(e) => this.filterList(e)} />
         </div>

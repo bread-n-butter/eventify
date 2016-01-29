@@ -10,7 +10,7 @@ import StarBorder from '../../../node_modules/material-ui/lib/svg-icons/toggle/s
 import CircularProgress from 'material-ui/lib/circular-progress';
 
 import NavBar from '../navBar/navBar.js'
-import {fetchEvents} from '../../actions/';
+import {fetchEvents, auth} from '../../actions/';
 import Helper from '../../helpers/helpers';
 
 const styles = {
@@ -33,6 +33,7 @@ class Dashboard extends Component {
 
   componentWillMount() {
     this.props.fetchEvents();
+    console.log('authorized?', this.props.auth());
     // console.log(this.props.events.data);
   }
   renderEvents() {
@@ -81,7 +82,7 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchEvents}, dispatch);
+  return bindActionCreators({fetchEvents, auth}, dispatch);
 }
 
 function mapStateToProps(state) {

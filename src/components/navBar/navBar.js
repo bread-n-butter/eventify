@@ -10,11 +10,11 @@ class NavBar extends React.Component {
 
 
   componentDidMount() {
-    console.log('navbar auth props check: ', this.props.isLoggedin);
+    console.log('navbar auth props check: ', this.props.isLoggedIn);
   }
 
   render() {
-    if (this.props.isLoggedin) {
+    if (this.props.isLoggedIn) {
       return (
         <nav  role="navigation">
           <div className="nav-wrapper">
@@ -43,7 +43,7 @@ class NavBar extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { isLoggedin: state.events.isLoggedIn };
+  return { isLoggedIn: state.events.isLoggedIn };
 }
 
 export default connect(mapStateToProps)(NavBar);

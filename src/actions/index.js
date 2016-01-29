@@ -1,14 +1,13 @@
 /**
- *    
+ *
  *    Reducer Actions : Main File
- *    
+ *
  */
 
 import axios from 'axios';
 
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const LOGOUT = 'LOGOUT';
-export const SIGNUP = 'SIGNUP';
 export const AUTH = 'AUTH';
 export const FETCH_ONE_EVENT = 'FETCH_1_EVENT';
 
@@ -32,15 +31,6 @@ export function logout() {
   };
 }
 
-// export function signup() {
-//   //this is giving a cors warning!
-//   const request = axios.get('api/auth/facebook');
-//   return {
-//     type: SIGNUP,
-//     payload: request
-//   };
-// }
-
 export function auth() {
   const request = axios.get('api/loggedin');
   return {
@@ -50,9 +40,9 @@ export function auth() {
 }
 
 /**
- *    Fetches one specific event from the backend, 
+ *    Fetches one specific event from the backend,
  *    and then return the action handles and data as a Reducer Action.
- *    
+ *
  *    @param [Number] which should be the ID of the event
  */
 export function fetchOneEvent(id) {
@@ -61,5 +51,4 @@ export function fetchOneEvent(id) {
     type: FETCH_ONE_EVENT,
     payload: request.data.data
   };
-} 
-
+}

@@ -1,9 +1,9 @@
 /**
- *    
+ *
  *    LANDING PAGE
  *
  *    Contains Navigation Bar, Banner, Search Box, and Featured Events
- *    
+ *
  */
 import React from 'react';
 
@@ -16,7 +16,7 @@ import EventList from './FeatEvents';
 import Helpers from '../../helpers/helpers.js';
 
 class Landing extends React.Component {
-  
+
   //Set initial State for this Component
   constructor(props) {
     super(props);
@@ -36,17 +36,14 @@ class Landing extends React.Component {
   }
 
   /**
-   *    
+   *
    *    When all the Components mount
-   *    
+   *
    *    1) Check to see if user is Authorized, if so set State to true
    *    2) Call init()
-   *    
+   *
    */
   componentDidMount() {
-    Helpers.requireAuth().then((isLoggedIn) => {
-      this.setState({ isLoggedIn: isLoggedIn });
-    });
     this.init();
   }
 
@@ -63,14 +60,14 @@ class Landing extends React.Component {
         });
       });
   }
-  
+
   /**
-   *    
+   *
    *    Sets the 'filteredEvents' state of this Component,
    *    based on search box input and then re-renders the this page.
-   *    
+   *
    *    Currently only searches the title only. Can be easily updated though.
-   *    
+   *
    */
   filterList(e) {
     let updatedList = this.state.events;
@@ -84,7 +81,7 @@ class Landing extends React.Component {
 
   /**
    *    Renders this Component with children of this Component
-   *    
+   *
    */
   render() {
     return (

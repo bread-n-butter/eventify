@@ -26,6 +26,8 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
 
+app.use(cors());
+
 if (isDevelopment) {
   var authConfig = require('./config/authConfig');
   app.use(session({ secret: authConfig.localAuth.secret })); // session secret
@@ -56,12 +58,6 @@ app.listen(port, function(err) {
 
 if (isDevelopment) {
 
-  app.use(cors({
-    allowedOrigins: [
-      'http://localhost:8080',
-      'http://localhost:3000'
-    ]
-  }));
 
   var options = {
     target: 'http://localhost:3000', // target host
@@ -92,6 +88,8 @@ if (isDevelopment) {
     }]
   });
    // devServer.use('/api/events', myproxy(url.parse('http//localhost:8080')));
+  devServer.use(cors());
+
   devServer.listen(3000, 'localhost', function (err) {
     if (err) console.log(err);
     console.log('Listening at localhost:3000');

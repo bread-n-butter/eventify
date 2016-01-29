@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
-import Helpers from '../../helpers/helpers';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { logout } from '../../actions/index';
 
-class LogoutBtn extends React.Component {
+class LogoutBtn extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  handleLogout() {
+    this.props.logout()
+      .then(() => {
+        this.context.router.push('/');
+      });
+  }
 
   render() {
     return (
       <FlatButton
         label = "Log Out"
         style = {{color: '#53b3cb'}}
-        onClick ={Helpers.logout}
+        onClick = {this.handleLogout.bind(this)}
       />
     );
   }
 }
 
-export default LogoutBtn;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ logout }, dispatch);
+}
+
+export default connect(null, { logout })(LogoutBtn);

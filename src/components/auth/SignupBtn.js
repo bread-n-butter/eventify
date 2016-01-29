@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { auth } from '../../actions/index';
 
 const style = {
   display: 'block',
@@ -10,7 +13,15 @@ const style = {
   color: '#fff'
 };
 
-class SignupBtn extends React.Component {
+class SignupBtn extends Component {
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  componentWillMount() {
+    console.log('signup button auth check', this.props.auth());
+  }
 
   render() {
     return (
@@ -18,10 +29,14 @@ class SignupBtn extends React.Component {
         label = "Sign Up With Facebook"
         style = {style}
         linkButton = {true}
-        href = "/api/auth/facebook"
+        href = 'api/auth/facebook'
       />
     );
   }
 }
 
-export default SignupBtn;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ auth }, dispatch);
+}
+
+export default connect(null, { auth })(SignupBtn);

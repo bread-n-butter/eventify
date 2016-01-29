@@ -4,6 +4,7 @@ const INITIAL_STATE = {all: [], event: null, isLoggedin: false};
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
+    
   case FETCH_EVENTS:
     return {...state, all: action.payload};
   case AUTH:
@@ -12,5 +13,6 @@ export default function(state = INITIAL_STATE, action) {
     return {...state, isLoggedin: false };
   default:
     return state;
+    
   }
 }

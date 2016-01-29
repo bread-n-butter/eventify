@@ -3,8 +3,31 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import { Link } from 'react-router';
 
+import GridList from 'material-ui/lib/grid-list/grid-list';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
+import IconButton from 'material-ui/lib/icon-button';
+import StarBorder from '../../../node_modules/material-ui/lib/svg-icons/toggle/star-border.js';
+import CircularProgress from 'material-ui/lib/circular-progress';
+
+import NavBar from '../navBar/navBar.js'
 import {fetchEvents} from '../../actions/';
 import Helper from '../../helpers/helpers';
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
+
+  },
+  gridList: {
+    'maxWidth': 1200,
+    'maxHeight': 800,
+    overflowY: 'auto',
+    marginBottom: 24,
+    marginTop: 24
+  }
+};
 
 class Dashboard extends Component {
 
@@ -14,21 +37,45 @@ class Dashboard extends Component {
   }
   renderEvents() {
     return this.props.events.data.data.map((event) => {
-      console.log(event);
+      // console.log(event);
       return (
-        <li key={event.id}>
-          {event}
-        </li>
+        <GridTile
+          key={event.event_id}
+          title={event.description}
+          subtitle={<span>by <b>{event.creator}</b></span>}
+          actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
+          className="hoverable"
+        >
+          <img src='http://lorempixel.com/400/400/nightlife' />
+        </GridTile>
       );
     });
   }
 
   render() {
-    // console.log(this.props.fetchEvents());
+    const events = this.props.events.data;
+    if (!events) {
+      return (
+        <div>
+          <NavBar />
+          <div className='center-align'>
+            <CircularProgress size={2} />
+          </div>
+        </div>
+      );
+    }
     return (
-      <ul>
-        {/* {this.renderEvents()} */}
-      </ul>
+      <div style={styles.root}>
+        <NavBar />
+        <GridList
+          cellHeight={400}
+          cols={3}
+          padding={25}
+          style={styles.gridList}
+        >
+          {this.renderEvents()}
+        </GridList>
+      </div>
     );
   }
 }

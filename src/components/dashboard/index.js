@@ -1,61 +1,24 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import { Link } from 'react-router';
 
-import GridList from 'material-ui/lib/grid-list/grid-list';
-import GridTile from 'material-ui/lib/grid-list/grid-tile';
-import IconButton from 'material-ui/lib/icon-button';
-import StarBorder from '../../../node_modules/material-ui/lib/svg-icons/toggle/star-border.js';
 import CircularProgress from 'material-ui/lib/circular-progress';
 
-import NavBar from '../navBar/navBar.js'
+import NavBar from '../navBar/navBar.js';
 import {fetchEvents, auth} from '../../actions/';
-import Helper from '../../helpers/helpers';
 
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around'
-
-  },
-  gridList: {
-    'maxWidth': 1200,
-    'maxHeight': 800,
-    overflowY: 'auto',
-    marginBottom: 24,
-    marginTop: 24
-  }
-};
+import Featured from './featured';
+import Joined from './joined';
 
 class Dashboard extends Component {
 
   componentWillMount() {
-    console.log('authCheck in dashboard:', this.props.auth());
     this.props.fetchEvents();
-    // console.log(this.props.events.data);
-  }
-  renderEvents() {
-    return this.props.events.data.data.map((event) => {
-      // console.log(event);
-      return (
-        <GridTile
-          key={event.event_id}
-          title={event.description}
-          subtitle={<span>by <b>{event.creator}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
-          className="hoverable"
-        >
-          <img src='http://lorempixel.com/400/400/nightlife' />
-        </GridTile>
-      );
-    });
   }
 
   render() {
-    const events = this.props.events.data;
-    if (!events) {
+    const events = this.props.events;
+    if (events.length === 0) {
       return (
         <div>
           <NavBar />
@@ -66,20 +29,26 @@ class Dashboard extends Component {
       );
     }
     return (
-      <div style={styles.root}>
+      <div>
         <NavBar />
-        <GridList
-          cellHeight={400}
-          cols={3}
-          padding={25}
-          style={styles.gridList}
-        >
-          {this.renderEvents()}
-        </GridList>
+        <div className='row'>
+          <div className="col s7">Featured
+            <Featured data={events} />
+          </div>
+          <div className="col s5 ">
+            <div className="">Joined
+              <Joined data={events} />
+            </div>
+            <div className="">Created
+              <Joined data={events} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({fetchEvents, auth}, dispatch);

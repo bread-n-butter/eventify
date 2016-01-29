@@ -9,7 +9,7 @@ import IconButton from 'material-ui/lib/icon-button';
 import StarBorder from '../../../node_modules/material-ui/lib/svg-icons/toggle/star-border.js';
 import CircularProgress from 'material-ui/lib/circular-progress';
 
-import NavBar from '../navBar/navBar.js'
+import NavBar from '../navBar/navBar.js';
 import {fetchEvents, auth} from '../../actions/';
 import Helper from '../../helpers/helpers';
 

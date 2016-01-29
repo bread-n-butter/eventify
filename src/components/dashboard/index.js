@@ -9,13 +9,8 @@ import IconButton from 'material-ui/lib/icon-button';
 import StarBorder from '../../../node_modules/material-ui/lib/svg-icons/toggle/star-border.js';
 import CircularProgress from 'material-ui/lib/circular-progress';
 
-<<<<<<< HEAD
-import NavBar from '../navBar/navBar.js'
-import {fetchEvents, auth} from '../../actions/';
-=======
 import NavBar from '../navBar/navBar.js';
 import {fetchEvents} from '../../actions/';
->>>>>>> progess
 import Helper from '../../helpers/helpers';
 
 const styles = {

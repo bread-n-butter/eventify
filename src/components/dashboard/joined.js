@@ -14,8 +14,8 @@ const styles = {
 
   },
   gridList: {
-    'maxWidth': 1200,
-    'maxHeight': 800,
+    'maxWidth': 600,
+    'maxHeight': 350,
     overflowY: 'auto',
     marginBottom: 24,
     marginTop: 24,
@@ -41,7 +41,7 @@ export default class Featured extends Component {
           actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
           className="hoverable"
         >
-          <img src='http://lorempixel.com/300/300/nightlife' />
+          <img src='http://lorempixel.com/300/300/city' />
         </GridTile>
       );
     });
@@ -52,8 +52,8 @@ export default class Featured extends Component {
     return (
       <div style={styles.root}>
         <GridList
-          cellHeight={300}
-          cols={3}
+          cellHeight={200}
+          cols={1}
           padding={25}
           style={styles.gridList}
         >

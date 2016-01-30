@@ -8,6 +8,7 @@ module.exports = function (apiRouter, passport) {
 
   apiRouter.get('/events/:eventId', eventController.getEvent);
   apiRouter.put('/events/:eventId', eventController.editEvent);
+  apiRouter.delete('/events/:eventId', eventController.deleteEvent);
 
   apiRouter.post('/users', userController.addUser);
 

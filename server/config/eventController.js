@@ -29,15 +29,13 @@ module.exports = {
     });
   },
 
-  editEvent: function(req, res){
+  editEvent: function(req, res, next){
     var data = req.body; 
     Event
     .where({event_id: data.eventId})
     .fetch({require: true})
     .then(function(event){
-      console.log('getting into save and then', event);
-      console.log(data);
-      event.save({
+      return event.save({
         event_name: data.eventName || event.get('event_name'),
         event_date: data.date || event.get('event_date'),
         num_of_people_joined: data.numOfPeopleJoined || event.get('num_of_people_joined'),
@@ -45,9 +43,29 @@ module.exports = {
         price_per_person: data.pricePerPerson || event.get('price_per_person'),
         description: data.description || event.get('description'),
         image_url: data.image || event.get('image_url')
-      }, {patch: true});
+      }, {method: 'update'});
     }).then(function(){
       res.sendStatus(200);
+    }).catch(function(error){
+      console.log(error);
+      res.send('Error at editEvent');
+    });
+  },
+
+  deleteEvent: function(req, res, next){
+    var data = req.body;
+    console.log(data);
+    Event
+    .where({event_id: data.eventId})
+    .fetch({require: true})
+    .then(function(event){
+      return event.destroy();
+    }).then(function(){
+      res.sendStatus(200);
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at deleteEvent');
     });
   },
 
@@ -91,5 +109,5 @@ module.exports = {
 
 //curl -H "Content-Type: application/json" -X PUT -d '{"eventName":"third test2 party","numOfPeopleJoined":"30", "totalPeople": "20", "pricePerPerson":"60", "description":"will dis work"}' http://localhost:3000/api/events/2
 
-
+//curl -X "DELETE" http://localhost:3000/api/events/3
 

@@ -24,9 +24,11 @@ class CreateEventForm extends React.Component {
       
     return (
       
-      <div row='row' onSubmit={handleSubmit}>
+      <div row='row'>
       
-        <form>
+      <div className='col s6'>
+      
+        <form onSubmit={handleSubmit}>
           
           <div>
             <label>Event Name</label>
@@ -56,6 +58,8 @@ class CreateEventForm extends React.Component {
           <button type="submit" className='btn waves-effect waves-light'>Submit</button>
           
         </form>
+        
+      </div>
       
       </div>
       

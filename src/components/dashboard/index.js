@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import CircularProgress from 'material-ui/lib/circular-progress';
 
-import NavBar from '../navBar/navBar.js';
-import {fetchEvents, auth} from '../../actions/';
+import { fetchEvents, auth } from '../../actions/';
 
 import Featured from './featured';
 import Joined from './joined';
@@ -31,7 +30,7 @@ class Dashboard extends Component {
       return (
         <div>
           <div className='center-align'>
-            <CircularProgress size={2} />
+            <CircularProgress size={ 2 } />
           </div>
         </div>
       );
@@ -40,14 +39,14 @@ class Dashboard extends Component {
       <div>
         <div className='row'>
           <div className="col s7">Featured
-            <Featured data={events} />
+            <Featured data={ events } />
           </div>
           <div className="col s5 ">
             <div className="">Joined
-              <Joined data={events} />
+              <Joined data={ events } />
             </div>
             <div className="">Created
-              <Joined data={events} />
+              <Joined data={ events } />
             </div>
           </div>
         </div>
@@ -56,9 +55,8 @@ class Dashboard extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchEvents, auth}, dispatch);
+  return bindActionCreators({ fetchEvents, auth }, dispatch);
 }
 
 function mapStateToProps(state) {

@@ -10,8 +10,6 @@ import { createEvent } from '../../actions/';
 //Import Redux-form Node Module
 import {reduxForm} from 'redux-form';
 
-console.log('hello');
-
 class CreateEventForm extends React.Component {
   
   render() {

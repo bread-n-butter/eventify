@@ -19,14 +19,10 @@ class SignupBtn extends Component {
     router: PropTypes.object
   };
 
-  componentWillMount() {
-    console.log('signup button auth check', this.props.auth());
-  }
-
   render() {
     return (
       <FlatButton
-        label = "Sign Up With Facebook"
+        label = "Log In With Facebook"
         style = {style}
         linkButton = {true}
         href = 'api/auth/facebook'

@@ -1,8 +1,7 @@
 import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
-import RaisedButton from 'material-ui/lib/raised-button';
-import SignupBtn from './SignupBtn';
+import LoginFBBtn from './LoginFBBtn';
 import SignupForm from './SignupForm';
 
 
@@ -63,7 +62,7 @@ class SignupModal extends React.Component {
           contentStyle = {customContentStyle}
           titleStyle = {titleStyle}
           onRequestClose={this.handleClose}>
-          <SignupBtn />
+          <LoginFBBtn />
           OR
           <SignupForm />
         </Dialog>

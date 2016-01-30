@@ -7,6 +7,7 @@ import CircularProgress from 'material-ui/lib/circular-progress';
 
 import { fetchEvents, auth, selectEvent } from '../../actions/';
 
+
 import Featured from './featured';
 import Joined from './joined';
 import Event from '../event-page/';
@@ -72,4 +73,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-

@@ -8,7 +8,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from '../components/app/index';
 import Landing from '../components/landing-page/';
 import Dashboard from '../components/dashboard/';
-import CreateEvent from '../components/create-event/create-event';
+import CreateEvent from '../components/create-event/index';
 
 export default (
   <Route path="/" component={App}>

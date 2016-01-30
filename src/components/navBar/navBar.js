@@ -4,22 +4,32 @@ import { connect } from 'react-redux';
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 import LogoutBtn from '../auth/LogoutBtn';
-//import CreateEventBtn from '../create-event/createBtn';
+import CreateEventBtn from '../create-event/CreateEventBtn';
+
+import { bindActionCreators } from 'redux';
+
+import { auth } from '../../actions/index';
+
 
 class NavBar extends React.Component {
 
   componentDidMount() {
-    console.log('navbar auth props check: ', this.props.isLoggedIn);
+    this.props.auth().then(() => {
+      if(!this.props.isLoggedIn) {
+        this.context.router.push('/');
+      }
+    });
   }
 
   render() {
+
     if (this.props.isLoggedIn) {
       return (
         <nav  role="navigation">
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">Eventify</a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li> DEMO </li>
+                <li> <CreateEventBtn /> </li>
                 <li> <LogoutBtn /> </li>
               </ul>
           </div>
@@ -41,8 +51,14 @@ class NavBar extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { isLoggedIn: state.events.isLoggedIn };
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({auth}, dispatch);
 }
 
-export default connect(mapStateToProps)(NavBar);
+function mapStateToProps(state) {
+  return {
+    isLoggedIn: state.events.isLoggedIn
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

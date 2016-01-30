@@ -1,5 +1,6 @@
 {
     "rules": {
+        "react/jsx-uses-react":1,
         "indent": [
             2,
             2

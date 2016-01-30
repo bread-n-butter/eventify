@@ -42,7 +42,8 @@ knex.schema.hasTable('events').then(function(exists){
       events.integer('price_per_person');
       events.string('description', 250);
       events.string('image_url');
-      events.integer('creator').references('users.id').notNullable();
+      events.integer('creator').references('users.id')
+      //.notNullable();
     }).then(function(table){
       console.log('Created Table', table);
     });

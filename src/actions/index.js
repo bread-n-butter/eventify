@@ -9,7 +9,8 @@ import axios from 'axios';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const LOGOUT = 'LOGOUT';
 export const AUTH = 'AUTH';
-export const FETCH_ONE_EVENT = 'FETCH_1_EVENT';
+export const FETCH_ONE_EVENT = 'FETCH_ONE_EVENT';
+export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
 
 /**
  *    Fetches all events from the backend,
@@ -35,6 +36,20 @@ export function auth() {
   const request = axios.get('api/loggedin');
   return {
     type: AUTH,
+    payload: request
+  };
+}
+
+/**
+ *    
+ *    Sends data to the backend to Create 1 new event
+ *    @param  {JSON} json with properties for backend
+ *    
+ */
+export function createEvent(data) {
+  const request = axios.post('api/events', data);
+  return {
+    type: CREATE_ONE_EVENT,
     payload: request
   };
 }

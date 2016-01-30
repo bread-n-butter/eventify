@@ -1,80 +1,74 @@
 /**
- *    Form list that goes inside of Create Event Modal
- *    
+ *    Modal for creating events
+ *
  */
 
-import React from 'react';
+import React, {Component, PropTypes} from 'react';
 
-//Import Material-UI elements
-import TextField from 'material-ui/lib/text-field';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
+import { createEvent } from '../../actions/';
+
+//Import Redux-form Node Module
+import {reduxForm} from 'redux-form';
+
+console.log('hello');
 
 class CreateEventForm extends React.Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventName: '',
-      description: '',
-      numOfPeopleJoined: '',
-      totalPeople: '',
-      pricePerPerson: ''
-    };
-  }
-  
-  //TODO: Add DATE To database
-  //TODO: Add Date Handler here
-  
-  handleNameChange(e) {
-    this.setState({eventName: e.target.value});
-  }
-  
-  handleDescrChange(e) {
-    this.setState({description: e.target.value});
-  }
-  
-  handleNumPplChange(e) {
-    this.setState({numOfPeopleJoined: e.target.value});
-  }
-  
-  handleTotalPplChange(e) {
-    this.setState({totalPeople: e.target.value});
-  }
-  
-  handlePriceChange(e) {
-    this.setState({pricePerPerson: e.target.value});
-  }
-  
   render() {
+    
+    const {fields: {
+        eventName,
+        description, 
+        numOfPeopleJoined, 
+        totalPeople, 
+        pricePerPerson
+      }, handleSubmit} = this.props;
+      
     return (
-      <div>
-        <TextField
-          hintText="Name of Event"
-          hintStyle={{color: '#a0a6bf'}}
-          fullWidth={true} 
-          onChange={this.handleNameChange} />
-        <TextField
-          hintText="Description"
-          hintStyle={{color: '#a0a6bf'}}
-          fullWidth={true} 
-          onChange={this.handleDescrChange} />
-        <TextField
-          hintText="Date"
-          hintStyle={{color: '#a0a6bf'}}
-          fullWidth={true} />
-        <TextField
-          hintText="# of People"
-          hintStyle={{color: '#a0a6bf'}}
-          fullWidth={true} 
-          onChange={this.handleNumPplChange} />
-        <TextField
-          hintText="Cost"
-          hintStyle={{color: '#a0a6bf'}}
-          fullWidth={true} 
-          onChange={this.handlePriceChange} />
+      
+      <div row='row' onSubmit={handleSubmit}>
+      
+        <form>
+          
+          <div>
+            <label>Event Name</label>
+            <input type="text" placeholder="Event Name" {...eventName}/>
+          </div>
+          
+          <div>
+            <label>Description</label>
+            <input type="text" placeholder="Description" {...description}/>
+          </div>
+          
+          <div>
+            <label>Number of People Joined So Far</label>
+            <input type="text" placeholder="# of ppl so far" {...numOfPeopleJoined}/>
+          </div>
+          
+          <div>
+            <label>Total Number of People Needed</label>
+            <input type="text" placeholder="total needed" {...totalPeople}/>
+          </div>
+          
+          <div>
+            <label>Price Per Person</label>
+            <input type="text" placeholder="Price per person" {...pricePerPerson}/>
+          </div>
+          
+          <button type="submit" className='btn waves-effect waves-light'>Submit</button>
+          
+        </form>
+      
       </div>
+      
     );
   }
+  
 }
 
-export default CreateEventForm
+CreateEventForm = reduxForm({
+  form: 'createEvent',
+  fields: ['eventName', 'description', 'numOfPeopleJoined', 'totalPeople', 'pricePerPerson']
+})(CreateEventForm);
+
+export default CreateEventForm;

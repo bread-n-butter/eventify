@@ -17,7 +17,7 @@ var bookshelf = require('bookshelf')(knex);
 knex.schema.hasTable('users').then(function(exists){
   if(!exists) {
     knex.schema.createTable('users', function(users){
-      users.increments('user_id').primary();
+      users.increments();
       users.string('first_name', 100);
       users.string('last_name', 100);
       users.integer('zipcode', 5);
@@ -34,7 +34,7 @@ knex.schema.hasTable('users').then(function(exists){
 knex.schema.hasTable('events').then(function(exists){
   if(!exists) {
     knex.schema.createTable('events', function(events){
-      events.increments('event_id').primary();
+      events.increments();
       events.string('event_name', 100);
       events.date('event_date');
       events.integer('num_of_people_joined');
@@ -42,7 +42,7 @@ knex.schema.hasTable('events').then(function(exists){
       events.integer('price_per_person');
       events.string('description', 250);
       events.string('image_url');
-      events.integer('creator').references('users.user_id').notNullable();
+      events.integer('creator').references('users.id').notNullable();
     }).then(function(table){
       console.log('Created Table', table);
     });

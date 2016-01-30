@@ -18,7 +18,7 @@ module.exports = {
   getEvent: function(req, res, next){
     var data = req.body;
     Event
-    .where({event_id: data.eventId})
+    .where({id: data.eventId})
     .fetch({require: true})
     .then(function(event){
       res.json({data: event.attributes})
@@ -32,7 +32,7 @@ module.exports = {
   editEvent: function(req, res, next){
     var data = req.body; 
     Event
-    .where({event_id: data.eventId})
+    .where({id: data.eventId})
     .fetch({require: true})
     .then(function(event){
       return event.save({
@@ -56,7 +56,7 @@ module.exports = {
     var data = req.body;
     console.log(data);
     Event
-    .where({event_id: data.eventId})
+    .where({id: data.eventId})
     .fetch({require: true})
     .then(function(event){
       return event.destroy();

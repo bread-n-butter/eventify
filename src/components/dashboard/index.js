@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { take } from 'lodash';
 
 import CircularProgress from 'material-ui/lib/circular-progress';
 
@@ -8,6 +9,7 @@ import { fetchEvents, auth } from '../../actions/';
 
 import Featured from './featured';
 import Joined from './joined';
+import Event from '../event-page/'
 
 class Dashboard extends Component {
 
@@ -26,6 +28,7 @@ class Dashboard extends Component {
 
   render() {
     const events = this.props.events;
+    // console.log(_.take(events, 4));
     if (events.length === 0) {
       return (
         <div>
@@ -39,14 +42,15 @@ class Dashboard extends Component {
       <div>
         <div className='row'>
           <div className="col s7">Featured
-            <Featured data={ events } />
+            <Featured data={ take(events, 9) } />
+            <Event />
           </div>
           <div className="col s5 ">
             <div className="">Joined
-              <Joined data={ events } />
+              <Joined data={ take(events, 4) } />
             </div>
             <div className="">Created
-              <Joined data={ events } />
+              <Joined data={ take(events, 4) } />
             </div>
           </div>
         </div>

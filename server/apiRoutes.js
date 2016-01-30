@@ -1,4 +1,5 @@
 var eventController = require('./config/eventController.js');
+var userController = require('./config/userController.js');
 var authController = require('./config/authController.js');
 
 module.exports = function (apiRouter, passport) {
@@ -6,6 +7,10 @@ module.exports = function (apiRouter, passport) {
   //Don't we need a route to '/'?
   apiRouter.get('/events', eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
+
+  apiRouter.put('/events/:eventId', eventController.editEvent);
+
+  apiRouter.post('/users', userController.addUser);
 
   apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req.isAuthenticated() }); });
 
@@ -38,5 +43,10 @@ module.exports = function (apiRouter, passport) {
     // if they aren't redirect them to the home page
     res.redirect('/');
   }
+
+  apiRouter.param('eventId', function(){
+    req.body.eventId = eventId;
+  });
+
 
 };

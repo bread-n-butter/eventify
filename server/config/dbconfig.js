@@ -24,6 +24,7 @@ knex.schema.hasTable('users').then(function(exists){
       users.string('facebook_id');
       users.string('username').unique();
       users.string('facebook_token');
+      users.string('email_address');
     }).then(function(table){
       console.log('Created Table', table);
     });
@@ -41,7 +42,7 @@ knex.schema.hasTable('events').then(function(exists){
       events.integer('price_per_person');
       events.string('description', 250);
       events.string('image_url');
-      events.integer('creator').references('users.user_id');
+      events.integer('creator').references('users.user_id').notNullable();
     }).then(function(table){
       console.log('Created Table', table);
     });

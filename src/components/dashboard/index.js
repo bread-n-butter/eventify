@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -12,7 +12,16 @@ import Joined from './joined';
 
 class Dashboard extends Component {
 
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   componentWillMount() {
+    this.props.auth().then(() => {
+      if (!this.props.isLoggedIn) {
+        this.context.router.push('/');
+      }
+    });
     this.props.fetchEvents();
   }
 
@@ -55,7 +64,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return {events: state.events.all};
+  return {
+    events: state.events.all,
+    isLoggedIn: state.events.isLoggedIn
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

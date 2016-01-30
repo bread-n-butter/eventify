@@ -23,6 +23,8 @@ module.exports = function (apiRouter, passport) {
       res.redirect('/#/dashboard/');
     });
 
+
+
   /*Local auth routes:
   apiRouter.post('/auth/signup', passport.authenticate('local-signup', {
     successRedirect : '/events', // redirect to the secure events section

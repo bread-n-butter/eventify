@@ -33,6 +33,13 @@
         "destructuring": true
     },
 
+<<<<<<< HEAD
+=======
+    { "rules":
+      "react/jsx-uses-react": 1
+    },
+
+>>>>>>> progress on events page
     "plugins": [
         "react"
     ]

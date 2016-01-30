@@ -35,6 +35,7 @@ export default class Featured extends Component {
   }
 
   renderEvents() {
+    // console.log(this.props.data, 'data');
     return this.props.data.map((event) => {
       return (
         <GridTile

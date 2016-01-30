@@ -55,4 +55,10 @@ module.exports = function (apiRouter, passport) {
   });
 
 
+  apiRouter.param('eventId', function(req, res, next, eventId){
+    req.body.eventId = eventId;
+    next();
+  });
+
+
 };

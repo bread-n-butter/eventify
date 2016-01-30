@@ -132,7 +132,8 @@ module.exports = function(passport) {
                   facebook_id: profile.id,
                   facebook_token: token,
                   first_name: profile.name.givenName,
-                  last_name: profile.name.familyName
+                  last_name: profile.name.familyName,
+                  email_address: profile.email
                 }).save()
                   .then(function(model) {
                     console.log('New user saved', model);

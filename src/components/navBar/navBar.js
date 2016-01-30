@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 import LogoutBtn from '../auth/LogoutBtn';
-import CreateEventModal from '../createModal/CreateEventModal';
+//import CreateEventBtn from '../create-event/createBtn';
 
 class NavBar extends React.Component {
-
 
   componentDidMount() {
     console.log('navbar auth props check: ', this.props.isLoggedIn);
@@ -20,7 +19,7 @@ class NavBar extends React.Component {
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">Eventify</a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
-                {/*<li> <CreateEventModal renderMain={this.props.renderMain}/></li>*/}
+                <li> DEMO </li>
                 <li> <LogoutBtn /> </li>
               </ul>
           </div>

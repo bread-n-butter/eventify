@@ -1,6 +1,5 @@
 var eventController = require('./config/eventController.js');
 var userController = require('./config/userController.js');
-var authController = require('./config/authController.js');
 
 module.exports = function (apiRouter, passport) {
   apiRouter.get('/events', eventController.getAllEvents);

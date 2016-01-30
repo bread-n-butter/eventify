@@ -15,12 +15,28 @@ module.exports = {
     });
   },
 
+  getEvent: function(req, res, next){
+    var data = req.body;
+    Event
+    .where({event_id: data.eventId})
+    .fetch({require: true})
+    .then(function(event){
+      res.json({data: event.attributes})
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at fetchEvent');
+    });
+  },
+
   editEvent: function(req, res){
     var data = req.body; 
     Event
-    .forge({event_id: data.eventId})
+    .where({event_id: data.eventId})
     .fetch({require: true})
     .then(function(event){
+      console.log('getting into save and then', event);
+      console.log(data);
       event.save({
         event_name: data.eventName || event.get('event_name'),
         event_date: data.date || event.get('event_date'),
@@ -29,7 +45,9 @@ module.exports = {
         price_per_person: data.pricePerPerson || event.get('price_per_person'),
         description: data.description || event.get('description'),
         image_url: data.image || event.get('image_url')
-      });
+      }, {patch: true});
+    }).then(function(){
+      res.sendStatus(200);
     });
   },
 
@@ -52,6 +70,7 @@ module.exports = {
 };
 
 //curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events
+//curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events/1
 
 /**
  *    DummyData
@@ -67,7 +86,10 @@ module.exports = {
 
  //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Northwest Flower & Garden Show","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
 
+ //curl -i -X PUT -H "Content-Type:application/json" http://localhost:3000/api/events/1 -d '{"eventName":"third test2 party","numOfPeopleJoined":"30", "totalPeople": "20", "pricePerPerson":"60", "description":"will dis work"}'
 
+
+//curl -H "Content-Type: application/json" -X PUT -d '{"eventName":"third test2 party","numOfPeopleJoined":"30", "totalPeople": "20", "pricePerPerson":"60", "description":"will dis work"}' http://localhost:3000/api/events/2
 
 
 

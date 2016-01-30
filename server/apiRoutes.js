@@ -8,6 +8,7 @@ module.exports = function (apiRouter, passport) {
   apiRouter.get('/events', eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
 
+  apiRouter.get('/events/:eventId', eventController.getEvent);
   apiRouter.put('/events/:eventId', eventController.editEvent);
 
   apiRouter.post('/users', userController.addUser);
@@ -44,8 +45,9 @@ module.exports = function (apiRouter, passport) {
     res.redirect('/');
   }
 
-  apiRouter.param('eventId', function(){
+  apiRouter.param('eventId', function(req, res, next, eventId){
     req.body.eventId = eventId;
+    next();
   });
 
 

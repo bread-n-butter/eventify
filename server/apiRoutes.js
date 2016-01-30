@@ -1,8 +1,16 @@
 var eventController = require('./config/eventController.js');
+var userController = require('./config/userController.js');
+var authController = require('./config/authController.js');
 
 module.exports = function (apiRouter, passport) {
   apiRouter.get('/events', eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
+
+  apiRouter.get('/events/:eventId', eventController.getEvent);
+  apiRouter.put('/events/:eventId', eventController.editEvent);
+  apiRouter.delete('/events/:eventId', eventController.deleteEvent);
+
+  apiRouter.post('/users', userController.addUser);
 
   apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req.isAuthenticated() }); });
 
@@ -40,5 +48,17 @@ module.exports = function (apiRouter, passport) {
     // if they aren't redirect them to the home page
     res.redirect('/');
   }*/
+
+  apiRouter.param('eventId', function(req, res, next, eventId){
+    req.body.eventId = eventId;
+    next();
+  });
+
+
+  apiRouter.param('eventId', function(req, res, next, eventId){
+    req.body.eventId = eventId;
+    next();
+  });
+
 
 };

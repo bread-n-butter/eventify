@@ -1,8 +1,6 @@
 var User = require('./models/user.js');
 var Event = require('./models/event.js');
 
-console.log('Event is ', Event);
-
 module.exports = {
 
   getAllEvents: function(req, res, next) {
@@ -17,14 +15,71 @@ module.exports = {
     });
   },
 
+  getEvent: function(req, res, next){
+    var data = req.body;
+    Event
+    .where({id: data.eventId})
+    .fetch({require: true})
+    .then(function(event){
+      res.json({data: event.attributes})
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at fetchEvent');
+    });
+  },
+
+  editEvent: function(req, res, next){
+    var data = req.body; 
+    Event
+    .where({id: data.eventId})
+    .fetch({require: true})
+    .then(function(event){
+      return event.save({
+        event_name: data.eventName || event.get('event_name'),
+        event_date: data.date || event.get('event_date'),
+        num_of_people_joined: data.numOfPeopleJoined || event.get('num_of_people_joined'),
+        total_number_of_people_req: data.totalPeople || event.get('total_number_of_people_req'),
+        price_per_person: data.pricePerPerson || event.get('price_per_person'),
+        description: data.description || event.get('description'),
+        image_url: data.image || event.get('image_url')
+      }, {method: 'update'});
+    }).then(function(){
+      res.sendStatus(200);
+    }).catch(function(error){
+      console.log(error);
+      res.send('Error at editEvent');
+    });
+  },
+
+  deleteEvent: function(req, res, next){
+    var data = req.body;
+    console.log(data);
+    Event
+    .where({id: data.eventId})
+    .fetch({require: true})
+    .then(function(event){
+      return event.destroy();
+    }).then(function(){
+      res.sendStatus(200);
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at deleteEvent');
+    });
+  },
+
   addEvent: function(req, res, next) {
     var data = req.body;
     new Event({
       event_name: data.eventName,
+      event_date: data.date,
       num_of_people_joined: data.numOfPeopleJoined,
       total_number_of_people_req: data.totalPeople,
       price_per_person: data.pricePerPerson,
-      description: data.description
+      description: data.description,
+      image_url: data.image,
+      creator: data.userId
     }).save()
       .then(function(){
         res.json('your data was posted to the database successfully');
@@ -33,14 +88,15 @@ module.exports = {
 };
 
 //curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events
+//curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events/1
 
 /**
  *    DummyData
  */
 
- //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"matts guitar stuff","numOfPeopleJoined":"10", "totalPeople","20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
+ //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"third test party","numOfPeopleJoined":"30", "totalPeople": "30", "pricePerPerson":"30", "description":"will test work", "userId": "1"}' http://localhost:3000/api/events
 
- //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Seattle Career Fair","numOfPeopleJoined":"2", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
+ //curl -H "Content-Type: application/json" -X POST -d '{"firstName":"Kristen","lastName":"Haydel"}' http://localhost:3000/api/users
 
  //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Mini Medical School","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
 
@@ -48,7 +104,10 @@ module.exports = {
 
  //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Northwest Flower & Garden Show","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
 
+ //curl -i -X PUT -H "Content-Type:application/json" http://localhost:3000/api/events/1 -d '{"eventName":"third test2 party","numOfPeopleJoined":"30", "totalPeople": "20", "pricePerPerson":"60", "description":"will dis work"}'
 
 
+//curl -H "Content-Type: application/json" -X PUT -d '{"eventName":"third test2 party","numOfPeopleJoined":"30", "totalPeople": "20", "pricePerPerson":"60", "description":"will dis work"}' http://localhost:3000/api/events/2
 
+//curl -X "DELETE" http://localhost:3000/api/events/3
 

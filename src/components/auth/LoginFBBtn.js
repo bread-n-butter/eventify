@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { auth } from '../../actions/index';
 
+
 const style = {
   display: 'block',
   margin: '0px auto 15px',

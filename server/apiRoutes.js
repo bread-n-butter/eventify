@@ -1,7 +1,6 @@
 var eventController = require('./config/eventController.js');
 
 module.exports = function (apiRouter, passport) {
-  //TODO: check if user is logged in for get and post event calls
   apiRouter.get('/events', eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
 

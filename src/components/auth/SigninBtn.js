@@ -15,7 +15,7 @@ class SigninBtn extends React.Component {
   render() {
     return (
       <FlatButton
-        label = "Sign In With Facebook"
+        label = "Log In With Facebook"
         style = {style}
       />
     );

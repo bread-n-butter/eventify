@@ -25,22 +25,6 @@ class Dashboard extends Component {
     this.props.fetchEvents();
   }
 
-  renderEvents() {
-    return this.props.events.data.data.map((event) => {
-      return (
-        <GridTile
-          key={event.event_id}
-          title={event.description}
-          subtitle={<span>by <b>{event.creator}</b></span>}
-          actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
-          className="hoverable"
-        >
-          <img src='http://lorempixel.com/400/400/nightlife' />
-        </GridTile>
-      );
-    });
-  }
-
   render() {
     const events = this.props.events;
     if (events.length === 0) {

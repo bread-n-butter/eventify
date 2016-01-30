@@ -14,7 +14,7 @@ export default function(state = INITIAL_STATE, action) {
   case FETCH_EVENTS:
     return {...state, all: action.payload.data.data};
   case AUTH:
-    return {...state, isLoggedIn: action.payload.data.isLoggedin};
+    return {...state, isLoggedIn: action.payload.data.isLoggedIn};
   case LOGOUT:
     return {...state, isLoggedIn: false };
   case FETCH_ONE_EVENT:

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 import LogoutBtn from '../auth/LogoutBtn';
-import CreateEventModal from '../createModal/CreateEventModal';
+import CreateEventBtn from '../create-event/createBtn';
 
 class NavBar extends React.Component {
 
@@ -20,7 +20,7 @@ class NavBar extends React.Component {
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">Eventify</a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <button>CreateEvent</button>
+                <li> <CreateEventBtn /></li>
                 <li> <LogoutBtn /> </li>
               </ul>
           </div>

@@ -18,7 +18,7 @@ class Dashboard extends Component {
 
   componentWillMount() {
     this.props.auth().then(() => {
-      if (!this.props.isLoggedIn) {
+      if(!this.props.isLoggedIn) {
         this.context.router.push('/');
       }
     });
@@ -38,7 +38,6 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <NavBar />
         <div className='row'>
           <div className="col s7">Featured
             <Featured data={events} />

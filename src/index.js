@@ -4,10 +4,6 @@
  *    And then it delegates to the routes.js file for routing.
  *
  */
-
-//To be able to use 'fetch' from isomorphic fetch
-import 'babel-core/polyfill';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';

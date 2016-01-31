@@ -17,7 +17,7 @@ export default function(state = INITIAL_STATE, action) {
   case LOGOUT:
     return {...state, isLoggedIn: false };
   case FETCH_ONE_EVENT:
-    return {...state, eventEdit: action.payload};
+    return {...state, fetchedEvent: action.payload};
   case CREATE_ONE_EVENT:
     return {...state, createdEvent: action.payload};
   case UPLOAD_IMG:
@@ -31,8 +31,6 @@ export default function(state = INITIAL_STATE, action) {
 
 
 //initial State:
-
-
 
 
 

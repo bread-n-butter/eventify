@@ -20,8 +20,6 @@ console.log(process.env.NODE_ENV);
 
 var static_path = path.join(__dirname, '../');
 
-
-
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser());
@@ -48,6 +46,7 @@ app.use(express.static(static_path))
        root: static_path
      });
    });
+
 app.listen(port, function(err) {
   if (err) {
     console.log(err);

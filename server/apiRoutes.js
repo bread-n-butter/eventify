@@ -1,5 +1,7 @@
 var eventController = require('./config/eventController.js');
 var userController = require('./config/userController.js');
+var aws = require ('aws-sdk');
+var config = require('./config/authConfig');
 
 module.exports = function (apiRouter, passport) {
   apiRouter.get('/events', eventController.getAllEvents);
@@ -35,10 +37,35 @@ module.exports = function (apiRouter, passport) {
 
   apiRouter.get('/auth/logout',
     function (req, res) {
-      console.log('logging out');
       req.logout();
       res.end();
     });
+
+  apiRouter.get('/s3/sign', function(req, res){
+    aws.config.update({accessKeyId: config.aws.AWS_ACCESS_KEY, secretAccessKey: config.aws.AWS_SECRET_KEY});
+    var s3 = new aws.S3();
+    var s3_params = {
+      Bucket: 'eventify-photos',
+      Key: req.query.file_name,
+      Expires: 60,
+      ContentType: req.query.file_type,
+      ACL: 'public-read'
+    };
+    s3.getSignedUrl('putObject', s3_params, function(err, data){
+      if(err){
+        console.log(err);
+      }
+      else{
+        console.log(data);
+        var return_data = {
+          signed_request: data,
+          url: 'https://eventify-photos.s3.amazonaws.com/'+req.query.file_name
+        };
+        res.write(JSON.stringify(return_data));
+        res.end();
+      }
+    });
+  });
 
 /*
   function isLoggedIn(req, res, next) {

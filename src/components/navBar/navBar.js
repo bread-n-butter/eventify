@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import SignupModal from '../auth/SignupModal';
@@ -10,8 +10,15 @@ import { bindActionCreators } from 'redux';
 
 import { auth } from '../../actions/index';
 
+import UploadFile from '../create-event/UploadFile';
 
-class NavBar extends React.Component {
+
+
+
+class NavBar extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  };
 
   componentDidMount() {
     this.props.auth().then(() => {
@@ -24,12 +31,14 @@ class NavBar extends React.Component {
   render() {
 
     if (this.props.isLoggedIn) {
+      console.log('navbar auth props check: ', this.props.isLoggedIn);
       return (
         <nav  role="navigation">
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">Eventify</a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li> <CreateEventBtn /> </li>
+                <li> <UploadFile /></li>
                 <li> <LogoutBtn /> </li>
               </ul>
           </div>

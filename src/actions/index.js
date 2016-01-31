@@ -1,6 +1,6 @@
 /**
  *
- *    Reducer Actions : Main File
+ *    Reducer Action List & Factories: Main File
  *
  */
 
@@ -13,6 +13,54 @@ export const FETCH_ONE_EVENT = 'FETCH_ONE_EVENT';
 export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
 export const UPLOAD_IMG = 'UPLOAD_IMG';
 export const REJECT_FILE = 'REJECT_FILE';
+
+
+
+//EXPERIMENTAL
+
+//for HTTP requests
+import fetch from 'isomorphic-fetch';
+
+export const FETCH_EVENTS_REQUEST = 'FETCH_EVENTS_REQUEST';
+export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
+export const FETCH_EVENTS_FAILURE = 'FETCH_EVENTS_FAILURE';
+
+export function fetchAllReq() {
+  return {
+    type: FETCH_EVENTS_REQUEST
+  };
+}
+
+export function fetchAllSuccess(body) {
+  return {
+    type: FETCH_EVENTS_SUCCESS,
+    body
+  };
+}
+
+export function fetchAllFailure(err) {
+  return {
+    type: FETCH_EVENTS_FAILURE,
+    err
+  };
+}
+
+export function fetchAllEvents() {
+  return dispatch => {
+    dispatch(fetchAllReq());
+    return fetch('api/events/')
+      .then((res) => res.json())
+      .then((json) => dispatch(fetchAllSuccess(json.body)))
+      .catch((err) => dispatch(fetchAllFailure(err)));
+  };
+}
+
+
+//EXPERIMENTAL ENDS HERE
+
+
+
+
 
 /**
  *    Fetches all events from the backend,

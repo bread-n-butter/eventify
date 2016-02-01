@@ -1,18 +1,14 @@
 /**
-<<<<<<< HEAD
  *    Modal for creating events
-=======
  *    Form list that goes inside of Create Event Modal
->>>>>>> Implemented image uploading direct to Amazon S3.
  *
  */
 
-import React, {Component, PropTypes} from 'react';
-
+import React, { Component, PropTypes } from 'react';
 import { createEvent } from '../../actions/';
+import { reduxForm } from 'redux-form';
+import UploadFile from './UploadFile';
 
-//Import Redux-form Node Module
-import {reduxForm} from 'redux-form';
 
 class CreateEventForm extends React.Component {
 
@@ -21,16 +17,15 @@ class CreateEventForm extends React.Component {
     const {fields: {
         eventName,
         description,
-        numOfPeopleJoined,
         totalPeople,
         pricePerPerson
       }, handleSubmit} = this.props;
 
     return (
 
-      <div row='row'>
+      <div className="row">
 
-        <div className='col s6'>
+        <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
 
           <form onSubmit={handleSubmit}>
 
@@ -45,11 +40,6 @@ class CreateEventForm extends React.Component {
             </div>
 
             <div>
-              <label>Number of People Joined So Far</label>
-              <input type="text" placeholder="# of ppl so far" {...numOfPeopleJoined}/>
-            </div>
-
-            <div>
               <label>Total Number of People Needed</label>
               <input type="text" placeholder="total needed" {...totalPeople}/>
             </div>
@@ -59,9 +49,13 @@ class CreateEventForm extends React.Component {
               <input type="text" placeholder="Price per person" {...pricePerPerson}/>
             </div>
 
+            <UploadFile />
+
             <button type="submit" className='btn waves-effect waves-light'>Submit</button>
 
           </form>
+
+
 
         </div>
       </div>
@@ -73,7 +67,7 @@ class CreateEventForm extends React.Component {
 
 CreateEventForm = reduxForm({
   form: 'createEvent',
-  fields: ['eventName', 'description', 'numOfPeopleJoined', 'totalPeople', 'pricePerPerson']
+  fields: ['eventName', 'description', 'totalPeople', 'pricePerPerson']
 })(CreateEventForm);
 
 export default CreateEventForm;

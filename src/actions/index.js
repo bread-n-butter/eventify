@@ -11,6 +11,8 @@ export const LOGOUT = 'LOGOUT';
 export const AUTH = 'AUTH';
 export const FETCH_ONE_EVENT = 'FETCH_ONE_EVENT';
 export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
+export const UPLOAD_IMG = 'UPLOAD_IMG';
+export const REJECT_FILE = 'REJECT_FILE';
 
 /**
  *    Fetches all events from the backend,
@@ -40,11 +42,25 @@ export function auth() {
   };
 }
 
+export function uploadImage(file) {
+  const request = axios.get('api/s3/sign?file_name=' + file.name + '&file_type=' + file.type)
+                        .then((result) => {
+                          axios.put(result.data.signed_request, file, {
+                            headers: {
+                              'Content-Type': file.type
+                            }
+                          });
+                        });
+  return {
+    type: UPLOAD_IMG
+  };
+}
+
 /**
- *    
+ *
  *    Sends data to the backend to Create 1 new event
  *    @param  {JSON} json with properties for backend
- *    
+ *
  */
 export function createEvent(data) {
   const request = axios.post('api/events', data);

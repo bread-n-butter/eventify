@@ -38,7 +38,6 @@ class NavBar extends Component {
             <a href="#" className="brand-logo">Eventify</a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li> <CreateEventBtn /> </li>
-                <li> <UploadFile /></li>
                 <li> <LogoutBtn /> </li>
               </ul>
           </div>

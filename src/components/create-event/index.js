@@ -31,15 +31,15 @@ class CreateEventPage extends Component {
 
   //Go back to dashboard, when there is new Props (AKA: event has successfully posted)
   componentWillReceiveProps() {
-    this.context.router.push('/dashboard');
   }
 
   //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a JSON with keys mapped to each input field.
   handleSubmit(data) {
     data.image_url = this.props.imageUrl;
-    console.log(data);
     //Dispatch createEvent Action which will in turn make a POST request to the server.
-    this.props.createEvent(data);
+    this.props.createEvent(data)
+      .then(() => { this.context.router.push('/dashboard'); });
+
 
     //TODO: make this initialize function work. Currently not working.
     // this.props.initialize('createEvent', {}, []);

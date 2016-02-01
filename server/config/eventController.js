@@ -3,7 +3,7 @@ var Event = require('./models/event.js');
 
 module.exports = {
 
-  getAllEvents: function(req, res, next) {
+  getAllEvents: function(req, res) {
     Event
     .fetchAll({})
     .then(function(collection){
@@ -15,7 +15,7 @@ module.exports = {
     });
   },
 
-  getEvent: function(req, res, next){
+  getEvent: function(req, res){
     var data = req.body;
     Event
     .where({id: data.eventId})
@@ -29,7 +29,7 @@ module.exports = {
     });
   },
 
-  editEvent: function(req, res, next){
+  editEvent: function(req, res){
     var data = req.body; 
     Event
     .where({id: data.eventId})
@@ -52,7 +52,7 @@ module.exports = {
     });
   },
 
-  deleteEvent: function(req, res, next){
+  deleteEvent: function(req, res){
     var data = req.body;
     console.log(data);
     Event
@@ -69,7 +69,7 @@ module.exports = {
     });
   },
 
-  addEvent: function(req, res, next) {
+  addEvent: function(req, res) {
     var data = req.body;
     new Event({
       event_name: data.eventName,

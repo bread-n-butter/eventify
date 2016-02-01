@@ -18,6 +18,10 @@ class NavBar extends Component {
     router: PropTypes.object
   };
 
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   componentDidMount() {
     this.props.auth().then(() => {
       if(!this.props.isLoggedIn) {

@@ -5,15 +5,17 @@
  */
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from '../components/app/index';
+import App from '../components/app/';
 import Landing from '../components/landing-page/';
 import Dashboard from '../components/dashboard/';
-import CreateEvent from '../components/create-event/index';
+import CreateEvent from '../components/create-event/';
+import Event from '../components/event-page/'
 
 export default (
   <Route path="/" component={App}>
      <IndexRoute component={Landing} />
      <Route path="dashboard" component={Dashboard} />
      <Route path="create" component={CreateEvent} />
+     <Route path='event' component={Event} />
   </Route>
 );

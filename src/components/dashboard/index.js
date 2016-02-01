@@ -39,11 +39,10 @@ class Dashboard extends Component {
       );
     }
     return (
-      <div>
+      <div className="container">
         <div className='row'>
           <div className="col s7">Featured
             <Featured data={ take(events, 9) } />
-            <Event />
           </div>
           <div className="col s5 ">
             <div className="">Joined

@@ -1,5 +1,6 @@
 var User = require('./models/user.js');
 var Event = require('./models/event.js');
+var EventUser = require('./models/eventuser.js');
 
 module.exports = {
 
@@ -84,7 +85,34 @@ module.exports = {
       .then(function(){
         res.json('your data was posted to the database successfully');
       });
+  },
+
+  getAllCreatedEvents: function(req, res){
+    var data = req.body;
+    Event
+    .where({creator: data.userId})
+    .fetchAll()
+    .then(function(collection){
+      res.json({data: collection.models});
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at getallcreatedevents');
+    });
+  },
+
+  joinEvent: function(req, res){
+    var data = req.body;
+    new EventUser({
+      event_id: data.eventId,
+      user_id: data.userId
+    })
+    .save()
+    .then(function(){
+      res.json('added to join table');
+    });
   }
+
 };
 
 //curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events

@@ -1,8 +1,8 @@
 /**
- *    Component for individual event cards for landing page and also the Dashboard. 
- *    
+ *    Component for individual event cards for landing page and also the Dashboard.
+ *
  *    Uses Material UI's components
- *    
+ *
  */
 import React from 'react'
 
@@ -21,7 +21,8 @@ const EventCard = ({event}) => (
   <div className="col s4 feat-cards">
     <Card>
       <CardMedia>
-        <img src='http://lorempixel.com/640/480/nightlife' />
+        <img src={event.image_url} />
+        {/*<img src='http://lorempixel.com/640/480/nightlife' />*/}
       </CardMedia>
       <CardTitle title={event.event_name} subtitle={event.num_of_people_joined}/>
       <CardText>{event.description}</CardText>

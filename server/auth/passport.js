@@ -9,7 +9,6 @@ var User = require('../config/models/user');
 var isDevelopment = (process.env.NODE_ENV !== 'production');
 
 module.exports = function(passport) {
-  console.log('inside passport config');
   // =========================================================================
   // passport session setup ==================================================
   // =========================================================================
@@ -105,7 +104,6 @@ module.exports = function(passport) {
   // FACEBOOK ================================================================
   // =========================================================================
   if (isDevelopment) {
-    console.log('inside isDevelopment');
     var configAuth = require ('../config/authConfig');
     passport.use(new FacebookStrategy({
       // pull in our app id and secret from our authConfig.js file
@@ -118,8 +116,6 @@ module.exports = function(passport) {
       function(token, refreshToken, profile, done) {
         // asynchronous
         process.nextTick(function() {
-          console.log('looking for user from fb');
-          console.log(token, refreshToken, profile);
           // find the user in the database based on their facebook id
           new User({ 'facebook_id' : profile.id })
             .fetch()
@@ -161,8 +157,6 @@ module.exports = function(passport) {
       function(token, refreshToken, profile, done) {
         // asynchronous
         process.nextTick(function() {
-          console.log('looking for user from fb');
-
           // find the user in the database based on their facebook id
           new User({ 'facebook_id' : profile.id })
             .fetch()

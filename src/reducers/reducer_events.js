@@ -21,7 +21,7 @@ export default function(state = INITIAL_STATE, action) {
   case CREATE_ONE_EVENT:
     return {...state, createdEvent: action.payload};
   case UPLOAD_IMG:
-    return {...state, currentImg: action.payload};
+    return {...state, imageUrl: action.payload};
   default:
     return state;
   }

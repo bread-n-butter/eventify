@@ -45,16 +45,20 @@ export function auth() {
 }
 
 export function uploadImage(file) {
+  //TODO: save result to a var and then call put outside of promise
+  let imageUrl;
   const request = axios.get('api/s3/sign?file_name=' + file.name + '&file_type=' + file.type)
                         .then((result) => {
-                          axios.put(result.data.signed_request, file, {
+                          imageUrl = result.data.url;
+                          return axios.put(result.data.signed_request, file, {
                             headers: {
                               'Content-Type': file.type
                             }
-                          });
+                          }).then(() => { return imageUrl; });
                         });
   return {
-    type: UPLOAD_IMG
+    type: UPLOAD_IMG,
+    payload: request
   };
 }
 

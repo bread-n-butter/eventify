@@ -1,6 +1,5 @@
 /**
- *    Modal for creating events
- *    Form list that goes inside of Create Event Modal
+ *    Form  that goes inside of Create Event Page (index.js)
  *
  */
 
@@ -18,7 +17,8 @@ class CreateEventForm extends React.Component {
         eventName,
         description,
         totalPeople,
-        pricePerPerson
+        pricePerPerson,
+        imageUrl
       }, handleSubmit} = this.props;
 
     return (
@@ -55,8 +55,6 @@ class CreateEventForm extends React.Component {
 
           </form>
 
-
-
         </div>
       </div>
 
@@ -67,7 +65,7 @@ class CreateEventForm extends React.Component {
 
 CreateEventForm = reduxForm({
   form: 'createEvent',
-  fields: ['eventName', 'description', 'totalPeople', 'pricePerPerson']
+  fields: ['eventName', 'description', 'totalPeople', 'pricePerPerson', 'imageUrl']
 })(CreateEventForm);
 
 export default CreateEventForm;

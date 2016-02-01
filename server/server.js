@@ -15,8 +15,6 @@ var myproxy = require('http-proxy-middleware');
 
 var app = express();
 var isDevelopment = (process.env.NODE_ENV !== 'production');
-console.log('IsDevelopment is ', isDevelopment);
-console.log(process.env.NODE_ENV);
 
 var static_path = path.join(__dirname, '../');
 

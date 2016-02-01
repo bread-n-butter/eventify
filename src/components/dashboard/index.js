@@ -2,14 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { take } from 'lodash';
-<<<<<<< HEAD
-
-import CircularProgress from 'material-ui/lib/circular-progress';
 
 import { fetchEvents, auth, selectEvent } from '../../actions/';
-=======
->>>>>>> progress on events page
-
 
 import Featured from './featured';
 import Joined from './joined';

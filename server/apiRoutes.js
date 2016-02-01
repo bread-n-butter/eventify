@@ -56,7 +56,6 @@ module.exports = function (apiRouter, passport) {
         console.log(err);
       }
       else{
-        console.log(data);
         var return_data = {
           signed_request: data,
           url: 'https://eventify-photos.s3.amazonaws.com/'+req.query.file_name

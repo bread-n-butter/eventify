@@ -18,6 +18,17 @@ const titleStyle = {
   color: '#db436c'
 };
 
+/*const dropBoxStyle = {
+  height: '200px',
+  width: '200px',
+  margin: '0 auto',
+  borderWidth: '4px',
+  borderColor: '#767b91',
+  borderStyle: 'dashed',
+  borderRadius: '5px',
+  padding: '20px'
+};
+*/
 class UploadFile extends React.Component {
 
   constructor(props) {
@@ -35,27 +46,10 @@ class UploadFile extends React.Component {
     this.setState({open: false});
   }
 
-  /*uploadFile(file, signedRequest, url) {
-    console.log(signedRequest);
-    axios.put(signedRequest, {
-      headers: {
-        'x-amz-acl': 'public-read',
-        'Content-Type': file.type
-      }
-    })
-    .then((result) => {
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  }*/
-
   onDrop(files) {
     const file = files[0];
     axios.get('api/s3/sign?file_name=' +file.name+'&file_type='+file.type)
     .then((result) => {
-      console.log(result.data);
       axios.put(result.data.signed_request, file, {
         headers: {
           'Content-Type': file.type
@@ -63,6 +57,7 @@ class UploadFile extends React.Component {
       })
       .then((response) => {
         console.log(response);
+
       });
     })
     .catch((err) => {
@@ -81,7 +76,6 @@ class UploadFile extends React.Component {
           style = {{color: '#53b3cb'}} />
         <Dialog
           title = "Eventify"
-
           modal = {false}
           open = {this.state.open}
           contentStyle = {customContentStyle}
@@ -89,8 +83,8 @@ class UploadFile extends React.Component {
           onRequestClose={this.handleClose}>
           <Dropzone
             onDrop={this.onDrop}
-            size={150}>
-            <div>Drop an image here</div>
+            size={200}>
+            <div>Drag and drop an image here or click to select files to upload</div>
           </Dropzone>
         </Dialog>
       </div>

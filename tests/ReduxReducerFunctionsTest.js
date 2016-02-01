@@ -1,5 +1,4 @@
 import expect from 'expect';
-import deepFreeze from 'deep-freeze';
 
 //Import reducer function
 import eventReducer from '../src/reducers/reducer_events';

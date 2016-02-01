@@ -16,55 +16,10 @@ export const REJECT_FILE = 'REJECT_FILE';
 
 
 
-//EXPERIMENTAL
-
-//for HTTP requests
-import fetch from 'isomorphic-fetch';
-
-export const FETCH_EVENTS_REQUEST = 'FETCH_EVENTS_REQUEST';
-export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
-export const FETCH_EVENTS_FAILURE = 'FETCH_EVENTS_FAILURE';
-
-export function fetchAllReq() {
-  return {
-    type: FETCH_EVENTS_REQUEST
-  };
-}
-
-export function fetchAllSuccess(body) {
-  return {
-    type: FETCH_EVENTS_SUCCESS,
-    body
-  };
-}
-
-export function fetchAllFailure(err) {
-  return {
-    type: FETCH_EVENTS_FAILURE,
-    err
-  };
-}
-
-export function fetchAllEvents() {
-  return dispatch => {
-    dispatch(fetchAllReq());
-    return fetch('api/events/')
-      .then((res) => res.json())
-      .then((json) => dispatch(fetchAllSuccess(json.body)))
-      .catch((err) => dispatch(fetchAllFailure(err)));
-  };
-}
-
-
-//EXPERIMENTAL ENDS HERE
-
-
-
-
-
 /**
- *    Fetches all events from the backend,
- *    and then returns the action handles and data as a Reducer Action.
+ *    Fetches all events from the backend
+ *    
+ *    @returns [Object] action that feeds into the reducer function
  */
 export function fetchEvents() {
   const request = axios.get('api/events');
@@ -105,10 +60,10 @@ export function uploadImage(file) {
 }
 
 /**
- *
- *    Sends data to the backend to Create 1 new event
+ *    Creates one Event by sending data to the backend, then dispatching the event 
+ *    
  *    @param  {JSON} json with properties for backend
- *
+ *    @returns [Object] action that feeds into the reducer function
  */
 export function createEvent(data) {
   const request = axios.post('api/events', data);
@@ -119,10 +74,10 @@ export function createEvent(data) {
 }
 
 /**
- *    Fetches one specific event from the backend,
- *    and then return the action handles and data as a Reducer Action.
+ *    Fetches one specific event from the backend
  *
  *    @param [Number] which should be the ID of the event
+ *    @returns [Object] action that feeds into the reducer function
  */
 export function fetchOneEvent(id) {
   const request = axios.get(`api/events/${id}`).catch((err) => err);

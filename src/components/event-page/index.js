@@ -11,11 +11,7 @@ import Buttons from './buttons';
 class Event extends Component {
 
   render() {
-<<<<<<< HEAD
-
-=======
-    // console.log('event', this);
->>>>>>> set up event page and created action to select event
+    console.log(this);
     return (
       <div className="container">
         <div className="row">
@@ -38,11 +34,7 @@ class Event extends Component {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     );
-=======
-    )
->>>>>>> set up event page and created action to select event
   }
 }
 
@@ -57,14 +49,8 @@ function mapStateToProps(state) {
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
     event: state.events.event
-<<<<<<< HEAD
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Event);
-=======
-  }
-}
 
-export default connect(mapStateToProps, null)(Event);
->>>>>>> set up event page and created action to select event
+export default connect(mapStateToProps, mapDispatchToProps)(Event);

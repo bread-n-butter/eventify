@@ -12,7 +12,7 @@ export const AUTH = 'AUTH';
 export const FETCH_ONE_EVENT = 'FETCH_ONE_EVENT';
 export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
 export const UPLOAD_IMG = 'UPLOAD_IMG';
-export const REJECT_FILE = 'REJECT_FILE';
+export const SET_DATE = 'SET_DATE';
 
 /**
  *    Fetches all events from the backend
@@ -45,16 +45,20 @@ export function auth() {
 }
 
 export function uploadImage(file) {
+  //TODO: save result to a var and then call put outside of promise
+  let imageUrl;
   const request = axios.get('api/s3/sign?file_name=' + file.name + '&file_type=' + file.type)
                         .then((result) => {
-                          axios.put(result.data.signed_request, file, {
+                          imageUrl = result.data.url;
+                          return axios.put(result.data.signed_request, file, {
                             headers: {
                               'Content-Type': file.type
                             }
-                          });
+                          }).then(() => { return imageUrl; });
                         });
   return {
-    type: UPLOAD_IMG
+    type: UPLOAD_IMG,
+    payload: request
   };
 }
 
@@ -83,5 +87,12 @@ export function fetchOneEvent(id) {
   return {
     type: FETCH_ONE_EVENT,
     payload: request.data.data
+  };
+}
+
+export function setEventDate(date) {
+  return {
+    type: SET_DATE,
+    payload: date
   };
 }

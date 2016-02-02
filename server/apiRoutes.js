@@ -1,7 +1,11 @@
 var eventController = require('./config/eventController.js');
 var userController = require('./config/userController.js');
 var aws = require ('aws-sdk');
-var config = require('./config/authConfig');
+
+var isDevelopment = (process.env.NODE_ENV !== 'production');
+if (isDevelopment) {
+  var config = require('./config/authConfig');
+}
 
 module.exports = function (apiRouter, passport) {
   apiRouter.get('/events', eventController.getAllEvents);
@@ -60,7 +64,10 @@ module.exports = function (apiRouter, passport) {
     });
 
   apiRouter.get('/s3/sign', function(req, res){
-    aws.config.update({accessKeyId: config.aws.AWS_ACCESS_KEY, secretAccessKey: config.aws.AWS_SECRET_KEY});
+    aws.config.update({
+      accessKeyId: config.aws.AWS_ACCESS_KEY || process.env.AWS_ACCESS_KEY,
+      secretAccessKey: config.aws.AWS_SECRET_KEY || process.env.AWS_SECRET_KEY
+    });
     var s3 = new aws.S3();
     var s3_params = {
       Bucket: 'eventify-photos',

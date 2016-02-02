@@ -31,7 +31,7 @@ module.exports = {
   },
 
   editEvent: function(req, res){
-    var data = req.body; 
+    var data = req.body;
     Event
     .where({id: data.eventId})
     .fetch({require: true})
@@ -71,6 +71,7 @@ module.exports = {
 
   addEvent: function(req, res) {
     var data = req.body;
+    console.log(data);
     new Event({
       event_name: data.eventName,
       event_date: data.date,
@@ -78,7 +79,7 @@ module.exports = {
       total_number_of_people_req: data.totalPeople,
       price_per_person: data.pricePerPerson,
       description: data.description,
-      image_url: data.image,
+      image_url: data.image_url,
       creator: data.userId
     }).save()
       .then(function(){

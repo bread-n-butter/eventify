@@ -3,19 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dropzone from 'react-dropzone';
 import { uploadImage } from '../../actions/';
-// import axios from 'axios';
-
-
-const dropBoxStyle = {
-  height: '200px',
-  width: '200px',
-  margin: '20px auto',
-  borderWidth: '4px',
-  borderColor: '#767b91',
-  borderStyle: 'dashed',
-  borderRadius: '5px',
-  padding: '20px'
-};
 
 class UploadFile extends Component {
 

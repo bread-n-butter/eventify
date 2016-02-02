@@ -1,4 +1,4 @@
-import { FETCH_EVENTS, AUTH, LOGOUT, FETCH_ONE_EVENT, CREATE_ONE_EVENT, UPLOAD_IMG } from '../actions/index';
+import { FETCH_EVENTS, AUTH, LOGOUT, FETCH_ONE_EVENT, CREATE_ONE_EVENT, UPLOAD_IMG, SET_DATE } from '../actions/index';
 
 const INITIAL_STATE = {
   all: [],
@@ -21,7 +21,9 @@ export default function(state = INITIAL_STATE, action) {
   case CREATE_ONE_EVENT:
     return {...state, createdEvent: action.payload};
   case UPLOAD_IMG:
-    return {...state, currentImg: action.payload};
+    return {...state, imageUrl: action.payload};
+  case SET_DATE:
+    return {...state, eventDate: action.payload};
   default:
     return state;
   }

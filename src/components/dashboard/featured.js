@@ -49,7 +49,6 @@ export default class Featured extends Component {
   }
 
   render() {
-    console.log('line 56', this.props);
     return (
       <div style={styles.root}>
         <GridList

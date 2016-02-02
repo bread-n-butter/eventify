@@ -64,7 +64,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     events: state.events.all,
-    isLoggedIn: state.events.isLoggedIn
+    isLoggedIn: state.user.isLoggedIn
   };
 }
 

@@ -13,7 +13,7 @@ export default class Author extends Component {
           disabled={true}
           leftAvatar={<Avatar src="http://lorempixel.com/50/50/nightlife" />}
         >
-         by Mr McLovin
+         by {this.props.data.creator}
         </ListItem>
       </div>
     );

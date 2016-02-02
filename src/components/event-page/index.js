@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { joinEvent } from '../../actions/';
+
 import Picture from './pic';
 import Title from './title';
 import Author from './author';
@@ -30,7 +32,7 @@ console.log(this);
             <Author data={this.props.selectedEvent} />
           </div>
           <div className="col s6">
-            <Buttons />
+            <Buttons joinEvent={ this.props.joinEvent } data={this.props.selectedEvent} />
           </div>
         </div>
       </div>
@@ -39,7 +41,7 @@ console.log(this);
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({joinEvent}, dispatch);
 }
 
 function mapStateToProps(state) {

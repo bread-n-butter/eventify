@@ -15,6 +15,7 @@ export const UPLOAD_IMG = 'UPLOAD_IMG';
 export const SET_DATE = 'SET_DATE';
 export const REJECT_FILE = 'REJECT_FILE';
 export const SELECT_EVENT = 'SELECT_EVENT';
+export const JOIN_EVENT = 'JOIN_EVENT';
 
 /**
  *    Fetches all events from the backend
@@ -90,12 +91,20 @@ export function setEventDate(date) {
   return {
     type: SET_DATE,
     payload: date
-  }
+  };
 }
 
 export function selectEvent(event) {
   return {
     type: SELECT_EVENT,
     payload: event
+  };
+}
+
+export function joinEvent(event){
+  const request = axios.post(`api/events/${event.creator}/${event.id}`)
+  return {
+    type: JOIN_EVENT,
+    payload: request
   };
 }

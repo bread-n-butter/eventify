@@ -5,6 +5,8 @@ import { take } from 'lodash';
 
 import { fetchEvents, auth, selectEvent } from '../../actions/';
 
+import Spinner from '../../helpers/spinner.js';
+
 import Featured from './featured';
 import Joined from './joined';
 
@@ -29,11 +31,7 @@ class Dashboard extends Component {
     // console.log(_.take(events, 4));
     if (events.length === 0) {
       return (
-        <div>
-          <div className='center-align'>
-            <CircularProgress size={ 2 } />
-          </div>
-        </div>
+        <Spinner />
       );
     }
     return (
@@ -42,7 +40,7 @@ class Dashboard extends Component {
           <div className="col s7">Featured
             <Featured select={this.props.selectEvent} data={ take(events, 9) } />
           </div>
-          <div className="col s5 ">
+          <div className="col s5">
             <div className="">Joined
               <Joined data={ take(events, 4) } />
             </div>

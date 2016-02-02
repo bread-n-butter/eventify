@@ -8,12 +8,25 @@ const styles = {
   },
 };
 
+
+
 export default class Buttons extends Component {
+
   render() {
+    console.log(this);
     return (
       <div>
-        <RaisedButton label="Join" style={styles.button} primary={true} />
-        <RaisedButton label="Back" style={styles.button} secondary={true} />
+        <RaisedButton
+          label="Join"
+          onClick={this.props.joinEvent.bind(this, this.props.data)}
+          style={ styles.button }
+          primary={ true }
+        />
+        <RaisedButton
+          label="Back"
+          style={ styles.button }
+          secondary={ true }
+        />
       </div>
     );
   }

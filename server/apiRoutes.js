@@ -21,7 +21,7 @@ module.exports = function (apiRouter, passport) {
 
   apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
 
-  apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req }); });
+  apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req.isAuthenticated() }); });
 
   apiRouter.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email ', 'public_profile', 'user_friends']}));
 

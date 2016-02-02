@@ -33,16 +33,6 @@
         "destructuring": true
     },
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    { "rules":
-      "react/jsx-uses-react": 1
-    },
-
->>>>>>> progress on events page
-=======
->>>>>>> set up event page and created action to select event
     "plugins": [
         "react"
     ]

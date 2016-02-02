@@ -11,20 +11,14 @@ export const LOGOUT = 'LOGOUT';
 export const AUTH = 'AUTH';
 export const FETCH_ONE_EVENT = 'FETCH_ONE_EVENT';
 export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
-<<<<<<< HEAD
 export const UPLOAD_IMG = 'UPLOAD_IMG';
-<<<<<<< HEAD
 export const SET_DATE = 'SET_DATE';
-=======
 export const REJECT_FILE = 'REJECT_FILE';
-=======
 export const SELECT_EVENT = 'SELECT_EVENT';
->>>>>>> set up event page and created action to select event
->>>>>>> set up event page and created action to select event
 
 /**
  *    Fetches all events from the backend
- *    
+ *
  *    @returns [Object] action that feeds into the reducer function
  */
 export function fetchEvents() {
@@ -70,19 +64,6 @@ export function uploadImage(file) {
   };
 }
 
-/**
-<<<<<<< HEAD
- *    Creates one Event by sending data to the backend, then dispatching the event 
- *    
- *    @param  {JSON} json with properties for backend
- *    @returns [Object] action that feeds into the reducer function
-=======
- *
- *    Sends data to the backend to Create 1 new event
- *    @param  {JSON} json with properties for backend
- *
->>>>>>> set up event page and created action to select event
- */
 export function createEvent(data) {
   const request = axios.post('api/events', data);
   return {
@@ -105,16 +86,16 @@ export function fetchOneEvent(id) {
   };
 }
 
-<<<<<<< HEAD
 export function setEventDate(date) {
   return {
     type: SET_DATE,
     payload: date
-=======
+  }
+}
+
 export function selectEvent(event) {
   return {
     type: SELECT_EVENT,
     payload: event
->>>>>>> set up event page and created action to select event
   };
 }

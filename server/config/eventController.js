@@ -109,7 +109,15 @@ module.exports = {
     })
     .save()
     .then(function(){
-      res.json('added to join table');
+      Event.where({id: data.eventId})
+      .fetch({require: true})
+      .then(function(event){
+        var total = event.get('num_of_people_joined');
+        event.set({num_of_people_joined: total+1});
+        event.save();
+      }).then(function(){
+        res.json('Joined Event successfully');
+      });
     });
   },
 

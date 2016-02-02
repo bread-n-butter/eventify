@@ -11,7 +11,7 @@ import Buttons from './buttons';
 class Event extends Component {
 
   render() {
-    // console.log('event', this);
+    console.log(this);
     return (
       <div className="container">
         <div className="row">
@@ -34,7 +34,7 @@ class Event extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -49,7 +49,7 @@ function mapStateToProps(state) {
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
     event: state.events.event
-  }
+  };
 }
 
-export default connect(mapStateToProps, null)(Event);
+export default connect(mapStateToProps, mapDispatchToProps)(Event);

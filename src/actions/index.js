@@ -14,8 +14,6 @@ export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
 export const UPLOAD_IMG = 'UPLOAD_IMG';
 export const REJECT_FILE = 'REJECT_FILE';
 
-
-
 /**
  *    Fetches all events from the backend
  *    

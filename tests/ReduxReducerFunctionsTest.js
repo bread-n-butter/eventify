@@ -7,7 +7,7 @@ describe('Event Reducer Function', () => {
   
   function stateBefore() {
     return {
-      all: [],:3000
+      all: [],
       event: null,
       isLoggedIn: false,
       eventEdit: null

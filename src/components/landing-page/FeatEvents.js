@@ -7,12 +7,13 @@ import React from 'react';
 
 import Card from './EventCard';
 
-class FeatEvents extends React.Component {
-  
+class FeatEvents extends React.Component {  
   render() {
     return (
       <div className="row">
-        {this.props.events.map( (event, index) => (
+        {this.props.events.sort((a, b) => (
+          (b.num_of_people_joined-a.num_of_people_joined)))
+          .map( (event, index) => (
             <Card key={index} event={event}/>
         ))}
       </div>

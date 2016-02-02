@@ -18,7 +18,7 @@ module.exports = {
   getUser: function(req, res){
     var data = req.body;
     User
-    .where({eamil_address: data.email})
+    .where({email_address: data.email})
     .fetch({require: true})
     .then(function(user){
       res.json({data: user.attributes})
@@ -54,7 +54,7 @@ module.exports = {
       first_name: data.firstName,
       last_name: data.lastName,
       zipcode: data.zipcode,
-      facebook_id: data.fbId,
+      facebook_id: data.facebookId,
       username: data.username,
       facebook_token: data.fbToken
     }).save()

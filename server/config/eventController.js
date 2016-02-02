@@ -22,7 +22,7 @@ module.exports = {
     .where({id: data.eventId})
     .fetch({require: true})
     .then(function(event){
-      res.json({data: event.attributes})
+      res.json({data: event.attributes});
     })
     .catch(function(error){
       console.log(error);
@@ -110,6 +110,20 @@ module.exports = {
     .save()
     .then(function(){
       res.json('added to join table');
+    });
+  },
+
+  getAllJoinedEvents: function(req, res){
+    var data = req.body;
+    User
+    .where({id: data.userId})
+    .fetch({withRelated: ['events']})
+    .then(function(collection){
+      res.json({data: collection});
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at getalljoinedevents');
     });
   }
 

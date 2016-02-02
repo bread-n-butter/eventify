@@ -15,7 +15,7 @@ module.exports = function (apiRouter, passport) {
   apiRouter.put('/users/:userId', userController.editUser);
 
   apiRouter.get('/events/:userId/createdevents', eventController.getAllCreatedEvents);
-//  apiRouter.get('/events/:userId/joinedevents', eventController.getAllJoinedEvents);
+  apiRouter.get('/events/:userId/joinedevents', eventController.getAllJoinedEvents);
 
   apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
 

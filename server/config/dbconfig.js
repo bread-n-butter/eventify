@@ -53,7 +53,6 @@ knex.schema.hasTable('events').then(function(exists){
 knex.schema.hasTable('events_users').then(function(exists){
   if(!exists) {
     knex.schema.createTable('events_users', function(table){
-      table.increments();
       table.integer('user_id').references('users.id');
       table.integer('event_id').references('events.id');
     }).then(function(table){

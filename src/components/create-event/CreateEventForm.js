@@ -42,11 +42,11 @@ class CreateEventForm extends React.Component {
 
     return (
 
-      <div row='row'>
+      <div className="row">
 
-      <div className='col s6'>
+        <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
 
-        <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit}>
 
             <div>
               <label>Event Name</label>
@@ -76,15 +76,11 @@ class CreateEventForm extends React.Component {
                 onChange={this.onDateChange.bind(this)} />
             </div>
 
-          <div>
-            <label>Price Per Person</label>
-            <input type="text" placeholder="Price per person" {...pricePerPerson}/>
-          </div>
+            <UploadFile />
 
-          <button type="submit" className='btn waves-effect waves-light'>Submit</button>
+            <button type="submit" className='btn waves-effect waves-light'>Submit</button>
 
-        </form>
-
+          </form>
         </div>
       </div>
 

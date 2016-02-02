@@ -11,23 +11,23 @@ import Buttons from './buttons';
 class Event extends Component {
 
   render() {
-
+console.log(this);
     return (
       <div className="container">
         <div className="row">
           <div className="col s12">
-            <Title />
+            <Title data={this.props.selectedEvent} />
           </div>
           <div className="col s6">
-            <Picture />
+            <Picture data={this.props.selectedEvent} />
           </div>
           <div className="col s6">
-            <Details />
+            <Details data={this.props.selectedEvent} />
           </div>
         </div>
         <div className="row">
           <div className="col s6">
-            <Author />
+            <Author data={this.props.selectedEvent} />
           </div>
           <div className="col s6">
             <Buttons />
@@ -38,19 +38,16 @@ class Event extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
-    event: state.events.event
+    selectedEvent: state.events.selectedEvent
   };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Event);

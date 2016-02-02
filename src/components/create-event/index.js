@@ -32,7 +32,9 @@ class CreateEventPage extends Component {
   //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a JSON with keys mapped to each input field.
   handleSubmit(data) {
     data.image_url = this.props.imageUrl;
-    console.log(this.props.eventDate);
+    data.userId = this.props.userId;
+    
+    console.log('Data inside handleSubmit is....', data);
     // data.date = this.props.eventDate;
     //Dispatch createEvent Action which will in turn make a POST request to the server.
     this.props.createEvent(data)
@@ -64,7 +66,8 @@ function mapStateToProps(state) {
   return {
     newEventPosted: state.events.createdEvent,
     imageUrl: state.events.imageUrl,
-    eventDate: state.events.eventDate
+    eventDate: state.events.eventDate,
+    userId: state.user.id
   };
 }
 

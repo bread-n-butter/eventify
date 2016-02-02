@@ -13,7 +13,7 @@ import Banner from './Banner';
 import EventList from './FeatEvents';
 
 //Helpers for HTTP requests
-import Helpers from '../../helpers/helpers.js';
+import Helpers from '../../helpers/helpers';
 
 class Landing extends React.Component {
 

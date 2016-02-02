@@ -4,7 +4,8 @@
  *    Uses Material UI's components
  *
  */
-import React from 'react'
+import React from 'react';
+import Moment from 'moment';
 
 //Material UI imports
 import Avatar from 'material-ui/lib/avatar';
@@ -17,6 +18,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 
 
+
 const EventCard = ({event}) => (
   <div className="col s4 feat-cards">
     <Card>
@@ -25,7 +27,8 @@ const EventCard = ({event}) => (
         {/*<img src='http://lorempixel.com/640/480/nightlife' />*/}
       </CardMedia>
       <CardTitle title={event.event_name} subtitle={event.num_of_people_joined}/>
-      <CardText>{event.description}</CardText>
+      { event.event_date ? <CardText> Moment(event.event_date).format('dddd, MMM Do YYYY')</CardText>  : null }
+      <CardText>${event.price_per_person}</CardText>
     </Card>
   </div>
 );

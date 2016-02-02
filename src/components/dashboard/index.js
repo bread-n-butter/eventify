@@ -10,6 +10,8 @@ import Spinner from '../../helpers/spinner.js';
 import Featured from './featured';
 import Joined from './joined';
 
+import CreatedEventsList from './CreatedEventsList';
+
 class Dashboard extends Component {
 
   static contextTypes = {
@@ -45,7 +47,7 @@ class Dashboard extends Component {
               <Joined data={ take(events, 4) } />
             </div>
             <div className="">Created
-              <Joined data={ take(events, 4) } />
+              <CreatedEventsList data={ take(events, 4) } />
             </div>
           </div>
         </div>

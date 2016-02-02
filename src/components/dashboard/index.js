@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { take } from 'lodash';
 
-import CircularProgress from 'material-ui/lib/circular-progress';
+import { fetchEvents, auth, selectEvent } from '../../actions/';
 
-import NavBar from '../navBar/navBar.js';
-import {fetchEvents, auth} from '../../actions/';
+import Spinner from '../../helpers/spinner.js';
 
 import Featured from './featured';
 import Joined from './joined';
@@ -25,29 +25,27 @@ class Dashboard extends Component {
     this.props.fetchEvents();
   }
 
+
   render() {
     const events = this.props.events;
+    // console.log(_.take(events, 4));
     if (events.length === 0) {
       return (
-        <div>
-          <div className='center-align'>
-            <CircularProgress size={2} />
-          </div>
-        </div>
+        <Spinner />
       );
     }
     return (
-      <div>
+      <div className="container">
         <div className='row'>
           <div className="col s7">Featured
-            <Featured data={events} />
+            <Featured select={this.props.selectEvent} data={ take(events, 9) } />
           </div>
-          <div className="col s5 ">
+          <div className="col s5">
             <div className="">Joined
-              <Joined data={events} />
+              <Joined data={ take(events, 4) } />
             </div>
             <div className="">Created
-              <Joined data={events} />
+              <Joined data={ take(events, 4) } />
             </div>
           </div>
         </div>
@@ -56,17 +54,16 @@ class Dashboard extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchEvents, auth}, dispatch);
+  return bindActionCreators({ fetchEvents, auth, selectEvent }, dispatch);
 }
 
 function mapStateToProps(state) {
   return {
     events: state.events.all,
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.user.isLoggedIn,
+    event: state.events.event
   };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-

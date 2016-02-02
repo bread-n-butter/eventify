@@ -1,7 +1,7 @@
 /**
- *    
- *    ALL Reducer functions : Main File 
- *    
+ *
+ *    ALL Reducer functions : Main File
+ *
  */
 
 import { combineReducers } from 'redux';

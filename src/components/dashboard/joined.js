@@ -48,11 +48,10 @@ export default class Featured extends Component {
   }
 
   render() {
-    console.log('line 56', this.props);
     return (
       <div style={styles.root}>
         <GridList
-          cellHeight={200}
+          cellHeight={50}
           cols={1}
           padding={25}
           style={styles.gridList}

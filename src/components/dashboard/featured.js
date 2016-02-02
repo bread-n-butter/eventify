@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import IconButton from 'material-ui/lib/icon-button';
 import StarBorder from '../../../node_modules/material-ui/lib/svg-icons/toggle/star-border.js';
 
-// import {fetchEvents, auth} from '../../actions/';
 
 const styles = {
   root: {
@@ -16,7 +15,7 @@ const styles = {
   },
   gridList: {
     'maxWidth': 1200,
-    'maxHeight': 800,
+    'maxHeight': 2800,
     overflowY: 'auto',
     marginBottom: 24,
     marginTop: 24,
@@ -26,17 +25,21 @@ const styles = {
 
 export default class Featured extends Component {
 
-  // componentWillMount() {
-  //   // console.log('authCheck in dashboard:', this.props.auth());
-  //   // this.props.fetchEvents();
-  //   // console.log(this.props.events.data);
-  // }
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  selectEvent(event) {
+    this.props.select(event);
+    this.context.router.push('/event');
+  }
 
   renderEvents() {
     return this.props.data.map((event) => {
       return (
         <GridTile
           key={event.event_id}
+          onClick={this.selectEvent.bind(this, event)}
           title={event.description}
           subtitle={<span>by <b>{event.creator}</b></span>}
           actionIcon={<IconButton><StarBorder color="white"/></IconButton>}
@@ -64,13 +67,3 @@ export default class Featured extends Component {
   }
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({fetchEvents, auth}, dispatch);
-// }
-//
-// function mapStateToProps(state) {
-//   return {events: state.events.all};
-// }
-//
-// // export default connect(mapStateToProps, mapDispatchToProps)(Featured);
-//

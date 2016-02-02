@@ -81,8 +81,6 @@ class CreateEventForm extends React.Component {
             <button type="submit" className='btn waves-effect waves-light'>Submit</button>
 
           </form>
-
-
         </div>
       </div>
 

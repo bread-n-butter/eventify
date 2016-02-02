@@ -1,76 +1,73 @@
 /**
  *    Modal for creating events
+ *    Form list that goes inside of Create Event Modal
  *
  */
 
-import React, {Component, PropTypes} from 'react';
-
+import React, { Component, PropTypes } from 'react';
 import { createEvent } from '../../actions/';
+import { reduxForm } from 'redux-form';
+import UploadFile from './UploadFile';
 
-//Import Redux-form Node Module
-import {reduxForm} from 'redux-form';
 
 class CreateEventForm extends React.Component {
-  
+
   render() {
-    
+
     const {fields: {
         eventName,
-        description, 
-        numOfPeopleJoined, 
-        totalPeople, 
+        description,
+        totalPeople,
         pricePerPerson
       }, handleSubmit} = this.props;
-      
+
     return (
-      
-      <div row='row'>
-      
-      <div className='col s6'>
-      
-        <form onSubmit={handleSubmit}>
-          
-          <div>
-            <label>Event Name</label>
-            <input type="text" placeholder="Event Name" {...eventName}/>
-          </div>
-          
-          <div>
-            <label>Description</label>
-            <input type="text" placeholder="Description" {...description}/>
-          </div>
-          
-          <div>
-            <label>Number of People Joined So Far</label>
-            <input type="text" placeholder="# of ppl so far" {...numOfPeopleJoined}/>
-          </div>
-          
-          <div>
-            <label>Total Number of People Needed</label>
-            <input type="text" placeholder="total needed" {...totalPeople}/>
-          </div>
-          
-          <div>
-            <label>Price Per Person</label>
-            <input type="text" placeholder="Price per person" {...pricePerPerson}/>
-          </div>
-          
-          <button type="submit" className='btn waves-effect waves-light'>Submit</button>
-          
-        </form>
-        
+
+      <div className="row">
+
+        <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
+
+          <form onSubmit={handleSubmit}>
+
+            <div>
+              <label>Event Name</label>
+              <input type="text" placeholder="Event Name" {...eventName}/>
+            </div>
+
+            <div>
+              <label>Description</label>
+              <input type="text" placeholder="Description" {...description}/>
+            </div>
+
+            <div>
+              <label>Total Number of People Needed</label>
+              <input type="text" placeholder="total needed" {...totalPeople}/>
+            </div>
+
+            <div>
+              <label>Price Per Person</label>
+              <input type="text" placeholder="Price per person" {...pricePerPerson}/>
+            </div>
+
+            <UploadFile />
+
+            <button type="submit" className='btn waves-effect waves-light'>Submit</button>
+
+          </form>
+
+
+
+        </div>
       </div>
-      
-      </div>
-      
+
     );
   }
-  
+
 }
 
 CreateEventForm = reduxForm({
   form: 'createEvent',
-  fields: ['eventName', 'description', 'numOfPeopleJoined', 'totalPeople', 'pricePerPerson']
+  fields: ['eventName', 'description', 'totalPeople', 'pricePerPerson']
 })(CreateEventForm);
 
 export default CreateEventForm;

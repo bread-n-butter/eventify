@@ -11,7 +11,7 @@ import Buttons from './buttons';
 class Event extends Component {
 
   render() {
-    console.log(this);
+
     return (
       <div className="container">
         <div className="row">

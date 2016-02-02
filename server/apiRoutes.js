@@ -21,7 +21,15 @@ module.exports = function (apiRouter, passport) {
 
   apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
 
-  apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req.isAuthenticated() }); });
+  apiRouter.get('/loggedin', function(req, res) { 
+    if (req.isAuthenticated()) {
+      var user = req.user.attributes;
+      user.isLoggedIn = true;
+      res.send(user); 
+    } else {
+      res.send({ isLoggedIn: false });
+    }
+  });
 
   apiRouter.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email ', 'public_profile', 'user_friends']}));
 
@@ -30,6 +38,7 @@ module.exports = function (apiRouter, passport) {
       failureRedirect: '/#/',
       failureFlash: true
     }), function(req, res) {
+      // console.log('Req inside of callback is', req);
       res.redirect('/#/dashboard/');
     });
 

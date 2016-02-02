@@ -1,6 +1,6 @@
 /**
  *
- *    Reducer Actions : Main File
+ *    Reducer Action List & Factories: Main File
  *
  */
 
@@ -15,8 +15,9 @@ export const UPLOAD_IMG = 'UPLOAD_IMG';
 export const REJECT_FILE = 'REJECT_FILE';
 
 /**
- *    Fetches all events from the backend,
- *    and then returns the action handles and data as a Reducer Action.
+ *    Fetches all events from the backend
+ *    
+ *    @returns [Object] action that feeds into the reducer function
  */
 export function fetchEvents() {
   const request = axios.get('api/events');
@@ -36,6 +37,7 @@ export function logout() {
 
 export function auth() {
   const request = axios.get('api/loggedin');
+  console.log('Request inside of action is ', request);
   return {
     type: AUTH,
     payload: request
@@ -57,10 +59,10 @@ export function uploadImage(file) {
 }
 
 /**
- *
- *    Sends data to the backend to Create 1 new event
+ *    Creates one Event by sending data to the backend, then dispatching the event 
+ *    
  *    @param  {JSON} json with properties for backend
- *
+ *    @returns [Object] action that feeds into the reducer function
  */
 export function createEvent(data) {
   const request = axios.post('api/events', data);
@@ -71,10 +73,10 @@ export function createEvent(data) {
 }
 
 /**
- *    Fetches one specific event from the backend,
- *    and then return the action handles and data as a Reducer Action.
+ *    Fetches one specific event from the backend
  *
  *    @param [Number] which should be the ID of the event
+ *    @returns [Object] action that feeds into the reducer function
  */
 export function fetchOneEvent(id) {
   const request = axios.get(`api/events/${id}`).catch((err) => err);

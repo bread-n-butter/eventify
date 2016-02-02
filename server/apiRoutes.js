@@ -22,10 +22,13 @@ module.exports = function (apiRouter, passport) {
   apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
 
   apiRouter.get('/loggedin', function(req, res) { 
-    // console.log('FacebookId', req.user.attributes);
-    var user = req.user.attributes;
-    user.isLoggedIn = req.isAuthenticated();
-    res.send(user); 
+    if (req.isAuthenticated()) {
+      var user = req.user.attributes;
+      user.isLoggedIn = true;
+      res.send(user); 
+    } else {
+      res.send({ isLoggedIn: false });
+    }
   });
 
   apiRouter.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email ', 'public_profile', 'user_friends']}));

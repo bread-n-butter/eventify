@@ -42,10 +42,21 @@ knex.schema.hasTable('events').then(function(exists){
       events.integer('price_per_person');
       events.string('description', 250);
       events.string('image_url');
-      events.integer('creator').references('users.id')
+      events.integer('creator').references('users.id');
       //.notNullable();
     }).then(function(table){
       console.log('Created Table', table);
+    });
+  }
+});
+
+knex.schema.hasTable('events_users').then(function(exists){
+  if(!exists) {
+    knex.schema.createTable('events_users', function(table){
+      table.integer('user_id').references('users.id');
+      table.integer('event_id').references('events.id');
+    }).then(function(table){
+      console.log('Create Table', table);
     });
   }
 });

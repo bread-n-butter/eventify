@@ -1,4 +1,5 @@
 var db = require('../dbconfig.js');
+var User = require('./user.js');
 
 var Event = db.Model.extend({
   tableName: 'events',

@@ -12,8 +12,16 @@ module.exports = function (apiRouter, passport) {
   apiRouter.delete('/events/:eventId', eventController.deleteEvent);
 
   apiRouter.post('/users', userController.addUser);
+  apiRouter.get('/users', userController.getAllUsers);
+  apiRouter.get('/users/:email', userController.getUser);
+  apiRouter.put('/users/:userId', userController.editUser);
 
-  apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req.isAuthenticated() }); });
+  apiRouter.get('/events/:userId/createdevents', eventController.getAllCreatedEvents);
+  apiRouter.get('/events/:userId/joinedevents', eventController.getAllJoinedEvents);
+
+  apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
+
+  apiRouter.get('/loggedin', function(req, res) { res.send({ isLoggedIn: req }); });
 
   apiRouter.get('/auth/facebook', passport.authenticate('facebook', { scope : ['email ', 'public_profile', 'user_friends']}));
 
@@ -82,8 +90,13 @@ module.exports = function (apiRouter, passport) {
   });
 
 
-  apiRouter.param('eventId', function(req, res, next, eventId){
-    req.body.eventId = eventId;
+  apiRouter.param('userId', function(req, res, next, userId){
+    req.body.userId = userId;
+    next();
+  });
+
+  apiRouter.param('email', function(req, res, next, email){
+    req.body.email = email;
     next();
   });
 

@@ -39,6 +39,7 @@ export function logout() {
 
 export function auth() {
   const request = axios.get('api/loggedin');
+  console.log('Request inside of action is ', request);
   return {
     type: AUTH,
     payload: request

@@ -13,7 +13,7 @@ export default function(state = INITIAL_STATE, action) {
   case FETCH_EVENTS:
     return {...state, all: action.payload.data.data};
   case AUTH:
-    return {...state, isLoggedIn: action.payload.data.isLoggedIn};
+    return {...state, isLoggedIn: action.payload.data.isLoggedIn, facebookId: action.payload.data.facebook_id, userId: action.payload.data.id, firstName: action.payload.data.first_name, lastName: action.payload.data.last_name, email: action.payload.data.email_address};
   case LOGOUT:
     return {...state, isLoggedIn: false };
   case FETCH_ONE_EVENT:

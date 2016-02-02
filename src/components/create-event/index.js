@@ -8,6 +8,7 @@
 
 //React Component and PropTypes(for routing)
 import React, {Component, PropTypes} from 'react';
+import Moment from 'moment';
 
 //Initializes state for the form that was populated and submitted
 import { initialize } from 'redux-form';
@@ -33,9 +34,9 @@ class CreateEventPage extends Component {
   handleSubmit(data) {
     data.image_url = this.props.imageUrl;
     data.userId = this.props.userId;
-    
     console.log('Data inside handleSubmit is....', data);
-    // data.date = this.props.eventDate;
+    const finalDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
+    data.date = finalDate;
     //Dispatch createEvent Action which will in turn make a POST request to the server.
     this.props.createEvent(data)
       .then(() => { this.context.router.push('/dashboard'); });

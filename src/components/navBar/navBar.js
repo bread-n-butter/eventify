@@ -1,16 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { auth } from '../../actions/index';
+import { Link } from 'react-router';
 
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 import LogoutBtn from '../auth/LogoutBtn';
 import CreateEventBtn from '../create-event/CreateEventBtn';
-
-import { bindActionCreators } from 'redux';
-
-import { auth } from '../../actions/index';
-
-import UploadFile from '../create-event/UploadFile';
+import FlatButton from 'material-ui/lib/flat-button';
 
 
 
@@ -28,6 +26,10 @@ class NavBar extends Component {
     });
   }
 
+  goToDash() {
+    this.context.router.push('/dashboard');
+  }
+
   render() {
 
     if (this.props.isLoggedIn) {
@@ -37,6 +39,12 @@ class NavBar extends Component {
           <div className="nav-wrapper">
             <a href="#" className="brand-logo">Eventify</a>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <li>
+                  <FlatButton
+                    label = "Dashboard"
+                    style = {{color: '#53b3cb'}}
+                    onClick = {this.goToDash.bind(this)}/>
+                </li>
                 <li> <CreateEventBtn /> </li>
                 <li> <LogoutBtn /> </li>
               </ul>

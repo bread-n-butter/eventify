@@ -14,6 +14,6 @@ export default (
   <Route path="/" component={App}>
      <IndexRoute component={Landing} />
      <Route path="dashboard" component={Dashboard} />
-     <Route path='create' component={CreateEvent} />
+     <Route path="create" component={CreateEvent} />
   </Route>
 );

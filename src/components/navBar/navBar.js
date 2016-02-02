@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { auth } from '../../actions/index';
@@ -14,11 +14,6 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 
 class NavBar extends Component {
-
-  static contextTypes = {
-    router: PropTypes.object
-  };
-
   static contextTypes = {
     router: PropTypes.object
   };

@@ -71,6 +71,7 @@ module.exports = {
 
   addEvent: function(req, res) {
     var data = req.body;
+    console.log(data);
     new Event({
       event_name: data.eventName,
       event_date: data.date,

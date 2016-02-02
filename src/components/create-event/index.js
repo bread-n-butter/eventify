@@ -29,13 +29,11 @@ class CreateEventPage extends Component {
     router: PropTypes.object
   };
 
-  //Go back to dashboard, when there is new Props (AKA: event has successfully posted)
-  componentWillReceiveProps() {
-  }
-
   //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a JSON with keys mapped to each input field.
   handleSubmit(data) {
     data.image_url = this.props.imageUrl;
+    console.log(this.props.eventDate);
+    // data.date = this.props.eventDate;
     //Dispatch createEvent Action which will in turn make a POST request to the server.
     this.props.createEvent(data)
       .then(() => { this.context.router.push('/dashboard'); });
@@ -65,7 +63,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     newEventPosted: state.events.createdEvent,
-    imageUrl: state.events.imageUrl
+    imageUrl: state.events.imageUrl,
+    eventDate: state.events.eventDate
   };
 }
 

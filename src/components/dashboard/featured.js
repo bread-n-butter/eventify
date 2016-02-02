@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
@@ -26,18 +26,21 @@ const styles = {
 
 export default class Featured extends Component {
 
-  // componentWillMount() {
-  //   // console.log('authCheck in dashboard:', this.props.auth());
-  //   // this.props.fetchEvents();
-  //   // console.log(this.props.events.data);
-  // }
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  selectEvent(event) {
+    this.props.select(event);
+    this.context.router.push('/event');
+  }
 
   renderEvents() {
-    // console.log(this.props.data, 'data');
     return this.props.data.map((event) => {
       return (
         <GridTile
           key={event.event_id}
+          onClick={this.selectEvent.bind(this, event)}
           title={event.description}
           subtitle={<span>by <b>{event.creator}</b></span>}
           actionIcon={<IconButton><StarBorder color="white"/></IconButton>}

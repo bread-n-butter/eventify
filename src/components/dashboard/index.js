@@ -5,11 +5,11 @@ import { take } from 'lodash';
 
 import CircularProgress from 'material-ui/lib/circular-progress';
 
-import { fetchEvents, auth } from '../../actions/';
+import { fetchEvents, auth, selectEvent } from '../../actions/';
 
 import Featured from './featured';
 import Joined from './joined';
-import Event from '../event-page/'
+import Event from '../event-page/';
 
 class Dashboard extends Component {
 
@@ -25,6 +25,7 @@ class Dashboard extends Component {
     });
     this.props.fetchEvents();
   }
+
 
   render() {
     const events = this.props.events;
@@ -42,7 +43,7 @@ class Dashboard extends Component {
       <div className="container">
         <div className='row'>
           <div className="col s7">Featured
-            <Featured data={ take(events, 9) } />
+            <Featured select={this.props.selectEvent} data={ take(events, 9) } />
           </div>
           <div className="col s5 ">
             <div className="">Joined
@@ -59,13 +60,14 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchEvents, auth }, dispatch);
+  return bindActionCreators({ fetchEvents, auth, selectEvent }, dispatch);
 }
 
 function mapStateToProps(state) {
   return {
     events: state.events.all,
-    isLoggedIn: state.user.isLoggedIn
+    isLoggedIn: state.user.isLoggedIn,
+    event: state.events.event
   };
 }
 

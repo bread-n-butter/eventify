@@ -1,6 +1,6 @@
 {
     "rules": {
-        "react/jsx-uses-react":1,
+        "react/jsx-uses-react": 1,
         "indent": [
             2,
             2
@@ -31,10 +31,6 @@
         "experimentalObjectRestSpread": true,
         "modules": true,
         "destructuring": true
-    },
-
-    { "rules":
-      "react/jsx-uses-react": 1
     },
 
     "plugins": [

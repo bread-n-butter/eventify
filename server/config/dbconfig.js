@@ -36,7 +36,7 @@ knex.schema.hasTable('events').then(function(exists){
     knex.schema.createTable('events', function(events){
       events.increments();
       events.string('event_name', 100);
-      events.date('event_date');
+      events.dateTime('event_date');
       events.integer('num_of_people_joined');
       events.integer('total_number_of_people_req');
       events.integer('price_per_person');

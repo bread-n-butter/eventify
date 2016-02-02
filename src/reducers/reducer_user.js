@@ -10,7 +10,7 @@ export default function(state = INITIAL_STATE, action) {
     return {...state, 
         isLoggedIn: action.payload.data.isLoggedIn, 
         facebookId: action.payload.data.facebook_id, 
-        userId: action.payload.data.id, 
+        id: action.payload.data.id, 
         firstName: action.payload.data.first_name, 
         lastName: action.payload.data.last_name, 
         email: action.payload.data.email_address

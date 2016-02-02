@@ -55,7 +55,6 @@ module.exports = {
 
   deleteEvent: function(req, res){
     var data = req.body;
-    console.log(data);
     Event
     .where({id: data.eventId})
     .fetch({require: true})

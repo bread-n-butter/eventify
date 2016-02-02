@@ -21,7 +21,7 @@ module.exports = {
     .where({email_address: data.email})
     .fetch({require: true})
     .then(function(user){
-      res.json({data: user.attributes})
+      res.json({data: user.attributes});
     })
     .catch(function(error){
       console.log(error);
@@ -44,6 +44,7 @@ module.exports = {
     }).then(function(){
       res.sendStatus(200);
     }).catch(function(error){
+      console.log(error);
       res.send('Error at editUser');
     });
   },
@@ -59,7 +60,24 @@ module.exports = {
       facebook_token: data.fbToken
     }).save()
       .then(function(){
-        res.json('the user was added to the db successfully')
+        res.json('the user was added to the db successfully');
       });
+  },
+
+  deleteUser: function(req, res){
+    var data = req.body;
+    User
+    .where({id: data.userId})
+    .fetch({require: true})
+    .then(function(user){
+      return user.destroy();
+    }).then(function(){
+      res.sendStatus(200);
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at deleteuser');
+    });
   }
+
 };

@@ -1,9 +1,10 @@
 var User = require('./models/user.js');
 var Event = require('./models/event.js');
+var EventUser = require('./models/eventuser.js');
 
 module.exports = {
 
-  getAllEvents: function(req, res, next) {
+  getAllEvents: function(req, res) {
     Event
     .fetchAll({})
     .then(function(collection){
@@ -15,13 +16,13 @@ module.exports = {
     });
   },
 
-  getEvent: function(req, res, next){
+  getEvent: function(req, res){
     var data = req.body;
     Event
     .where({id: data.eventId})
     .fetch({require: true})
     .then(function(event){
-      res.json({data: event.attributes})
+      res.json({data: event.attributes});
     })
     .catch(function(error){
       console.log(error);
@@ -29,7 +30,7 @@ module.exports = {
     });
   },
 
-  editEvent: function(req, res, next){
+  editEvent: function(req, res){
     var data = req.body; 
     Event
     .where({id: data.eventId})
@@ -52,7 +53,7 @@ module.exports = {
     });
   },
 
-  deleteEvent: function(req, res, next){
+  deleteEvent: function(req, res){
     var data = req.body;
     console.log(data);
     Event
@@ -69,7 +70,7 @@ module.exports = {
     });
   },
 
-  addEvent: function(req, res, next) {
+  addEvent: function(req, res) {
     var data = req.body;
     new Event({
       event_name: data.eventName,
@@ -84,7 +85,48 @@ module.exports = {
       .then(function(){
         res.json('your data was posted to the database successfully');
       });
+  },
+
+  getAllCreatedEvents: function(req, res){
+    var data = req.body;
+    Event
+    .where({creator: data.userId})
+    .fetchAll()
+    .then(function(collection){
+      res.json({data: collection.models});
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at getallcreatedevents');
+    });
+  },
+
+  joinEvent: function(req, res){
+    var data = req.body;
+    new EventUser({
+      event_id: data.eventId,
+      user_id: data.userId
+    })
+    .save()
+    .then(function(){
+      res.json('added to join table');
+    });
+  },
+
+  getAllJoinedEvents: function(req, res){
+    var data = req.body;
+    User
+    .where({id: data.userId})
+    .fetch({withRelated: ['events']})
+    .then(function(collection){
+      res.json({data: collection});
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at getalljoinedevents');
+    });
   }
+
 };
 
 //curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events

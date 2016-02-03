@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import { joinEvent } from '../../actions/';
 
-import Picture from './pic';
+import Pic from './pic';
 import Title from './title';
 import Author from './author';
 import Details from './details';
@@ -13,7 +13,6 @@ import Buttons from './buttons';
 class Event extends Component {
 
   render() {
-console.log(this);
     return (
       <div className="container">
         <div className="row">
@@ -21,7 +20,7 @@ console.log(this);
             <Title data={this.props.selectedEvent} />
           </div>
           <div className="col s6">
-            <Picture data={this.props.selectedEvent} />
+            <Pic data={this.props.selectedEvent} />
           </div>
           <div className="col s6">
             <Details data={this.props.selectedEvent} />

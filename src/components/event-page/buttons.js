@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/lib/raised-button';
-import FlatButton from 'material-ui/lib/flat-button';
-
-const styles = {
-  button: {
-   margin: 12,
-  },
-};
-
+import Modal from './modal';
 
 
 export default class Buttons extends Component {
@@ -16,17 +8,7 @@ export default class Buttons extends Component {
     console.log(this);
     return (
       <div>
-        <RaisedButton
-          label="Join"
-          onClick={this.props.joinEvent.bind(this, this.props.data)}
-          style={ styles.button }
-          primary={ true }
-        />
-        <RaisedButton
-          label="Back"
-          style={ styles.button }
-          secondary={ true }
-        />
+        <Modal data={this.props} />
       </div>
     );
   }

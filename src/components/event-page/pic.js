@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import ImageLoader from 'react-imageloader';
 
 import Spinner from '../../helpers/spinner';
-
-import ImageLoader from 'react-imageloader';
 
 export default class Picture extends Component {
 
@@ -16,7 +15,7 @@ export default class Picture extends Component {
     return (
       <div className="">
         <ImageLoader
-          src='http://lorempixel.com/500/500/nightlife'
+          src={this.props.data.image_url}
           preloader={this.preloader}>
           Image Load Failed!
         </ImageLoader>

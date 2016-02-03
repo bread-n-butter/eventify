@@ -12,6 +12,8 @@ import FeaturedEventsList from './FeaturedEventsList';
 import JoinedEventsList from './JoinedEventsList';
 import CreatedEventsList from './CreatedEventsList';
 
+import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
+
 class Dashboard extends Component {
 
   static contextTypes = {
@@ -43,6 +45,9 @@ class Dashboard extends Component {
     }
     return (
       <div className='dashboard'>
+        <div className='row'>
+          <GoogleMapsSearchBar />
+        </div>
         <div className='row'>
           <div className="col s7">FEATURED
             <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } />

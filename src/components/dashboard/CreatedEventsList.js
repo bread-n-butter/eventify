@@ -9,6 +9,10 @@ import React, { Component } from 'react';
 import SmallEventCards from './SmallEventCards';
 
 export default class CreatedEventsList extends Component {
+  
+  handleClick(event) {
+    this.props.fetchOneEvent(event.id);
+  }
 
   render() {
     return (
@@ -16,7 +20,7 @@ export default class CreatedEventsList extends Component {
       
         {
           this.props.data.map((event, index) => {
-            return <SmallEventCards key={index} event={event} />;
+            return <SmallEventCards key={index} event={event} handleClick={this.handleClick.bind(this, event)}/>;
           })
         }
         

@@ -14,9 +14,6 @@ export default function(state = INITIAL_STATE, action) {
   case FETCH_EVENTS:
     return {...state, all: action.payload.data.data};
 
-  case FETCH_ONE_EVENT:
-    return {...state, fetchedEvent: action.payload};
-
   case CREATE_ONE_EVENT:
     return {...state, createdEvent: action.payload};
 
@@ -25,7 +22,8 @@ export default function(state = INITIAL_STATE, action) {
 
   case SET_DATE:
     return {...state, eventDate: action.payload};
-
+    
+  case FETCH_ONE_EVENT:
   case SELECT_EVENT:
     return {...state, selectedEvent: action.payload};
 

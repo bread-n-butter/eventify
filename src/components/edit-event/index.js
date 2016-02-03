@@ -13,6 +13,7 @@ class EditEventPage extends Component {
   };
 
   componentWillMount() {
+    console.log(this.props.selectedEvent);
     console.log(this.props);
   }
 
@@ -27,7 +28,8 @@ class EditEventPage extends Component {
   }*/
 
   handleSubmit(data) {
-    data.image_url = this.props.imageUrl;
+
+    data.image_url = event.image_url;
     const formattedDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
     this.props.editEvent(data)
@@ -36,19 +38,21 @@ class EditEventPage extends Component {
   }
 
   render() {
-    const myInitialValues = {
+    const event = this.props.selectedEvent;
+    const eventDetails = {
       initialValues: {
-        eventName: 'Fun Event',
-        description: 'Going to have fun, dammit!',
-        totalPeople: 10,
-        pricePerPerson: 10
+        eventName: event.event_name,
+        description: event.description,
+        totalPeople: event.total_number_of_people_req,
+        pricePerPerson: event.price_per_person
+
       }
     };
 
     return (
       <div>
         <h1 className="center-align">Edit Your Event</h1>
-        <EditEventForm {...myInitialValues} onSubmit={this.handleSubmit.bind(this)} />
+        <EditEventForm eventDate={ event.event_date || new Date() } {...eventDetails} onSubmit={this.handleSubmit.bind(this)} />
       </div>
     );
   }

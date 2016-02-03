@@ -2,28 +2,43 @@
  *    Small Event Cards for the Dashboard
  *
  */
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { fetchOneEvent } from '../../actions';
 
 class SmallEventCards extends Component {
 
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   handleEdit(event) {
-    this.props.fetchOneEvent(event.id);
+    this.props.editEvent(event);
+    // this.props.fetchOneEvent(event.id)
+    //   .then(() => {});
+    this.context.router.push('/edit');
   }
 
   render() {
     const event = this.props.event;
     return (
-        <li className="collection-item avatar" onClick={(e) => { e.preventDefault(); this.props.onClick(); }}>
-          <img src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg'} alt="" className="circle" />
-          <span className="title"><b>{event.event_name}</b></span>
-          <p>{event.description}<br/>
-          </p>
-          <Link onClick={(e) => {e.preventDefault(); this.handleEdit(event).bind(this);}} to='/edit' className="secondary-content"><i className='material-icons'>settings</i></Link>
-        </li>
+      <li className="collection-item avatar">
+        <img src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg'} alt="" className="circle" onClick={(e) => { e.preventDefault(); this.props.onClick(); }}/>
+        <span
+          className="title"
+          onClick={(e) => { e.preventDefault(); this.props.onClick(); }}>
+          <b>{event.eventName}</b>
+        </span>
+        <p onClick={(e) => { e.preventDefault(); this.props.onClick(); }}>{event.description}<br/>
+        </p>
+        <a
+          onClick={(e) => {e.preventDefault(); this.handleEdit(event);}}
+          className="secondary-content">
+            <i className='material-icons'>settings</i>
+        </a>
+      </li>
     );
   }
 }

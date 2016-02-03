@@ -123,7 +123,9 @@ export function fetchCreatedEvents(userId) {
  *    
  */
 export function fetchOneEvent(id) {
-  const request = axios.get('api/events/' + id).catch((err) => err);
+  const request = axios.get('api/events/' + id)
+                      .then((res) => {console.log(res); return res; })
+                      .catch((err) => err);
   return {
     type: FETCH_ONE_EVENT,
     payload: request

@@ -28,7 +28,7 @@ export default function(state = INITIAL_STATE, action) {
     return {...state, eventDate: action.payload};
 
   case FETCH_ONE_EVENT:
-    return {...state, eventDetails: action.payload};
+    return {...state, selectedEvent: action.payload.data.data};
 
   case SELECT_EVENT:
     return {...state, selectedEvent: action.payload};

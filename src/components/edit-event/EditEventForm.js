@@ -8,15 +8,14 @@ import { editEvent, setEventDate } from '../../actions/';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import UploadFile from '../create-event/UploadFile';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 class EditEventForm extends Component {
 
   componentWillMount() {
     // Need to call injectTapEventPlugin for datepicker to appear
-    injectTapEventPlugin();
 
     /*this.props.initializeForm({
       eventName: '',
@@ -46,6 +45,7 @@ class EditEventForm extends Component {
         <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
 
           <form onSubmit={handleSubmit}>
+            <UploadFile />
 
             <div>
               <label>Event Name</label>
@@ -63,22 +63,28 @@ class EditEventForm extends Component {
             </div>
 
             <div>
-              <label>Price Per Person</label>
+              <label>Price Per Person in $</label>
               <input type="text" placeholder="Price per person for minimum number of people" {...pricePerPerson}/>
             </div>
 
             <div>
               <label>Date</label>
               <DatePicker
-                defaultDate={new Date()}
+                defaultDate={this.props.eventDate}
                 hintText="Click to pick date"
                 container="inline"
                 onChange={this.onDateChange.bind(this)} />
             </div>
 
-            <UploadFile />
 
-            <button type="submit" className='btn waves-effect waves-light'>Submit</button>
+
+            <button
+              type="submit"
+              className='btn waves-effect waves-light'
+              style={{marginRight: '10px'}}>
+                Submit
+            </button>
+            <Link to="/dashboard">Cancel</Link>
 
           </form>
         </div>

@@ -8,10 +8,14 @@
  */
 import React from 'react';
 import { Component } from 'react';
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import NavBar from '../navBar/navBar.js';
 
 export default class App extends Component {
+  componentWillMount() {
+    injectTapEventPlugin();
+  }
+
   render() {
     return (
       <div>

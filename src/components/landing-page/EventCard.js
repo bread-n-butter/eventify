@@ -26,8 +26,8 @@ const EventCard = ({event}) => (
         <img src={event.image_url} />
       </CardMedia>
       <CardTitle title={event.event_name} subtitle={event.num_of_people_joined}/>
-      { event.event_date ? <CardText> Moment(event.event_date).format('dddd, MMM Do YYYY')</CardText>  : null }
-      <CardText>${event.price_per_person}</CardText>
+      <CardText>{ event.event_date ? <p>{ Moment(event.event_date).format('dddd, MMM Do YYYY') }</p> : null }
+      <p>${event.price_per_person}</p></CardText>
     </Card>
   </div>
 );

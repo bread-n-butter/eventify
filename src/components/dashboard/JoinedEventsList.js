@@ -1,5 +1,5 @@
 /**
- *    Created Events by User Component
+ *    Joined Events Component
  *    
  */
 
@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 //Components
 import SmallEventCards from './SmallEventCards';
 
-export default class CreatedEventsList extends Component {
+export default class JoinedEventsList extends Component {
 
   render() {
     return (

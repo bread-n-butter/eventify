@@ -7,9 +7,9 @@ import { fetchEvents, auth, selectEvent } from '../../actions/';
 
 import Spinner from '../../helpers/spinner.js';
 
-import Featured from './featured';
-import Joined from './joined';
 
+import FeaturedEventsList from './FeaturedEventsList';
+import JoinedEventsList from './JoinedEventsList';
 import CreatedEventsList from './CreatedEventsList';
 
 class Dashboard extends Component {
@@ -40,11 +40,11 @@ class Dashboard extends Component {
       <div className="container">
         <div className='row'>
           <div className="col s7">Featured
-            <Featured select={this.props.selectEvent} data={ take(events, 9) } />
+            <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } />
           </div>
           <div className="col s5">
             <div className="">Joined
-              <Joined data={ take(events, 4) } />
+              <JoinedEventsList data={ take(events, 4) } />
             </div>
             <div className="">Created
               <CreatedEventsList data={ take(events, 4) } />

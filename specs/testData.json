@@ -2,7 +2,6 @@
   "users": [
      {
 
-       "id": "1",
        "first_name": "Kristen",
        "last_name": "Haydel",
        "zipcode": "70001",
@@ -15,7 +14,6 @@
 
      {
 
-       "id": "2",
        "first_name": "Matt",
        "last_name": "Vulpetti",
        "zipcode": "70001",
@@ -33,11 +31,23 @@
 
     {
 
-      }, 
+      "event_name": "Lasertag in NOLA",
+      "total_number_of_people_req": "40",
+      "price_per_person": "25",
+      "description": "Fun times at lasertag",
+      "creator": "1"
+
+    }, 
 
     {
+      
+      "event_name": "Fun Race in NOLA",
+      "total_number_of_people_req": "30",
+      "price_per_person": "10",
+      "description": "Race to the finish",
+      "creator": "2"
 
-      },
+    },
 
   ]
 

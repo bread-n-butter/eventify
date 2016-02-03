@@ -1,5 +1,5 @@
-var User = require('./models/user.js');
-var Event = require('./models/event.js');
+var User = require('../models/user.js');
+var Event = require('../models/event.js');
 
 module.exports = {
 
@@ -77,6 +77,20 @@ module.exports = {
     .catch(function(error){
       console.log(error);
       res.send('Error at deleteuser');
+    });
+  },
+
+  getAllUsersForEvent: function(req, res){
+    var data = req.body;
+    Event
+    .where({id: data.eventId})
+    .fetch({withRelated: ['users']})
+    .then(function(collection){
+      res.json({data: collection});
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at getallusersforevent');
     });
   }
 

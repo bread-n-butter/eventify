@@ -1,13 +1,14 @@
 /**
  *    Component for featured events in the landing page
- *    
+ *
  */
 
 import React from 'react';
 
 import Card from './EventCard';
 
-class FeatEvents extends React.Component {  
+class FeatEvents extends React.Component {
+
   render() {
     return (
       <div className="row">

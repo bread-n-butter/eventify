@@ -19,10 +19,10 @@ class Event extends Component {
           <div className="col s12">
             <Title data={this.props.selectedEvent} />
           </div>
-          <div className="col s6">
+          <div className="col s5 offset-s1">
             <Pic data={this.props.selectedEvent} />
           </div>
-          <div className="col s6">
+          <div className="col s5">
             <Details data={this.props.selectedEvent} />
           </div>
         </div>

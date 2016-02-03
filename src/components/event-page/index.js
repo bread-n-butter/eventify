@@ -31,7 +31,7 @@ class Event extends Component {
             <Author data={this.props.selectedEvent} />
           </div>
           <div className="col s6">
-            <Buttons joinEvent={ this.props.joinEvent } data={this.props.selectedEvent} />
+            <Buttons joinEvent={ this.props.joinEvent } data={this.props.selectedEvent} user={this.props.user} />
           </div>
         </div>
       </div>
@@ -47,7 +47,8 @@ function mapStateToProps(state) {
   return {
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
-    selectedEvent: state.events.selectedEvent
+    selectedEvent: state.events.selectedEvent,
+    user: state.user
   };
 }
 

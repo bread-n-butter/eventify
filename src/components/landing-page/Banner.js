@@ -15,11 +15,11 @@ class Banner extends React.Component {
   render() {
     return (
       <div className="col s12">
-        
+
         <BannerVideo />
-        
-        <input type="text" placeholder='search' id='search-box' onChange={this.props.filterList} />
-        
+
+        <input type="text" placeholder='Search for events' id='search-box' onChange={this.props.filterList} />
+
       </div>
     );
   }

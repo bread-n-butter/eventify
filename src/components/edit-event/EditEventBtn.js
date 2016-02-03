@@ -1,24 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
 
-class CreateEventBtn extends Component {
+class EditEventBtn extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
 
-  goToCreate() {
-    this.context.router.push('/create');
+  goToEdit() {
+    this.context.router.push('/edit');
   }
 
   render() {
     return (
       <FlatButton
-        label = "Create Event"
+        label = "Edit Event"
         style = {{color: '#53b3cb'}}
-        onClick = {this.goToCreate.bind(this)}
+        onClick = {this.goToEdit.bind(this)}
       />
     );
   }
 }
 
-export default CreateEventBtn;
+export default EditEventBtn;

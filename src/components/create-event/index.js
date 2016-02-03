@@ -21,7 +21,7 @@ import { bindActionCreators } from 'redux';
 import CreateEventForm from './CreateEventForm';
 
 //Get Action Factories to use in this Component to manipulate the Redux State
-import { fetchEvents, auth, createEvent } from '../../actions/';
+import { auth, createEvent } from '../../actions/';
 
 class CreateEventPage extends Component {
 
@@ -29,6 +29,15 @@ class CreateEventPage extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
+/*
+  componentWillMount() {
+    console.log(this.props.isLoggedIn);
+    this.props.auth().then(() => {
+      if(!this.props.isLoggedIn) {
+        this.context.router.push('/');
+      }
+    });
+  }*/
 
   //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a JSON with keys mapped to each input field.
   handleSubmit(data) {
@@ -58,7 +67,7 @@ class CreateEventPage extends Component {
 
 //Create a dispatcher out of 'createEvent' action item and then save it to this.props.createEvent
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({createEvent}, dispatch);
+  return bindActionCreators({createEvent, auth}, dispatch);
 }
 
 //Set up this.props.newEventPosted (this component's state) to Redux Store's state.events.createdEvent.
@@ -68,7 +77,8 @@ function mapStateToProps(state) {
     newEventPosted: state.events.createdEvent,
     imageUrl: state.events.imageUrl,
     eventDate: state.events.eventDate,
-    userId: state.user.id
+    userId: state.user.id,
+    isLoggedIn: state.events.isLoggedIn
   };
 }
 

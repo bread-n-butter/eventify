@@ -47,7 +47,7 @@ class Dashboard extends Component {
               <JoinedEventsList select={this.props.selectEvent} data={ take(events, 4) } />
             </div>
             <div className="">CREATED
-              <CreatedEventsList fetchOneEvent={this.props.fetchOneEvent} data={ take(events, 4) } />
+              <CreatedEventsList select={this.props.selectEvent} data={ take(events, 4) } />
             </div>
           </div>
         </div>

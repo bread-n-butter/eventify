@@ -9,13 +9,15 @@ import App from '../components/app/';
 import Landing from '../components/landing-page/';
 import Dashboard from '../components/dashboard/';
 import CreateEvent from '../components/create-event/';
-import Event from '../components/event-page/'
+import Event from '../components/event-page/';
+import EditEvent from '../components/edit-event/';
 
 export default (
   <Route path="/" component={App}>
      <IndexRoute component={Landing} />
      <Route path="dashboard" component={Dashboard} />
      <Route path="create" component={CreateEvent} />
-     <Route path='event' component={Event} />
+     <Route path="event" component={Event} />
+     <Route path="edit" component={EditEvent} />
   </Route>
 );

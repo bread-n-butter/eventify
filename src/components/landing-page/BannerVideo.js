@@ -11,7 +11,7 @@ class BannerVideo extends React.Component {
       <div className=''>
       
         <video autoPlay loop>
-          <source src='https://a0.muscache.com/airbnb/static/Seoul-P1-4.mp4' type='video/mp4' />
+          <source src='https://a0.muscache.com/airbnb/static/SanFrancisco-P1-1.mp4' type='video/mp4' />
         </video>
         
       </div>

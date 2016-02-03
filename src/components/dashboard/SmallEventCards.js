@@ -11,7 +11,7 @@ export default class SmallEventCards extends Component {
     const event = this.props.event;
     return (
         <li className="collection-item avatar">
-          <img src="https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg" alt="" className="circle" />
+          <img src={event.image_url} alt="" className="circle" />
           <span className="title"><b>{event.eventName}</b></span>
           <p>{event.description}<br/>
           </p>

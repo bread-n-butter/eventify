@@ -17,7 +17,7 @@ export default class LargeEventCards extends Component {
       <div className="col s4">
         <div className="card">
           <div className="card-image">
-            <img src="https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg" />
+            <img src={event.image_url} />
             <span className="card-title">{event.event_name}</span>
           </div>
           <div className="card-content">

@@ -11,6 +11,8 @@ var knex = require('knex')({
 });
 
 var bookshelf = require('bookshelf')(knex);
+//plugin to handle circular references in bookshelfc
+bookshelf.plugin('registry');
 
 //Database schema
 
@@ -43,6 +45,8 @@ knex.schema.hasTable('events').then(function(exists){
       events.string('description', 250);
       events.string('image_url');
       events.integer('creator').references('users.id');
+      events.string('creator_first_name');
+      events.string('creator_last_name');
       //.notNullable();
     }).then(function(table){
       console.log('Created Table', table);

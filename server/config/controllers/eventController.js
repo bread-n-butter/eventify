@@ -82,8 +82,19 @@ module.exports = {
       image_url: data.image_url,
       creator: data.userId
     }).save()
-      .then(function(){
-        res.json('your data was posted to the database successfully');
+      .then(function(event){
+        User
+        .where({id: event.get('creator')})
+        .fetch({require: true})
+        .then(function(user){
+          return event.save({
+            creator_first_name: user.get('first_name'),
+            creator_last_name: user.get('last_name')
+          });
+        })
+        .then(function(){
+          res.json('your data was posted to the database successfully');
+        });
       });
   },
 

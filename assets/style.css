@@ -44,6 +44,15 @@ nav .brand-logo {
 }
 
 /**
+ *    
+ *    Dashboard General
+ *    
+ */
+.dashboard {
+  padding-top: 50px;
+}
+
+/**
  *    Dashboard Large Cards 
  *    
  */

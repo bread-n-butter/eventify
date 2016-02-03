@@ -5,7 +5,7 @@ html {
 /*
   NAV COMPONENTS
  */
- 
+
 /*
   Testing CSS file yo!
 */
@@ -39,31 +39,32 @@ nav .brand-logo {
   position: absolute;
   width: 30%;
   left: 35%;
-  top: 30%;
-  background-color: white;
+  top: 50%;
+  padding-left: 15px;
+  background-color: rgba(255,255,255,0.5);
 }
 
 /**
- *    
+ *
  *    Dashboard General
- *    
+ *
  */
 .dashboard {
   padding-top: 50px;
 }
 
 /**
- *    Dashboard Large Cards 
- *    
+ *    Dashboard Large Cards
+ *
  */
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
   color: #db436c;
 }
 
 /**
- *    
+ *
  *    Video
- *    
+ *
  */
 video {
   width: 100%;

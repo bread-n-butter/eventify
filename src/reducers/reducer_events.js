@@ -21,8 +21,10 @@ export default function(state = INITIAL_STATE, action) {
 
   case SET_DATE:
     return {...state, eventDate: action.payload};
-    
+
   case FETCH_ONE_EVENT:
+    return {...state, eventDetails: action.payload};
+
   case SELECT_EVENT:
     return {...state, selectedEvent: action.payload};
 

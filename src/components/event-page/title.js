@@ -6,6 +6,6 @@ export default class Title extends Component {
       <section>
         <h2>{this.props.data.event_name}</h2>
       </section>
-    )
+    );
   }
 }

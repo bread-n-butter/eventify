@@ -43,4 +43,30 @@ nav .brand-logo {
   background-color: white;
 }
 
+/**
+ *    
+ *    Dashboard General
+ *    
+ */
+.dashboard {
+  padding-top: 50px;
+}
+
+/**
+ *    Dashboard Large Cards 
+ *    
+ */
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+  color: #db436c;
+}
+
+/**
+ *    
+ *    Video
+ *    
+ */
+video {
+  width: 100%;
+  height: 30%;
+}
 

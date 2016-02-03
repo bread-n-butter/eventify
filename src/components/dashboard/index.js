@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { take } from 'lodash';
 
-import { fetchEvents, auth, selectEvent } from '../../actions/';
+import { fetchEvents, auth, selectEvent, fetchOneEvent } from '../../actions/';
 
 import Spinner from '../../helpers/spinner.js';
 
-import Featured from './featured';
-import Joined from './joined';
+
+import FeaturedEventsList from './FeaturedEventsList';
+import JoinedEventsList from './JoinedEventsList';
+import CreatedEventsList from './CreatedEventsList';
 
 class Dashboard extends Component {
 
@@ -35,17 +37,17 @@ class Dashboard extends Component {
       );
     }
     return (
-      <div className="container">
+      <div className='dashboard'>
         <div className='row'>
-          <div className="col s7">Featured
-            <Featured select={this.props.selectEvent} data={ take(events, 9) } />
+          <div className="col s7">FEATURED
+            <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } />
           </div>
           <div className="col s5">
-            <div className="">Joined
-              <Joined data={ take(events, 4) } />
+            <div className="">JOINED
+              <JoinedEventsList select={this.props.selectEvent} data={ take(events, 4) } />
             </div>
-            <div className="">Created
-              <Joined data={ take(events, 4) } />
+            <div className="">CREATED
+              <CreatedEventsList fetchOneEvent={this.props.fetchOneEvent} data={ take(events, 4) } />
             </div>
           </div>
         </div>
@@ -55,7 +57,7 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchEvents, auth, selectEvent }, dispatch);
+  return bindActionCreators({ fetchEvents, auth, selectEvent, fetchOneEvent }, dispatch);
 }
 
 function mapStateToProps(state) {

@@ -6,14 +6,20 @@
  *    TODO: Vincent
  */
 import React from 'react';
+import BannerVideo from './BannerVideo';
+
+// <img className="responsive-img" id='banner-img' src="http://assets3.thrillist.com/v1/image/1439210/size/tmg-article_main_wide_2x" />
 
 class Banner extends React.Component {
 
   render() {
     return (
       <div className="col s12">
-        <img className="responsive-img" id='banner-img' src="http://assets3.thrillist.com/v1/image/1439210/size/tmg-article_main_wide_2x" />
+        
+        <BannerVideo />
+        
         <input type="text" placeholder='search' id='search-box' onChange={this.props.filterList} />
+        
       </div>
     );
   }

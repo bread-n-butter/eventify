@@ -80,10 +80,10 @@ export function createEvent(data) {
  *    @returns [Object] action that feeds into the reducer function
  */
 export function fetchOneEvent(id) {
-  const request = axios.get(`api/events/${id}`).catch((err) => err);
+  const request = axios.get('api/events/' + id).catch((err) => err);
   return {
     type: FETCH_ONE_EVENT,
-    payload: request.data.data
+    payload: request
   };
 }
 

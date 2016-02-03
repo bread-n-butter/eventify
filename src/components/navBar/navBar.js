@@ -8,6 +8,7 @@ import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 import LogoutBtn from '../auth/LogoutBtn';
 import CreateEventBtn from '../create-event/CreateEventBtn';
+import EditEventBtn from '../edit-event/EditEventBtn';
 import FlatButton from 'material-ui/lib/flat-button';
 
 
@@ -45,6 +46,7 @@ class NavBar extends Component {
                     style = {{color: '#53b3cb'}}
                     onClick = {this.goToDash.bind(this)}/>
                 </li>
+                <li> <EditEventBtn /> </li>
                 <li> <CreateEventBtn /> </li>
                 <li> <LogoutBtn /> </li>
               </ul>

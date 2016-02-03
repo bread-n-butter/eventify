@@ -3,7 +3,6 @@ import { FETCH_EVENTS, FETCH_ONE_EVENT, CREATE_ONE_EVENT, UPLOAD_IMG, SET_DATE, 
 const INITIAL_STATE = {
   all: [],
   selectedEvent: null,
-  isLoggedIn: false,
   eventEdit: null
 };
 

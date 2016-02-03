@@ -16,6 +16,7 @@ export const SET_DATE = 'SET_DATE';
 export const REJECT_FILE = 'REJECT_FILE';
 export const SELECT_EVENT = 'SELECT_EVENT';
 export const JOIN_EVENT = 'JOIN_EVENT';
+export const EDIT_EVENT = 'EDIT_EVENT';
 
 /**
  *    Fetches all events from the backend
@@ -40,7 +41,11 @@ export function logout() {
 
 
 export function auth() {
-  const request = axios.get('api/loggedin');
+  const request = axios.get('api/loggedin')
+                        .then((response) => {
+                          console.log(response);
+                          return response;
+                        });
   return {
     type: AUTH,
     payload: request
@@ -48,7 +53,6 @@ export function auth() {
 }
 
 export function uploadImage(file) {
-  //TODO: save result to a var and then call put outside of promise
   let imageUrl;
   const request = axios.get('api/s3/sign?file_name=' + file.name + '&file_type=' + file.type)
                         .then((result) => {
@@ -94,6 +98,14 @@ export function setEventDate(date) {
   };
 }
 
+export function editEvent(id) {
+  const request = axios.put(`api/events/${id}`);
+  return {
+    type: EDIT_EVENT,
+    payload: request
+  };
+}
+
 export function selectEvent(event) {
   return {
     type: SELECT_EVENT,
@@ -102,7 +114,7 @@ export function selectEvent(event) {
 }
 
 export function joinEvent(event){
-  const request = axios.post(`api/events/${event.creator}/${event.id}`)
+  const request = axios.post(`api/events/${event.creator}/${event.id}`);
   return {
     type: JOIN_EVENT,
     payload: request

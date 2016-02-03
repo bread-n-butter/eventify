@@ -1,30 +1,29 @@
 /**
- *    Form  that goes inside of Create Event Page (index.js)
+ *    Form  that goes inside of Edit Event Page (index.js)
  *
  */
 
 import React, { Component, PropTypes } from 'react';
-import { createEvent, setEventDate } from '../../actions/';
+import { editEvent, setEventDate } from '../../actions/';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import UploadFile from './UploadFile';
+import UploadFile from '../create-event/UploadFile';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-
-class CreateEventForm extends Component {
+class EditEventForm extends Component {
 
   componentWillMount() {
     // Need to call injectTapEventPlugin for datepicker to appear
     injectTapEventPlugin();
 
-    this.props.initializeForm({
+    /*this.props.initializeForm({
       eventName: '',
       description: '',
       totalPeople: null,
       pricePerPerson: null
-    });
+    });*/
   }
 
   onDateChange(nothing, date) {
@@ -71,6 +70,7 @@ class CreateEventForm extends Component {
             <div>
               <label>Date</label>
               <DatePicker
+                defaultDate={new Date()}
                 hintText="Click to pick date"
                 container="inline"
                 onChange={this.onDateChange.bind(this)} />
@@ -93,9 +93,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({setEventDate}, dispatch);
 }
 
-CreateEventForm = reduxForm({
-  form: 'createEvent',
+EditEventForm = reduxForm({
+  form: 'editEvent',
   fields: ['eventName', 'description', 'totalPeople', 'pricePerPerson']
-})(CreateEventForm);
+})(EditEventForm);
 
-export default connect(null, mapDispatchToProps)(CreateEventForm);
+export default connect(null, mapDispatchToProps)(EditEventForm);

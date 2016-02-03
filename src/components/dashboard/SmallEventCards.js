@@ -18,8 +18,8 @@ class SmallEventCards extends Component {
     const event = this.props.event;
     return (
         <li className="collection-item avatar" onClick={(e) => { e.preventDefault(); this.props.onClick(); }}>
-          <img src={event.image_url} alt="" className="circle" />
-          <span className="title"><b>{event.eventName}</b></span>
+          <img src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg'} alt="" className="circle" />
+          <span className="title"><b>{event.event_name}</b></span>
           <p>{event.description}<br/>
           </p>
           <Link onClick={(e) => {e.preventDefault(); this.handleEdit(event).bind(this);}} to='/edit' className="secondary-content"><i className='material-icons'>settings</i></Link>

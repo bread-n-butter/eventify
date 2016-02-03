@@ -9,6 +9,8 @@ import axios from 'axios';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const LOGOUT = 'LOGOUT';
 export const AUTH = 'AUTH';
+export const FETCH_JOINED_EVENTS = 'FETCH_JOINED_EVENTS';
+export const FETCH_CREATED_EVENTS = 'FETCH_CREATED_EVENTS';
 export const FETCH_ONE_EVENT = 'FETCH_ONE_EVENT';
 export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
 export const UPLOAD_IMG = 'UPLOAD_IMG';
@@ -78,10 +80,47 @@ export function createEvent(data) {
 }
 
 /**
- *    Fetches one specific event from the backend
+ *    
+ *    Fetches all events joined by User by his/her User ID
+ *    
+ *    @param [Number] which is the unique ID of the User 
+ *    @returns [Object] reducer Action
+ *    
+ */
+export function fetchJoinedEvents(userId) {
+  const request = axios.get(`api/events/${userId}/joinedevents`);
+  return {
+    type: FETCH_JOINED_EVENTS,
+    payload: request
+  };
+}
+
+
+/**
+ *    
+ *    Fetches all events created by User by his/her User ID
+ *    
+ *    @param [Number] which is the unique ID of the User 
+ *    @returns [Object] reducer Action
+ *    
+ */
+export function fetchCreatedEvents(userId) {
+  console.log('User ID for created Events', userId);
+  const request = axios.get(`api/events/${userId}/createdevents`);
+  return {
+    type: FETCH_CREATED_EVENTS,
+    payload: request
+  };
+}
+
+
+/**
+ *    
+ *    Fetches one specific event by event ID
  *
  *    @param [Number] which should be the ID of the event
  *    @returns [Object] action that feeds into the reducer function
+ *    
  */
 export function fetchOneEvent(id) {
   const request = axios.get('api/events/' + id).catch((err) => err);

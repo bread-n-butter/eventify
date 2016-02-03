@@ -22,6 +22,16 @@
     <div id="app"></div>
     <script src="./public/bundle.js"></script>
     <!-- <script src="http://localhost:3000/bundle.js"></script> -->
+    <script type="text/javascript">
+      window.onload = function() {
+        var startPos;
+        var geoSuccess = function(position) {
+          startPos = position;
+          console.log('Lat/Long', startPos.coords.latitude, startPos.coords.longitude);
+        };
+        navigator.geolocation.getCurrentPosition(geoSuccess);
+      };
+    </script>
   </body>
 </html>
 

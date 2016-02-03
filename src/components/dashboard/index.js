@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { take } from 'lodash';
 
-import { fetchEvents, auth, selectEvent, fetchOneEvent } from '../../actions/';
+import { fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent } from '../../actions/';
 
 import Spinner from '../../helpers/spinner.js';
 
@@ -19,18 +19,25 @@ class Dashboard extends Component {
   };
 
   componentWillMount() {
+    
+    
     this.props.auth().then(() => {
       if(!this.props.isLoggedIn) {
         this.context.router.push('/');
       }
+      this.props.fetchEvents();
+      console.log('this.props.user.id', this.props.user.id);
+      this.props.fetchCreatedEvents(this.props.user.id);
+      this.props.fetchJoinedEvents(this.props.user.id);
     });
-    this.props.fetchEvents();
+
   }
 
 
   render() {
     const events = this.props.events;
-    // console.log(_.take(events, 4));
+    const joinedEvents = this.props.joinedEvents;
+    const createdEvents = this.props.createdEvents;
     if (events.length === 0) {
       return (
         <Spinner />
@@ -44,10 +51,10 @@ class Dashboard extends Component {
           </div>
           <div className="col s5">
             <div className="">JOINED
-              <JoinedEventsList select={this.props.selectEvent} data={ take(events, 4) } />
+              <JoinedEventsList select={this.props.selectEvent} data={ take(joinedEvents, 4) } />
             </div>
             <div className="">CREATED
-              <CreatedEventsList select={this.props.selectEvent} data={ take(events, 4) } />
+              <CreatedEventsList fetchOneEvent={this.props.fetchOneEvent} data={ take(createdEvents, 4) } />
             </div>
           </div>
         </div>
@@ -57,14 +64,17 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchEvents, auth, selectEvent, fetchOneEvent }, dispatch);
+  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent }, dispatch);
 }
 
 function mapStateToProps(state) {
   return {
     events: state.events.all,
     isLoggedIn: state.user.isLoggedIn,
-    event: state.events.event
+    event: state.events.event,
+    createdEvents: state.events.createdEvents,
+    joinedEvents: state.events.joinedEvents,
+    user: state.user
   };
 }
 

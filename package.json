@@ -4,7 +4,7 @@
   "description": "Eventify",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/ --compilers js:babel-core/register --recursive",
+    "test": "mocha tests/ specs/ --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- --watch",
     "start": "node ./server/server.js",
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors"
@@ -78,6 +78,7 @@
     "react-addons-test-utils": "^0.14.7",
     "redux-devtools": "^3.0.1",
     "redux-mock-store": "0.0.6",
+    "supertest": "^1.1.0",
     "uglify": "^0.1.5",
     "webpack-dev-server": "^1.14.1",
     "webpack-stream": "^3.1.0"

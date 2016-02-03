@@ -1,0 +1,54 @@
+{
+  "users": [
+     {
+
+       "id": "1",
+       "first_name": "Kristen",
+       "last_name": "Haydel",
+       "zipcode": "70001",
+       "facebook_id": "1234",
+       "username": "khay",
+       "facebook_token": "12345",
+       "email_address": "khay@yay.com"
+       
+     },
+
+     {
+
+       "id": "2",
+       "first_name": "Matt",
+       "last_name": "Vulpetti",
+       "zipcode": "70001",
+       "facebook_id": "12345",
+       "username": "khay",
+       "facebook_token": "123456",
+       "email_address": "mvul@yay.com"
+       
+     },
+
+
+  ],
+
+  "events": [
+
+    {
+
+      }, 
+
+    {
+
+      },
+
+  ]
+
+
+
+
+
+
+
+
+
+
+
+}

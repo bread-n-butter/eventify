@@ -1,17 +1,23 @@
-'use strict';
+process.env.NODE_ENV = 'test';
 
-var test = require('tape');
+var expect = require('chai').expect;
 var request = require('supertest');
-var app = require('../server/server.js');
 
-test('Correct users returned', function (t) {
-  request(app)
-    .get('/api/users')
-    .expect('Content-Type', /json/)
-    .expect(200)
-    .end(function (err, res) {
-      t.end();
-    });
+var User = require('../server/config/models/user');
+var Event = require('../server/config/models/event');
+
+var app = require('../server/server.js').app;
+var route = {
+      users: '/api/users',
+      events: '/api/events'
+    };
+
+describe('Event Controller', function() {
+
+
+  describe('addEvent', function(){
+    it('returns status 200', function(){});
+  });
+
+
 });
-
-

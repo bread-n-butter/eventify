@@ -1,5 +1,5 @@
-var eventController = require('./config/eventController.js');
-var userController = require('./config/userController.js');
+var eventController = require('./config/controllers/eventController.js');
+var userController = require('./config/controllers/userController.js');
 var aws = require ('aws-sdk');
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
@@ -14,6 +14,7 @@ module.exports = function (apiRouter, passport) {
   apiRouter.get('/events/:eventId', eventController.getEvent);
   apiRouter.put('/events/:eventId', eventController.editEvent);
   apiRouter.delete('/events/:eventId', eventController.deleteEvent);
+  apiRouter.get('/events/:eventId/users', userController.getAllUsersForEvent);
 
   apiRouter.post('/users', userController.addUser);
   apiRouter.get('/users', userController.getAllUsers);

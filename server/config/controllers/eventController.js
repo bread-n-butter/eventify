@@ -1,6 +1,6 @@
-var User = require('./models/user.js');
-var Event = require('./models/event.js');
-var EventUser = require('./models/eventuser.js');
+var User = require('../models/user.js');
+var Event = require('../models/event.js');
+var EventUser = require('../models/eventuser.js');
 
 module.exports = {
 

@@ -46,8 +46,7 @@ class CreateEventPage extends Component {
   handleSubmit(data) {
     data.lat = this.props.createEventLocation.lat;
     data.long = this.props.createEventLocation.long;
-    data.address = this.props.createEventLocation.address;
-    data.long = this.props.
+    data.addressLabel = this.props.createEventLocation.address;
     data.image_url = this.props.imageUrl;
     data.userId = this.props.userId;
     console.log('Data inside handleSubmit is....', data);

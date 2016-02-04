@@ -28,7 +28,7 @@ class Event extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col s3 push-s8 right-align">
+          <div className="col s4 push-s7 right-align">
             <Buttons
               joinEvent={ this.props.joinEvent }
               data={this.props.selectedEvent}

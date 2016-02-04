@@ -45,6 +45,11 @@ export default class Buttons extends Component {
             style={ styles.button }
             onClick={this.goBack.bind(this)}
           />
+          <RaisedButton
+            label="Delete"
+            style={ styles.button }
+            onClick={this.goBack.bind(this)}
+          />
         </div>
       );
 

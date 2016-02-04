@@ -52,7 +52,7 @@ export default class Modal extends Component {
     ];
 
     return (
-      <div className="right">
+      <div className="">
         <RaisedButton primary={ true }
           label="Join"
           onClick={this.handleOpen}

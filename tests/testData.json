@@ -1,0 +1,110 @@
+{
+  "users": [
+     {
+
+       "id": "1",
+       "first_name": "John",
+       "last_name": "Smith",
+       "email_address": "johnsmith@aol.com"
+       
+     }
+
+
+  ],
+
+  "events": [
+
+    {
+      "id": "1",
+      "event_name":"Johns LaserTag Party",
+      "total_number_of_people_req": "30",
+      "price_per_person":"35",
+      "image_url": "https://s3-us-west-1.amazonaws.com/eventify-photos/laser-tag-square-500.jpg",
+      "description":"An amazing night of lasertag that will include fun and drinks",
+      "creator": "1"
+
+    }, 
+
+    {
+      
+      "id": "2",
+      "event_name":"New Orleans Amazing Race",
+      "total_number_of_people_req": "200",
+      "price_per_person":"20", 
+      "image_url": "https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg", 
+      "description":"Come join our once-in-a-lifetime scavenger hunt where you can run around and be silly with a group of strangers and friends", 
+      "creator": "1"
+
+    },
+
+    {
+
+      "id": "3",
+      "event_name":"Johns House Party", 
+      "total_number_of_people_req": "40", 
+      "price_per_person":"10", 
+      "image_url": "https://s3-us-west-1.amazonaws.com/eventify-photos/house-party-square-500.jpg", 
+      "description":"Hey guys, I plan on having a party at my house, but need help with the cost. The party will include simple food and drinks", 
+      "creator": "1"
+      
+    },
+
+    {
+
+      "id": "4",
+      "event_name":"Room Escape", 
+      "total_number_of_people_req": "10", 
+      "price_per_person":"25", 
+      "image_url": "https://s3-us-west-1.amazonaws.com/eventify-photos/escape-room-square-500.jpg", 
+      "description":"My girlfriend and I are interesting in doing this escape the room type game, and we need you to join to make the minimum person requirements!", 
+      "creator": "1"
+
+    },
+
+    {
+
+      "id": "5",
+      "event_name":"Dinner for a Cause", 
+      "total_number_of_people_req": "100", 
+      "price_per_person":"50", 
+      "image_url": "https://s3-us-west-1.amazonaws.com/eventify-photos/dinner-party-square-500.jpg", 
+      "description":"Come join a good cause and have some great food. The money will go to supporting the local community", 
+      "creator": "1"
+
+    },
+
+    {
+
+      "id": "6",
+      "event_name":"Sunset Charter Sail", 
+      "total_number_of_people_req": "30", 
+      "price_per_person":"20", 
+      "image_url": "https://s3-us-west-1.amazonaws.com/eventify-photos/sunset-sail-square-500.jpg", 
+      "description":"Come join a good cause and have some great food. The money will go to supporting the local community", 
+      "creator": "1"
+
+    }
+
+  ],
+
+  "newUser": {
+
+    "firstName": "Lucy",
+    "lastName": "Haydel"
+  },
+
+  "newEvent": {
+
+    "event_name": "Test Event",
+    "price_per_person": "300"
+  }
+
+
+
+
+
+
+
+
+
+}

@@ -94,6 +94,5 @@ if (isDevelopment) {
 
 }
 
-
-
+module.exports.app = app; 
 

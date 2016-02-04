@@ -1,6 +1,6 @@
 /**
  *    Joined Events Component
- *    
+ *
  */
 
 import React, { Component, PropTypes } from 'react';
@@ -9,7 +9,7 @@ import React, { Component, PropTypes } from 'react';
 import LargeEventCards from './LargeEventCards';
 
 export default class FeaturedEventsList extends Component {
-  
+
   static contextTypes = {
     router: PropTypes.object
   };
@@ -22,15 +22,15 @@ export default class FeaturedEventsList extends Component {
   render() {
     return (
       <div>
-      
+
         {
           this.props.data.map((event, index) => {
             return <LargeEventCards key={index} event={event} onClick={this.handleClick.bind(this, event)}/>;
           })
         }
-        
+
       </div>
     );
   }
-  
+
 }

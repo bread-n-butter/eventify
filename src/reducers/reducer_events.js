@@ -17,7 +17,7 @@ export default function(state = INITIAL_STATE, action) {
     return {...state, createdEvent: action.payload};
 
   case FETCH_JOINED_EVENTS:
-    return {...state, joinedEvents: action.payload.data.data};
+    return {...state, joinedEvents: action.payload.data.data.events};
 
   case FETCH_CREATED_EVENTS:
     return {...state, createdEvents: action.payload.data.data};

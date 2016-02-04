@@ -44,6 +44,9 @@ knex.schema.hasTable('events').then(function(exists){
       events.integer('price_per_person');
       events.string('description', 250);
       events.string('image_url');
+      events.string('event_address_label');
+      events.float('event_long');
+      events.float('event_lat');
       events.integer('creator').references('users.id');
       events.string('creator_first_name');
       events.string('creator_last_name');

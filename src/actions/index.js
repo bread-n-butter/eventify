@@ -97,6 +97,7 @@ export function createEvent(data) {
  */
 export function fetchJoinedEvents(userId) {
   const request = axios.get(`api/events/${userId}/joinedevents`);
+  console.log(request);
   return {
     type: FETCH_JOINED_EVENTS,
     payload: request

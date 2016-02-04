@@ -35,14 +35,19 @@ export default class Buttons extends Component {
     this.context.router.goBack();
   }
 
+  edit() {
+    this.context.router.push('/edit');
+  }
+
   render() {
+    // Created events
     if(this.props.user.id === this.props.data.creator){
       return (
         <div>
           <RaisedButton primary={ true }
             label="edit"
             style={ styles.button }
-            onClick={ this.goBack.bind(this) }
+            onClick={ this.edit.bind(this) }
           />
           <RaisedButton secondary={ true }
             label="Back"
@@ -57,6 +62,7 @@ export default class Buttons extends Component {
         </div>
       );
 
+      //Joined events
     } else if(this.userEvent()) {
       return (
         <div>

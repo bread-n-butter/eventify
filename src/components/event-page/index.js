@@ -52,7 +52,7 @@ function mapStateToProps(state) {
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
     selectedEvent: state.events.selectedEvent,
-    joined: state.events.joinedEvents.events,
+    joined: state.events.joinedEvents,
     user: state.user
   };
 }

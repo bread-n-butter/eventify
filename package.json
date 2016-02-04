@@ -59,6 +59,7 @@
     "react-dom": "^0.14.6",
     "react-dropzone": "^3.3.2",
     "react-google-maps": "^4.7.2",
+    "react-geosuggest": "^1.15.1",
     "react-hot-loader": "^1.3.0",
     "react-imageloader": "^2.1.0",
     "react-redux": "^4.0.6",

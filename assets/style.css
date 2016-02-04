@@ -31,17 +31,90 @@ nav .brand-logo {
   margin-bottom: 50px;
 }
 
-/*
-  Banner and Search Box components
+/**
+ *    
+ *    Search Bar Components
+ *    
  */
-
-#search-box {
+#search-bar {
   position: absolute;
   width: 30%;
   left: 35%;
   top: 50%;
   padding-left: 15px;
   background-color: rgba(255,255,255,0.5);
+}
+
+/**
+ *    
+ *    GeoSuggest Module.
+ *    
+ *    !important to over-rule 
+ *    
+ *    MaterializeCSS styling.
+ *    
+ */
+.geosuggest { 
+  font-size: 18px !important;
+  font-size: 1rem !important;
+  position: relative !important;
+  width: 55% !important;
+  margin: 1em auto !important;
+  text-align: left !important;
+}
+.geosuggest__input {
+  width: 100% !important;
+  border: 2px solid transparent !important;
+  box-shadow: 0 0 1px #3d464d !important;
+  padding: .5em 1em !important;
+  -webkit-transition: border 0.2s, box-shadow 0.2s !important;
+          transition: border 0.2s, box-shadow 0.2s !important;
+}
+.geosuggest__input:focus {
+  border-color: #267dc0 !important;
+  box-shadow: 0 0 0 transparent !important;
+}
+.geosuggest__suggests {
+  position: absolute !important;
+  top: 81% !important;
+  left: 0 !important;
+  right: 0 !important;
+  max-height: 25em !important;
+  padding: 0 !important;
+  margin-top: -1px !important;
+  background: #fff !important;
+  border: 2px solid #267dc0 !important;
+  border-top-width: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  list-style: none !important;
+  z-index: 5 !important;
+  -webkit-transition: max-height 0.2s, border 0.2s !important;
+          transition: max-height 0.2s, border 0.2s !important;
+}
+.geosuggest__suggests--hidden {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  border-width: 0 !important;
+}
+ 
+.geosuggest-item {
+  font-size: 18px !important;
+  font-size: 1rem !important;
+  padding: .5em .65em !important;
+  cursor: pointer !important;
+}
+.geosuggest-item:hover,
+.geosuggest-item:focus {
+  background: #f5f5f5 !important;
+}
+.geosuggest-item--active {
+  background: #267dc0 !important;
+  color: #fff !important;
+}
+.geosuggest-item--active:hover,
+.geosuggest-item--active:focus {
+  background: #ccc !important;
 }
 
 /**
@@ -63,7 +136,7 @@ nav .brand-logo {
 
 /**
  *
- *    Video
+ *    HTML 5 Video on Landing PAge
  *
  */
 video {

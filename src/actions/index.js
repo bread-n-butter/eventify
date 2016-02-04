@@ -20,6 +20,8 @@ export const REJECT_FILE = 'REJECT_FILE';
 export const SELECT_EVENT = 'SELECT_EVENT';
 export const JOIN_EVENT = 'JOIN_EVENT';
 export const EDIT_EVENT = 'EDIT_EVENT';
+export const UPDATE_LOCATION = 'UPDATE_LOCATION';
+export const UPDATE_EVENT_LOCATION = 'UPDATE_EVENT_LOCATION';
 
 /**
  *    Fetches all events from the backend
@@ -137,6 +139,21 @@ export function fetchOneEvent(id) {
   return {
     type: FETCH_ONE_EVENT,
     payload: request
+  };
+}
+
+export function updateUserLocation(data) {
+  return {
+    type: UPDATE_LOCATION,
+    payload: data
+  };
+}
+
+
+export function updateEventLocation(data) {
+  return {
+    type: UPDATE_EVENT_LOCATION,
+    payload: data
   };
 }
 

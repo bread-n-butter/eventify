@@ -45,7 +45,6 @@ export function logout() {
 export function auth() {
   const request = axios.get('api/loggedin')
                         .then((response) => {
-                          console.log(response);
                           return response;
                         });
   return {
@@ -80,12 +79,12 @@ export function createEvent(data) {
 }
 
 /**
- *    
+ *
  *    Fetches all events joined by User by his/her User ID
- *    
- *    @param [Number] which is the unique ID of the User 
+ *
+ *    @param [Number] which is the unique ID of the User
  *    @returns [Object] reducer Action
- *    
+ *
  */
 export function fetchJoinedEvents(userId) {
   const request = axios.get(`api/events/${userId}/joinedevents`);
@@ -97,12 +96,12 @@ export function fetchJoinedEvents(userId) {
 
 
 /**
- *    
+ *
  *    Fetches all events created by User by his/her User ID
- *    
- *    @param [Number] which is the unique ID of the User 
+ *
+ *    @param [Number] which is the unique ID of the User
  *    @returns [Object] reducer Action
- *    
+ *
  */
 export function fetchCreatedEvents(userId) {
   console.log('User ID for created Events', userId);
@@ -115,12 +114,12 @@ export function fetchCreatedEvents(userId) {
 
 
 /**
- *    
+ *
  *    Fetches one specific event by event ID
  *
  *    @param [Number] which should be the ID of the event
  *    @returns [Object] action that feeds into the reducer function
- *    
+ *
  */
 export function fetchOneEvent(id) {
   const request = axios.get('api/events/' + id)
@@ -140,7 +139,10 @@ export function setEventDate(date) {
 }
 
 export function editEvent(id, data) {
-  const request = axios.put(`api/events/${id}`, data);
+  console.log(id, data);
+  const request = axios.put(`api/events/${id}`, data)
+                    .then((res) => { console.log(res); return res; })
+                    .catch((err) => { console.log(err); });
   return {
     type: EDIT_EVENT,
     payload: request

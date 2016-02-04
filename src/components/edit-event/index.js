@@ -27,7 +27,8 @@ class EditEventPage extends Component {
     const formattedDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
     this.props.editEvent(this.props.selectedEvent.id, data)
-      .then(() => { this.context.router.push('/dashboard'); });
+      .then(() => { this.context.router.push('/dashboard'); })
+      .catch((err) => { console.log(err); });
 
   }
 

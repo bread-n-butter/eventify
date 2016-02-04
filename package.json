@@ -4,7 +4,7 @@
   "description": "Eventify",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/ specs/ --compilers js:babel-core/register --recursive",
+    "test": "mocha tests/ --compilers js:babel-core/register --recursive",
     "test:watch": "npm test -- --watch",
     "start": "node ./server/server.js",
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors"

@@ -37,9 +37,32 @@ describe('User Controller', function() {
       expect(users).to.be.an('array');
       expect(users).to.not.be.empty;
       expect(users[0]).to.have.property('first_name', testUser.first_name);
-    })
+    });
 
   });
+  
+  describe('Adding a user', function(){
+
+
+    it('Should add new user to database', function(done){
+      request(server.app)
+      .post(route.users)
+      .send(newUser)
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .end(function (err, res){
+        done();
+      });
+    }); 
+
+  });
+
+  // describe("Deleting a user", function(){
+
+  //   it("Should delete a user")
+
+  // });
+
 
 
 });

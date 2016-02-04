@@ -68,7 +68,7 @@ module.exports = function (apiRouter, passport) {
     var accessKey, secretAccessKey;
     if (isDevelopment) {
       accessKey =  config.aws.AWS_ACCESS_KEY;
-      secretAccessKey = config.aws.AWS_ACCESS_KEY;
+      secretAccessKey = config.aws.AWS_SECRET_KEY;
     } else {
       accessKey = process.env.AWS_ACCESS_KEY;
       secretAccessKey = process.env.AWS_SECRET_KEY;

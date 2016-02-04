@@ -7,17 +7,21 @@ import React from 'react';
 
 import Geosuggest from 'react-geosuggest';
 
+import GetLocationBtn from './GetLocationBtn';
+
 class GoogleMapsSearchBar extends React.Component {
  
- onSuggestSelect(suggest) {
-   console.log('suggest is', suggest);
- }
+  onSuggestSelect(suggest) {
+    console.log('suggest is', suggest);
+  }
 
- render() {
-   return (
-      <Geosuggest country='us' onSuggestSelect={(s) => this.onSuggestSelect(s)}/>
-   );
- }
+  render() {
+    return (
+      <div className='search-bar-wrapper'>
+        <Geosuggest country='us' onSuggestSelect={(s) => this.props.updateLocation(s)} />
+      </div>
+    );
+  }
 }
 
 export default GoogleMapsSearchBar;

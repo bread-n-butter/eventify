@@ -31,10 +31,11 @@ nav .brand-logo {
   margin-bottom: 50px;
 }
 
-/*
-  Banner and Search Box components
+/**
+ *    
+ *    Search Bar Components
+ *    
  */
-
 #search-bar {
   position: absolute;
   width: 30%;
@@ -45,7 +46,13 @@ nav .brand-logo {
 }
 
 /**
- * The geosuggest module
+ *    
+ *    GeoSuggest Module.
+ *    
+ *    !important to over-rule 
+ *    
+ *    MaterializeCSS styling.
+ *    
  */
 .geosuggest { 
   font-size: 18px !important;

@@ -7,8 +7,12 @@ import React from 'react';
 
 import Card from './EventCard';
 
+<<<<<<< HEAD
 class FeatEvents extends React.Component {
 
+=======
+class FeatEvents extends React.Component {  
+>>>>>>> test
   render() {
     return (
       <div className="row">

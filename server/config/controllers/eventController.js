@@ -39,11 +39,13 @@ module.exports = {
       return event.save({
         event_name: data.eventName || event.get('event_name'),
         event_date: data.date || event.get('event_date'),
-        num_of_people_joined: data.numOfPeopleJoined || event.get('num_of_people_joined'),
         total_number_of_people_req: data.totalPeople || event.get('total_number_of_people_req'),
         price_per_person: data.pricePerPerson || event.get('price_per_person'),
         description: data.description || event.get('description'),
-        image_url: data.image || event.get('image_url')
+        image_url: data.image || event.get('image_url'),
+        event_address_label: data.addressLabel || event.get('event_address_label'),
+        event_long: data.long || event.get('event_long'),
+        event_lat: data.lat || event.get('event_lat')
       }, {method: 'update'});
     }).then(function(){
       res.sendStatus(200);
@@ -75,11 +77,13 @@ module.exports = {
     new Event({
       event_name: data.eventName,
       event_date: data.date,
-      num_of_people_joined: data.numOfPeopleJoined,
       total_number_of_people_req: data.totalPeople,
       price_per_person: data.pricePerPerson,
       description: data.description,
       image_url: data.image_url,
+      event_address_label: data.addressLabel,
+      event_long: data.long,
+      event_lat: data.lat,
       creator: data.userId
     }).save()
       .then(function(event){

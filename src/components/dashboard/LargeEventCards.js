@@ -1,15 +1,11 @@
 /**
  *    Large Event Cards for the Dashboard
- *    
+ *
  */
 
 import React, { Component } from 'react';
 
 export default class LargeEventCards extends Component {
-  
-  handleSubmit() {
-    console.log('TODO: Edit event functionality!!!');
-  }
 
   render() {
     const event = this.props.event;
@@ -31,6 +27,6 @@ export default class LargeEventCards extends Component {
 
     );
   }
-  
+
 }
 

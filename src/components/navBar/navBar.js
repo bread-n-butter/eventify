@@ -46,7 +46,7 @@ class NavBar extends Component {
                     style = {{color: '#53b3cb'}}
                     onClick = {this.goToDash.bind(this)}/>
                 </li>
-                <li> <EditEventBtn /> </li>
+                {/*<li> <EditEventBtn /> </li>*/}
                 <li> <CreateEventBtn /> </li>
                 <li> <LogoutBtn /> </li>
               </ul>

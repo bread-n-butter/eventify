@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { take } from 'lodash';
 
-import { fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent } from '../../actions/';
+import { fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent} from '../../actions/';
 
 import Spinner from '../../helpers/spinner.js';
 
@@ -19,14 +19,12 @@ class Dashboard extends Component {
   };
 
   componentWillMount() {
-    
-    
+
     this.props.auth().then(() => {
       if(!this.props.isLoggedIn) {
         this.context.router.push('/');
       }
       this.props.fetchEvents();
-      console.log('this.props.user.id', this.props.user.id);
       this.props.fetchCreatedEvents(this.props.user.id);
       this.props.fetchJoinedEvents(this.props.user.id);
     });
@@ -54,7 +52,7 @@ class Dashboard extends Component {
               <JoinedEventsList select={this.props.selectEvent} data={ take(joinedEvents, 4) } />
             </div>
             <div className="">CREATED
-              <CreatedEventsList fetchOneEvent={this.props.fetchOneEvent} data={ take(createdEvents, 4) } />
+              <CreatedEventsList select={this.props.selectEvent} data={ take(createdEvents, 4) } />
             </div>
           </div>
         </div>
@@ -64,7 +62,7 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent }, dispatch);
+  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent}, dispatch);
 }
 
 function mapStateToProps(state) {

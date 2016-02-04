@@ -3,9 +3,12 @@
  *
  */
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { selectEvent } from '../../actions/';
 import SmallEventCards from './SmallEventCards';
 
-export default class CreatedEventsList extends Component {
+class CreatedEventsList extends Component {
 
   static contextTypes = {
     router: PropTypes.object
@@ -21,7 +24,11 @@ export default class CreatedEventsList extends Component {
       <ul className='collection'>
         {
           this.props.data.map((event, index) => {
-            return <SmallEventCards key={index} event={event} onClick={this.handleClick.bind(this, event)}/>;
+            return <SmallEventCards
+                      key={index}
+                      event={event}
+                      onClick={this.handleClick.bind(this, event)}
+                      editEvent={this.props.selectEvent}/>;
           })
         }
       </ul>
@@ -29,3 +36,8 @@ export default class CreatedEventsList extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({selectEvent}, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(CreatedEventsList);

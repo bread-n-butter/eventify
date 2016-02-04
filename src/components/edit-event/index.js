@@ -12,43 +12,44 @@ class EditEventPage extends Component {
     router: PropTypes.object
   };
 
-  componentWillMount() {
-    console.log(this.props);
-  }
-
-
-
   /*componentWillMount() {
     this.props.auth().then(() => {
       if(!this.props.isLoggedIn) {
         this.context.router.push('/');
       }
-    });
+    })
   }*/
 
   handleSubmit(data) {
+    console.log(this.props)
     data.image_url = this.props.imageUrl;
+    console.log(data);
     const formattedDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
-    this.props.editEvent(data)
+    this.props.editEvent(this.props.selectedEvent.id, data)
       .then(() => { this.context.router.push('/dashboard'); });
 
   }
 
   render() {
-    const myInitialValues = {
+    const event = this.props.selectedEvent;
+    console.log(event);
+    const eventDetails = {
       initialValues: {
-        eventName: 'Fun Event',
-        description: 'Going to have fun, dammit!',
-        totalPeople: 10,
-        pricePerPerson: 10
+        eventName: event.event_name,
+        description: event.description,
+        totalPeople: event.total_number_of_people_req,
+        pricePerPerson: event.price_per_person
       }
     };
 
     return (
       <div>
         <h1 className="center-align">Edit Your Event</h1>
-        <EditEventForm {...myInitialValues} onSubmit={this.handleSubmit.bind(this)} />
+        <EditEventForm
+          eventDate={ event.event_date || new Date() } {...eventDetails}
+          imageUrl={ event.image_url }
+          onSubmit={this.handleSubmit.bind(this)} />
       </div>
     );
   }

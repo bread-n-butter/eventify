@@ -8,16 +8,15 @@ import { createEvent, setEventDate } from '../../actions/';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import UploadFile from './UploadFile';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
 class CreateEventForm extends Component {
 
   componentWillMount() {
     // Need to call injectTapEventPlugin for datepicker to appear
-    injectTapEventPlugin();
 
     this.props.initializeForm({
       eventName: '',
@@ -78,8 +77,13 @@ class CreateEventForm extends Component {
 
             <UploadFile />
 
-            <button type="submit" className='btn waves-effect waves-light'>Submit</button>
-
+            <button
+              type="submit"
+              className='btn waves-effect waves-light'
+              style={{marginRight: '10px'}}>
+              Submit
+            </button>
+            <Link to="/dashboard">Cancel</Link>
           </form>
         </div>
       </div>

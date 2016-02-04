@@ -9,7 +9,7 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import UploadFile from '../create-event/UploadFile';
+import EditImage from './EditImage';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 class EditEventForm extends Component {
@@ -34,7 +34,7 @@ class EditEventForm extends Component {
         <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
 
           <form onSubmit={handleSubmit}>
-            <UploadFile />
+            <EditImage imageUrl={this.props.imageUrl} />
 
             <div>
               <label>Event Name</label>

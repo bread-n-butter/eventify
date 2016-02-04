@@ -23,12 +23,12 @@ export default class Modal extends Component {
   };
 
   handleOpen = () => {
-    this.setState({open: true});
+    this.setState({ open: true });
     this.props.data.joinEvent(this.props.data);
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    this.setState({ open: false });
   };
 
   goBack() {
@@ -40,14 +40,14 @@ export default class Modal extends Component {
     const actions = [
       <FlatButton
         label="Later"
-        secondary={true}
-        onClick={this.handleClose}
+        secondary={ true }
+        onClick={ this.handleClose }
       />,
       <FlatButton
         label="Now"
-        primary={true}
-        keyboardFocused={true}
-        onClick={this.handleClose}
+        primary={ true }
+        keyboardFocused={ true }
+        onClick={ this.handleClose }
       />
     ];
 
@@ -55,22 +55,22 @@ export default class Modal extends Component {
       <div className="">
         <RaisedButton primary={ true }
           label="Join"
-          onClick={this.handleOpen}
+          onClick={ this.handleOpen }
           style={ styles.button }
         />
         <Dialog
-          title="Dialog With Actions"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}
+          title="It will be fun"
+          actions={ actions }
+          modal={ false }
+          open={ this.state.open }
+          onRequestClose={ this.handleClose }
         >
           <div className="center"> You can Pay Now or later</div>
             </Dialog>
             <RaisedButton secondary={ true }
               label="Back"
               style={ styles.button }
-              onClick={this.goBack.bind(this)}
+              onClick={ this.goBack.bind(this) }
             />
           </div>
     );

@@ -27,7 +27,11 @@ export default class Buttons extends Component {
   }
 
   goBack() {
-    console.log(this);
+    this.context.router.goBack();
+  }
+
+  delete() {
+    this.props.delete(this.props.data.id);
     this.context.router.goBack();
   }
 
@@ -38,23 +42,22 @@ export default class Buttons extends Component {
           <RaisedButton primary={ true }
             label="edit"
             style={ styles.button }
-            onClick={this.goBack.bind(this)}
+            onClick={ this.goBack.bind(this) }
           />
           <RaisedButton secondary={ true }
             label="Back"
             style={ styles.button }
-            onClick={this.goBack.bind(this)}
+            onClick={ this.goBack.bind(this) }
           />
           <RaisedButton
             label="Delete"
             style={ styles.button }
-            onClick={this.goBack.bind(this)}
+            onClick={ this.delete.bind(this) }
           />
         </div>
       );
 
     } else if(this.userEvent()) {
-      console.log('inside joined if else');
       return (
         <div>
           <RaisedButton primary={ true }
@@ -65,7 +68,7 @@ export default class Buttons extends Component {
           <RaisedButton secondary={ true }
             label="Back"
             style={ styles.button }
-            onClick={this.goBack.bind(this)}
+            onClick={ this.goBack.bind(this) }
           />
         </div>
       );
@@ -73,7 +76,7 @@ export default class Buttons extends Component {
 
     return (
       <div className="">
-        <Modal data={this.props} />
+        <Modal data={ this.props } />
       </div>
     );
   }

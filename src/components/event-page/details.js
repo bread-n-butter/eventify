@@ -33,24 +33,24 @@ export default class Details extends Component {
   render() {
     console.log(this);
     return (
-     <div className="flow-text" style={styles.general}>
-     <div>
-       <p style={styles.p}>{ this.props.data.description } </p>
-     </div>
-     <div className="" style={styles.map}>
-       <Map />
-     </div>
-     <div style={styles.bar} className="center-align">
-       { this.props.data.num_of_people_joined } Joined /{this.props.data.total_number_of_people_req } people needed
-     </div>
-     <div style={styles.progress}>
-       <ProgressBar data={this.props.data} />
-     </div>
-    <Divider inset={ true } />
-     <div style={styles.price} className="right-align">
-       Price ${ this.props.data.price_per_person }
-     </div>
-     </div>
+      <div className="flow-text" style={styles.general}>
+        <div>
+          <p style={ styles.p }>{ this.props.data.description } </p>
+        </div>
+        <div className="" style={ styles.map }>
+          <Map />
+        </div>
+        <div style={ styles.bar } className="center-align">
+          { this.props.data.num_of_people_joined } Joined / { this.props.data.total_number_of_people_req } people needed
+        </div>
+        <div style={ styles.progress }>
+          <ProgressBar data={ this.props.data } />
+        </div>
+        <Divider inset={ true } />
+        <div style={ styles.price } className="right-align">
+          Price ${ this.props.data.price_per_person }
+        </div>
+      </div>
     );
   }
 }

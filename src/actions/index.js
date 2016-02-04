@@ -6,6 +6,7 @@
 
 import axios from 'axios';
 
+export const DELETE_EVENT = 'DELETE_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const LOGOUT = 'LOGOUT';
 export const AUTH = 'AUTH';
@@ -25,6 +26,14 @@ export const EDIT_EVENT = 'EDIT_EVENT';
  *
  *    @returns [Object] action that feeds into the reducer function
  */
+export function deleteEvent(id) {
+  const request = axios.delete(`api/events/${id}`);
+  return {
+    type: DELETE_EVENT,
+    payload: request
+  };
+}
+
 export function fetchEvents() {
   const request = axios.get('api/events');
   return {

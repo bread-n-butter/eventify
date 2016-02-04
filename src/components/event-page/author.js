@@ -7,7 +7,7 @@ export default class Author extends Component {
 
   render() {
     return (
-      <div className="">
+      <div className="flow-text">
         <ListItem
           disabled={ true }
           leftAvatar={ <Avatar src="http://lorempixel.com/50/50/nightlife" /> }

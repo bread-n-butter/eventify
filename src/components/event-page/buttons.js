@@ -44,6 +44,11 @@ export default class Buttons extends Component {
     if(this.props.user.id === this.props.data.creator){
       return (
         <div>
+          <RaisedButton
+            label="Delete"
+            style={ styles.button }
+            onClick={ this.delete.bind(this) }
+          />
           <RaisedButton primary={ true }
             label="edit"
             style={ styles.button }
@@ -53,11 +58,6 @@ export default class Buttons extends Component {
             label="Back"
             style={ styles.button }
             onClick={ this.goBack.bind(this) }
-          />
-          <RaisedButton
-            label="Delete"
-            style={ styles.button }
-            onClick={ this.delete.bind(this) }
           />
         </div>
       );

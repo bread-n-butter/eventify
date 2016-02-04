@@ -28,6 +28,16 @@ const styles = {
   }
 
 };
+const marks = {
+    markers: [{
+      position: {
+        lat: 25.0112183,
+        lng: 121.52067570000001,
+      },
+      key: "Taiwan",
+      defaultAnimation: 2,
+    }],
+  }
 
 export default class Details extends Component {
   render() {

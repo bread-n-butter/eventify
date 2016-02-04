@@ -65,9 +65,17 @@ module.exports = function (apiRouter, passport) {
     });
 
   apiRouter.get('/s3/sign', function(req, res){
+    var accessKey, secretAccessKey;
+    if (isDevelopment) {
+      accessKey =  config.aws.AWS_ACCESS_KEY;
+      secretAccessKey = config.aws.AWS_ACCESS_KEY;
+    } else {
+      accessKey = process.env.AWS_ACCESS_KEY;
+      secretAccessKey = process.env.AWS_SECRET_KEY;
+    }
     aws.config.update({
-      accessKeyId: config.aws.AWS_ACCESS_KEY || process.env.AWS_ACCESS_KEY,
-      secretAccessKey: config.aws.AWS_SECRET_KEY || process.env.AWS_SECRET_KEY
+      accessKeyId: accessKey,
+      secretAccessKey: secretAccessKey
     });
     var s3 = new aws.S3();
     var s3_params = {

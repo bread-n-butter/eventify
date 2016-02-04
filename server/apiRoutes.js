@@ -27,11 +27,11 @@ module.exports = function (apiRouter, passport) {
 
   apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
 
-  apiRouter.get('/loggedin', function(req, res) { 
+  apiRouter.get('/loggedin', function(req, res) {
     if (req.isAuthenticated()) {
       var user = req.user.attributes;
       user.isLoggedIn = true;
-      res.send(user); 
+      res.send(user);
     } else {
       res.send({ isLoggedIn: false });
     }

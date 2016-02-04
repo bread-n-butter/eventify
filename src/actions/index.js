@@ -157,7 +157,7 @@ export function selectEvent(event) {
 }
 
 export function joinEvent(event){
-  const request = axios.post(`api/events/${event.creator}/${event.id}`);
+  const request = axios.post(`api/events/${event.data.id}/${event.user.id}`);
   return {
     type: JOIN_EVENT,
     payload: request

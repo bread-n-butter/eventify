@@ -1,18 +1,68 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Modal from './modal';
+import RaisedButton from 'material-ui/lib/raised-button';
 
-
+const styles = {
+  button: {
+    margin: 12
+  }
+};
 export default class Buttons extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  userEvent() {
+    return this.props.joined.reduce((result, item) => {
+      if(item.id === this.props.data.id) {
+        result = true;
+      }
+      return result;
+    }, false)
+  }
+
+  goBack() {
+    console.log(this);
+    this.context.router.goBack();
+  }
 
   render() {
     if(this.props.user.id === this.props.data.creator){
       return (
-        <div> Creator of event actions</div>
+        <div>
+          <RaisedButton primary={ true }
+            label="edit"
+            style={ styles.button }
+            onClick={this.goBack.bind(this)}
+          />
+          <RaisedButton secondary={ true }
+            label="Back"
+            style={ styles.button }
+            onClick={this.goBack.bind(this)}
+          />
+        </div>
       );
 
-    } else if(!this.props.user) {
+    } else if(this.userEvent()) {
+      console.log('inside joined if else');
       return (
-       <div> Already joined </div>
+        <div>
+          <RaisedButton primary={ true }
+            label="un-join"
+            style={ styles.button }
+            onClick={this.goBack.bind(this)}
+          />
+          <RaisedButton secondary={ true }
+            label="Back"
+            style={ styles.button }
+            onClick={this.goBack.bind(this)}
+          />
+        </div>
       );
     }
 

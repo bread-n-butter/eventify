@@ -21,17 +21,20 @@ class Event extends Component {
           </div>
           <div className="col s5 offset-s1">
             <Pic data={this.props.selectedEvent} />
+            <Author data={this.props.selectedEvent} />
           </div>
           <div className="col s5">
             <Details data={this.props.selectedEvent} />
           </div>
         </div>
         <div className="row">
-          <div className="col s6">
-            <Author data={this.props.selectedEvent} />
-          </div>
-          <div className="col s6">
-            <Buttons joinEvent={ this.props.joinEvent } data={this.props.selectedEvent} user={this.props.user} />
+          <div className="col s3 push-s8 right-align">
+            <Buttons
+              joinEvent={ this.props.joinEvent }
+              data={this.props.selectedEvent}
+              user={this.props.user}
+              joined={this.props.joined}
+            />
           </div>
         </div>
       </div>
@@ -48,6 +51,7 @@ function mapStateToProps(state) {
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
     selectedEvent: state.events.selectedEvent,
+    joined: state.events.joinedEvents.events,
     user: state.user
   };
 }

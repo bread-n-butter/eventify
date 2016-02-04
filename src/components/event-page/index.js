@@ -4,8 +4,6 @@ import { bindActionCreators } from 'redux';
 
 import { joinEvent } from '../../actions/';
 
-import Social from '../../helpers/social';
-
 import Pic from './pic';
 import Title from './title';
 import Author from './author';
@@ -31,7 +29,6 @@ class Event extends Component {
         </div>
         <div className="row">
           <div className="col s3 push-s8 right-align">
-            <Social />
             <Buttons
               joinEvent={ this.props.joinEvent }
               data={this.props.selectedEvent}

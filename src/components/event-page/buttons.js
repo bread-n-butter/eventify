@@ -23,7 +23,7 @@ export default class Buttons extends Component {
         result = true;
       }
       return result;
-    }, false)
+    }, false);
   }
 
   goBack() {
@@ -53,7 +53,7 @@ export default class Buttons extends Component {
       return (
         <div>
           <RaisedButton primary={ true }
-            label="edit"
+            label="un-join"
             style={ styles.button }
             onClick={this.goBack.bind(this)}
           />

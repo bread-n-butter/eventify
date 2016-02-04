@@ -1,7 +1,7 @@
 {
   "users": [
      {
-
+       "id": "1",
        "first_name": "Kristen",
        "last_name": "Haydel",
        "zipcode": "70001",
@@ -13,7 +13,7 @@
      },
 
      {
-
+       "id": "2",
        "first_name": "Matt",
        "last_name": "Vulpetti",
        "zipcode": "70001",
@@ -22,7 +22,7 @@
        "facebook_token": "123456",
        "email_address": "mvul@yay.com"
        
-     },
+     }
 
 
   ],
@@ -47,11 +47,19 @@
       "description": "Race to the finish",
       "creator": "2"
 
-    },
+    }
 
-  ]
+  ],
 
+  "newUser": {
+    "first_name": "Lucy",
+    "last_name": "Haydel"
+  },
 
+  "newEvent": {
+    "event_name": "Test Event",
+    "price_per_person": "300"
+  }
 
 
 

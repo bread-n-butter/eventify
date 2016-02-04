@@ -42,10 +42,10 @@ module.exports = {
         total_number_of_people_req: data.totalPeople || event.get('total_number_of_people_req'),
         price_per_person: data.pricePerPerson || event.get('price_per_person'),
         description: data.description || event.get('description'),
-        image_url: data.image_url || event.get('image_url'),
-        event_address_label: data.addressLabel || event.get('event_address_label'),
-        event_long: data.long || event.get('event_long'),
-        event_lat: data.lat || event.get('event_lat')
+        image_url: data.image_url || event.get('image_url')
+        // event_address_label: data.addressLabel || event.get('event_address_label'),
+        // event_long: data.long || event.get('event_long'),
+        // event_lat: data.lat || event.get('event_lat')
       }, {method: 'update'});
     }).then(function(){
       res.sendStatus(200);

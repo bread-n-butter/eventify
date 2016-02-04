@@ -53,7 +53,7 @@ export default class Buttons extends Component {
       return (
         <div>
           <RaisedButton primary={ true }
-            label="un-join"
+            label="edit"
             style={ styles.button }
             onClick={this.goBack.bind(this)}
           />

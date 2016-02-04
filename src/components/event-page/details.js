@@ -22,7 +22,9 @@ const styles = {
   },
   price: {
     marginTop: 10,
-    style: 'bold'
+    fontSize: 40,
+    fontStyle: 'italic',
+    fontWeight: 'bold'
   }
 
 };

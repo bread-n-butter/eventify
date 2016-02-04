@@ -139,8 +139,8 @@ export function setEventDate(date) {
   };
 }
 
-export function editEvent(id) {
-  const request = axios.put(`api/events/${id}`);
+export function editEvent(id, data) {
+  const request = axios.put(`api/events/${id}`, data);
   return {
     type: EDIT_EVENT,
     payload: request

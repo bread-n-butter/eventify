@@ -13,6 +13,7 @@ import NavBar from '../navBar/navBar.js';
 
 export default class App extends Component {
   componentWillMount() {
+    // Need to call this for datepicker to appear in Create and Edit Event forms
     injectTapEventPlugin();
   }
 

@@ -14,17 +14,6 @@ import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 class EditEventForm extends Component {
 
-  componentWillMount() {
-    // Need to call injectTapEventPlugin for datepicker to appear
-
-    /*this.props.initializeForm({
-      eventName: '',
-      description: '',
-      totalPeople: null,
-      pricePerPerson: null
-    });*/
-  }
-
   onDateChange(nothing, date) {
     this.props.setEventDate(date);
   }
@@ -70,13 +59,11 @@ class EditEventForm extends Component {
             <div>
               <label>Date</label>
               <DatePicker
-                defaultDate={this.props.eventDate}
+                defaultDate={new Date(this.props.eventDate)}
                 hintText="Click to pick date"
                 container="inline"
                 onChange={this.onDateChange.bind(this)} />
             </div>
-
-
 
             <button
               type="submit"

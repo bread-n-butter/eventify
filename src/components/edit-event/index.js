@@ -28,11 +28,11 @@ class EditEventPage extends Component {
   }*/
 
   handleSubmit(data) {
-
     data.image_url = event.image_url;
     const formattedDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
-    this.props.editEvent(data)
+    console.log(data);
+    this.props.editEvent(this.props.selectedEvent.id, data)
       .then(() => { this.context.router.push('/dashboard'); });
 
   }

@@ -5,12 +5,15 @@
  *    Imported from Material UI.
  *    
  */
-import React from 'react'
+import React from 'react';
 
-import AutoComplete from 'material-ui/lib/auto-complete'
+import AutoComplete from 'material-ui/lib/auto-complete';
+
+import GeoSuggest from 'react-geosuggest';
 
 const SearchBar = () => (
-    <AutoComplete dataSource={["Seattle", "Houston", "New Orleans", "Santa Cruz"]} />
+    <GeoSuggest />
+    <AutoComplete dataSource={['Seattle', 'Houston', 'New Orleans', 'Santa Cruz']} />
 );
 
 export default SearchBar;

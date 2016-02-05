@@ -14,10 +14,9 @@ class SmallEventCards extends Component {
     router: PropTypes.object
   };
 
+
   handleEdit(event) {
     this.props.editEvent(event);
-    // this.props.fetchOneEvent(event.id)
-    //   .then(() => {});
     this.context.router.push('/edit');
   }
 

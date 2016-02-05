@@ -12,8 +12,6 @@ import EditEventBtn from '../edit-event/EditEventBtn';
 import FlatButton from 'material-ui/lib/flat-button';
 
 
-
-
 class NavBar extends Component {
   static contextTypes = {
     router: PropTypes.object
@@ -34,11 +32,10 @@ class NavBar extends Component {
   render() {
 
     if (this.props.isLoggedIn) {
-      console.log('navbar auth props check: ', this.props.isLoggedIn);
       return (
         <nav  role="navigation">
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo">Eventify</a>
+            <Link to="/dashboard" className="brand-logo">Eventify</Link>
               <ul id="nav-mobile" className="right hide-on-med-and-down">
                 <li>
                   <FlatButton
@@ -46,7 +43,6 @@ class NavBar extends Component {
                     style = {{color: '#53b3cb'}}
                     onClick = {this.goToDash.bind(this)}/>
                 </li>
-                {/*<li> <EditEventBtn /> </li>*/}
                 <li> <CreateEventBtn /> </li>
                 <li> <LogoutBtn /> </li>
               </ul>
@@ -56,7 +52,7 @@ class NavBar extends Component {
     }
 
     return (
-      <nav  role="navigation">
+      <nav  role="navigation" style={{position: 'fixed' , zIndex: '100'}}>
         <div className="nav-wrapper">
           <a href="#" className="brand-logo">Eventify</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">

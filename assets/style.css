@@ -2,6 +2,10 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+body {
+  background-color: rgba(118, 123, 145, 0.25);
+}
+
 /*
   NAV COMPONENTS
  */
@@ -32,10 +36,16 @@ nav .brand-logo {
 }
 
 /**
- *    
+ *
  *    Search Bar Components
- *    
+ *
  */
+
+input {
+  background-color: #fff !important;
+  max-height: 30px !important;
+}
+
 #search-bar {
   position: absolute;
   width: 30%;
@@ -46,15 +56,21 @@ nav .brand-logo {
 }
 
 /**
- *    
+ *
  *    GeoSuggest Module.
- *    
- *    !important to over-rule 
- *    
+ *
+ *    !important to over-rule
+ *
  *    MaterializeCSS styling.
- *    
+ *
  */
-.geosuggest { 
+
+.search-bar-wrapper {
+  margin-top: 2%;
+
+}
+
+.geosuggest {
   font-size: 18px !important;
   font-size: 1rem !important;
   position: relative !important;
@@ -62,16 +78,22 @@ nav .brand-logo {
   margin: 1em auto !important;
   text-align: left !important;
 }
+
 .geosuggest__input {
   width: 100% !important;
   border: 2px solid transparent !important;
   box-shadow: 0 0 1px #3d464d !important;
-  padding: .5em 1em !important;
+  /*padding: .5em 1em !important;*/
   -webkit-transition: border 0.2s, box-shadow 0.2s !important;
           transition: border 0.2s, box-shadow 0.2s !important;
 }
+
+.geosuggest__input input {
+  max-height: 30px !important;
+}
+
 .geosuggest__input:focus {
-  border-color: #267dc0 !important;
+  /*border-color: #267dc0 !important;*/
   box-shadow: 0 0 0 transparent !important;
 }
 .geosuggest__suggests {
@@ -97,7 +119,7 @@ nav .brand-logo {
   overflow: hidden !important;
   border-width: 0 !important;
 }
- 
+
 .geosuggest-item {
   font-size: 18px !important;
   font-size: 1rem !important;
@@ -144,3 +166,12 @@ video {
   height: 30%;
 }
 
+
+/*
+  Edit and Create Event pages
+ */
+
+.center-div {
+  background-color: #fff;
+  max-width: 50%;
+}

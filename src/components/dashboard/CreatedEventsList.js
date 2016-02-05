@@ -28,7 +28,8 @@ class CreatedEventsList extends Component {
                       key={index}
                       event={event}
                       onClick={this.handleClick.bind(this, event)}
-                      editEvent={this.props.selectEvent}/>;
+                      editEvent={this.props.selectEvent}
+                      createdList={true}/>;
           })
         }
       </ul>

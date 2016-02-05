@@ -34,7 +34,6 @@ class EditEventPage extends Component {
 
   render() {
     const event = this.props.selectedEvent;
-    console.log(event);
     const eventDetails = {
       initialValues: {
         eventName: event.event_name,
@@ -45,7 +44,7 @@ class EditEventPage extends Component {
     };
 
     return (
-      <div>
+      <div className="container center-div">
         <h1 className="center-align">Edit Your Event</h1>
         <EditEventForm
           eventDate={ event.event_date || new Date() } {...eventDetails}

@@ -44,6 +44,7 @@ class CreateEventPage extends Component {
 
   //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a JSON with keys mapped to each input field.
   handleSubmit(data) {
+
     data.lat = this.props.createEventLocation.lat;
     data.long = this.props.createEventLocation.long;
     data.addressLabel = this.props.createEventLocation.address;
@@ -63,9 +64,9 @@ class CreateEventPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container center-div">
         <h1 className="center-align">Create An Event</h1>
-        
+
         <CreateEventForm onSubmit={this.handleSubmit.bind(this)} updateEventLocation={this.props.updateEventLocation}/>
       </div>
     );

@@ -78,7 +78,7 @@ class EditImage extends Component {
             <div>
               <h6>Your Event Image:</h6>
               <div>
-                <img src={this.state.file.preview || this.props.imageUrl} />
+                <img style={{maxWidth: '200px'}} src={this.state.file.preview || this.props.imageUrl} />
               </div>
             </div> : null}
       </div>

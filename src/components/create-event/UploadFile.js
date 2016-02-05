@@ -70,7 +70,7 @@ class UploadFile extends Component {
             <div>
               <h6>Image to upload:</h6>
               <div>
-                <img src={this.state.file.preview} />
+                <img src={this.state.file.preview} style={{maxWidth: '200px'}} />
               </div>
             </div> : null}
       </div>

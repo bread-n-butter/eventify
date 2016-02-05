@@ -31,7 +31,7 @@ class Dashboard extends Component {
     });
 
   }
-  
+
   handleLocationSubmit(suggest) {
     this.props.updateUserLocation({
       lat: suggest.location.lat,
@@ -51,19 +51,22 @@ class Dashboard extends Component {
       );
     }
     return (
-      <div className='dashboard'>
-        <div className='row'>
-          <GoogleMapsSearchBar updateLocation={(d) => this.handleLocationSubmit(d)} />
+      <div className="dashboard">
+        <div className="row">
+          <GoogleMapsSearchBar
+            updateLocation={(d) => this.handleLocationSubmit(d)} />
         </div>
-        <div className='row'>
-          <div className="col s7">FEATURED
-            <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } user={this.props.user} />
+        <div className="row">
+          <div className="col s8">
+            Featured events
+            <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } />
           </div>
-          <div className="col s5">
-            <div className="">JOINED
+          <div className="col s4">
+            <div>
+              Events You've Joined
               <JoinedEventsList select={this.props.selectEvent} data={ take(joinedEvents, 4) } />
             </div>
-            <div className="">CREATED
+            <div className="">Events You've Created
               <CreatedEventsList select={this.props.selectEvent} data={ take(createdEvents, 4) } />
             </div>
           </div>

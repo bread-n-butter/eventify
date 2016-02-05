@@ -21,14 +21,15 @@ export default class JoinedEventsList extends Component {
 
   render() {
     return (
-      <ul className='collection'>
-
-        {
-          this.props.data.map((event, index) => {
-            return <SmallEventCards key={index} event={event} onClick={this.handleClick.bind(this, event)}/>;
-          })
-        }
-
+      <ul className="collection">
+          {
+            this.props.data.map((event, index) => {
+              return <SmallEventCards
+                      key={index}
+                      event={event}
+                      onClick={this.handleClick.bind(this, event)} />;
+            })
+          }
       </ul>
     );
   }

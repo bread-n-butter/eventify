@@ -22,21 +22,27 @@ class SmallEventCards extends Component {
 
   render() {
     const event = this.props.event;
+    console.log(this.props);
     return (
-      <li className="collection-item avatar">
-        <img src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg'} alt="" className="circle" onClick={(e) => { e.preventDefault(); this.props.onClick(); }}/>
+      <li className="collection-item avatar valign-wrapper">
+        <img
+          src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg'}
+          alt={'thumbnail for ' + event.event_name}
+          className="circle"
+          onClick={(e) => { e.preventDefault(); this.props.onClick(); }} />
         <span
           className="title"
-          onClick={(e) => { e.preventDefault(); this.props.onClick(); }}>
-          <b>{event.eventName}</b>
+          onClick={(e) => { e.preventDefault(); this.props.onClick(); }}
+          style={{cursor: 'pointer'}}>
+          <b>{event.event_name}</b>
         </span>
-        <p onClick={(e) => { e.preventDefault(); this.props.onClick(); }}>{event.description}<br/>
-        </p>
-        <a
-          onClick={(e) => {e.preventDefault(); this.handleEdit(event);}}
-          className="secondary-content">
-            <i className='material-icons'>settings</i>
-        </a>
+        { this.props.createdList ?
+          <a
+            onClick={(e) => {e.preventDefault(); this.handleEdit(event);}}
+            className="secondary-content">
+              <i className='material-icons'>settings</i>
+          </a>
+        : null }
       </li>
     );
   }

@@ -29,7 +29,7 @@ const validate = values => {
   } else if (isNaN(Number(values.totalPeople))) {
     errors.totalPeople = 'Must be a number';
   } else if (Number(values.totalPeople) < 0) {
-    errors.totalPeople = 'Time machine error';
+    errors.totalPeople = 'Cannot be a negative number';
   }
   
   if (!values.pricePerPerson) {
@@ -69,7 +69,7 @@ class CreateEventForm extends Component {
     });
   }
   
-  invalidStyle(isValid) {
+  validationStyles(isValid) {
     if(isValid) {
       return {
         'border-bottom': '1px solid #42a5f5',
@@ -78,9 +78,16 @@ class CreateEventForm extends Component {
     } else {
       return {
         'border-bottom': '1px solid red',
-        'box-shadow': '0 1px 0 0 red'
+        'box-shadow': '0 1px 0 0 red',
+        'margin-bottom': '0px'
       };
     }
+  }
+  
+  redFontStyles() {
+    return {
+      'color' : 'red'
+    };
   }
 
   render() {
@@ -104,30 +111,40 @@ class CreateEventForm extends Component {
               <label>Image</label>
               <UploadFile />
             </div>
+            
+            <br/>
 
             <div>
               <label>Event Name</label>
-              <input style={this.invalidStyle(!(eventName.touched && eventName.error))} type="text" placeholder="Event name - choose something catchy!" {...eventName}/>
-              {eventName.touched && eventName.error && <div>{eventName.error}</div>}
+              <input style={this.validationStyles(!(eventName.touched && eventName.error))} type="text" placeholder="Event name - choose something catchy!" {...eventName}/>
+              {eventName.touched && eventName.error && <div styles={this.redFontStyles()}>{eventName.error}</div>}
             </div>
+            
+            <br/>
 
             <div>
               <label>Description</label>
-              <input type="text" placeholder="Describe your super fun event" {...description}/>
-              {description.touched && description.error && <div>{description.error}</div>}
+              <input style={this.validationStyles(!(description.touched && description.error))} type="text" placeholder="Describe your super fun event" {...description}/>
+              {description.touched && description.error && <div styles={this.redFontStyles()}>{description.error}</div>}
             </div>
-
+            
+            <br/>
+            
             <div>
               <label>Total Number of People Needed</label>
-              <input type="text" placeholder="Minimum number of people needed to kickstart this event" {...totalPeople}/>
-              {totalPeople.touched && totalPeople.error && <div>{totalPeople.error}</div>}
+              <input style={this.validationStyles(!(totalPeople.touched && totalPeople.error))} type="text" placeholder="Minimum number of people needed to kickstart this event" {...totalPeople}/>
+              {totalPeople.touched && totalPeople.error && <div styles={this.redFontStyles()}>{totalPeople.error}</div>}
             </div>
+            
+            <br/>
 
             <div>
               <label>Price Per Person</label>
-              <input type="text" placeholder="Price per person for minimum number of people" {...pricePerPerson}/>
-              {pricePerPerson.touched && pricePerPerson.error && <div>{pricePerPerson.error}</div>}
+              <input style={this.validationStyles(!(totalPeople.touched && eventName.error))} type="text" placeholder="Price per person for minimum number of people" {...pricePerPerson}/>
+              {pricePerPerson.touched && pricePerPerson.error && <div styles={this.redFontStyles()}>{pricePerPerson.error}</div>}
             </div>
+            
+            <br/>
 
             <div>
               <label>Date</label>
@@ -138,8 +155,9 @@ class CreateEventForm extends Component {
                 autoOk={true}
               />
             </div>
-
-
+            
+            <br/>
+            
             <div>
               <label>Address</label>
               <GoogleMapsSearchBar updateLocation={(s) => this.updateLocation(s)} />

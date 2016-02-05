@@ -42,7 +42,7 @@ class CreateEventPage extends Component {
     });
   }*/
 
-  //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a JSON with keys mapped to each input field.
+  //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a Object with keys mapped to each input field.
   handleSubmit(data) {
 
     data.lat = this.props.createEventLocation.lat;

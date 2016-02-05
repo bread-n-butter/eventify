@@ -5,6 +5,8 @@
 
 import React, { Component } from 'react';
 
+import ProgressBar from '../../helpers/progressBar';
+
 export default class LargeEventCards extends Component {
   
   progressStyle() {
@@ -19,7 +21,7 @@ export default class LargeEventCards extends Component {
     const event = this.props.event;
     return (
       <div className="col m6 s12 l4">
-        <div className="card medium">
+        <div className="card large">
           <div className="card-image">
             <img onClick={(e) => {e.preventDefault(); this.props.onClick();}} href='#!' src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg' } />
             <span
@@ -37,6 +39,7 @@ export default class LargeEventCards extends Component {
             <p>{event.description || 'No description available'}</p>
           </div>
           <div className="card-action">
+            <ProgressBar data={event} />
             <div className='progress'> 
               <div className='determinate' style={this.progressStyle()}></div>
             </div>

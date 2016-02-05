@@ -3,11 +3,22 @@
  *
  */
 
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Card from './EventCard';
 
+import LargeEventCards from '../dashboard/LargeEventCards';
+
 class FeatEvents extends React.Component {
+  
+  static contextTypes = {
+    router: PropTypes.object
+  };
+  
+  handleClkMoreInfo(event) {
+    this.props.select(event);
+    this.context.router.push('/event');
+  }
 
   render() {
     return (
@@ -15,7 +26,7 @@ class FeatEvents extends React.Component {
         {this.props.events.sort((a, b) => (
           (b.num_of_people_joined-a.num_of_people_joined)))
           .map( (event, index) => (
-            <Card key={index} event={event}/>
+            <LargeEventCards key={index} event={event} onClick={this.handleClkMoreInfo.bind(this, event)}/>
         ))}
       </div>
     );

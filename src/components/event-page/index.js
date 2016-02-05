@@ -29,13 +29,15 @@ class Event extends Component {
         </div>
         <div className="row">
           <div className="col s4 push-s7 right-align">
+          
+            { this.props.user.isLoggedIn ? 
             <Buttons
               joinEvent={ this.props.joinEvent }
               data={ this.props.selectedEvent }
               user={ this.props.user }
               joined={ this.props.joined }
               delete={ this.props.deleteEvent }
-            />
+            /> : <div>Please Sign in above to Join this event!</div>}
           </div>
         </div>
       </div>

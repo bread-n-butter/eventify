@@ -1,6 +1,6 @@
 import { UPDATE_LOCATION, AUTH, LOGOUT } from '../actions/index';
 
-const INITIAL_STATE = {isLoggedin: false};
+const INITIAL_STATE = {isLoggedin: false, loc: {lat: 37.773972, long: -122.431297}};
 
 export default function(state = INITIAL_STATE, action) {
 

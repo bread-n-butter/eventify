@@ -12,6 +12,8 @@ import { Link } from 'react-router';
 import EditImage from './EditImage';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
+import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
+
 class EditEventForm extends Component {
 
   onDateChange(nothing, date) {
@@ -24,8 +26,11 @@ class EditEventForm extends Component {
         eventName,
         description,
         totalPeople,
-        pricePerPerson
-      }, handleSubmit} = this.props;
+        pricePerPerson,
+        lat,
+        long,
+        addressLabel,
+      }, handleSubmit, handleLocationSubmit} = this.props;
 
     return (
 
@@ -64,6 +69,9 @@ class EditEventForm extends Component {
                 container="inline"
                 onChange={this.onDateChange.bind(this)} />
             </div>
+            
+            <GoogleMapsSearchBar initialValue={this.props.placeholderSearchBar} updateLocation={(e) =>handleLocationSubmit(e)}/>
+            
 
             <button
               type="submit"

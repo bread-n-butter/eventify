@@ -56,6 +56,11 @@ class CreateEventForm extends Component {
         <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
 
           <form onSubmit={handleSubmit}>
+            
+            <div>
+              <label>Image</label>
+              <UploadFile />
+            </div>
 
             <div>
               <label>Event Name</label>
@@ -82,7 +87,9 @@ class CreateEventForm extends Component {
               <DatePicker
                 hintText="Click to pick date"
                 container="inline"
-                onChange={this.onDateChange.bind(this)} />
+                onChange={this.onDateChange.bind(this)} 
+                autoOk={true}
+              />
             </div>
             
      
@@ -91,7 +98,6 @@ class CreateEventForm extends Component {
               <GoogleMapsSearchBar updateLocation={(s) => this.updateLocation(s)} />
             </div>
             
-            <UploadFile />
             
 
             <button

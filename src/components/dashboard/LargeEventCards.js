@@ -6,6 +6,14 @@
 import React, { Component } from 'react';
 
 export default class LargeEventCards extends Component {
+  
+  progressStyle() {
+    const event = this.props.event;
+    const percentageJoined = Math.floor(event.num_of_people_joined/event.total_number_of_people_req);
+    return  {
+      width : percentageJoined + '%'
+    };
+  } 
 
   render() {
     const event = this.props.event;
@@ -29,6 +37,9 @@ export default class LargeEventCards extends Component {
             <p>{event.description || 'No description available'}</p>
           </div>
           <div className="card-action">
+            <div className='progress'> 
+              <div className='determinate' style={this.progressStyle()}></div>
+            </div>
             <a onClick={(e) => {e.preventDefault(); this.props.onClick();}} href='#!'>More info</a>
           </div>
         </div>

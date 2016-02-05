@@ -59,7 +59,7 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col s8">
             Featured events
-            <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } />
+            <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } user={this.props.user} />
           </div>
           <div className="col s4">
             <div>

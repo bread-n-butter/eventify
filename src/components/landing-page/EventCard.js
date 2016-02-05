@@ -16,6 +16,7 @@ import CardMedia from 'material-ui/lib/card/card-media';
 import CardTitle from 'material-ui/lib/card/card-title';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
+import ProgressBar from '../../helpers/progressBar';
 
 
 
@@ -25,9 +26,16 @@ const EventCard = ({event}) => (
       <CardMedia>
         <img src={event.image_url} />
       </CardMedia>
-      <CardTitle title={event.event_name} subtitle={event.num_of_people_joined}/>
-      <CardText>{ event.event_date ? <p>{ Moment(event.event_date).format('dddd, MMM Do YYYY') }</p> : null }
-      <p>${event.price_per_person}</p></CardText>
+      <CardTitle
+        title={event.event_name}
+        subtitle={event.event_address_label || 'New Orleans, LA'} />
+      <CardText>
+        { event.event_date ? <p>{ Moment(event.event_date).format('dddd, MMM Do YYYY') }</p> : null }
+        <p>{event.event_address_label}</p>
+        <p>Attendees: {event.num_of_people_joined || 0} / {event.total_number_of_people_req}</p>
+        <ProgressBar data={event} />
+      </CardText>
+
     </Card>
   </div>
 );

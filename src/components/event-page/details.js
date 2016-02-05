@@ -41,7 +41,7 @@ export default class Details extends Component {
           <Map />
         </div>
         <div style={ styles.bar } className="center-align">
-          { this.props.data.num_of_people_joined } Joined / { this.props.data.total_number_of_people_req } people needed
+          { this.props.data.num_of_people_joined || 0 } Attendees / { this.props.data.total_number_of_people_req } Needed
         </div>
         <div style={ styles.progress }>
           <ProgressBar data={ this.props.data } />

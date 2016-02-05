@@ -5,7 +5,10 @@
  */
 import React from 'react';
 
-import Geosuggest from 'react-geosuggest';
+// import Geosuggest from 'react-geosuggest';
+
+//Import not from NPM but from actual files
+import Geosuggest from './react-geosuggest/Geosuggest';
 
 import GetLocationBtn from './GetLocationBtn';
 
@@ -16,9 +19,10 @@ class GoogleMapsSearchBar extends React.Component {
   }
 
   render() {
+    console.log('initialValue is ', this.props.initialValue);
     return (
       <div className='search-bar-wrapper'>
-        <Geosuggest country='us' onSuggestSelect={(s) => this.props.updateLocation(s)} />
+        <Geosuggest placeholder={this.props.initialValue || 'Please Enter a Location'} country='us' onSuggestSelect={(s) => this.props.updateLocation(s)} />
       </div>
     );
   }

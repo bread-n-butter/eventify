@@ -31,7 +31,6 @@ const styles = {
 
 export default class Details extends Component {
   render() {
-    console.log(this);
     return (
       <div className="flow-text" style={styles.general}>
         <div>

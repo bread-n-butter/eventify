@@ -21,9 +21,6 @@ class EditEventPage extends Component {
   }*/
 
   handleSubmit(data) {
-    console.log(this.props)
-    data.image_url = this.props.imageUrl;
-    console.log(data);
     const formattedDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
     this.props.editEvent(this.props.selectedEvent.id, data)

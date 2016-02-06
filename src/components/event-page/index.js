@@ -10,6 +10,8 @@ import Author from './author';
 import Details from './details';
 import Buttons from './buttons';
 
+import GMap from '../../helpers/eventMap';
+
 class Event extends Component {
 
   render() {
@@ -23,12 +25,14 @@ class Event extends Component {
         </div>
 
         <div className='row'>
-          <div className="col s12">
+          <div className="col s7">
             <Pic data={ this.props.selectedEvent } />
             <Author data={ this.props.selectedEvent } />
           </div>
+          <div className='col s5'>
+          </div>
         </div>
-
+        
         <div className='row'>
           <div className="col s12">
             <Details data={ this.props.selectedEvent } />

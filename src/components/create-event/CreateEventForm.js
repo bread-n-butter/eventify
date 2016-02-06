@@ -53,12 +53,17 @@ class CreateEventForm extends Component {
       eventName: '',
       description: '',
       totalPeople: null,
-      pricePerPerson: null
+      pricePerPerson: null,
+      date: ''
     });
   }
 
   onDateChange(nothing, date) {
+    console.log('nothing is', nothing);
+    console.log('date is', date);
     this.props.setEventDate(date);
+    console.log('this.props.date is',this.props);
+    console.log('this.props.eventName is',this.props.eventName);
   }
 
   updateLocation(suggest) {
@@ -72,14 +77,14 @@ class CreateEventForm extends Component {
   validationStyles(isValid) {
     if(isValid) {
       return {
-        'border-bottom': '1px solid #42a5f5',
-        'box-shadow': '0 1px 0 0 #42a5f5'
+        'borderBottom': '1px solid #42a5f5',
+        'boxShadow': '0 1px 0 0 #42a5f5'
       };
     } else {
       return {
-        'border-bottom': '1px solid red',
-        'box-shadow': '0 1px 0 0 red',
-        'margin-bottom': '0px'
+        'borderBottom': '1px solid red',
+        'boxShadow': '0 1px 0 0 red',
+        'marginBottom': '0px'
       };
     }
   }
@@ -96,8 +101,14 @@ class CreateEventForm extends Component {
         eventName,
         description,
         totalPeople,
-        pricePerPerson
+        pricePerPerson,
+        date,
+        lat,
+        long,
+        address
       }, handleSubmit} = this.props;
+      
+    console.log('eventName is ', eventName);
 
     return (
 
@@ -119,7 +130,7 @@ class CreateEventForm extends Component {
               <input style={this.validationStyles(!(eventName.touched && eventName.error))} type="text" placeholder="Event name - choose something catchy!" {...eventName}/>
               {eventName.touched && eventName.error && <div styles={this.redFontStyles()}>{eventName.error}</div>}
             </div>
-            
+   
             <br/>
 
             <div>
@@ -140,7 +151,7 @@ class CreateEventForm extends Component {
 
             <div>
               <label>Price Per Person</label>
-              <input style={this.validationStyles(!(totalPeople.touched && eventName.error))} type="text" placeholder="Price per person for minimum number of people" {...pricePerPerson}/>
+              <input style={this.validationStyles(!(pricePerPerson.touched && pricePerPerson.error))} type="text" placeholder="Price per person for minimum number of people" {...pricePerPerson}/>
               {pricePerPerson.touched && pricePerPerson.error && <div styles={this.redFontStyles()}>{pricePerPerson.error}</div>}
             </div>
             
@@ -150,10 +161,10 @@ class CreateEventForm extends Component {
               <label>Date</label>
               <DatePicker
                 hintText="Click to pick date"
-                container="inline"
-                onChange={this.onDateChange.bind(this)} 
+                onChange={(x, event) => date.onChange(event)}
                 autoOk={true}
               />
+
             </div>
             
             <br/>
@@ -185,7 +196,7 @@ function mapDispatchToProps(dispatch) {
 
 CreateEventForm = reduxForm({
   form: 'createEvent',
-  fields: ['eventName', 'description', 'totalPeople', 'pricePerPerson'],
+  fields: ['eventName', 'description', 'totalPeople', 'pricePerPerson', 'date', 'lat', 'long', 'address'],
   validate
 })(CreateEventForm);
 

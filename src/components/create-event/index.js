@@ -50,8 +50,7 @@ class CreateEventPage extends Component {
     data.addressLabel = this.props.createEventLocation.address;
     data.image_url = this.props.imageUrl;
     data.userId = this.props.userId;
-    console.log('Data inside handleSubmit is....', data);
-    const finalDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
+    const finalDate = Moment(data.date).format('YYYY-MM-DD HH:mm:ss');
     data.date = finalDate;
     //Dispatch createEvent Action which will in turn make a POST request to the server.
     this.props.createEvent(data)

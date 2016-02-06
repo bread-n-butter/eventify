@@ -19,10 +19,12 @@ class GoogleMapsSearchBar extends React.Component {
   }
 
   render() {
-    console.log('initialValue is ', this.props.initialValue);
     return (
       <div className='search-bar-wrapper'>
-        <Geosuggest placeholder={this.props.initialValue || 'Please Enter a Location'} country='us' onSuggestSelect={(s) => this.props.updateLocation(s)} />
+        <Geosuggest 
+          placeholder={this.props.initialValue || 'Please Enter a Location'} 
+          country='us' 
+          onSuggestSelect={(s) => this.props.updateLocation(s)} />
       </div>
     );
   }

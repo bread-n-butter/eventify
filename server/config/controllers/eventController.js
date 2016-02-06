@@ -136,6 +136,23 @@ module.exports = {
     });
   },
 
+  unjoinEvent: function(req, res){
+    var data = req.body;
+    EventUser
+    .where({event_id: data.eventId, user_id: data.userId})
+    .fetch({require: true})
+    .then(function(model){
+      return model.destroy();
+    })
+    .then(function(){
+      res.sendStatus(200);
+    })
+    .catch(function(error){
+      console.log(error);
+      res.send('Error at deleteuser');
+    });
+  },
+
   getAllJoinedEvents: function(req, res){
     var data = req.body;
     User

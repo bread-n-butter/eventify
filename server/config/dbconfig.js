@@ -39,14 +39,15 @@ knex.schema.hasTable('events').then(function(exists){
       events.increments();
       events.string('event_name', 100);
       events.dateTime('event_date');
+      events.time('event_time');
       events.integer('num_of_people_joined');
       events.integer('total_number_of_people_req');
       events.integer('price_per_person');
       events.string('description', 250);
       events.string('image_url');
       events.string('event_address_label');
-      events.float('event_long');
-      events.float('event_lat');
+      events.float('event_long', 14, 11);
+      events.float('event_lat', 14, 11);
       events.integer('creator').references('users.id');
       events.string('creator_first_name');
       events.string('creator_last_name');
@@ -60,6 +61,7 @@ knex.schema.hasTable('events').then(function(exists){
 knex.schema.hasTable('events_users').then(function(exists){
   if(!exists) {
     knex.schema.createTable('events_users', function(table){
+      table.increments();
       table.integer('user_id').references('users.id');
       table.integer('event_id').references('events.id');
     }).then(function(table){

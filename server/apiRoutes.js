@@ -26,6 +26,7 @@ module.exports = function (apiRouter, passport) {
   apiRouter.get('/events/:userId/joinedevents', eventController.getAllJoinedEvents);
 
   apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
+  apiRouter.delete('/events/:eventId/:userId', eventController.unjoinEvent);
 
   apiRouter.get('/loggedin', function(req, res) {
     if (req.isAuthenticated()) {

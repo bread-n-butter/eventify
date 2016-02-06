@@ -8,8 +8,10 @@
 import React from 'react';
 
 //Import Components
-import Banner from './Banner';
+//import Banner from './Banner';
 import EventList from './FeatEvents';
+import BannerVideo from './BannerVideo';
+import GoogleMapsSearchBar from '../searchbar/react-geosuggest/Geosuggest';
 
 //Redux Connectors
 import { connect } from 'react-redux';
@@ -76,6 +78,83 @@ class Landing extends React.Component {
     this.setState({filteredEvents: updatedList});
     this.render();
   }
+  
+  containerStyle() {
+    return {
+      height : '600px',
+      position: 'relative',
+      boxSizing: 'border-box',
+      fontSize: '14px',
+      lineHeight: '1.43',
+      '-webkit-font-smoothing': 'antialiased'
+    };
+  }
+  
+  videoContStyle() {
+    return {
+      bottom : '0',
+      left: '0',
+      overflow: 'hidden',
+      position: 'absolute',
+      right: '0',
+      top: '0',
+      boxSizing: 'border-box',
+      display: 'block'
+    };
+  }
+  
+  contentContStyle() {
+    return {
+      height : '550px',
+      paddingBottom : '104px',
+      top: '50px',
+      position: 'relative',
+      zIndex: '2',
+      width: 'auto',
+      paddingLeft: '25px',
+      paddingRight: '25px',
+      marginLeft: 'auto',
+      marginRight: 'auto', 
+      textAlign: 'center',
+      boxSizing: 'border-box',
+      display: 'block'
+    };
+  }
+  
+  welcomeContStyle() {
+    return {
+      width : '100%',
+      height: '100%',
+      display: 'table',
+      position: 'relative',
+      textAlign: 'center'
+    };
+  }
+  
+  welcomeSignStyle() {
+    return {
+      verticalAlign : 'middle',
+      display: 'table-cell'
+    };
+  }
+  
+  heroFooterStyle() {
+    return {
+      bottom: '0',
+      left: '0',
+      paddingBottom: '30px',
+      paddingTop: '30px',
+      position: 'absolute',
+      right : '0',
+      textAlign: 'center'
+    };
+  }
+  
+  arrowStyle() {
+    return {
+      strokeWidth : '3'
+    };
+  }
 
   /**
    *    Renders this Component with children of this Component
@@ -84,17 +163,57 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
+      
         <div className="row">
-          <Banner filterList={(e) => this.filterList(e)} />
+        
+          <div style={this.containerStyle()} className='hero' >
+          
+          
+            <div className='hero__background' style={this.videoContStyle()}>
+              
+              <BannerVideo />
+              
+            </div>
+
+            
+            <div style={this.contentContStyle()} className='hero__content page-container-full'>
+              
+              <div style={this.welcomeContStyle()} className='va-container' >
+                
+                <div style={this.welcomeSignStyle()} className='va-middle' >
+                  
+                  <h1 className="hero-header" >YOUR EVENTS, CROWDFUNDED</h1>
+                  <h4 className="hero-header-sub" >Browse upcoming events near you</h4>
+                  
+                </div>
+                
+              </div>
+              
+              <div style={this.heroFooterStyle()} className='hero__content-footer' >
+                
+                <svg width="70" height="55" viewBox="-2.5 -5 75 60" preserveAspectRatio="none">
+                  <path style={this.arrowStyle()} stroke-width='6' d="M0,0 l35,50 l35,-50" fill="none" stroke="white" stroke-linecap="round" />
+                </svg>
+                
+              </div>
+              
+            </div>
+            
+          </div>
+        
         </div>
-          {this.props.children}
+        
+        <GoogleMapsSearchBar />
+          
         <div className="container" style={{marginTop: '7%'}}>
           <EventList events={this.state.filteredEvents} />
         </div>
+        
         <div className="center-align">
           <p>HOW IT WORKS</p>
           <p>Post an event for others to join, setting a per-person price.</p>
         </div>
+        
       </div>
     );
   }

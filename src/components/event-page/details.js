@@ -58,8 +58,8 @@ export default class Details extends Component {
         </div>
         
         
-        <div style={ styles.price } className="right-align">
-          Price ${ this.props.data.price_per_person }
+        <div className="right-align">
+          Price: ${ this.props.data.price_per_person }
         </div>
       </div>
     );

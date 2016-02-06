@@ -17,7 +17,6 @@ class GetLocationBtn extends React.Component {
     let that = this;
     const geoSuccess = function(position) {
       startPos = position;
-      console.log('Lat/Long', startPos.coords.latitude, startPos.coords.longitude);
       that.props.updateLocation({
         lat : startPos.coords.latitude,
         long : startPos.coords.longitude,
@@ -36,6 +35,7 @@ class GetLocationBtn extends React.Component {
       </div>
     );
   }
+  
 }
 
 export default GetLocationBtn;

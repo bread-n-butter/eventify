@@ -29,7 +29,21 @@ class Dashboard extends Component {
       this.props.fetchCreatedEvents(this.props.user.id);
       this.props.fetchJoinedEvents(this.props.user.id);
     });
-
+  }
+  
+  //Ask for User's Lat / Long and save that to the Redux State 
+  componentDidMount() {
+    let startPos;
+    let that = this;
+    const geoSuccess = function(position) {
+      startPos = position;
+      that.props.updateLocation({
+        lat : startPos.coords.latitude,
+        long : startPos.coords.longitude,
+        address: undefined
+      });
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess);
   }
 
   handleLocationSubmit(suggest) {

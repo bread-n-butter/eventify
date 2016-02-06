@@ -82,8 +82,12 @@ class Landing extends React.Component {
           <Banner filterList={(e) => this.filterList(e)} />
         </div>
           {this.props.children}
-        <div className="container">
+        <div className="container" style={{marginTop: '7%'}}>
           <EventList events={this.state.filteredEvents} />
+        </div>
+        <div className="center-align">
+          <p>HOW IT WORKS</p>
+          <p>Post an event for others to join, setting a per-person price.</p>
         </div>
       </div>
     );

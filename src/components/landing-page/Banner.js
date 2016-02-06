@@ -19,9 +19,13 @@ class Banner extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{backgroundColor: '#fff', paddingBottom: '50px'}}>
         <BannerVideo />
+        <h1 className="hero-header" >YOUR EVENTS, CROWDFUNDED</h1>
+        <h4 className="hero-header">Browse upcoming events near you</h4>
         <GoogleMapsSearchBar />
+        <div>
+        </div>
       </div>
     );
   }

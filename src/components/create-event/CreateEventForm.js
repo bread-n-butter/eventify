@@ -109,7 +109,7 @@ class CreateEventForm extends Component {
         address
       }, handleSubmit} = this.props;
       
-    console.log('eventName is ', eventName);
+    console.log('this.props.fields ', this.props.fields);
 
     return (
 
@@ -174,7 +174,14 @@ class CreateEventForm extends Component {
               <label>Address</label>
               <GoogleMapsSearchBar updateLocation={(s) => this.updateLocation(s)} />
             </div>
-
+            
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            
             <button
               type="submit"
               className='btn waves-effect waves-light'

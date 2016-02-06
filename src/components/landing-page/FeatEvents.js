@@ -26,7 +26,7 @@ class FeatEvents extends React.Component {
         {this.props.events.sort((a, b) => (
           (b.num_of_people_joined-a.num_of_people_joined)))
           .map( (event, index) => (
-            <LargeEventCards key={index} event={event} onClick={this.handleClkMoreInfo.bind(this, event)}/>
+            <Card key={index} event={event} onClick={this.handleClkMoreInfo.bind(this, event)}/>
         ))}
       </div>
     );

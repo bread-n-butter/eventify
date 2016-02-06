@@ -11,6 +11,12 @@ import React from 'react';
 import Banner from './Banner';
 import EventList from './FeatEvents';
 
+//Redux Connectors
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent } from '../../actions/';
+
+
 //Helpers for HTTP requests
 import Helpers from '../../helpers/helpers';
 
@@ -95,4 +101,19 @@ class Landing extends React.Component {
 
 }
 
-export default Landing;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent, updateUserLocation }, dispatch);
+}
+
+function mapStateToProps(state) {
+  return {
+    events: state.events.all,
+    isLoggedIn: state.user.isLoggedIn,
+    event: state.events.event,
+    createdEvents: state.events.createdEvents,
+    joinedEvents: state.events.joinedEvents,
+    user: state.user
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing);

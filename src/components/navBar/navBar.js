@@ -33,34 +33,38 @@ class NavBar extends Component {
 
     if (this.props.isLoggedIn) {
       return (
-        <nav  role="navigation">
-          <div className="nav-wrapper">
-            <Link to="/dashboard" className="brand-logo">Eventify</Link>
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li>
-                  <FlatButton
-                    label = "Dashboard"
-                    style = {{color: '#53b3cb'}}
-                    onClick = {this.goToDash.bind(this)}/>
-                </li>
-                <li> <CreateEventBtn /> </li>
-                <li> <LogoutBtn /> </li>
-              </ul>
-          </div>
-        </nav>
+        <div className='navbar-fixed'>
+          <nav  role="navigation">
+            <div className="nav-wrapper">
+              <Link to="/dashboard" className="brand-logo">Eventify</Link>
+                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                  <li>
+                    <FlatButton
+                      label = "Dashboard"
+                      style = {{color: '#53b3cb'}}
+                      onClick = {this.goToDash.bind(this)}/>
+                  </li>
+                  <li> <CreateEventBtn /> </li>
+                  <li> <LogoutBtn /> </li>
+                </ul>
+            </div>
+          </nav>
+        </div>
       );
     }
 
     return (
-      <nav  role="navigation" style={{position: 'fixed' , zIndex: '100'}}>
-        <div className="nav-wrapper">
-          <a href="#" className="brand-logo">Eventify</a>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li> <SignupModal /></li>
-              <li> <SigninModal /></li>
-            </ul>
-        </div>
-      </nav>
+      <div className='navbar-fixed'>
+        <nav role="navigation" style={{position: 'fixed' , zIndex: '100'}}>
+          <div className="nav-wrapper">
+            <a href="#" className="brand-logo">Eventify</a>
+              <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <li> <SignupModal /></li>
+                <li> <SigninModal /></li>
+              </ul>
+          </div>
+        </nav>
+      </div>
     );
   }
 }

@@ -15,27 +15,37 @@ class Event extends Component {
   render() {
     return (
       <div className="container">
+      
         <div className="row">
           <div className="col s12">
             <Title data={ this.props.selectedEvent } />
           </div>
-          <div className="col s5 offset-s1">
+        </div>
+        
+        <div className='row'>
+          <div className="col s12">
             <Pic data={ this.props.selectedEvent } />
             <Author data={ this.props.selectedEvent } />
           </div>
-          <div className="col s5">
+        </div>
+        
+        <div className='row'>
+          <div className="col s12">
             <Details data={ this.props.selectedEvent } />
           </div>
         </div>
+        
         <div className="row">
           <div className="col s4 push-s7 right-align">
+          
+            { this.props.user.isLoggedIn ? 
             <Buttons
               joinEvent={ this.props.joinEvent }
               data={ this.props.selectedEvent }
               user={ this.props.user }
               joined={ this.props.joined }
               delete={ this.props.deleteEvent }
-            />
+            /> : <div>Please Sign in above to Join this event!</div>}
           </div>
         </div>
       </div>

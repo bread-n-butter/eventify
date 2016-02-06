@@ -37,7 +37,7 @@ class Dashboard extends Component {
     let that = this;
     const geoSuccess = function(position) {
       startPos = position;
-      that.props.updateLocation({
+      that.props.updateUserLocation({
         lat : startPos.coords.latitude,
         long : startPos.coords.longitude,
         address: undefined

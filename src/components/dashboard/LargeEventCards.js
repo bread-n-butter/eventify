@@ -14,7 +14,16 @@ export default class LargeEventCards extends Component {
         <div className="card">
           <div className="card-image">
             <img onClick={(e) => {e.preventDefault(); this.props.onClick();}} href='#!' src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg' } />
-            <span className="card-title">{event.event_name}</span>
+            <span
+              className="card-title"
+              style={{
+                backgroundColor: 'rgba(0,0,0,0.4)',
+                padding: '10px',
+                width: '100%',
+                minHeight: '40%'
+              }}>
+              {event.event_name}
+            </span>
           </div>
           <div className="card-content">
             <p>{event.description || 'No description available'}</p>

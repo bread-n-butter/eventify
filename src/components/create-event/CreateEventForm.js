@@ -11,8 +11,8 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import UploadFile from './UploadFile';
 import DatePicker from 'material-ui/lib/date-picker/date-picker';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
+
 
 
 class CreateEventForm extends Component {
@@ -31,7 +31,7 @@ class CreateEventForm extends Component {
   onDateChange(nothing, date) {
     this.props.setEventDate(date);
   }
-  
+
   updateLocation(suggest) {
     this.props.updateEventLocation({
       lat: suggest.location.lat,
@@ -84,15 +84,15 @@ class CreateEventForm extends Component {
                 container="inline"
                 onChange={this.onDateChange.bind(this)} />
             </div>
-            
-     
+
+
             <div>
               <label>Address</label>
               <GoogleMapsSearchBar updateLocation={(s) => this.updateLocation(s)} />
             </div>
-            
+
             <UploadFile />
-            
+
 
             <button
               type="submit"

@@ -14,7 +14,7 @@ class CreateEventBtn extends Component {
     return (
       <FlatButton
         label = "Create Event"
-        style = {{color: '#53b3cb'}}
+        style = {{color: '#53b3cb', border: '2px solid #53b3cb'}}
         onClick = {this.goToCreate.bind(this)}
       />
     );

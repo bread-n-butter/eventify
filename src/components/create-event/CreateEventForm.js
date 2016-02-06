@@ -57,15 +57,16 @@ class CreateEventForm extends Component {
       date: ''
     });
   }
-
-  onDateChange(nothing, date) {
-    console.log('nothing is', nothing);
-    console.log('date is', date);
-    this.props.setEventDate(date);
-    console.log('this.props.date is',this.props);
-    console.log('this.props.eventName is',this.props.eventName);
-  }
-
+  
+  //DEPRECATED: event now saves in Redux Form
+  // onDateChange(nothing, date) {
+  //   console.log('nothing is', nothing);
+  //   console.log('date is', date);
+  //   this.props.setEventDate(date);
+  //   console.log('this.props.date is',this.props);
+  //   console.log('this.props.eventName is',this.props.eventName);
+  // }
+  
   updateLocation(suggest) {
     this.props.updateEventLocation({
       lat: suggest.location.lat,
@@ -182,6 +183,7 @@ class CreateEventForm extends Component {
             </button>
             <Link to="/dashboard">Cancel</Link>
           </form>
+          
         </div>
       </div>
 

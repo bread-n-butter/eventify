@@ -26,7 +26,7 @@ class EditEventPage extends Component {
     data.addressLabel = this.props.createEventLocation.address;
     data.image_url = this.props.imageUrl;
 
-    const formattedDate = Moment(this.props.eventDate).format('YYYY-MM-DD HH:mm:ss');
+    const formattedDate = Moment(data.date).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
     this.props.editEvent(this.props.selectedEvent.id, data)
       .then(() => { this.context.router.push('/dashboard'); })

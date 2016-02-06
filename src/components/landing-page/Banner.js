@@ -19,12 +19,9 @@ class Banner extends React.Component {
 
   render() {
     return (
-      <div className="col s12">
-
+      <div>
         <BannerVideo />
-        
         <GoogleMapsSearchBar />
-
       </div>
     );
   }

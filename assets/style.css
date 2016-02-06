@@ -6,6 +6,17 @@ body {
   background-color: rgba(118, 123, 145, 0.25);
 }
 
+.video-background {
+    overflow: hidden;
+    height: 600px;
+}
+
+.video-background video {
+  height: auto;
+  width: 100%;
+}
+
+
 /*
   NAV COMPONENTS
  */

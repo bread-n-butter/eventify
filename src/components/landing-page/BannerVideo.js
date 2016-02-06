@@ -8,10 +8,9 @@ class BannerVideo extends React.Component {
 
   render() {
     return (
-      <div className=''>
-
+      <div className="video-background">
         <video autoPlay loop>
-          <source src='https://a0.muscache.com/airbnb/static/SanFrancisco-P1-1.mp4' type='video/mp4' />
+          <source src="https://a0.muscache.com/airbnb/static/SanFrancisco-P1-1.mp4" type="video/mp4" />
         </video>
 
       </div>

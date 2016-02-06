@@ -8,7 +8,6 @@
 import React from 'react';
 
 //Import Components
-import NavBar from '../navBar/navBar';
 import Banner from './Banner';
 import EventList from './FeatEvents';
 
@@ -21,12 +20,6 @@ class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      /*events : [{title: 'Event1', desc: 'cool', img: 'http://lorempixel.com/640/480/nightlife'},
-                {title: 'Event2', desc: 'awesome', img: 'http://lorempixel.com/640/480/nightlife' },
-                {title: 'Event3', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' },
-                {title: 'Event4', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife'},
-                {title: 'Event5', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' },
-                {title: 'Event6', desc: 'nice', img: 'http://lorempixel.com/640/480/nightlife' }],*/
       //filteredEvents is used for Search box filtering
       filteredEvents: [],
       //when user is logged in

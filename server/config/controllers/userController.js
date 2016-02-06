@@ -39,7 +39,7 @@ module.exports = {
         first_name: data.firstName || user.get('first_name'),
         last_name: data.lastName || user.get('last_name'),
         zipcode: data.zipcode || user.get('zipcode'),
-        email_address: data.email || user.get('email_address')      
+        email_address: data.email || user.get('email_address')
       }, {method: 'update'});
     }).then(function(){
       res.sendStatus(200);

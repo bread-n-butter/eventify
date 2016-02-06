@@ -114,6 +114,8 @@ module.exports = function(passport) {
     },
       // facebook will send back the token and profile
       function(token, refreshToken, profile, done) {
+
+        console.log(profile);
         // asynchronous
         process.nextTick(function() {
           // find the user in the database based on their facebook id
@@ -172,6 +174,7 @@ module.exports = function(passport) {
                   last_name: profile.name.familyName
                 }).save()
                   .then(function(model) {
+                    //call to facebook for photo and save the photo in database
                     console.log('New user saved', model);
                     return done(null, model);
                   }, function(error) {

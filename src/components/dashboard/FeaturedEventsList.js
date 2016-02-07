@@ -18,7 +18,7 @@ export default class FeaturedEventsList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { radius: 50 };
+    this.state = { radius: 100 };
   }
 
   handleClick(event) {
@@ -36,7 +36,7 @@ export default class FeaturedEventsList extends Component {
         <div>
           <Slider
             description="Filter events by distance"
-            defaultValue={5}
+            defaultValue={100}
             step={5}
             min={5}
             max={500}

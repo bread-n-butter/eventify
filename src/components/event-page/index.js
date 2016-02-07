@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { joinEvent, deleteEvent } from '../../actions/';
+import { joinEvent, deleteEvent, payForEvent } from '../../actions/';
 
 import Pic from './pic';
 import Title from './title';
@@ -45,6 +45,7 @@ class Event extends Component {
               user={ this.props.user }
               joined={ this.props.joined }
               delete={ this.props.deleteEvent }
+              pay={ this.props.payForEvent }
             /> : <div>Please Sign In above to Join this event!</div>}
           </div>
         </div>
@@ -54,7 +55,7 @@ class Event extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ joinEvent, deleteEvent }, dispatch);
+  return bindActionCreators({ joinEvent, deleteEvent, payForEvent }, dispatch);
 }
 
 function mapStateToProps(state) {
@@ -63,7 +64,8 @@ function mapStateToProps(state) {
     isLoggedIn: state.events.isLoggedIn,
     selectedEvent: state.events.selectedEvent,
     joined: state.events.joinedEvents,
-    user: state.user
+    user: state.user,
+    pay: payForEvent
   };
 }
 

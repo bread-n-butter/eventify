@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Divider from 'material-ui/lib/divider';
 import ProgressBar from '../../helpers/progressBar';
 import Map from '../../helpers/eventMap';
+import Stripe from './payment';
 
 const styles = {
   general: {
@@ -28,6 +29,16 @@ const styles = {
   }
 
 };
+const marks = {
+    markers: [{
+      position: {
+        lat: 25.0112183,
+        lng: 121.52067570000001,
+      },
+      key: "Taiwan",
+      defaultAnimation: 2,
+    }],
+  };
 
 export default class Details extends Component {
   render() {

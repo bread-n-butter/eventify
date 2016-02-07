@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import Modal from './modal';
 import RaisedButton from 'material-ui/lib/raised-button';
+import StripeCheckout from './payment';
 
 const styles = {
   button: {
     margin: 12
   }
 };
+
 export default class Buttons extends Component {
 
   constructor(props) {
@@ -41,9 +42,15 @@ export default class Buttons extends Component {
 
   render() {
     // Created events
+    //
     if(this.props.user.id === this.props.data.creator){
       return (
         <div>
+          <RaisedButton
+            label="Delete"
+            style={ styles.button }
+            onClick={ this.delete.bind(this) }
+          />
           <RaisedButton primary={ true }
             label="edit"
             style={ styles.button }
@@ -53,11 +60,6 @@ export default class Buttons extends Component {
             label="Back"
             style={ styles.button }
             onClick={ this.goBack.bind(this) }
-          />
-          <RaisedButton
-            label="Delete"
-            style={ styles.button }
-            onClick={ this.delete.bind(this) }
           />
         </div>
       );
@@ -81,8 +83,24 @@ export default class Buttons extends Component {
     }
 
     return (
-      <div className="">
-        <Modal data={ this.props } />
+      <div className="row">
+        <div className="col s4 push-s5">
+
+          <StripeCheckout
+            style={ styles.button }
+            pay={ this.props.pay }
+            event={ this.props.data }
+            join={ this.props.joinEvent }
+            user={ this.props.user }
+          />
+        </div>
+        <div className="col s5 push-s3">
+
+          <RaisedButton secondary={ true }
+            label="Back"
+            onClick={ this.goBack.bind(this) }
+          />
+        </div>
       </div>
     );
   }

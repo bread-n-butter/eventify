@@ -18,7 +18,7 @@ export default class FeaturedEventsList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { radius: 100 };
+    this.state = { radius: 10000 };
   }
 
   handleClick(event) {

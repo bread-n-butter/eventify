@@ -28,10 +28,12 @@ class Dashboard extends Component {
       this.props.fetchEvents();
       this.props.fetchCreatedEvents(this.props.user.id);
       this.props.fetchJoinedEvents(this.props.user.id);
+    console.log(this.props.user)
+      // this.props.getProfilePic()
     });
   }
-  
-  //Ask for User's Lat / Long and save that to the Redux State 
+
+  //Ask for User's Lat / Long and save that to the Redux State
   componentDidMount() {
     let startPos;
     let that = this;
@@ -73,7 +75,7 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col s8">
             Featured events
-            <FeaturedEventsList select={this.props.selectEvent} data={ take(events, 9) } user={this.props.user} />
+            <FeaturedEventsList select={this.props.selectEvent} radius={0} data={ take(events, 15) } user={this.props.user} />
           </div>
           <div className="col s4">
             <div>

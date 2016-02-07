@@ -22,7 +22,6 @@ class SmallEventCards extends Component {
 
   render() {
     const event = this.props.event;
-    console.log(this.props);
     return (
       <li className="collection-item avatar valign-wrapper">
         <img

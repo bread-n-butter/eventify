@@ -27,6 +27,7 @@ knex.schema.hasTable('users').then(function(exists){
       users.string('username').unique();
       users.string('facebook_token');
       users.string('email_address');
+      users.string('profile_pic_url');
     }).then(function(table){
       console.log('Created Table', table);
     });

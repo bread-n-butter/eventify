@@ -39,13 +39,13 @@ class NavBar extends Component {
               <Link to="/dashboard" className="brand-logo">Eventify</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                   <li>
-                    <FlatButton
-                      label = "Dashboard"
-                      style = {{color: '#53b3cb'}}
-                      onClick = {this.goToDash.bind(this)}/>
+                    <CreateEventBtn />
                   </li>
-                  <li> <CreateEventBtn /> </li>
-                  <li> <LogoutBtn /> </li>
+                  <li> <FlatButton
+                         label = "Dashboard"
+                         style = {{color: '#53b3cb'}}
+                         onClick = {this.goToDash.bind(this)}/></li>
+                  <li><LogoutBtn /></li>
                 </ul>
             </div>
           </nav>

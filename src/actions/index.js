@@ -22,6 +22,7 @@ export const JOIN_EVENT = 'JOIN_EVENT';
 export const EDIT_EVENT = 'EDIT_EVENT';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 export const UPDATE_EVENT_LOCATION = 'UPDATE_EVENT_LOCATION';
+export const GET_PROFILE_PIC = 'GET_PROFILE_PIC';
 
 /**
  *    Fetches all events from the backend
@@ -62,6 +63,14 @@ export function auth() {
     type: AUTH,
     payload: request
   };
+}
+
+export function getProfilePic(userFBid) {
+  const request = axios.get('graph.facebook.com/v2.5/' + userFBid + '/picture')
+  return {
+    type: GET_PROFILE_PIC,
+    payload: request
+  }
 }
 
 export function uploadImage(file) {
@@ -115,7 +124,6 @@ export function fetchJoinedEvents(userId) {
  *
  */
 export function fetchCreatedEvents(userId) {
-  console.log('User ID for created Events', userId);
   const request = axios.get(`api/events/${userId}/createdevents`);
   return {
     type: FETCH_CREATED_EVENTS,

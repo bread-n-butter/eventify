@@ -128,7 +128,37 @@ class AboutUs extends React.Component {
               
               <h2 style={this.nameStyle()}> Vincent Jo </h2>
               
-              <h5 style={this.subNameStyle()}> Front End JavaScript Yoda </h5>
+              <h5 style={this.subNameStyle()}> Front End Engineer </h5>
+            
+            </div>
+            
+            <div className='col s3' style={this.teamStyle()}>
+            
+              <img src='https://avatars3.githubusercontent.com/u/9803285?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              
+              <h2 style={this.nameStyle()}> Delphine Foo </h2>
+              
+              <h5 style={this.subNameStyle()}> Full Stack Engineer | Product Owner </h5>
+            
+            </div>
+            
+            <div className='col s3' style={this.teamStyle()}>
+            
+              <img src='https://avatars3.githubusercontent.com/u/13316418?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              
+              <h2 style={this.nameStyle()}> Kristen Haydel </h2>
+              
+              <h5 style={this.subNameStyle()}> Full Stack Engineer | Scrum Master </h5>
+            
+            </div>
+            
+            <div className='col s3' style={this.teamStyle()}>
+            
+              <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              
+              <h2 style={this.nameStyle()}> Oleg Umarov </h2>
+              
+              <h5 style={this.subNameStyle()}> Full Stack Engineer </h5>
             
             </div>
             

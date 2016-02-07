@@ -18,8 +18,6 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 
-import GMap from '../../helpers/eventMap';
-
 class Event extends Component {
 
   render() {
@@ -31,28 +29,45 @@ class Event extends Component {
     return ( 
       <div className="container">
       
-        <Card>
-          <CardMedia
-            overlay={<CardTitle title={event.event_name} subtitle={'@ ' + event.event_address_label} />}
-          >
-            <img src={event.image_url} />
-          </CardMedia>
-          <CardText>
-            <Details data={ this.props.selectedEvent } />
-          </CardText>
-          <CardActions>
+        <div className='row'>
+        
+          <div className='col m6 s12'>
+          
+            <Card>
+              <CardHeader 
+                title={event.event_name}
+                subtitle={'@ ' + event.event_address_label}/>
+              <CardMedia>
+                <img src={event.image_url} />
+              </CardMedia>
+            </Card>
+            
+          </div>
+      
+          <div className='col m6 s12'>
+        
+            <Card>
+              <CardText>
+                <Details data={ this.props.selectedEvent } />
+              </CardText>
+              <CardActions>
 
-            { this.props.user.isLoggedIn ? 
-            <Buttons
-              joinEvent={ this.props.joinEvent }
-              data={ this.props.selectedEvent }
-              user={ this.props.user }
-              joined={ this.props.joined }
-              delete={ this.props.deleteEvent }
-              pay={ this.props.payForEvent }
-            /> : <div>Please Sign in above to Join this event!</div>}
-          </CardActions>
-        </Card>
+                { this.props.user.isLoggedIn ? 
+                <Buttons
+                  joinEvent={ this.props.joinEvent }
+                  data={ this.props.selectedEvent }
+                  user={ this.props.user }
+                  joined={ this.props.joined }
+                  delete={ this.props.deleteEvent }
+                  pay={ this.props.payForEvent }
+                /> : <div>Please Sign in above to Join this event!</div>}
+              </CardActions>
+            </Card>
+          
+          </div>
+        
+        </div>
+        
       </div>
     );
   }

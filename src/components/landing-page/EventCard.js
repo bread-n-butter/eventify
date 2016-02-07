@@ -22,10 +22,6 @@ import ProgressBar from '../../helpers/progressBar';
 
 class EventCard extends React.Component {
   
-  logOut() {
-    console.log('Hello!!');
-  }
-  
   render() {
     const event = this.props.event;
     return (

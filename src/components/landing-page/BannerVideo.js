@@ -16,7 +16,7 @@ class BannerVideo extends React.Component {
       width: 'auto',
       display: 'inline-block',
       boxSizing: 'border-box',
-      '-o-object-fit': 'fill'
+      'OObjectFit': 'fill'
     };
   }
 

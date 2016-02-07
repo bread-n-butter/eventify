@@ -87,7 +87,7 @@ class Landing extends React.Component {
       boxSizing: 'border-box',
       fontSize: '14px',
       lineHeight: '1.43',
-      '-webkit-font-smoothing': 'antialiased'
+      'WebkitFontSmoothing': 'antialiased'
     };
   }
   
@@ -193,7 +193,7 @@ class Landing extends React.Component {
               <div style={this.heroFooterStyle()} className='hero__content-footer' >
                 
                 <svg width="70" height="55" viewBox="-2.5 -5 75 60" preserveAspectRatio="none">
-                  <path style={this.arrowStyle()} stroke-width='6' d="M0,0 l35,50 l35,-50" fill="none" stroke="white" stroke-linecap="round" />
+                  <path style={this.arrowStyle()} strokeWidth='6' d="M0,0 l35,50 l35,-50" fill="none" stroke="white" strokeLinecap="round" />
                 </svg>
                 
               </div>

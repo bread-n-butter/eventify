@@ -11,6 +11,7 @@ import Dashboard from '../components/dashboard/';
 import CreateEvent from '../components/create-event/';
 import Event from '../components/event-page/';
 import EditEvent from '../components/edit-event/';
+import Pay from '../components/event-page/payment';
 
 export default (
   <Route path="/" component={App}>
@@ -19,5 +20,6 @@ export default (
      <Route path="create" component={CreateEvent} />
      <Route path="event" component={Event} />
      <Route path="edit" component={EditEvent} />
+     <Route path="pay" component={Pay} />
   </Route>
 );

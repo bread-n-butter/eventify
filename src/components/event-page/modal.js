@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
+import StripeCheckout from './payment';
 
 const styles = {
   button: {
@@ -32,7 +33,6 @@ export default class Modal extends Component {
   };
 
   goBack() {
-    console.log(this);
     this.context.router.goBack();
   }
 
@@ -43,12 +43,7 @@ export default class Modal extends Component {
         secondary={ true }
         onClick={ this.handleClose }
       />,
-      <FlatButton
-        label="Now"
-        primary={ true }
-        keyboardFocused={ true }
-        onClick={ this.handleClose }
-      />
+      <StripeCheckout />
     ];
 
     return (
@@ -65,7 +60,8 @@ export default class Modal extends Component {
           open={ this.state.open }
           onRequestClose={ this.handleClose }
         >
-          <div className="center"> You can Pay Now or later</div>
+          <div className="center">
+</div>
             </Dialog>
             <RaisedButton secondary={ true }
               label="Back"

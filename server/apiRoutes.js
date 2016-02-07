@@ -1,5 +1,6 @@
 var eventController = require('./config/controllers/eventController.js');
 var userController = require('./config/controllers/userController.js');
+var stripeController = require('./config/controllers/stripeController.js');
 var aws = require ('aws-sdk');
 
 var isDevelopment = (process.env.NODE_ENV !== 'production');
@@ -8,6 +9,7 @@ if (isDevelopment) {
 }
 
 module.exports = function (apiRouter, passport) {
+  apiRouter.post('/payments', stripeController.payForEvent);
   apiRouter.get('/events', eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
 

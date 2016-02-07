@@ -18,11 +18,11 @@ export default function(state = INITIAL_STATE, action) {
 
   case LOGOUT:
     return {...state, isLoggedIn: false };
-    
+
   case UPDATE_LOCATION:
-    return {...state, 
+    return {...state,
       loc: {
-        lat: action.payload.lat, 
+        lat: action.payload.lat,
         long: action.payload.long,
         address: action.payload.address
       }
@@ -32,5 +32,4 @@ export default function(state = INITIAL_STATE, action) {
     return state;
   }
 }
-
 

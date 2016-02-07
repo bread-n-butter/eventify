@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Divider from 'material-ui/lib/divider';
 import ProgressBar from '../../helpers/progressBar';
 import Map from '../../helpers/eventMap';
+import Stripe from './payment';
 
 const styles = {
   general: {
@@ -37,7 +38,7 @@ const marks = {
       key: "Taiwan",
       defaultAnimation: 2,
     }],
-  }
+  };
 
 export default class Details extends Component {
   render() {

@@ -6,6 +6,7 @@
 
 import axios from 'axios';
 
+export const SEND_STRIPE_TOKEN = 'SEND_STRIPE_TOKEN';
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const LOGOUT = 'LOGOUT';
@@ -29,6 +30,21 @@ export const GET_PROFILE_PIC = 'GET_PROFILE_PIC';
  *
  *    @returns [Object] action that feeds into the reducer function
  */
+
+export function payForEvent(token) {
+  const request = axios.post(`api/payments/`, token)
+                       .then(function(result) {
+                         return result;
+                       })
+                       .catch(function(err) {
+                         console.log(err);
+                       });
+  return {
+    type: SEND_STRIPE_TOKEN,
+    payload: request
+  };
+}
+
 export function deleteEvent(id) {
   const request = axios.delete(`api/events/${id}`);
   return {
@@ -131,7 +147,6 @@ export function fetchCreatedEvents(userId) {
   };
 }
 
-
 /**
  *
  *    Fetches one specific event by event ID
@@ -190,8 +205,8 @@ export function selectEvent(event) {
   };
 }
 
-export function joinEvent(event){
-  const request = axios.post(`api/events/${event.data.id}/${event.user.id}`);
+export function joinEvent(data){
+  const request = axios.post(`api/events/${data.eventId}/${data.userId}`);
   return {
     type: JOIN_EVENT,
     payload: request

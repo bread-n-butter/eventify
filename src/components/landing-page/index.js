@@ -207,7 +207,7 @@ class Landing extends React.Component {
         <GoogleMapsSearchBar />
           
         <div className="container" style={{marginTop: '7%'}}>
-          <EventList events={this.state.filteredEvents} />
+          <EventList events={this.state.filteredEvents} select={this.props.selectEvent} />
         </div> 
         
         <AboutUs />

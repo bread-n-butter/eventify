@@ -37,7 +37,7 @@ export default class Details extends Component {
           <p style={ styles.p }>{ this.props.data.description } </p>
         </div>
         <div className="" style={ styles.map }>
-          <Map />
+          <Map lat={this.props.data.event_lat} long={this.props.data.event_long}/>
         </div>
         <div style={ styles.bar } className="center-align">
           { this.props.data.num_of_people_joined || 0 } Attendees / { this.props.data.total_number_of_people_req } Needed

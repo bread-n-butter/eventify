@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import RaisedButton from 'material-ui/lib/raised-button';
 import StripeCheckout from '../../helpers/stripeLoader';
 
-const styles = {
-  height: 50,
-  width: 100,
-  margin: 0
-};
-
 export default class StripeButton extends Component {
   onToken(token) {
     const join = this.props.join;

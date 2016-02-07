@@ -53,14 +53,20 @@ export default class Details extends Component {
           <ProgressBar data={ this.props.data } />
         </div>
         
-        <div>
-          <p style={ styles.p }>{ this.props.data.description } </p>
+        <div className='row'>
+          <div className='col s10 offset-s1'> 
+            
+            <div>
+              <p style={ styles.p }>{ this.props.data.description } </p>
+            </div>
+            
+            <div>
+              Price: ${ this.props.data.price_per_person }
+            </div>
+          
+          </div>
         </div>
         
-        
-        <div className="right-align">
-          Price: ${ this.props.data.price_per_person }
-        </div>
       </div>
     );
   }

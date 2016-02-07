@@ -12,6 +12,7 @@ import React from 'react';
 import EventList from './FeatEvents';
 import BannerVideo from './BannerVideo';
 import GoogleMapsSearchBar from '../searchbar/react-geosuggest/Geosuggest';
+import AboutUs from '../about-us/AboutUs'
 
 //Redux Connectors
 import { connect } from 'react-redux';
@@ -207,12 +208,9 @@ class Landing extends React.Component {
           
         <div className="container" style={{marginTop: '7%'}}>
           <EventList events={this.state.filteredEvents} />
-        </div>
+        </div> 
         
-        <div className="center-align">
-          <p>HOW IT WORKS</p>
-          <p>Post an event for others to join, setting a per-person price.</p>
-        </div>
+        <AboutUs />
         
       </div>
     );

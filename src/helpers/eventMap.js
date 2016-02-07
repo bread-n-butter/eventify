@@ -9,7 +9,7 @@ export default class Map extends Component {
         containerElement={ <div style={{height: '100%'}} /> }
         googleMapElement={
           <GoogleMap
-            defaultZoom={11}
+            defaultZoom={12}
             defaultCenter={{lat: this.props.lat, lng: this.props.long}} >
             <Marker position={{lat: this.props.lat, lng: this.props.long}} />
           </GoogleMap>

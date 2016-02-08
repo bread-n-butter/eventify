@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import RaisedButton from 'material-ui/lib/raised-button';
 import StripeCheckout from './payment';
+import FlatButton from 'material-ui/lib/flat-button';
 
 const styles = {
   button: {
@@ -46,20 +47,17 @@ export default class Buttons extends Component {
     if(this.props.user.id === this.props.data.creator){
       return (
         <div>
-          <RaisedButton
-            label="Delete"
-            style={ styles.button }
-            onClick={ this.delete.bind(this) }
-          />
-          <RaisedButton primary={ true }
+          <FlatButton 
             label="edit"
-            style={ styles.button }
             onClick={ this.edit.bind(this) }
           />
-          <RaisedButton secondary={ true }
+          <FlatButton 
             label="Back"
-            style={ styles.button }
             onClick={ this.goBack.bind(this) }
+          />
+          <FlatButton
+            label="Delete"
+            onClick={ this.delete.bind(this) }
           />
         </div>
       );

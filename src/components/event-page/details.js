@@ -5,15 +5,11 @@ import Map from '../../helpers/eventMap';
 import Stripe from './payment';
 
 const styles = {
-  general: {
-    'fontFamily': 'GillSans, Calibri, Trebuchet, sans-serif'
-  },
   p: {
     marginTop: 0
   },
   map: {
-    height: 280,
-    width: 530
+    height: 280
   },
   bar: {
     marginTop: 10
@@ -44,22 +40,34 @@ export default class Details extends Component {
   render() {
     return (
       <div className="flow-text" style={styles.general}>
-        <div>
-          <p style={ styles.p }>{ this.props.data.description } </p>
-        </div>
-        <div className="" style={ styles.map }>
+      
+        <div className="" style={ styles.map } className='center-align'>
           <Map lat={this.props.data.event_lat} long={this.props.data.event_long}/>
         </div>
+      
         <div style={ styles.bar } className="center-align">
           { this.props.data.num_of_people_joined || 0 } Attendees / { this.props.data.total_number_of_people_req } Needed
         </div>
-        <div style={ styles.progress }>
-          <ProgressBar data={ this.props.data } />
+        
+        
+        <div className='row'>
+          <div className='col s10 offset-s1'> 
+            
+            <div style={ styles.progress }>
+              <ProgressBar data={ this.props.data } />
+            </div>
+          
+            <div>
+              <p style={ styles.p }>{ this.props.data.description } </p>
+            </div>
+            
+            <div>
+              Price: ${ this.props.data.price_per_person }
+            </div>
+          
+          </div>
         </div>
-        <Divider inset={ true } />
-        <div style={ styles.price } className="right-align">
-          Price ${ this.props.data.price_per_person }
-        </div>
+        
       </div>
     );
   }

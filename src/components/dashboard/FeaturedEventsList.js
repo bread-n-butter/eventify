@@ -8,6 +8,8 @@ import React, { Component, PropTypes } from 'react';
 //Components
 import LargeEventCards from './LargeEventCards';
 import Slider from 'material-ui/lib/slider';
+import MaterialUICard from '../landing-page/EventCard'
+
 import Helpers from '../../helpers/helpers';
 
 export default class FeaturedEventsList extends Component {
@@ -62,9 +64,10 @@ export default class FeaturedEventsList extends Component {
             return dist < this.state.radius;
           })
           .map((event, index) => (
-            <LargeEventCards key={index} event={event} onClick={this.handleClick.bind(this, event)}/>
+            <MaterialUICard key={index} event={event} onClick={this.handleClick.bind(this, event)} />
           ))}
       </div>
+      
     );
   }
 

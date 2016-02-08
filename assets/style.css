@@ -1,9 +1,14 @@
-html {
-  font-family: 'Open Sans', sans-serif;
-}
-
 body {
   background-color: #F8F8FA;
+}
+
+/* From AirBnB */
+*:before {
+  box-sizing: border-box;
+}
+
+*:after {
+  box-sizing: border-box;
 }
 
 /**
@@ -25,10 +30,17 @@ body {
 }
 
 .hero-header {
-  color: #53b3cb;
+  color: white;
   font-weight: 600;
   text-align: center;
 }
+
+.hero-header-sub {
+  color: white;
+  font-weight: 400;
+}
+
+
 
 
 /*

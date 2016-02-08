@@ -80,10 +80,10 @@ class Dashboard extends Component {
           <div className="col s4">
             <div>
               Events You've Joined
-              <JoinedEventsList select={this.props.selectEvent} data={ take(joinedEvents, 4) } />
+              <JoinedEventsList select={this.props.selectEvent} data={ take(joinedEvents, 10) } />
             </div>
             <div className="">Events You've Created
-              <CreatedEventsList select={this.props.selectEvent} data={ take(createdEvents, 4) } />
+              <CreatedEventsList select={this.props.selectEvent} data={ take(createdEvents, 10) } />
             </div>
           </div>
         </div>

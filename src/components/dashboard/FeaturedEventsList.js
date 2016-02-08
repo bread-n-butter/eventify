@@ -4,6 +4,9 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { fetchOneEvent } from '../../actions/';
 
 //Components
 import LargeEventCards from './LargeEventCards';
@@ -24,8 +27,9 @@ export default class FeaturedEventsList extends Component {
   }
 
   handleClick(event) {
-    this.props.select(event);
-    this.context.router.push('/event');
+    this.props.fetchOneEvent(event.id)
+      .then(() => { this.context.router.push('/event/' + event.id); });
+
   }
 
   updateRadius(value) {
@@ -71,3 +75,10 @@ export default class FeaturedEventsList extends Component {
   }
 
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ fetchOneEvent }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(FeaturedEventsList);
+

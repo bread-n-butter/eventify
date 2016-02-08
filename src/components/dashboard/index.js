@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { take } from 'lodash';
 
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent } from '../../actions/';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent } from '../../actions/';
 
 import Spinner from '../../helpers/spinner.js';
 
@@ -74,7 +74,7 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col s8">
             <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
-            <FeaturedEventsList select={this.props.selectEvent} radius={10000} data={ take(events, 15) } user={this.props.user} />
+            <FeaturedEventsList radius={10000} data={ take(events, 15) } user={this.props.user} />
           </div>
           <div className="col s4">
             <div>
@@ -93,7 +93,7 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent, updateUserLocation }, dispatch);
+  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, updateUserLocation }, dispatch);
 }
 
 function mapStateToProps(state) {

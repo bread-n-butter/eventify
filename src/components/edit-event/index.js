@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { auth, editEvent, updateEventLocation } from '../../actions/';
+import { auth, editEvent, updateEventLocation, fetchOneEvent } from '../../actions/';
 import { bindActionCreators } from 'redux';
 import Moment from 'moment';
 import EditEventForm from './EditEventForm';
@@ -32,7 +32,7 @@ class EditEventPage extends Component {
       .then(() => { this.context.router.push('/dashboard'); })
       .catch((err) => { console.log(err); });
   }
-  
+
   handleLocationSubmit(suggest) {
     this.props.updateEventLocation({
       lat: suggest.location.lat,
@@ -62,7 +62,7 @@ class EditEventPage extends Component {
         <EditEventForm
           eventDate={ event.event_date || new Date() } {...eventDetails}
           imageUrl={ event.image_url }
-          onSubmit={this.handleSubmit.bind(this)} 
+          onSubmit={this.handleSubmit.bind(this)}
           handleLocationSubmit={(s) => this.handleLocationSubmit(s)}
           placeholderSearchBar={this.props.selectedEvent.event_address_label}
         />
@@ -73,11 +73,12 @@ class EditEventPage extends Component {
 
 //Create a dispatcher out of 'createEvent' action item and then save it to this.props.createEvent
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({editEvent, updateEventLocation}, dispatch);
+  return bindActionCreators({editEvent, updateEventLocation, fetchOneEvent}, dispatch);
 }
 
 function mapStateToProps(state) {
   return {
+    event: state.events.event,
     isLoggedIn: state.events.isLoggedIn,
     imageUrl: state.events.imageUrl,
     eventDate: state.events.eventDate,

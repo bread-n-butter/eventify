@@ -22,6 +22,10 @@ export default function(state = INITIAL_STATE, action) {
   case FETCH_CREATED_EVENTS:
     return {...state, createdEvents: action.payload.data.data};
 
+  case FETCH_ONE_EVENT:
+    console.log(action.payload);
+    return {...state, event: action.payload.data.data};
+
   case UPLOAD_IMG:
     return {...state, imageUrl: action.payload};
 

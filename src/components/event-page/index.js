@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+<<<<<<< HEAD
 import { joinEvent, deleteEvent, payForEvent } from '../../actions/';
+=======
+import { joinEvent, deleteEvent, fetchOneEvent } from '../../actions/';
+>>>>>>> Refactored event detail page to make API call for event information.
 
 import Pic from './pic';
 import Title from './title';
@@ -20,42 +24,45 @@ import CardText from 'material-ui/lib/card/card-text';
 
 class Event extends Component {
 
+  constructor(props) {
+    super(props);
+    this.props.fetchOneEvent(this.props.params.id).then(() => { console.log(this.props); });
+  }
+
   render() {
-    
-    const event = this.props.selectedEvent;
-    
-    console.log('event is ', event);
-    
-    return ( 
+
+    const event = this.props.event;
+
+    return (
       <div className="container">
-      
+
         <div className='row'>
-        
+
           <div className='col m6 s12'>
-          
+
             <Card>
-              <CardHeader 
+              <CardHeader
                 title={event.event_name}
                 subtitle={'@ ' + event.event_address_label}/>
               <CardMedia>
                 <img src={event.image_url} />
               </CardMedia>
             </Card>
-            
+
           </div>
-      
+
           <div className='col m6 s12'>
-        
+
             <Card>
               <CardText>
-                <Details data={ this.props.selectedEvent } />
+                <Details data={ this.props.event } />
               </CardText>
               <CardActions>
 
-                { this.props.user.isLoggedIn ? 
+                { this.props.user.isLoggedIn ?
                 <Buttons
                   joinEvent={ this.props.joinEvent }
-                  data={ this.props.selectedEvent }
+                  data={ this.props.event }
                   user={ this.props.user }
                   joined={ this.props.joined }
                   delete={ this.props.deleteEvent }
@@ -63,25 +70,26 @@ class Event extends Component {
                 /> : <div>Please Sign in above to Join this event!</div>}
               </CardActions>
             </Card>
-          
+
           </div>
-        
+
         </div>
-        
+
       </div>
     );
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ joinEvent, deleteEvent, payForEvent }, dispatch);
+  return bindActionCreators({ joinEvent, deleteEvent, payForEvent, fetchOneEvent }, dispatch);
 }
 
 function mapStateToProps(state) {
   return {
+    event: state.events.event,
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
-    selectedEvent: state.events.selectedEvent,
+    // selectedEvent: state.events.selectedEvent,
     joined: state.events.joinedEvents,
     user: state.user,
     pay: payForEvent

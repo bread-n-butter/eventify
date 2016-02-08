@@ -26,9 +26,10 @@ class EventCard extends React.Component {
     const event = this.props.event;
     return (
       <div className="col s12 m6 l4 feat-cards">
-        <Card style={{height: '620px'}}>
+        <Card style={{height: '550px'}}>
           <CardMedia>
-            <img src={event.image_url} onClick={(e) => {e.preventDefault(); this.props.onClick();}}/>
+            <div style={{height: '200px', backgroundSize: 'cover', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundImage: 'url("' + event.image_url + '")' }} onClick={(e) => {e.preventDefault(); this.props.onClick();}}>
+            </div>
           </CardMedia>
           <CardTitle 
             className='truncate'

@@ -18,6 +18,6 @@ export default (
      <Route path="dashboard" component={Dashboard} />
      <Route path="create" component={CreateEvent} />
      <Route path="event/:id" component={Event} />
-     <Route path="edit" component={EditEvent} />
+     <Route path="edit/:id" component={EditEvent} />
   </Route>
 );

@@ -33,6 +33,9 @@ class Event extends Component {
 
     const event = this.props.event;
 
+    if (!this.props.event) {
+      return <div>Loading...</div>;
+    }
     return (
       <div className="container">
 

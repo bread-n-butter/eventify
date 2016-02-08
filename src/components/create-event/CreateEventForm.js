@@ -81,8 +81,8 @@ class CreateEventForm extends Component {
   validationStyles(isValid) {
     if(isValid) {
       return {
-        'borderBottom': '1px solid #42a5f5',
-        'boxShadow': '0 1px 0 0 #42a5f5'
+        'borderBottom': '1px solid rgb(83, 179, 203)',
+        'boxShadow': '0 1px 0 0 rgb(83, 179, 203)'
       };
     } else {
       return {

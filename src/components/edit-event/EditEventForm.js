@@ -10,9 +10,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import EditImage from './EditImage';
-import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
+
+//Material UI components
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
+import TimePicker from 'material-ui/lib/time-picker/time-picker';
 
 const validate = values => {
   const errors = {};
@@ -70,6 +73,59 @@ class EditEventForm extends Component {
     return {
       'color' : 'red'
     };
+  }
+  
+  /**
+   *    
+   *    Handles Date & Time submission. 
+   *    
+   *    Handles 2 cases where user picks Date first and Time second, and vice versa. 
+   *    
+   *    @param  {Object} date  Date Object from Redux - State. Contains methods and props.
+   *    @param  {?} err  when the component errors
+   *    @param  {Date} event comes from Material-UI Component when finished selecting from picker.
+   *    
+   */
+  handleDateSubmit(date, event, dateOrTime) {
+    
+    console.log('date is ', date);
+    
+    //initializing value
+    if (date.value === '' || date.value === undefined) {
+      date.onChange(event);
+      
+    //control for different cases 
+    } else {
+      
+      switch(dateOrTime) {
+        
+      case 'date': 
+      
+        let year = event.getUTCDay();
+        let month = event.getMonth();
+        let day = event.getUTCDate();
+        
+        date.value.setFullYear(year);
+        date.value.setMonth(month);
+        date.value.setDate(day);
+        
+        date.onChange(date.value);
+        break;
+        
+      case 'time':   
+        
+        let hour = event.getHours();
+        let minutes = event.getMinutes();
+        
+        date.value.setHours(hour);
+        date.value.setMinutes(minutes);
+        
+        date.onChange(date.value);
+        break;
+        
+      }
+      
+    }
   }
 
   render() {
@@ -129,10 +185,19 @@ class EditEventForm extends Component {
               <DatePicker
                 defaultDate={new Date(this.props.eventDate)}
                 hintText="Click to pick date"
-                onChange={(x, event) => date.onChange(event)} 
                 autoOk={true}  
+                onChange={(err, event) => this.handleDateSubmit(date, event, 'date')}
               />
-                
+            </div>
+            
+            <div>
+              <label>Time</label>
+              <TimePicker 
+                defaultTime={new Date(this.props.eventDate)}
+                hintText='Select a Time'
+                autoOk={true}
+                onChange={(err, event) => this.handleDateSubmit(date, event, 'time')}
+              />
             </div>
             
             <GoogleMapsSearchBar initialValue={this.props.placeholderSearchBar} updateLocation={(e) =>handleLocationSubmit(e)}/>

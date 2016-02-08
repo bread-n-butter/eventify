@@ -35,7 +35,7 @@ class EventCard extends React.Component {
             title={event.event_name}
             subtitle={event.event_address_label || 'San Francisco, CA'} />
           <CardText>
-            { event.event_date ? <p>{ Moment(event.event_date).format('dddd, MMM Do YYYY') }</p> : <p>No date specified, please ask organizer</p> }
+            { event.event_date ? <p>{ Moment(event.event_date).format('dddd, MMM Do YYYY, hh:mm a') }</p> : <p>No date specified, please ask organizer</p> }
             <p>Attendees: {event.num_of_people_joined || 0} / {event.total_number_of_people_req}</p>
             <ProgressBar data={event} />
           </CardText>

@@ -36,7 +36,7 @@ class NavBar extends Component {
         <div className='navbar-fixed'>
           <nav  role="navigation">
             <div className="nav-wrapper">
-              <Link to="/" className="brand-logo">Eventify</Link>
+              <Link to="/dashboard" className="brand-logo">Eventify</Link>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                   <li>
                     <CreateEventBtn />

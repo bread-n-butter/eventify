@@ -36,15 +36,11 @@ class CreateEventPage extends Component {
   //Handles data that comes with form submission of 'CreateEventForm' Component below. Data is a Object with keys mapped to each input field.
   handleSubmit(data) {
     
-    console.log('HANDLE SUBMIT INSIDE OF ');
-    
     //Grab location info from Redux State
     data.lat = this.props.createEventLocation.lat;
     data.long = this.props.createEventLocation.long;
     data.addressLabel = this.props.createEventLocation.address;
     data.userId = this.props.userId;
-    
-    console.log('this.props.imageUrl is', this.props.imageUrl);
     
     //Upload default image src if none provided
     data.image_url = this.props.imageUrl === '' ? 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg' : this.props.imageUrl;

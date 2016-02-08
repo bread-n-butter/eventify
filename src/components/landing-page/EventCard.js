@@ -30,7 +30,8 @@ class EventCard extends React.Component {
           <CardMedia>
             <img src={event.image_url} onClick={(e) => {e.preventDefault(); this.props.onClick();}}/>
           </CardMedia>
-          <CardTitle
+          <CardTitle 
+            className='truncate'
             title={event.event_name}
             subtitle={event.event_address_label || 'San Francisco, CA'} />
           <CardText>

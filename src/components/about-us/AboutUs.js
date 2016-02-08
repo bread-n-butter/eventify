@@ -46,7 +46,6 @@ class AboutUs extends React.Component {
     return {
       paddingTop : '100px',
       paddingBottom : '40px',
-      textDecoration: 'underline overline',
       color: 'rgba(36, 63, 115, 0.91)'
     };
   }

@@ -11,8 +11,10 @@ class UploadFile extends Component {
     this.state = { rejected: false };
   }
   upload(files) {
-    const file = files[0];
+    let file = files[0];
+    
     this.props.uploadImage(file);
+    
     this.setState({
       rejected: false,
       file: file,

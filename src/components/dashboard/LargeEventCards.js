@@ -8,14 +8,14 @@ import React, { Component } from 'react';
 import ProgressBar from '../../helpers/progressBar';
 
 export default class LargeEventCards extends Component {
-  
+
   progressStyle() {
     const event = this.props.event;
     const percentageJoined = Math.floor(event.num_of_people_joined/event.total_number_of_people_req);
     return  {
       width : percentageJoined + '%'
     };
-  } 
+  }
 
   render() {
     const event = this.props.event;
@@ -40,7 +40,7 @@ export default class LargeEventCards extends Component {
           </div>
           <div className="card-action">
             <ProgressBar data={event} />
-            <div className='progress'> 
+            <div className='progress'>
               <div className='determinate' style={this.progressStyle()}></div>
             </div>
             <a onClick={(e) => {e.preventDefault(); this.props.onClick();}} href='#!'>More info</a>

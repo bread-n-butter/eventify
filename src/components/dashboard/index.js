@@ -28,7 +28,6 @@ class Dashboard extends Component {
       this.props.fetchEvents();
       this.props.fetchCreatedEvents(this.props.user.id);
       this.props.fetchJoinedEvents(this.props.user.id);
-    console.log(this.props.user)
       // this.props.getProfilePic()
     });
   }
@@ -74,15 +73,16 @@ class Dashboard extends Component {
         </div>
         <div className="row">
           <div className="col s8">
-            Featured events
-            <FeaturedEventsList select={this.props.selectEvent} radius={0} data={ take(events, 15) } user={this.props.user} />
+            <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
+            <FeaturedEventsList select={this.props.selectEvent} radius={10000} data={ take(events, 15) } user={this.props.user} />
           </div>
           <div className="col s4">
             <div>
-              Events You've Joined
+              <h5 style={{paddingTop: '1.2rem'}}>Events You've Joined</h5>
               <JoinedEventsList select={this.props.selectEvent} data={ take(joinedEvents, 10) } />
             </div>
-            <div className="">Events You've Created
+            <div className="">
+              <h5>Events You've Created</h5>
               <CreatedEventsList select={this.props.selectEvent} data={ take(createdEvents, 10) } />
             </div>
           </div>

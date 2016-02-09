@@ -6,6 +6,7 @@
 
 import axios from 'axios';
 
+export const UNJOIN_EVENT = 'UNJOIN_EVENT';
 export const SEND_STRIPE_TOKEN = 'SEND_STRIPE_TOKEN';
 export const DELETE_EVENT = 'DELETE_EVENT';
 export const FETCH_EVENTS = 'FETCH_EVENTS';
@@ -31,14 +32,16 @@ export const GET_PROFILE_PIC = 'GET_PROFILE_PIC';
  *    @returns [Object] action that feeds into the reducer function
  */
 
+export function unjoinEvent(data){
+  const request = axios.delete(`api/events/${data.eventId}/${data.userId}`);
+  return {
+    type: UNJOIN_EVENT,
+    payload: request
+  };
+}
+
 export function payForEvent(token) {
-  const request = axios.post(`api/payments/`, token)
-                       .then(function(result) {
-                         return result;
-                       })
-                       .catch(function(err) {
-                         console.log(err);
-                       });
+  const request = axios.post(`api/payments/`, token);
   return {
     type: SEND_STRIPE_TOKEN,
     payload: request

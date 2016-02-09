@@ -1,31 +1,3 @@
-# Project Name
-
-> Pithy project description
-
-## Team
-
-  - __Product Owner__: Delphine Foo-Matkin
-  - __Scrum Master__: Kristen Haydel
-  - __Development Team Members__: Vincent Jo, Oleg Umarov
-
-## Table of Contents
-
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
-
-## Usage
-
-> Some usage instructions
-
-## Requirements
-
-- Node 0.12.9.x
-- MySQL 5.7.10.x Homebrew
 # Eventify
 
 Crowdfund an event with friends or strangers!
@@ -62,9 +34,7 @@ Users can view existing events without having to register. In order to join an e
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
 npm install
-bower install
 ```
 
 
@@ -77,6 +47,7 @@ Make sure you have [Node](https://nodejs.org/en/) installed, and then from withi
 ```sh
 npm install
 ```
+
 This will handle both client and server-side dependencies as outlined in [package.json](package.json).
 ### Contributing
 

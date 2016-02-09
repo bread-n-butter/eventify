@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ProgressBar from '../../helpers/progressBar';
 import Map from '../../helpers/eventMap';
-import Stripe from './payment';
 
 const styles = {
   p: {

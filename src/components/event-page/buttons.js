@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import RaisedButton from 'material-ui/lib/raised-button';
 import StripeCheckout from './payment';
 import FlatButton from 'material-ui/lib/flat-button';
 
@@ -37,6 +36,16 @@ export default class Buttons extends Component {
     this.context.router.goBack();
   }
 
+  unjoin() {
+    const data = {
+      userId: this.props.user.id,
+      eventId: this.props.data.id
+    };
+
+    this.props.unjoinEvent(data);
+    this.context.router.goBack();
+  }
+
   edit() {
     this.context.router.push('/edit/' + this.props.data.id);
   }
@@ -47,11 +56,11 @@ export default class Buttons extends Component {
     if(this.props.user.id === this.props.data.creator){
       return (
         <div>
-          <FlatButton 
+          <FlatButton
             label="edit"
             onClick={ this.edit.bind(this) }
           />
-          <FlatButton 
+          <FlatButton
             label="Back"
             onClick={ this.goBack.bind(this) }
           />
@@ -68,7 +77,7 @@ export default class Buttons extends Component {
         <div>
           <FlatButton primary={ true }
             label="un-join"
-            onClick={this.goBack.bind(this)}
+            onClick={this.unjoin.bind(this)}
           />
           <FlatButton secondary={ true }
             label="Back"

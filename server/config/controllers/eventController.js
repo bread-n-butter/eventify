@@ -138,6 +138,7 @@ module.exports = {
 
   unjoinEvent: function(req, res){
     var data = req.body;
+    console.log(data);
     EventUser
     .where({event_id: data.eventId, user_id: data.userId})
     .fetch({require: true})

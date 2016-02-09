@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 //fb share button
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 
-import { joinEvent, deleteEvent, payForEvent, fetchOneEvent  } from '../../actions/';
+import { joinEvent, deleteEvent, payForEvent, fetchOneEvent, unjoinEvent  } from '../../actions/';
 
 import Details from './details';
 import Buttons from './buttons';
@@ -81,6 +81,7 @@ class Event extends Component {
                   user={ this.props.user }
                   joined={ this.props.joined }
                   delete={ this.props.deleteEvent }
+                  unjoinEvent={ this.props.unjoinEvent }
                   pay={ this.props.payForEvent } />
                 : <div>Please Sign in above to Join this event!</div>}
 
@@ -98,7 +99,7 @@ class Event extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ joinEvent, deleteEvent, payForEvent, fetchOneEvent }, dispatch);
+  return bindActionCreators({ joinEvent, deleteEvent, payForEvent, fetchOneEvent, unjoinEvent }, dispatch);
 }
 
 function mapStateToProps(state) {

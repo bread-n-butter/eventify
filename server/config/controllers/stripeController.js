@@ -12,8 +12,6 @@ module.exports = {
     var amount = req.body.event.price_per_person;
     var description = req.body.event.event_name;
 
-    console.log(stripeToken);
-
     stripe.charges.create({
       currency: 'usd',
       amount: amount + '00',

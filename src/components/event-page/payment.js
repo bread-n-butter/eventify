@@ -1,10 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
-import StripeCheckout from '../../helpers/stripeLoader';
-
 export default class StripeButton extends Component {
+
+
+  constructor(props) {
+    super(props);
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   onToken(token) {
     const join = this.props.join;
+    const back = this.context.router.push('/dashboard');
+
 
     const joinData = {
       userId: this.props.user.id,
@@ -15,10 +25,14 @@ export default class StripeButton extends Component {
       stripeToken: token,
       event: this.props.event
     };
+
     this.props.pay(res)
-    .then(function(){
-      join(joinData);
-    });
+      .then(function(){
+        join(joinData);
+      })
+      .then(function() {
+        back();
+      });
   }
 
   render() {

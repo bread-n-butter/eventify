@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import { fetchOneEvent } from '../../actions/';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 //Components
 import LargeEventCards from './LargeEventCards';
 import Slider from 'material-ui/lib/slider';
@@ -39,6 +41,7 @@ export default class FeaturedEventsList extends Component {
   render() {
     return (
       <div>
+      
         <div>
           <Slider
             description={`Filter events by distance: ${this.state.radius} miles away`}
@@ -49,26 +52,33 @@ export default class FeaturedEventsList extends Component {
             onChange={(e, value) => { this.updateRadius(value); }}
             style={{width: '75%', padding: '1.2rem 0.75rem 0' }} />
         </div>
-        {this.props.data.sort((a, b) => {
-          const bdist = Helpers.distance(b.event_lat, b.event_long, this.props.user.loc.lat, this.props.user.loc.long);
-          const adist =  Helpers.distance(a.event_lat, a.event_long, this.props.user.loc.lat, this.props.user.loc.long);
-          if (adist > bdist) {
-            return 1;
-          }
-          if (adist < bdist) {
-            return -1;
-          }
-          // a must be equal to b
-          return 0;
-        })
-          //calculate distance of each event
-          .filter((event) => {
-            let dist = Helpers.distance(event.event_lat, event.event_long, this.props.user.loc.lat, this.props.user.loc.long);
-            return dist < this.state.radius;
+        
+        
+        <ReactCSSTransitionGroup transitionName='dash-feat-cards' transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+        
+          {this.props.data.sort((a, b) => {
+            const bdist = Helpers.distance(b.event_lat, b.event_long, this.props.user.loc.lat, this.props.user.loc.long);
+            const adist =  Helpers.distance(a.event_lat, a.event_long, this.props.user.loc.lat, this.props.user.loc.long);
+            if (adist > bdist) {
+              return 1;
+            }
+            if (adist < bdist) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
           })
-          .map((event, index) => (
-            <MaterialUICard key={index} event={event} onClick={this.handleClick.bind(this, event)} />
-          ))}
+            //calculate distance of each event
+            .filter((event) => {
+              let dist = Helpers.distance(event.event_lat, event.event_long, this.props.user.loc.lat, this.props.user.loc.long);
+              return dist < this.state.radius;
+            })
+            .map((event, index) => (
+              <MaterialUICard key={index} event={event} onClick={this.handleClick.bind(this, event)} />
+            ))}
+            
+        </ReactCSSTransitionGroup>
+         
       </div>
 
     );

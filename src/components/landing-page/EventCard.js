@@ -67,7 +67,7 @@ class EventCard extends React.Component {
           
             { event.event_date ? <p>{ Moment(event.event_date).format('dddd, MMM Do YYYY, hh:mm a') }</p> : <p>No date specified, please ask organizer</p> }
             
-            <p> Descriptsion: {event.description.length > 50 ? event.description.slice(0, 50) + '...' : event.description } </p>
+            <p> Desc: {event.description.length > 50 ? event.description.slice(0, 50) + '...' : event.description } </p>
             
             <p>Attendees: {event.num_of_people_joined || 0} / {event.total_number_of_people_req}</p>
             

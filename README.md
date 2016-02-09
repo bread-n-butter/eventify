@@ -4,7 +4,7 @@ Crowdfund an event with friends or strangers!
 
 ## Team
 
-  - __Product Owner__: Delphine-Foo Matkin
+  - __Product Owner__: Delphine Foo-Matkin
   - __Scrum Master__: Kristen Haydel
   - __Development Team Members__: Vincent Jo, Oleg Umarov
 

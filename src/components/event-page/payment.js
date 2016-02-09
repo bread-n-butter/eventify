@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
-export default class StripeButton extends Component {
+import StripeCheckout from '../../helpers/stripeLoader';
 
+export default class StripeButton extends Component {
 
   constructor(props) {
     super(props);

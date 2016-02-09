@@ -22,17 +22,17 @@ export default function(state = INITIAL_STATE, action) {
   case FETCH_CREATED_EVENTS:
     return {...state, createdEvents: action.payload.data.data};
 
+  case FETCH_ONE_EVENT:
+    return {...state, event: action.payload.data.data};
+
   case UPLOAD_IMG:
     return {...state, imageUrl: action.payload};
 
   case SET_DATE:
     return {...state, eventDate: action.payload};
 
-  // case FETCH_ONE_EVENT:
-  //   return {...state, selectedEvent: action.payload.data.data};
-
-  case SELECT_EVENT:
-    return {...state, selectedEvent: action.payload};
+/*  case SELECT_EVENT:
+    return {...state, selectedEvent: action.payload};*/
 
   case UPDATE_EVENT_LOCATION:
     return {...state, createEventLocation: action.payload};

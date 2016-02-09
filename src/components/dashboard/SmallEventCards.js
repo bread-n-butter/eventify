@@ -5,8 +5,8 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router';
 import { fetchOneEvent } from '../../actions';
+import Moment from 'moment';
 
 class SmallEventCards extends Component {
 
@@ -29,12 +29,15 @@ class SmallEventCards extends Component {
           alt={'thumbnail for ' + event.event_name}
           className="circle"
           onClick={(e) => { e.preventDefault(); this.props.onClick(); }} />
-        <span
-          className="title"
-          onClick={(e) => { e.preventDefault(); this.props.onClick(); }}
-          style={{cursor: 'pointer'}}>
-          <b>{event.event_name}</b>
-        </span>
+        <ul>
+          <li
+            className="title"
+            onClick={(e) => { e.preventDefault(); this.props.onClick(); }}
+            style={{cursor: 'pointer', display: 'block'}}>
+            <b>{event.event_name}</b>
+          </li>
+          <li>{ Moment(event.event_date).format('MMMM Do YYYY') }</li>
+        </ul>
         { this.props.createdList ?
           <a
             onClick={(e) => {e.preventDefault(); this.handleEdit(event);}}

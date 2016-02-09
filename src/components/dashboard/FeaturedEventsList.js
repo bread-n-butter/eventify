@@ -4,11 +4,14 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+// import { fetchOneEvent } from '../../actions/';
 
 //Components
 import LargeEventCards from './LargeEventCards';
 import Slider from 'material-ui/lib/slider';
-import MaterialUICard from '../landing-page/EventCard'
+import MaterialUICard from '../landing-page/EventCard';
 
 import Helpers from '../../helpers/helpers';
 
@@ -24,8 +27,9 @@ export default class FeaturedEventsList extends Component {
   }
 
   handleClick(event) {
-    this.props.select(event);
-    this.context.router.push('/event');
+    this.props.select(event.id)
+      .then(() => { this.context.router.push('/event/' + event.id); });
+
   }
 
   updateRadius(value) {
@@ -37,14 +41,13 @@ export default class FeaturedEventsList extends Component {
       <div>
         <div>
           <Slider
-            description="Filter events by distance"
+            description={`Filter events by distance: ${this.state.radius} miles away`}
             defaultValue={100}
             step={5}
             min={5}
-            max={500}
+            max={10000}
             onChange={(e, value) => { this.updateRadius(value); }}
-            style={{width: '75%', padding: '0 0.75rem'}} />
-          <p>{this.state.radius} miles away</p>
+            style={{width: '75%', padding: '1.2rem 0.75rem 0' }} />
         </div>
         {this.props.data.sort((a, b) => {
           const bdist = Helpers.distance(b.event_lat, b.event_long, this.props.user.loc.lat, this.props.user.loc.long);
@@ -67,8 +70,15 @@ export default class FeaturedEventsList extends Component {
             <MaterialUICard key={index} event={event} onClick={this.handleClick.bind(this, event)} />
           ))}
       </div>
-      
+
     );
   }
 
 }
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ fetchOneEvent }, dispatch);
+// }
+
+// export default connect(null, mapDispatchToProps)(FeaturedEventsList);
+

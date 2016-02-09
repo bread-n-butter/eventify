@@ -38,7 +38,7 @@ export default class Buttons extends Component {
   }
 
   edit() {
-    this.context.router.push('/edit');
+    this.context.router.push('/edit/' + this.props.data.id);
   }
 
   render() {

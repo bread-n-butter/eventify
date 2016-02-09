@@ -17,7 +17,7 @@ export default (
      <IndexRoute component={Landing} />
      <Route path="dashboard" component={Dashboard} />
      <Route path="create" component={CreateEvent} />
-     <Route path="event" component={Event} />
-     <Route path="edit" component={EditEvent} />
+     <Route path="event/:id" component={Event} />
+     <Route path="edit/:id" component={EditEvent} />
   </Route>
 );

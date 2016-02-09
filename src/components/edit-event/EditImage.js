@@ -6,10 +6,6 @@ import { uploadImage } from '../../actions/';
 
 class EditImage extends Component {
 
-  componentWillMount() {
-    console.log(this.props);
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -90,10 +86,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({uploadImage}, dispatch);
 }
 
-function mapStateToProps(state) {
-  return {
 
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditImage);
+export default connect(null, mapDispatchToProps)(EditImage);

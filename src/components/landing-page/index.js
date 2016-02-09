@@ -12,12 +12,12 @@ import React from 'react';
 import EventList from './FeatEvents';
 import BannerVideo from './BannerVideo';
 import GoogleMapsSearchBar from '../searchbar/react-geosuggest/Geosuggest';
-import AboutUs from '../about-us/AboutUs'
+import AboutUs from '../about-us/AboutUs';
 
 //Redux Connectors
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent } from '../../actions/';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth } from '../../actions/';
 
 
 //Helpers for HTTP requests
@@ -79,7 +79,7 @@ class Landing extends React.Component {
     this.setState({filteredEvents: updatedList});
     this.render();
   }
-  
+
   containerStyle() {
     return {
       height : '600px',
@@ -90,7 +90,7 @@ class Landing extends React.Component {
       'WebkitFontSmoothing': 'antialiased'
     };
   }
-  
+
   videoContStyle() {
     return {
       bottom : '0',
@@ -103,7 +103,7 @@ class Landing extends React.Component {
       display: 'block'
     };
   }
-  
+
   contentContStyle() {
     return {
       height : '550px',
@@ -115,13 +115,13 @@ class Landing extends React.Component {
       paddingLeft: '25px',
       paddingRight: '25px',
       marginLeft: 'auto',
-      marginRight: 'auto', 
+      marginRight: 'auto',
       textAlign: 'center',
       boxSizing: 'border-box',
       display: 'block'
     };
   }
-  
+
   welcomeContStyle() {
     return {
       width : '100%',
@@ -131,14 +131,14 @@ class Landing extends React.Component {
       textAlign: 'center'
     };
   }
-  
+
   welcomeSignStyle() {
     return {
       verticalAlign : 'middle',
       display: 'table-cell'
     };
   }
-  
+
   heroFooterStyle() {
     return {
       bottom: '0',
@@ -150,7 +150,7 @@ class Landing extends React.Component {
       textAlign: 'center'
     };
   }
-  
+
   arrowStyle() {
     return {
       strokeWidth : '3'
@@ -164,54 +164,54 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
-      
+
         <div className="row">
-        
+
           <div style={this.containerStyle()} className='hero' >
-          
-          
+
+
             <div className='hero__background' style={this.videoContStyle()}>
-              
+
               <BannerVideo />
-              
+
             </div>
 
-            
+
             <div style={this.contentContStyle()} className='hero__content page-container-full'>
-              
+
               <div style={this.welcomeContStyle()} className='va-container' >
-                
+
                 <div style={this.welcomeSignStyle()} className='va-middle' >
-                  
+
                   <h1 className="hero-header" >YOUR EVENTS, CROWDFUNDED</h1>
                   <h4 className="hero-header-sub" >Browse upcoming events near you</h4>
-                  
+
                 </div>
-                
+
               </div>
-              
+
               <div style={this.heroFooterStyle()} className='hero__content-footer' >
-                
+
                 <svg width="70" height="55" viewBox="-2.5 -5 75 60" preserveAspectRatio="none">
                   <path style={this.arrowStyle()} strokeWidth='6' d="M0,0 l35,50 l35,-50" fill="none" stroke="white" strokeLinecap="round" />
                 </svg>
-                
+
               </div>
-              
+
             </div>
-            
+
           </div>
-        
+
         </div>
-        
+
         <GoogleMapsSearchBar />
-          
+
         <div className="container" style={{marginTop: '7%'}}>
-          <EventList events={this.state.filteredEvents} select={this.props.selectEvent} />
-        </div> 
-        
+          <EventList events={this.state.filteredEvents} />
+        </div>
+
         <AboutUs />
-        
+
       </div>
     );
   }
@@ -219,7 +219,7 @@ class Landing extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, fetchOneEvent, updateUserLocation }, dispatch);
+  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, updateUserLocation }, dispatch);
 }
 
 function mapStateToProps(state) {

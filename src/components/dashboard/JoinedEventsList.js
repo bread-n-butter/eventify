@@ -15,8 +15,8 @@ export default class JoinedEventsList extends Component {
   };
 
   handleClick(event) {
-    this.props.select(event);
-    this.context.router.push('/event');
+    this.props.select(event.id);
+    this.context.router.push('/event/' + event.id);
   }
 
   render() {

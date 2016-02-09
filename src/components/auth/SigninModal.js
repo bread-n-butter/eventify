@@ -37,7 +37,7 @@ class SigninModal extends React.Component {
   }
 
   render() {
-    const actions = [
+    /*const actions = [
       <FlatButton
         label="Log In"
         primary={true}
@@ -46,7 +46,7 @@ class SigninModal extends React.Component {
         label="Cancel"
         secondary={true}
         onClick={() => this.handleClose()} />
-    ];
+    ];*/
 
     return (
       <div>
@@ -56,15 +56,14 @@ class SigninModal extends React.Component {
           style = {{color: '#53b3cb'}} />
         <Dialog
           title = "Eventify"
-          actions = {actions}
           modal = {false}
           open = {this.state.open}
           contentStyle = {customContentStyle}
           titleStyle = {titleStyle}
           onRequestClose={this.handleClose}>
           <LoginFBBtn />
-          OR
-          <SigninForm />
+          {/*OR
+          <SigninForm />*/}
         </Dialog>
       </div>
     );

@@ -18,7 +18,7 @@ export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
 export const UPLOAD_IMG = 'UPLOAD_IMG';
 export const SET_DATE = 'SET_DATE';
 export const REJECT_FILE = 'REJECT_FILE';
-export const SELECT_EVENT = 'SELECT_EVENT';
+// export const SELECT_EVENT = 'SELECT_EVENT';
 export const JOIN_EVENT = 'JOIN_EVENT';
 export const EDIT_EVENT = 'EDIT_EVENT';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
@@ -82,11 +82,11 @@ export function auth() {
 }
 
 export function getProfilePic(userFBid) {
-  const request = axios.get('graph.facebook.com/v2.5/' + userFBid + '/picture')
+  const request = axios.get('graph.facebook.com/v2.5/' + userFBid + '/picture');
   return {
     type: GET_PROFILE_PIC,
     payload: request
-  }
+  };
 }
 
 export function uploadImage(file) {
@@ -198,12 +198,12 @@ export function editEvent(id, data) {
   };
 }
 
-export function selectEvent(event) {
+/*export function selectEvent(event) {
   return {
     type: SELECT_EVENT,
     payload: event
   };
-}
+}*/
 
 export function joinEvent(data){
   const request = axios.post(`api/events/${data.eventId}/${data.userId}`);

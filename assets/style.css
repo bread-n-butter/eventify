@@ -185,11 +185,31 @@ input {
   padding-top: 50px;
 }
 
-/* *    Dashboard Large Cards
- *
+/**
+ *    
+ *    Dashboard Large Cards
+ *    
  */
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
   color: #db436c;
+}
+
+.dash-feat-cards-enter {
+  opacity: 0.01;
+}
+
+.dash-feat-cards-enter.dash-feat-cards-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.dash-feat-cards-leave {
+  opacity: 1;
+}
+
+.dash-feat-cards-leave.dash-feat-cards-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
 
 

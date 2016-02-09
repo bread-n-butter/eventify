@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RaisedButton from 'material-ui/lib/raised-button';
+import FlatButton from 'material-ui/lib/flat-button';
 import StripeCheckout from '../../helpers/stripeLoader';
 
 export default class StripeButton extends Component {
@@ -43,7 +43,7 @@ export default class StripeButton extends Component {
           bitcoin={true}
           allowRememberMe={true}
           token={this.onToken.bind(this)}>
-          <RaisedButton primary={ true }
+          <FlatButton primary={ true }
             label="Join"
           />
         </StripeCheckout>

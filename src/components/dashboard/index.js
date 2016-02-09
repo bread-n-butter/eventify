@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { take } from 'lodash';
 
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent } from '../../actions/';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, fetchOneEvent, auth, selectEvent } from '../../actions/';
 
 import Spinner from '../../helpers/spinner.js';
 
@@ -74,16 +74,16 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col s8">
             <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
-            <FeaturedEventsList radius={10000} data={ take(events, 15) } user={this.props.user} />
+            <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={ take(events, 15) } user={this.props.user} />
           </div>
           <div className="col s4">
             <div>
               <h5 style={{paddingTop: '1.2rem'}}>Events You've Joined</h5>
-              <JoinedEventsList select={this.props.selectEvent} data={ take(joinedEvents, 10) } />
+              <JoinedEventsList select={this.props.fetchOneEvent} data={ take(joinedEvents, 10) } />
             </div>
             <div className="">
               <h5>Events You've Created</h5>
-              <CreatedEventsList select={this.props.selectEvent} data={ take(createdEvents, 10) } />
+              <CreatedEventsList select={this.props.fetchOneEvent} data={ take(createdEvents, 10) } />
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth, selectEvent, updateUserLocation }, dispatch);
+  return bindActionCreators({ fetchCreatedEvents, fetchOneEvent, fetchJoinedEvents, fetchEvents, auth, selectEvent, updateUserLocation }, dispatch);
 }
 
 function mapStateToProps(state) {

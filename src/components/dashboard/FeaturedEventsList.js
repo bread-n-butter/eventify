@@ -6,12 +6,12 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchOneEvent } from '../../actions/';
+// import { fetchOneEvent } from '../../actions/';
 
 //Components
 import LargeEventCards from './LargeEventCards';
 import Slider from 'material-ui/lib/slider';
-import MaterialUICard from '../landing-page/EventCard'
+import MaterialUICard from '../landing-page/EventCard';
 
 import Helpers from '../../helpers/helpers';
 
@@ -27,7 +27,7 @@ export default class FeaturedEventsList extends Component {
   }
 
   handleClick(event) {
-    this.props.fetchOneEvent(event.id)
+    this.props.select(event.id)
       .then(() => { this.context.router.push('/event/' + event.id); });
 
   }
@@ -70,15 +70,15 @@ export default class FeaturedEventsList extends Component {
             <MaterialUICard key={index} event={event} onClick={this.handleClick.bind(this, event)} />
           ))}
       </div>
-      
+
     );
   }
 
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchOneEvent }, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ fetchOneEvent }, dispatch);
+// }
 
-export default connect(null, mapDispatchToProps)(FeaturedEventsList);
+// export default connect(null, mapDispatchToProps)(FeaturedEventsList);
 

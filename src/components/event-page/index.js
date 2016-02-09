@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-<<<<<<< HEAD
-import { joinEvent, deleteEvent, payForEvent } from '../../actions/';
-=======
-import { joinEvent, deleteEvent, fetchOneEvent } from '../../actions/';
->>>>>>> Refactored event detail page to make API call for event information.
+//fb share button
+import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 
-import Pic from './pic';
-import Title from './title';
-import Author from './author';
+import { joinEvent, deleteEvent, payForEvent, fetchOneEvent  } from '../../actions/';
+
 import Details from './details';
 import Buttons from './buttons';
 
@@ -18,9 +14,11 @@ import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardMedia from 'material-ui/lib/card/card-media';
-import CardTitle from 'material-ui/lib/card/card-title';
-import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
+
+const {  FacebookShareButton } = ShareButtons;
+const { FacebookShareCount } = ShareCounts;
+const FacebookIcon = generateShareIcon('facebook');
 
 class Event extends Component {
 
@@ -31,6 +29,8 @@ class Event extends Component {
 
   render() {
 
+    const url = 'https://breadnbutter.herokuapp/event/' + this.props.params.id;
+    const title = 'Eventify';
     const event = this.props.event;
 
     if (!this.props.event) {
@@ -59,6 +59,18 @@ class Event extends Component {
             <Card>
               <CardText>
                 <Details data={ this.props.event } />
+                <div className="valign-wrapper">
+                  <FacebookShareButton
+                    url={url}
+                    title={title}
+                    style={{display: 'inline', margin: '0 0.5rem 0 2rem'}}>
+                    <FacebookIcon
+                      size={32}
+                      round={true} />
+                  </FacebookShareButton>
+                  <span className="valign">Share this event on Facebook</span>
+                </div>
+
               </CardText>
               <CardActions>
 
@@ -69,9 +81,11 @@ class Event extends Component {
                   user={ this.props.user }
                   joined={ this.props.joined }
                   delete={ this.props.deleteEvent }
-                  pay={ this.props.payForEvent }
-                /> : <div>Please Sign in above to Join this event!</div>}
+                  pay={ this.props.payForEvent } />
+                : <div>Please Sign in above to Join this event!</div>}
+
               </CardActions>
+
             </Card>
 
           </div>
@@ -92,7 +106,6 @@ function mapStateToProps(state) {
     event: state.events.event,
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
-    // selectedEvent: state.events.selectedEvent,
     joined: state.events.joinedEvents,
     user: state.user,
     pay: payForEvent

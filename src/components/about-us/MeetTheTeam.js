@@ -71,7 +71,7 @@ class MeetTheTeam extends React.Component {
           
           <div className='row center-align'>
             
-            <div className='col s3' style={this.teamStyle()}>
+            <div className='col s12 l3' style={this.teamStyle()}>
             
               <img src='https://avatars3.githubusercontent.com/u/13400593?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
               
@@ -81,7 +81,7 @@ class MeetTheTeam extends React.Component {
             
             </div>
             
-            <div className='col s3' style={this.teamStyle()}>
+            <div className='col s12 l3' style={this.teamStyle()}>
             
               <img src='https://avatars3.githubusercontent.com/u/9803285?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
               
@@ -91,7 +91,7 @@ class MeetTheTeam extends React.Component {
             
             </div>
             
-            <div className='col s3' style={this.teamStyle()}>
+            <div className='col s12 l3' style={this.teamStyle()}>
             
               <img src='https://avatars3.githubusercontent.com/u/13316418?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
               
@@ -101,7 +101,7 @@ class MeetTheTeam extends React.Component {
             
             </div>
             
-            <div className='col s3' style={this.teamStyle()}>
+            <div className='col s12 l3' style={this.teamStyle()}>
             
               <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
               

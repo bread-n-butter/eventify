@@ -138,7 +138,7 @@ class EditEventForm extends Component {
         date,
         lat,
         long,
-        addressLabel,
+        addressLabel
       }, handleSubmit, handleLocationSubmit} = this.props;
 
     return (
@@ -148,6 +148,7 @@ class EditEventForm extends Component {
         <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
 
           <form onSubmit={handleSubmit}>
+          
             <EditImage imageUrl={this.props.imageUrl} />
 
             <div>

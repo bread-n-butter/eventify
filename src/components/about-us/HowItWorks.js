@@ -30,7 +30,9 @@ class HowItWorks extends React.Component {
   
   imageStyle() {
     return {
-      borderRadius: '7px'
+      borderRadius: '7px',
+      paddingBottom: '20px',
+      paddingTop: '10px'
     };
   }
   
@@ -39,7 +41,7 @@ class HowItWorks extends React.Component {
       fontSize: '3rem',
       fontWeight: '300',
       fontStyle: 'Thin',
-      paddingBottom: '0',
+      paddingBottom: '10px',
       marginBottom: '0',
       marginTop: '5px',
       color: '#454545'
@@ -73,71 +75,57 @@ class HowItWorks extends React.Component {
             
             <div className='col l12' style={this.teamStyle()}>
             
-                <img src='http://3.bp.blogspot.com/-7k-ckVDOyWU/VF15TBdgewI/AAAAAAAAA7Y/AVjWp-7KC1c/s1600/Light_Bulb_clip_art_medium.png' className='responsive-img' style={{...this.imageStyle}} />
-                
-                <h2 style={this.nameStyle()}> 1 </h2>
-                
-                <h5 style={this.subNameStyle()}> Have an awesome idea for an event! </h5>
+                <h2 style={this.nameStyle()}> 1. Have an awesome idea for an event! </h2>
+            
+                <img src='http://3.bp.blogspot.com/-7k-ckVDOyWU/VF15TBdgewI/AAAAAAAAA7Y/AVjWp-7KC1c/s1600/Light_Bulb_clip_art_medium.png' className='responsive-img' style={this.imageStyle()} />
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
+              <h2 style={this.nameStyle()}> 2. Sign Up with Facebook! </h2>
+              
               <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.01.38 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
               
-              <h2 style={this.nameStyle()}> 2 </h2>
+            </div>
+            
+            <div className='col l12' style={this.teamStyle()}>
+            
+              <h2 style={this.nameStyle()}> 3. Create an event! </h2>
               
-              <h5 style={this.subNameStyle()}> Sign Up with Facebook! </h5>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.26.29 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 3.58.47 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
+              <h2 style={this.nameStyle()}> 4. Filter By Location! </h2>
               
-              <h2 style={this.nameStyle()}> 2 </h2>
-              
-              <h5 style={this.subNameStyle()}> Create an event! </h5>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.42.10 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
+              <h2 style={this.nameStyle()}> 5. Join an event! </h2>
+              
               <img src='https://avatars3.githubusercontent.com/u/13316418?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
               
-              <h2 style={this.nameStyle()}> 3 </h2>
-              
-              <h5 style={this.subNameStyle()}> Filter By Location! </h5>
-            
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <img src='https://avatars3.githubusercontent.com/u/13316418?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              <h2 style={this.nameStyle()}> 6. Pay for an event  </h2>
               
-              <h2 style={this.nameStyle()}> 3 </h2>
-              
-              <h5 style={this.subNameStyle()}> Join an event! </h5>
-            
-            </div>
-            
-            <div className='col l12' style={this.teamStyle()}>
-            
               <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
-              
-              <h2 style={this.nameStyle()}> 4 </h2>
-              
-              <h5 style={this.subNameStyle()}> Pay for an event </h5>
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
+              <h2 style={this.nameStyle()}> 7. Go and Enjoy! </h2>
+              
               <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
-              
-              <h2 style={this.nameStyle()}> 5 </h2>
-              
-              <h5 style={this.subNameStyle()}> Go and Enjoy! </h5>
             
             </div>
             

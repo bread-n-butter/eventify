@@ -14,6 +14,10 @@ import CreatedEventsList from './CreatedEventsList';
 
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
 
+//experimental
+import GoogleMapsWithSearchBox from './GoogleMapsWithSearchBox';
+//endof experimental
+
 class Dashboard extends Component {
 
   static contextTypes = {
@@ -66,7 +70,13 @@ class Dashboard extends Component {
       );
     }
     return (
+      
       <div className="dashboard">
+        
+        <div className='row' style={{height: '500px'}}>
+          <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events}/>
+        </div>
+        
         <div className="row">
           <GoogleMapsSearchBar
             updateLocation={(d) => this.handleLocationSubmit(d)} />

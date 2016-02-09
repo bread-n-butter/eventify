@@ -66,14 +66,12 @@ export default class Buttons extends Component {
     } else if(this.userEvent()) {
       return (
         <div>
-          <RaisedButton primary={ true }
+          <FlatButton primary={ true }
             label="un-join"
-            style={ styles.button }
             onClick={this.goBack.bind(this)}
           />
-          <RaisedButton secondary={ true }
+          <FlatButton secondary={ true }
             label="Back"
-            style={ styles.button }
             onClick={ this.goBack.bind(this) }
           />
         </div>
@@ -94,7 +92,7 @@ export default class Buttons extends Component {
         </div>
         <div className="col s5 push-s3">
 
-          <RaisedButton secondary={ true }
+          <FlatButton secondary={ true }
             label="Back"
             onClick={ this.goBack.bind(this) }
           />

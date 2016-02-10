@@ -54,7 +54,7 @@ export default class Buttons extends Component {
     // Created events
     if(this.props.user.id === this.props.data.creator){
       return (
-        <div>
+        <div style={{marginLeft: '1.3rem'}}>
           <FlatButton
             style={{color: '#db436c'}}
             label="edit"

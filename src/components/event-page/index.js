@@ -62,7 +62,7 @@ class Event extends Component {
                   <FacebookShareButton
                     url={url}
                     title={title}
-                    style={{display: 'inline', margin: '0 0.5rem 0 2rem'}}>
+                    style={{display: 'inline', margin: '0 0.5rem 0 2.5rem'}}>
                     <FacebookIcon
                       size={32}
                       round={true} />

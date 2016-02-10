@@ -93,7 +93,7 @@ class HowItWorks extends React.Component {
             
               <h2 style={this.nameStyle()}> 3. Create an event! </h2>
               
-              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.26.29 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.39.00 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
@@ -101,7 +101,7 @@ class HowItWorks extends React.Component {
             
               <h2 style={this.nameStyle()}> 4. Filter By Location! </h2>
               
-              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.42.10 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.38.27 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
@@ -109,7 +109,7 @@ class HowItWorks extends React.Component {
             
               <h2 style={this.nameStyle()}> 5. Join an event! </h2>
               
-              <img src='https://avatars3.githubusercontent.com/u/13316418?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.16.55 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
               
             </div>
             
@@ -117,15 +117,15 @@ class HowItWorks extends React.Component {
             
               <h2 style={this.nameStyle()}> 6. Pay for an event  </h2>
               
-              <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.16.34 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <h2 style={this.nameStyle()}> 7. Go and Enjoy! </h2>
+              <h2 style={this.nameStyle()}> 7. Share on Facebook for your friends to join! </h2>
               
-              <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.18.56 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             

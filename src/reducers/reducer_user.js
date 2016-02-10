@@ -1,4 +1,4 @@
-import { UPDATE_LOCATION, AUTH, LOGOUT } from '../actions/index';
+import { UPDATE_MAP_BOUNDS, UPDATE_LOCATION, AUTH, LOGOUT } from '../actions/index';
 
 const INITIAL_STATE = {isLoggedin: false, loc: {lat: 37.773972, long: -122.431297}};
 
@@ -27,6 +27,15 @@ export default function(state = INITIAL_STATE, action) {
         address: action.payload.address
       }
     };
+  
+  case UPDATE_MAP_BOUNDS:
+    return {
+      ...state,
+      bounds: {
+        miles: action.payload
+      }
+    };
+  
 
   default:
     return state;

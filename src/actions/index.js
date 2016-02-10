@@ -24,6 +24,7 @@ export const EDIT_EVENT = 'EDIT_EVENT';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
 export const UPDATE_EVENT_LOCATION = 'UPDATE_EVENT_LOCATION';
 export const GET_PROFILE_PIC = 'GET_PROFILE_PIC';
+export const UPDATE_MAP_BOUNDS = 'UPDATE_MAP_BOUNDS';
 
 /**
  *    Fetches all events from the backend
@@ -148,6 +149,13 @@ export function fetchCreatedEvents(userId) {
   };
 }
 
+
+export function updateBounds(milesRadius) {
+  return {
+    type: UPDATE_MAP_BOUNDS,
+    payload: milesRadius
+  };
+}
 /**
  *
  *    Fetches one specific event by event ID

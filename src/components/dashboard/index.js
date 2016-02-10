@@ -73,9 +73,6 @@ class Dashboard extends Component {
       
       <div className="dashboard">
         
-        <div className='row' style={{height: '500px'}}>
-          <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events}/>
-        </div>
         
         <div className="row">
           <GoogleMapsSearchBar
@@ -87,6 +84,9 @@ class Dashboard extends Component {
             <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={ take(events, 15) } user={this.props.user} />
           </div>
           <div className="col s4">
+              <div className='row' style={{height: '400px'}}>
+                <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events}/>
+              </div>
             <div>
               <h5 style={{paddingTop: '1.2rem'}}>Events You've Joined</h5>
               <JoinedEventsList select={this.props.fetchOneEvent} data={ take(joinedEvents, 10) } />

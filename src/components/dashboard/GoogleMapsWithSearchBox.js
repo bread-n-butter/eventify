@@ -22,7 +22,7 @@ export default class GoogleMapsWithSearchBox extends Component {
     'outline': 'none',
     'padding': '0 12px',
     'textOverflow': 'ellipses',
-    'width': '400px'
+    'width': '50%'
   };
 
   static mapCenter = {
@@ -52,10 +52,15 @@ export default class GoogleMapsWithSearchBox extends Component {
   };
 
   handleBoundsChanged () {
+    
+    // console.log('this.refs.map.getBounds()', this.refs.map.getBounds());
+    // console.log('this.refs.map', this.refs.map);
+    
     this.setState({
       bounds: this.refs.map.getBounds(),
       center: this.refs.map.getCenter()
     });
+    
   }
 
   handlePlacesChanged () {
@@ -104,7 +109,26 @@ export default class GoogleMapsWithSearchBox extends Component {
   
   handleMarkerClick(event) {
     event.marker.showInfo = true;
+
     //rerender
+    // this.setState({
+    //   events: this.state.events.map((everyE) => {
+    //     if (everyE.id === event.id) {
+    //       return everyE;
+    //     }
+    //     return {
+    //       ...event,
+    //       marker: {
+    //         position: { 
+    //           lat: everyE.event_lat, 
+    //           lng: everyE.event_long 
+    //         },
+    //         showInfo: false 
+    //       }
+    //     };
+    //   })
+    // });
+    
     this.setState(this.state);
   }
   
@@ -117,24 +141,6 @@ export default class GoogleMapsWithSearchBox extends Component {
     console.log('inside of onClick');
     this.props.select(event.id)
       .then(() => { this.context.router.push('/event/' + event.id); });
-  }
-  
-  // <InfoWindow 
-  //   key={`${ref}_info_window`}
-  //   content={'Awesome!!!'}
-  //   onCloseclick={this.handleMarkerClose.bind(this, event)}
-  // />
-  
-  infoWindowContCreator(event) {
-    return (
-      <div>
-        <b>{event.event_name}</b> 
-        <br/>  
-        {event.event_date.slice(0, 10)}
-        <br/>
-        <a onClick={this.onClick}> More Info </a>
-      </div>
-    );
   }
   
   renderInfoWindow(ref, event) {

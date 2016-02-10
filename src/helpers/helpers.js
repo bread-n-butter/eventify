@@ -34,14 +34,14 @@ const Helpers = {
   },
 
   /*
-calculate distance between 2 places using their
-longitudes and latitudes
-    lat1, lon1 = Latitude and Longitude of point 1 (in decimal degrees)  :::
-    lat2, lon2 = Latitude and Longitude of point 2 (in decimal degrees)  :::
-    unit = the unit you desire for results                               :::
-           where: 'M' is statute miles (default)                         :::
-                  'K' is kilometers                                      :::
-                  'N' is nautical miles  
+   *       calculate distance between 2 places using their
+   *      longitudes and latitudes
+   *      lat1, lon1 = Latitude and Longitude of point 1 (in decimal degrees)  :::
+   *      lat2, lon2 = Latitude and Longitude of point 2 (in decimal degrees)  :::
+   *      unit = the unit you desire for results                               :::
+   *            where: 'M' is statute miles (default)                         :::
+   *                    'K' is kilometers                                      :::
+   *                    'N' is nautical miles  
 */
 
   distance(lat1, lon1, lat2, lon2, unit) {

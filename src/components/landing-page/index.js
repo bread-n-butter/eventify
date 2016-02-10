@@ -11,7 +11,7 @@ import React from 'react';
 //import Banner from './Banner';
 import EventList from './FeatEvents';
 import BannerVideo from './BannerVideo';
-import GoogleMapsSearchBar from '../searchbar/react-geosuggest/Geosuggest';
+import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
 import AboutUs from '../about-us/AboutUs';
 
 //Redux Connectors
@@ -32,7 +32,12 @@ class Landing extends React.Component {
       //filteredEvents is used for Search box filtering
       filteredEvents: [],
       //when user is logged in
-      isLoggedIn: false
+      isLoggedIn: false,
+      location: {
+        lat: 30,
+        long: -90,
+        address: 'New Orleans, LA'
+      }
     };
   }
 
@@ -46,6 +51,14 @@ class Landing extends React.Component {
    */
   componentDidMount() {
     this.init();
+  }
+
+  handleLocationSubmit(suggest) {
+    this.setState({ location: {
+      lat: suggest.location.lat,
+      long: suggest.location.lng,
+      address: suggest.label
+    }});
   }
 
   /**
@@ -162,6 +175,8 @@ class Landing extends React.Component {
    *
    */
   render() {
+    console.log('THIS WORKED', this.state.location);
+
     return (
       <div>
 
@@ -204,10 +219,9 @@ class Landing extends React.Component {
 
         </div>
 
-        <GoogleMapsSearchBar />
-
+        <GoogleMapsSearchBar updateLocation={(d) => this.handleLocationSubmit(d)}/>
         <div className="container" style={{marginTop: '7%'}}>
-          <EventList events={this.state.filteredEvents} />
+          <EventList events={this.state.filteredEvents} user={this.props.user}  location={this.state.location}/>
         </div>
 
         <AboutUs />

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import JoinedUsersList from './JoinedUsersList';
+
 //fb share button
 import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
 
-import { joinEvent, deleteEvent, payForEvent, fetchOneEvent, unjoinEvent  } from '../../actions/';
+import { joinEvent, deleteEvent, fetchJoinedUsers, payForEvent, fetchOneEvent, unjoinEvent  } from '../../actions/';
 
 import Details from './details';
 import Buttons from './buttons';
@@ -23,7 +25,8 @@ class Event extends Component {
 
   constructor(props) {
     super(props);
-    this.props.fetchOneEvent(this.props.params.id).then(() => { console.log(this.props); });
+    this.props.fetchOneEvent(this.props.params.id);
+    this.props.fetchJoinedUsers(this.props.params.id);
   }
 
   render() {
@@ -32,7 +35,7 @@ class Event extends Component {
     const title = 'Eventify';
     const event = this.props.event;
 
-    if (!this.props.event) {
+    if (!this.props.event || !this.props.joinedUsers) {
       return <div>Loading...</div>;
     }
     return (
@@ -50,7 +53,8 @@ class Event extends Component {
                 <img src={event.image_url} />
               </CardMedia>
             </Card>
-
+            <h5 style={{paddingLeft: '0.60rem'}}>Event Members</h5>
+            <JoinedUsersList data={this.props.joinedUsers} />
           </div>
 
           <div className='col m6 s12'>
@@ -98,7 +102,7 @@ class Event extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ joinEvent, deleteEvent, payForEvent, fetchOneEvent, unjoinEvent }, dispatch);
+  return bindActionCreators({ joinEvent, deleteEvent, fetchJoinedUsers, payForEvent, fetchOneEvent, unjoinEvent }, dispatch);
 }
 
 function mapStateToProps(state) {
@@ -107,6 +111,7 @@ function mapStateToProps(state) {
     events: state.events.all,
     isLoggedIn: state.events.isLoggedIn,
     joined: state.events.joinedEvents,
+    joinedUsers: state.events.joinedUsers,
     user: state.user,
     pay: payForEvent
   };

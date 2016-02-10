@@ -11,7 +11,7 @@ import React from 'react';
 //import Banner from './Banner';
 import EventList from './FeatEvents';
 import BannerVideo from './BannerVideo';
-import GoogleMapsSearchBar from '../searchbar/react-geosuggest/Geosuggest';
+import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
 import AboutUs from '../about-us/AboutUs';
 
 //Redux Connectors
@@ -54,11 +54,11 @@ class Landing extends React.Component {
   }
 
   handleLocationSubmit(suggest) {
-    this.state.location = {
+    this.setState({ location: {
       lat: suggest.location.lat,
       long: suggest.location.lng,
       address: suggest.label
-    };
+    }});
   }
 
   /**
@@ -219,8 +219,8 @@ class Landing extends React.Component {
 
         </div>
 
-        <GoogleMapsSearchBar onChange={(d) => this.handleLocationSubmit(d)}/>
-
+        <GoogleMapsSearchBar updateLocation={(d) => this.handleLocationSubmit(d)}/>
+        <button>Most Popular</button>
         <div className="container" style={{marginTop: '7%'}}>
           <EventList events={this.state.filteredEvents} user={this.props.user}  location={this.state.location}/>
         </div>

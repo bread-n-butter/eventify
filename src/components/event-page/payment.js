@@ -56,7 +56,8 @@ export default class StripeButton extends Component {
           bitcoin={true}
           allowRememberMe={true}
           token={this.onToken.bind(this)}>
-          <FlatButton primary={ true }
+          <FlatButton
+            style={{color: '#db436c'}}
             label="Join & Pay"
           />
         </StripeCheckout>

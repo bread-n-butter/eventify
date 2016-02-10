@@ -2,7 +2,6 @@ import { UNJOIN_EVENT, FETCH_EVENTS, FETCH_ONE_EVENT, CREATE_ONE_EVENT, UPLOAD_I
 
 const INITIAL_STATE = {
   all: [],
-  // selectedEvent: null,
   eventEdit: null
 };
 

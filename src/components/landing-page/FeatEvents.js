@@ -10,6 +10,8 @@ import { fetchOneEvent } from '../../actions/';
 
 import Card from './EventCard';
 
+import Helpers from '../../helpers/helpers';
+
 class FeatEvents extends React.Component {
 
   static contextTypes = {
@@ -22,10 +24,23 @@ class FeatEvents extends React.Component {
   }
 
   render() {
+    console.log('cant believe this worked', this.props.location);
     return (
       <div className="row">
         {this.props.events.sort((a, b) => (
           (b.num_of_people_joined - a.num_of_people_joined)))
+          .sort((a, b) => {
+            const bdist = Helpers.distance(b.event_lat, b.event_long, this.props.location.lat, this.props.location.long);
+            const adist =  Helpers.distance(a.event_lat, a.event_long, this.props.location.lat, this.props.location.long);
+            if (adist > bdist) {
+              return 1;
+            }
+            if (adist < bdist) {
+              return -1;
+            }
+            // a must be equal to b
+            return 0;
+          })
           .map( (event, index) => (
             <Card key={index} event={event} onClick={this.handleClkMoreInfo.bind(this, event)}/>
         ))}

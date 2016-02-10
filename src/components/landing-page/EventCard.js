@@ -70,10 +70,13 @@ class EventCard extends React.Component {
             <p> Desc: {event.description.length > 50 ? event.description.slice(0, 50) + '...' : event.description } </p>
             
             <p>Attendees: {event.num_of_people_joined || 0} / {event.total_number_of_people_req}</p>
-            
+
             <ProgressBar data={event} />
             
+            <div>This event is {Moment(event.event_date).fromNow()}</div>
+          
           </CardText>
+
           
           <CardActions>
             <FlatButton label='More info' onClick={() => (this.props.onClick())} />

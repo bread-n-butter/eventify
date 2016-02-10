@@ -31,9 +31,6 @@ export default function(state = INITIAL_STATE, action) {
   case SET_DATE:
     return {...state, eventDate: action.payload};
 
-/*  case SELECT_EVENT:
-    return {...state, selectedEvent: action.payload};*/
-
   case UPDATE_EVENT_LOCATION:
     return {...state, createEventLocation: action.payload};
 

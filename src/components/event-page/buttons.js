@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 const styles = {
   button: {
-    margin: 12
+    margin: 2
   }
 };
 
@@ -93,7 +93,7 @@ export default class Buttons extends Component {
 
     return (
       <div className="row">
-        <div className="col s2">
+        <div className="col s4">
 
           <StripeCheckout
             style={ styles.button }

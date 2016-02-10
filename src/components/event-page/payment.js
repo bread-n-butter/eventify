@@ -35,10 +35,10 @@ export default class StripeButton extends Component {
   }
 
   render() {
-    // const price = this.event.
     const price = this.props.event.price_per_person + '00';
     return (
         <StripeCheckout
+          style={{marginLeft: '2rem'}}
           name="Eventify"
           description={this.props.event.description}
           image="http://i65.tinypic.com/2h4f3w2.png"

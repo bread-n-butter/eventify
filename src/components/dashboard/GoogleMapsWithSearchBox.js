@@ -183,7 +183,7 @@ export default class GoogleMapsWithSearchBox extends Component {
               })}
               
               {
-                <Circle key='circle' center={this.state.centerPin} radius={6000} 
+                <Circle key='circle' center={this.state.centerPin} radius={this.props.radius.miles} 
                   options={{
                     fillColor: 'red',
                     fillOpacity: 0.20,

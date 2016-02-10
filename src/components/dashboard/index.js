@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { take } from 'lodash';
 
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, fetchOneEvent, auth, selectEvent } from '../../actions/';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, fetchOneEvent, auth, selectEvent, updateRadius } from '../../actions/';
 
 import Spinner from '../../helpers/spinner.js';
 
@@ -83,12 +83,12 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col s8">
             <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
-            <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={ take(events, 15) } user={this.props.user} />
+            <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={ take(events, 15) } user={this.props.user} updateRadius={this.props.updateRadius} />
           </div>
           <div className="col s4">
         
             <div className='row' style={{height: '400px'}}>
-              <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc}/>
+              <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc} radius={this.props.user.radius}/>
             </div>
               
             <div>
@@ -107,7 +107,7 @@ class Dashboard extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCreatedEvents, fetchOneEvent, fetchJoinedEvents, fetchEvents, auth, selectEvent, updateUserLocation }, dispatch);
+  return bindActionCreators({ fetchCreatedEvents, fetchOneEvent, fetchJoinedEvents, fetchEvents, auth, selectEvent, updateUserLocation, updateRadius }, dispatch);
 }
 
 function mapStateToProps(state) {

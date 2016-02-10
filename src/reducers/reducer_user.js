@@ -1,6 +1,16 @@
-import { UPDATE_MAP_BOUNDS, UPDATE_LOCATION, AUTH, LOGOUT } from '../actions/index';
+import { UPDATE_RADIUS, UPDATE_LOCATION, AUTH, LOGOUT  } from '../actions/index';
 
-const INITIAL_STATE = {isLoggedIn: false, loc: {lat: 37.773972, long: -122.431297}};
+const INITIAL_STATE = {
+  isLoggedin: false, 
+  loc: {
+    lat: 37.773972, 
+    long: -122.431297
+  },
+  radius: {
+    miles: 100
+  }
+};
+
 
 export default function(state = INITIAL_STATE, action) {
 
@@ -28,11 +38,12 @@ export default function(state = INITIAL_STATE, action) {
       }
     };
   
-  case UPDATE_MAP_BOUNDS:
+  case UPDATE_RADIUS:
     return {
       ...state,
-      bounds: {
-        miles: action.payload
+      radius: {
+        //TODO: fix later. payload.payload
+        miles: action.payload.payload
       }
     };
   

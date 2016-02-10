@@ -26,7 +26,6 @@ class EditEventPage extends Component {
   componentWillMount() {
     this.props.fetchOneEvent(this.props.params.id)
       .then(() => {
-        console.log('event_lat:', this.props.event.event_lat);
         this.props.updateEventLocation({
           lat: this.props.event.event_lat,
           long: this.props.event.event_long,
@@ -38,8 +37,7 @@ class EditEventPage extends Component {
     data.lat = this.props.createEventLocation.lat;
     data.long = this.props.createEventLocation.long;
     data.addressLabel = this.props.createEventLocation.address;
-    data.image_url = this.props.event.imageUrl;
-
+    data.image_url = this.props.imageUrl;
     const formattedDate = Moment(data.date).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
     this.props.editEvent(this.props.event.id, data)
@@ -60,7 +58,7 @@ class EditEventPage extends Component {
     const event = this.props.event;
 
     if (!event) {
-      return <div>Loading</div>;
+      return <div>Loading...</div>;
     } else {
       let eventDetails = {
         initialValues: {

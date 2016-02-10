@@ -16,8 +16,7 @@ class SmallEventCards extends Component {
 
 
   handleEdit(event) {
-    this.props.editEvent(event);
-    this.context.router.push('/edit');
+    this.context.router.push('/edit/' + event.id);
   }
 
   render() {

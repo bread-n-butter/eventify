@@ -223,7 +223,6 @@ class CreateEventForm extends Component {
               <label>Time</label>
               <TimePicker 
                 hintText='Select a Time'
-                autoOk={true}
                 onChange={(err, event) => this.handleDateSubmit(date, event, 'time')}
               />
             </div>

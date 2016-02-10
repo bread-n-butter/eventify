@@ -7,6 +7,7 @@ import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents,
 
 import Spinner from '../../helpers/spinner.js';
 
+import GMapsSearchBox from '../../helpers/GMapsSearchBox';
 
 import FeaturedEventsList from './FeaturedEventsList';
 import JoinedEventsList from './JoinedEventsList';
@@ -74,20 +75,22 @@ class Dashboard extends Component {
       
       <div className="dashboard">
         
-        
         <div className="row">
           <GoogleMapsSearchBar
             updateLocation={(d) => this.handleLocationSubmit(d)} />
         </div>
+        
         <div className="row">
           <div className="col s8">
             <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
             <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={ take(events, 15) } user={this.props.user} />
           </div>
           <div className="col s4">
-              <div className='row' style={{height: '400px'}}>
-                <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events}/>
-              </div>
+        
+            <div className='row' style={{height: '400px'}}>
+              <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc}/>
+            </div>
+              
             <div>
               <h5 style={{paddingTop: '1.2rem'}}>Events You've Joined</h5>
               <JoinedEventsList select={this.props.fetchOneEvent} data={ take(joinedEvents, 10) } />

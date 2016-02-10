@@ -17,7 +17,6 @@ import CardMedia from 'material-ui/lib/card/card-media';
 import CardText from 'material-ui/lib/card/card-text';
 
 const {  FacebookShareButton } = ShareButtons;
-const { FacebookShareCount } = ShareCounts;
 const FacebookIcon = generateShareIcon('facebook');
 
 class Event extends Component {
@@ -29,7 +28,7 @@ class Event extends Component {
 
   render() {
 
-    const url = 'https://breadnbutter.herokuapp/event/' + this.props.params.id;
+    const url = 'https://breadnbutter.herokuapp.com/#/event/' + this.props.params.id;
     const title = 'Eventify';
     const event = this.props.event;
 

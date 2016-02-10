@@ -12,10 +12,10 @@ export default class StripeButton extends Component {
     router: PropTypes.object
   };
 
+
   onToken(token) {
     const join = this.props.join;
-    const back = this.context.router.push('/dashboard');
-
+    const that = this;
 
     const joinData = {
       userId: this.props.user.id,
@@ -30,9 +30,7 @@ export default class StripeButton extends Component {
     this.props.pay(res)
       .then(function(){
         join(joinData);
-      })
-      .then(function() {
-        back();
+        that.context.router.push('/dashboard');
       });
   }
 
@@ -59,7 +57,7 @@ export default class StripeButton extends Component {
           allowRememberMe={true}
           token={this.onToken.bind(this)}>
           <FlatButton primary={ true }
-            label="Join"
+            label="Join & Pay"
           />
         </StripeCheckout>
     );

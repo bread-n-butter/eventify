@@ -1,4 +1,4 @@
-import { UNJOIN_EVENT, FETCH_EVENTS, FETCH_ONE_EVENT, CREATE_ONE_EVENT, UPLOAD_IMG, SET_DATE, SELECT_EVENT, FETCH_JOINED_EVENTS, FETCH_CREATED_EVENTS, UPDATE_EVENT_LOCATION, EDIT_EVENT } from '../actions/index';
+import { UNJOIN_EVENT, FETCH_EVENTS, FETCH_ONE_EVENT, CREATE_ONE_EVENT, UPLOAD_IMG, SET_DATE, SELECT_EVENT, FETCH_JOINED_USERS, FETCH_JOINED_EVENTS, FETCH_CREATED_EVENTS, UPDATE_EVENT_LOCATION, EDIT_EVENT } from '../actions/index';
 
 const INITIAL_STATE = {
   all: [],
@@ -21,6 +21,9 @@ export default function(state = INITIAL_STATE, action) {
 
   case FETCH_CREATED_EVENTS:
     return {...state, createdEvents: action.payload.data.data};
+
+  case FETCH_JOINED_USERS:
+    return {...state, joinedUsers: action.payload.data.data.users};
 
   case FETCH_ONE_EVENT:
     return {...state, event: action.payload.data.data};

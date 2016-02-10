@@ -220,7 +220,6 @@ class Landing extends React.Component {
         </div>
 
         <GoogleMapsSearchBar updateLocation={(d) => this.handleLocationSubmit(d)}/>
-        <button>Most Popular</button>
         <div className="container" style={{marginTop: '7%'}}>
           <EventList events={this.state.filteredEvents} user={this.props.user}  location={this.state.location}/>
         </div>

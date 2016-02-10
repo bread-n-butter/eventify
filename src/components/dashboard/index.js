@@ -26,8 +26,8 @@ class Dashboard extends Component {
         this.context.router.push('/');
       }
       this.props.fetchEvents();
-      this.props.fetchCreatedEvents(this.props.user.id);
       this.props.fetchJoinedEvents(this.props.user.id);
+      this.props.fetchCreatedEvents(this.props.user.id);
       // this.props.getProfilePic()
     });
   }
@@ -60,6 +60,7 @@ class Dashboard extends Component {
     const events = this.props.events;
     const joinedEvents = this.props.joinedEvents;
     const createdEvents = this.props.createdEvents;
+    
     if (events.length === 0) {
       return (
         <Spinner />

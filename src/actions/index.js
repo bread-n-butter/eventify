@@ -13,6 +13,7 @@ export const FETCH_EVENTS = 'FETCH_EVENTS';
 export const LOGOUT = 'LOGOUT';
 export const AUTH = 'AUTH';
 export const FETCH_JOINED_EVENTS = 'FETCH_JOINED_EVENTS';
+export const FETCH_JOINED_USERS = 'FETCH_JOINED_USERS';
 export const FETCH_CREATED_EVENTS = 'FETCH_CREATED_EVENTS';
 export const FETCH_ONE_EVENT = 'FETCH_ONE_EVENT';
 export const CREATE_ONE_EVENT = 'CREATE_ONE_EVENT';
@@ -147,6 +148,23 @@ export function fetchCreatedEvents(userId) {
   const request = axios.get(`api/events/${userId}/createdevents`);
   return {
     type: FETCH_CREATED_EVENTS,
+    payload: request
+  };
+}
+
+/**
+ *
+ *    Fetches all users who joined a specific event, by event Id
+ *
+ *    @param [Number] which is the unique ID of the Event
+ *    @returns [Object] reducer Action
+ *
+ */
+
+export function fetchJoinedUsers(eventId) {
+  const request = axios.get(`api/events/${eventId}/users`);
+  return {
+    type: FETCH_JOINED_USERS,
     payload: request
   };
 }

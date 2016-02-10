@@ -7,7 +7,7 @@ const INITIAL_STATE = {
     long: -122.431297
   },
   radius: {
-    miles: 100
+    miles: 1
   }
 };
 

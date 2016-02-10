@@ -44,11 +44,11 @@ export default class FeaturedEventsList extends Component {
       
         <div>
           <Slider
-            description={`Filter events by distance: ${this.props.user.radius.miles} miles away`}
-            defaultValue={100}
-            step={5}
-            min={5}
-            max={10000}
+            description={`Filter events by distance: ${this.props.user.radius.miles} miles away from ${this.props.user.loc.address || 'x'}`}
+            defaultValue={this.props.user.radius.miles}
+            step={1}
+            min={1}
+            max={100}
             onChange={(e, value) => { this.updateRadius(value); }}
             style={{width: '75%', padding: '1.2rem 0.75rem 0' }} />
         </div>

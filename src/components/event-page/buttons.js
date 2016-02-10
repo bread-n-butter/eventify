@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 const styles = {
   button: {
-    margin: 12
+    margin: 2
   }
 };
 
@@ -52,21 +52,23 @@ export default class Buttons extends Component {
 
   render() {
     // Created events
-    //
     if(this.props.user.id === this.props.data.creator){
       return (
-        <div>
+        <div style={{marginLeft: '1.3rem'}}>
           <FlatButton
+            style={{color: '#db436c'}}
             label="edit"
             onClick={ this.edit.bind(this) }
           />
           <FlatButton
-            label="Back"
-            onClick={ this.goBack.bind(this) }
-          />
-          <FlatButton
+            style={{color: '#53b3cb'}}
             label="Delete"
             onClick={ this.delete.bind(this) }
+          />
+          <FlatButton
+            style={{color: 'gray'}}
+            label="Back"
+            onClick={ this.goBack.bind(this) }
           />
         </div>
       );
@@ -75,11 +77,13 @@ export default class Buttons extends Component {
     } else if(this.userEvent()) {
       return (
         <div>
-          <FlatButton primary={ true }
+          <FlatButton
+            style={{color: '#db436c'}}
             label="un-join"
             onClick={this.unjoin.bind(this)}
           />
-          <FlatButton secondary={ true }
+          <FlatButton
+            style={{color: 'gray'}}
             label="Back"
             onClick={ this.goBack.bind(this) }
           />
@@ -89,7 +93,7 @@ export default class Buttons extends Component {
 
     return (
       <div className="row">
-        <div className="col s4 push-s5">
+        <div className="col s4">
 
           <StripeCheckout
             style={ styles.button }
@@ -100,9 +104,10 @@ export default class Buttons extends Component {
             back={ this.goBack }
           />
         </div>
-        <div className="col s5 push-s3">
+        <div className="col s4">
 
-          <FlatButton secondary={ true }
+          <FlatButton
+            style={{color: 'gray'}}
             label="Back"
             onClick={ this.goBack.bind(this) }
           />

@@ -23,8 +23,6 @@ import CreateEventForm from './CreateEventForm';
 //Get Action Factories to use in this Component to manipulate the Redux State
 import { auth, createEvent, updateEventLocation } from '../../actions/';
 
-//Get GoogleMapsSearchBar that contains the geoSuggest Module
-
 
 class CreateEventPage extends Component {
 
@@ -35,6 +33,8 @@ class CreateEventPage extends Component {
 
   constructor(props) {
     super(props);
+
+    //If user isn't logged in, reroute to landing
     this.props.auth()
       .then(()=> {
         if (!this.props.isLoggedIn) {

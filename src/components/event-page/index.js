@@ -62,7 +62,7 @@ class Event extends Component {
                   <FacebookShareButton
                     url={url}
                     title={title}
-                    style={{display: 'inline', margin: '0 0.5rem 0 2rem'}}>
+                    style={{display: 'inline', margin: '0 0.5rem 0 2.5rem'}}>
                     <FacebookIcon
                       size={32}
                       round={true} />
@@ -82,7 +82,7 @@ class Event extends Component {
                   delete={ this.props.deleteEvent }
                   unjoinEvent={ this.props.unjoinEvent }
                   pay={ this.props.payForEvent } />
-                : <div>Please Sign in above to Join this event!</div>}
+                : <div className="center-align" style={{color: '#db436c'}}>Please Sign in above to Join this event!</div>}
 
               </CardActions>
 

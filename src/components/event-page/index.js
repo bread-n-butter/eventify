@@ -22,7 +22,16 @@ const {  FacebookShareButton } = ShareButtons;
 const FacebookIcon = generateShareIcon('facebook');
 
 const styles = {
-  marginTop: 20
+  main: {
+    marginTop: 20,
+    paddingTop: 30
+  },
+  creator: {
+    fontWeight: 'bold',
+    paddingTop: 5,
+    paddingBottom: 15
+  }
+
 };
 
 class Event extends Component {
@@ -45,7 +54,7 @@ class Event extends Component {
     return (
       <div className="container">
 
-        <div className='row' style={ styles }>
+        <div className='row' style={ styles.main }>
 
           <div className='col m6 s12'>
 
@@ -56,6 +65,7 @@ class Event extends Component {
               <CardHeader
                 title={event.event_name}
                 subtitle={'@ ' + event.event_address_label}/>
+              <CardText style={ styles.creator }> Created By { event.creator_first_name } { event.creator_last_name } </CardText>
             </Card>
             <h5 style={{paddingLeft: '0.60rem'}}>Event Members</h5>
             <JoinedUsersList data={this.props.joinedUsers} />

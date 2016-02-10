@@ -43,7 +43,7 @@ export default class Buttons extends Component {
     };
 
     this.props.unjoinEvent(data);
-    this.context.router.goBack();
+    this.context.router.push('/dashboard');
   }
 
   edit() {
@@ -97,6 +97,7 @@ export default class Buttons extends Component {
             event={ this.props.data }
             join={ this.props.joinEvent }
             user={ this.props.user }
+            back={ this.goBack }
           />
         </div>
         <div className="col s5 push-s3">

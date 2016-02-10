@@ -10,7 +10,7 @@ var ReactStripeCheckout = React.createClass({
   getDefaultProps: function() {
     return {
       className: 'StripeCheckout',
-      label: 'JOIN',
+      label: 'JOIN & PAY',
       locale: 'auto',
       componentClass: 'div'
     };
@@ -243,7 +243,7 @@ var ReactStripeCheckout = React.createClass({
 
   renderStripeButton: function() {
     return (
- <button className="btn waves-effect waves-light pink" type="submit" name="action">Join
+ <button className="btn waves-effect waves-light pink" type="submit" name="action">Join & Pay
     <i className="material-icons right">send</i>
   </button>
     );

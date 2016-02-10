@@ -21,6 +21,10 @@ import CardText from 'material-ui/lib/card/card-text';
 const {  FacebookShareButton } = ShareButtons;
 const FacebookIcon = generateShareIcon('facebook');
 
+const styles = {
+  marginTop: 20
+};
+
 class Event extends Component {
 
   constructor(props) {
@@ -41,17 +45,17 @@ class Event extends Component {
     return (
       <div className="container">
 
-        <div className='row'>
+        <div className='row' style={ styles }>
 
           <div className='col m6 s12'>
 
             <Card>
-              <CardHeader
-                title={event.event_name}
-                subtitle={'@ ' + event.event_address_label}/>
               <CardMedia>
                 <img src={event.image_url} />
               </CardMedia>
+              <CardHeader
+                title={event.event_name}
+                subtitle={'@ ' + event.event_address_label}/>
             </Card>
             <h5 style={{paddingLeft: '0.60rem'}}>Event Members</h5>
             <JoinedUsersList data={this.props.joinedUsers} />

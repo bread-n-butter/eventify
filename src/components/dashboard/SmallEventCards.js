@@ -39,6 +39,7 @@ class SmallEventCards extends Component {
         </ul>
         { this.props.createdList ?
           <a
+            style={{cursor: 'pointer'}}
             onClick={(e) => {e.preventDefault(); this.handleEdit(event);}}
             className="secondary-content">
               <i className='material-icons'>settings</i>

@@ -53,7 +53,7 @@ class Event extends Component {
                 <img src={event.image_url} />
               </CardMedia>
             </Card>
-            <h5 style={{paddingLeft: '0.60rem'}}>Event Members</h5>
+            <h5 style={{paddingLeft: '0.60rem'}}>Event Attendees</h5>
             <JoinedUsersList data={this.props.joinedUsers} />
           </div>
 

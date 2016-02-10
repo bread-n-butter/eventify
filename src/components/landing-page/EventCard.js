@@ -30,7 +30,7 @@ class EventCard extends React.Component {
   
   eventPicStyles() {
     return {
-      height: '200px', 
+      height: '250px', 
       backgroundSize: 'cover', 
       backgroundPosition: 'center center', 
       backgroundRepeat: 'no-repeat', 
@@ -40,7 +40,7 @@ class EventCard extends React.Component {
   
   cardTitleStyles() {
     return {
-      height: '100px'
+      height: '115px'
     };
   }
   
@@ -66,8 +66,6 @@ class EventCard extends React.Component {
           
           
             { event.event_date ? <p>{ Moment(event.event_date).format('dddd, MMM Do YYYY, hh:mm a') }</p> : <p>No date specified, please ask organizer</p> }
-            
-            <p> Desc: {event.description.length > 50 ? event.description.slice(0, 50) + '...' : event.description } </p>
             
             <p>Attendees: {event.num_of_people_joined || 0} / {event.total_number_of_people_req}</p>
 

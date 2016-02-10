@@ -135,14 +135,14 @@ input {
 }
 .geosuggest__suggests {
   position: absolute !important;
-  top: 81% !important;
+  top: 70% !important;
   left: 0 !important;
   right: 0 !important;
   max-height: 25em !important;
   padding: 0 !important;
   margin-top: -1px !important;
   background: #fff !important;
-  border: 2px solid #267dc0 !important;
+/*  border: 2px solid #267dc0 !important;*/
   border-top-width: 0 !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;

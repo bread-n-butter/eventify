@@ -34,8 +34,8 @@ export default class FeaturedEventsList extends Component {
 
   }
 
-  updateRadius(value) {
-    this.setState({radius: value});
+  updateRadius(miles) {
+    this.props.updateRadius({payload: miles});
   }
 
   render() {
@@ -44,11 +44,11 @@ export default class FeaturedEventsList extends Component {
       
         <div>
           <Slider
-            description={`Filter events by distance: ${this.state.radius} miles away`}
-            defaultValue={100}
-            step={5}
-            min={5}
-            max={10000}
+            description={`Filter events by distance: ${this.props.user.radius.miles} miles away from ${this.props.user.loc.address || 'x'}`}
+            defaultValue={this.props.user.radius.miles}
+            step={1}
+            min={1}
+            max={100}
             onChange={(e, value) => { this.updateRadius(value); }}
             style={{width: '75%', padding: '1.2rem 0.75rem 0' }} />
         </div>
@@ -71,7 +71,7 @@ export default class FeaturedEventsList extends Component {
             //calculate distance of each event
             .filter((event) => {
               let dist = Helpers.distance(event.event_lat, event.event_long, this.props.user.loc.lat, this.props.user.loc.long);
-              return dist < this.state.radius;
+              return dist < this.props.user.radius.miles;
             })
             .map((event, index) => (
               <MaterialUICard key={index} event={event} onClick={this.handleClick.bind(this, event)} />

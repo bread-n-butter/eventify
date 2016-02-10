@@ -17,14 +17,6 @@ class NavBar extends Component {
     router: PropTypes.object
   };
 
-  componentDidMount() {
-    this.props.auth().then(() => {
-      if(!this.props.isLoggedIn) {
-        this.context.router.push('/');
-      }
-    });
-  }
-
   goToDash() {
     this.context.router.push('/dashboard');
   }

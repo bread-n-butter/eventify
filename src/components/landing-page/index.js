@@ -175,7 +175,6 @@ class Landing extends React.Component {
    *
    */
   render() {
-    console.log('THIS WORKED', this.state.location);
 
     return (
       <div>

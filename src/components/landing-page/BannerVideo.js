@@ -22,9 +22,7 @@ class BannerVideo extends React.Component {
 
   render() {
     return (
-      <video autoPlay loop style={this.videoStyle()}>
-        <source src="https://a0.muscache.com/airbnb/static/SanFrancisco-P1-1.mp4" type="video/mp4" />
-      </video>
+      <img src='../../assets/lights-party-dancing-music-resized.jpg' style={this.videoStyle()}/>
     );
   }
 }

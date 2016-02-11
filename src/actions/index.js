@@ -96,7 +96,7 @@ export function getProfilePic(userFBid) {
 
 export function uploadImage(file) {
   let imageUrl;
-  
+
   const request = axios.get('api/s3/sign?file_name=' + file.name + '&file_type=' + file.type)
                         .then((result) => {
                           imageUrl = result.data.url;

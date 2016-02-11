@@ -24,7 +24,6 @@ class FeatEvents extends React.Component {
   }
 
   render() {
-    console.log('cant believe this worked', this.props.location);
     return (
       <div className="row">
         {this.props.events.sort((a, b) => (

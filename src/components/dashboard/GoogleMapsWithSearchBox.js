@@ -5,21 +5,21 @@ import {GoogleMapLoader, GoogleMap, Marker, SearchBox, InfoWindow, Circle} from 
 import EventCard from '../landing-page/EventCard';
 
 export default class GoogleMapsWithSearchBox extends Component {
-  
+
   static contextTypes = {
     router: PropTypes.object
   };
-  
+
   componentWillReceiveProps(nextProps) {
     this.setState(
       {
         center: {
-          lat : nextProps.loc.lat, 
+          lat : nextProps.loc.lat,
           lng : nextProps.loc.long
         },
-        
+
         centerPin: {
-          lat : nextProps.loc.lat, 
+          lat : nextProps.loc.lat,
           lng : nextProps.loc.long
         }
       }
@@ -47,39 +47,38 @@ export default class GoogleMapsWithSearchBox extends Component {
       lat: this.props.loc.lat || 48,
       lng: this.props.loc.long || -122
     },
-    
+
     centerPin: {
       lat: this.props.loc.lat || 48,
       lng: this.props.loc.long || -122
     },
-    
+
     events: this.props.events.map((event) => {
       if (event.event_lat === null || event.event_long === null) {
         return null;
       }
-      return {  
-        ...event, 
+      return {
+        ...event,
         marker: {
-          position: { 
-            lat: event.event_lat, 
-            lng: event.event_long 
+          position: {
+            lat: event.event_lat,
+            lng: event.event_long
           },
-          showInfo: false 
+          showInfo: false
         }
-      }; 
+      };
     }).filter((event) => {return event !== null;})
   };
 
   handleBoundsChanged () {
-    
+
     // console.log('this.refs.map.getBounds()', this.refs.map.getBounds());
     // console.log('this.refs.map', this.refs.map);
-    console.log('this.refs.map.getCenter() is ',this.refs.map.getCenter());
     this.setState({
       bounds: this.refs.map.getBounds(),
       center: this.refs.map.getCenter()
     });
-    
+
   }
 
   handlePlacesChanged () {
@@ -92,51 +91,49 @@ export default class GoogleMapsWithSearchBox extends Component {
 
     return;
   }
-  
+
   handleMarkerClick(event) {
     event.marker.showInfo = true;
     this.setState(this.state);
   }
-  
+
   handleMarkerClose(event) {
     event.marker.showInfo = false;
     this.setState(this.state);
   }
-  
+
   onClick(event) {
-    console.log('inside of onClick');
     this.props.select(event.id)
       .then(() => { this.context.router.push('/event/' + event.id); });
   }
-  
+
 
   renderInfoWindow(ref, event) {
-    console.log('event is ', event);
     return (
-      <InfoWindow 
+      <InfoWindow
         key={`${ref}_info_window`}
         // content={this.infoWindowContCreator(event)}
         onCloseclick={this.handleMarkerClose.bind(this, event)} >
-        
-        <div> 
-          
+
+        <div>
+
           <b> {event.event_name} </b>
-          
+
           <br/>
-          
+
           {event.event_date.slice(0,10)}
-          
+
           <br/>
-          
+
           <a onClick={this.onClick.bind(this, event)}> More Info </a>
-        
+
         </div>
-        
+
       </InfoWindow>
     );
   }
-  
-  
+
+
   // <SearchBox
   //   bounds={this.state.bounds}
   //   controlPosition={google.maps.ControlPosition.TOP_LEFT}
@@ -148,12 +145,12 @@ export default class GoogleMapsWithSearchBox extends Component {
   render () {
 
     return (
-      
+
       <section style={{height: '100%'}}>
-      
+
         <GoogleMapLoader
           containerElement={
-            <div 
+            <div
               {...this.props}
               style={{
                 height: '100%'
@@ -168,22 +165,22 @@ export default class GoogleMapsWithSearchBox extends Component {
               ref="map">
 
               {this.state.events.map((event, index) => {
-                
+
                 const ref = `marker_${index}`;
-                
+
                 return (
-                  <Marker 
-                    key={index} 
+                  <Marker
+                    key={index}
                     ref={ref}
-                    position={event.marker.position} 
+                    position={event.marker.position}
                     onClick={this.handleMarkerClick.bind(this, event)} >
                     {event.marker.showInfo ? this.renderInfoWindow(ref, event) : null}
-                  </Marker> 
+                  </Marker>
                 );
               })}
-              
+
               {
-                <Circle key='circle' center={this.state.centerPin} radius={this.props.radius.miles*1609.344} 
+                <Circle key='circle' center={this.state.centerPin} radius={this.props.radius.miles*1609.344}
                   options={{
                     fillColor: 'red',
                     fillOpacity: 0.20,
@@ -192,11 +189,11 @@ export default class GoogleMapsWithSearchBox extends Component {
                     strokeWeight: 1
                   }} />
               }
-              
+
             </GoogleMap>
           }
         />
-        
+
       </section>
 
     );

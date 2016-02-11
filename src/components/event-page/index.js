@@ -76,7 +76,7 @@ class Event extends Component {
             <Card>
               <CardText>
                 <Details data={ this.props.event } />
-                <div className="valign-wrapper">
+                <div className="valign-wrapper" style={{cursor: 'pointer'}} >
                   <FacebookShareButton
                     url={url}
                     title={title}

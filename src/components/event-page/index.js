@@ -123,7 +123,7 @@ function mapStateToProps(state) {
   return {
     event: state.events.event,
     events: state.events.all,
-    isLoggedIn: state.events.isLoggedIn,
+    isLoggedIn: state.user.isLoggedIn,
     joined: state.events.joinedEvents,
     joinedUsers: state.events.joinedUsers,
     user: state.user,

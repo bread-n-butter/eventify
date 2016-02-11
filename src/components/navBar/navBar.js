@@ -17,12 +17,15 @@ class NavBar extends Component {
     router: PropTypes.object
   };
 
+  componentWillMount() {
+    this.props.auth();
+  }
+
   goToDash() {
     this.context.router.push('/dashboard');
   }
 
   render() {
-
     if (this.props.isLoggedIn) {
       return (
         <div className='navbar-fixed'>

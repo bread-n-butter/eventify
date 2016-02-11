@@ -22,7 +22,7 @@ class BannerVideo extends React.Component {
 
   render() {
     return (
-      <img src='../../assets/lights-party-dancing-music-resized.jpg' style={this.videoStyle()}/>
+      <img src='../../assets/lights-party-dancing-music.jpg' style={this.videoStyle()}/>
     );
   }
 }

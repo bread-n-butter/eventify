@@ -7,10 +7,9 @@ const INITIAL_STATE = {
     long: -122.431297
   },
   radius: {
-    miles: 1
+    miles: 5
   }
 };
-
 
 export default function(state = INITIAL_STATE, action) {
 

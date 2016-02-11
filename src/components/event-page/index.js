@@ -67,7 +67,7 @@ class Event extends Component {
                 subtitle={'@ ' + event.event_address_label}/>
               <CardText style={ styles.creator }> Created By { event.creator_first_name } { event.creator_last_name } </CardText>
             </Card>
-            <h5 style={{paddingLeft: '0.60rem'}}>Event Members</h5>
+            <h5 style={{paddingLeft: '0.60rem'}}>Event Attendees</h5>
             <JoinedUsersList data={this.props.joinedUsers} />
           </div>
 

@@ -34,7 +34,8 @@ class EventCard extends React.Component {
       backgroundSize: 'cover', 
       backgroundPosition: 'center center', 
       backgroundRepeat: 'no-repeat', 
-      backgroundImage: 'url("' + this.props.event.image_url + '")' 
+      backgroundImage: 'url("' + this.props.event.image_url + '")',
+      cursor: 'pointer'
     };
   }
   

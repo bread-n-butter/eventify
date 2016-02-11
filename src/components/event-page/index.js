@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Moment from 'moment';
 
 import JoinedUsersList from './JoinedUsersList';
 
@@ -65,6 +66,7 @@ class Event extends Component {
               <CardHeader
                 title={event.event_name}
                 subtitle={'@ ' + event.event_address_label}/>
+              <CardText>{Moment(event.event_date).format('dddd, MMM Do YYYY, hh:mm a')} </CardText>
               <CardText style={ styles.creator }> Created By { event.creator_first_name } { event.creator_last_name } </CardText>
             </Card>
             <h5 style={{paddingLeft: '0.60rem'}}>Event Attendees</h5>

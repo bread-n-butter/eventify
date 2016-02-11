@@ -83,7 +83,7 @@ class Dashboard extends Component {
         <div className="row">
           <div className="col s8">
             <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
-            <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={ take(events, 15) } user={this.props.user} updateRadius={this.props.updateRadius} />
+            <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={events} user={this.props.user} updateRadius={this.props.updateRadius} />
           </div>
           <div className="col s4">
         

@@ -34,11 +34,15 @@ export default class StripeButton extends Component {
       });
   }
 
+  //from stripeLoader
+  // <button className="btn waves-effect waves-light pink" type="submit" name="action">Join & Pay
+  //    <i className="material-icons right">send</i>
+  //  </button>
+
   render() {
     const price = this.props.event.price_per_person + '00';
     return (
         <StripeCheckout
-          style={{marginLeft: '2rem'}}
           name="Eventify"
           description={this.props.event.description}
           image="http://i65.tinypic.com/2h4f3w2.png"
@@ -56,10 +60,6 @@ export default class StripeButton extends Component {
           bitcoin={true}
           allowRememberMe={true}
           token={this.onToken.bind(this)}>
-          <FlatButton
-            style={{color: '#db436c'}}
-            label="Join & Pay"
-          />
         </StripeCheckout>
     );
   }

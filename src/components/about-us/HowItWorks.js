@@ -75,15 +75,7 @@ class HowItWorks extends React.Component {
             
             <div className='col l12' style={this.teamStyle()}>
             
-                <h2 style={this.nameStyle()}> 1. Have an awesome idea for an event! </h2>
-            
-                <img src='http://3.bp.blogspot.com/-7k-ckVDOyWU/VF15TBdgewI/AAAAAAAAA7Y/AVjWp-7KC1c/s1600/Light_Bulb_clip_art_medium.png' className='responsive-img' style={this.imageStyle()} />
-            
-            </div>
-            
-            <div className='col l12' style={this.teamStyle()}>
-            
-              <h2 style={this.nameStyle()}> 2. Sign Up with Facebook! </h2>
+              <h2 style={this.nameStyle()}> 1. Sign Up with Facebook! </h2>
               
               <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.01.38 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
               
@@ -91,41 +83,41 @@ class HowItWorks extends React.Component {
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <h2 style={this.nameStyle()}> 3. Create an event! </h2>
+              <h2 style={this.nameStyle()}> 2. Create an event! </h2>
               
-              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.26.29 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.39.00 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <h2 style={this.nameStyle()}> 4. Filter By Location! </h2>
+              <h2 style={this.nameStyle()}> 3. Filter By Location! </h2>
               
-              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-08 at 4.42.10 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.38.27 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <h2 style={this.nameStyle()}> 5. Join an event! </h2>
+              <h2 style={this.nameStyle()}> 4. Join an event! </h2>
               
-              <img src='https://avatars3.githubusercontent.com/u/13316418?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.16.55 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
               
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <h2 style={this.nameStyle()}> 6. Pay for an event  </h2>
+              <h2 style={this.nameStyle()}> 5. Pay for an event  </h2>
               
-              <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.16.34 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             
             <div className='col l12' style={this.teamStyle()}>
             
-              <h2 style={this.nameStyle()}> 7. Go and Enjoy! </h2>
+              <h2 style={this.nameStyle()}> 6. Share on Facebook for your friends to join! </h2>
               
-              <img src='https://avatars0.githubusercontent.com/u/10159831?v=3&s=460' className='responsive-img' style={this.imageStyle()}/>
+              <img src='https://eventify-photos.s3.amazonaws.com/Screen Shot 2016-02-10 at 3.18.56 PM.jpg' className='responsive-img' style={this.imageStyle()}/>
             
             </div>
             

@@ -1,5 +1,7 @@
 'use strict';
 
+import FlatButton from 'material-ui/lib/flat-button';
+
 var React = require('react');
 var ReactScriptLoaderMixin = require('react-script-loader').ReactScriptLoaderMixin;
 
@@ -240,12 +242,16 @@ var ReactStripeCheckout = React.createClass({
       this.hasPendingClick = true;
     }
   },
+  
+
 
   renderStripeButton: function() {
     return (
- <button className="btn waves-effect waves-light pink" type="submit" name="action">Join & Pay
-    <i className="material-icons right">send</i>
-  </button>
+    <FlatButton
+      style={{color: '#db436c'}}
+      label="Join & Pay"
+      onClick={this.onClick}
+    />
     );
   },
 

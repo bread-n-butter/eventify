@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 const styles = {
   button: {
-    margin: 2
+
   }
 };
 
@@ -83,6 +83,7 @@ export default class Buttons extends Component {
             onClick={this.unjoin.bind(this)}
           />
           <FlatButton
+            className='left-align'
             style={{color: 'gray'}}
             label="Back"
             onClick={ this.goBack.bind(this) }
@@ -92,9 +93,7 @@ export default class Buttons extends Component {
     }
 
     return (
-      <div className="row">
-        <div className="col s4">
-
+      <div>
           <StripeCheckout
             style={ styles.button }
             pay={ this.props.pay }
@@ -103,15 +102,13 @@ export default class Buttons extends Component {
             user={ this.props.user }
             back={ this.goBack }
           />
-        </div>
-        <div className="col s4">
 
           <FlatButton
             style={{color: 'gray'}}
             label="Back"
             onClick={ this.goBack.bind(this) }
           />
-        </div>
+          
       </div>
     );
   }

@@ -23,10 +23,10 @@ export default class FeaturedEventsList extends Component {
     router: PropTypes.object
   };
 
-  constructor(props) {
-    super(props);
-    this.state = { radius: 10000 };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { radius: 10000 };
+  // }
 
   handleClick(event) {
     this.props.select(event.id)
@@ -49,13 +49,12 @@ export default class FeaturedEventsList extends Component {
             step={1}
             min={1}
             max={100}
-            onChange={(e, value) => { this.updateRadius(value); }}
+            onChange={(e, value) => {this.updateRadius(value); }}
             style={{width: '75%', padding: '1.2rem 0.75rem 0' }} />
         </div>
         
         
         <ReactCSSTransitionGroup transitionName='dash-feat-cards' transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-        
           {this.props.data.sort((a, b) => {
             const bdist = Helpers.distance(b.event_lat, b.event_long, this.props.user.loc.lat, this.props.user.loc.long);
             const adist =  Helpers.distance(a.event_lat, a.event_long, this.props.user.loc.lat, this.props.user.loc.long);
@@ -70,7 +69,9 @@ export default class FeaturedEventsList extends Component {
           })
             //calculate distance of each event
             .filter((event) => {
+              console.log('Length of this.props.data is ', this.props.data);
               let dist = Helpers.distance(event.event_lat, event.event_long, this.props.user.loc.lat, this.props.user.loc.long);
+              console.log('dist is ', dist, ' and event name is ', event.event_name);
               return dist < this.props.user.radius.miles;
             })
             .map((event, index) => (

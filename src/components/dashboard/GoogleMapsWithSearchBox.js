@@ -187,7 +187,7 @@ export default class GoogleMapsWithSearchBox extends Component {
           googleMapElement={
             <GoogleMap
               center={this.state.center}
-              defaultZoom={15}
+              defaultZoom={11}
               onBoundsChanged={() => this.handleBoundsChanged()}
               ref="map">
 

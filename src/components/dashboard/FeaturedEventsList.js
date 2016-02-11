@@ -44,7 +44,7 @@ export default class FeaturedEventsList extends Component {
       
         <div>
           <Slider
-            description={`Filter events by distance: ${this.props.user.radius.miles} miles away from ${this.props.user.loc.address || 'x'}`}
+            description={`Filter events by distance: ${this.props.user.radius.miles} miles away`}
             defaultValue={this.props.user.radius.miles}
             step={1}
             min={1}

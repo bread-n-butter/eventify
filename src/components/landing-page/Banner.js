@@ -6,7 +6,6 @@
  *    TODO: Vincent
  */
 import React from 'react';
-import BannerVideo from './BannerVideo';
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
 
 // First image banner we had

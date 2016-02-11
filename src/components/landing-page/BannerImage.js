@@ -6,14 +6,14 @@ import React from 'react';
 
 
 
-class BannerVideo extends React.Component {
-  
-  videoStyle() {
+class BannerImage extends React.Component {
+
+  bannerStyle() {
     return {
       bottom: '0',
       position: 'absolute',
-      height: '1000px',
-      width: 'auto',
+      height: 'auto',
+      width: '100%',
       display: 'inline-block',
       boxSizing: 'border-box',
       'OObjectFit': 'fill'
@@ -22,9 +22,9 @@ class BannerVideo extends React.Component {
 
   render() {
     return (
-      <img src='../../assets/lights-party-dancing-music.jpg' style={this.videoStyle()}/>
+      <img src='../../assets/lights-party-dancing-music-resized.jpg' style={this.bannerStyle()}/>
     );
   }
 }
 
-export default BannerVideo;
+export default BannerImage;

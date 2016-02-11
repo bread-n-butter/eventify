@@ -10,7 +10,7 @@ import React from 'react';
 //Import Components
 //import Banner from './Banner';
 import EventList from './FeatEvents';
-import BannerVideo from './BannerVideo';
+import BannerImage from './BannerImage';
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
 import AboutUs from '../about-us/AboutUs';
 
@@ -187,7 +187,7 @@ class Landing extends React.Component {
 
             <div className='hero__background' style={this.videoContStyle()}>
 
-              <BannerVideo />
+              <BannerImage />
 
             </div>
 

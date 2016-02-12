@@ -1,10 +1,9 @@
 /**
- *    HTML 5 Banner Video
+ *    
+ *    Banner Image
  *
  */
 import React from 'react';
-
-
 
 class BannerImage extends React.Component {
 

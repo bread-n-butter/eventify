@@ -4,15 +4,16 @@ import { bindActionCreators } from 'redux';
 import { auth } from '../../actions/index';
 import { Link } from 'react-router';
 
+//Material UI component imports
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 import LogoutBtn from '../auth/LogoutBtn';
 import CreateEventBtn from '../create-event/CreateEventBtn';
-import EditEventBtn from '../edit-event/EditEventBtn';
 import FlatButton from 'material-ui/lib/flat-button';
 
 
 class NavBar extends Component {
+  
   static contextTypes = {
     router: PropTypes.object
   };

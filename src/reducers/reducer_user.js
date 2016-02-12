@@ -3,8 +3,8 @@ import { UPDATE_RADIUS, UPDATE_LOCATION, AUTH, LOGOUT  } from '../actions/index'
 const INITIAL_STATE = {
   isLoggedin: false, 
   loc: {
-    lat: 37.773972, 
-    long: -122.431297
+    lat: 29.7604, 
+    long: -95.3698
   },
   radius: {
     miles: 5

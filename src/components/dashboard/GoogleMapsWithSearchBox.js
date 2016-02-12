@@ -1,8 +1,14 @@
+/**
+ *    
+ *    Google Mini-Map on the right side of the Dashboard.
+ *    
+ *    Creates Map from react-google-maps library.
+ *    
+ */
+
 import {default as React, Component, PropTypes} from 'react';
 
-import {GoogleMapLoader, GoogleMap, Marker, SearchBox, InfoWindow, Circle} from 'react-google-maps';
-
-import EventCard from '../landing-page/EventCard';
+import {GoogleMapLoader, GoogleMap, Marker, InfoWindow, Circle} from 'react-google-maps';
 
 export default class GoogleMapsWithSearchBox extends Component {
 
@@ -40,7 +46,8 @@ export default class GoogleMapsWithSearchBox extends Component {
     'textOverflow': 'ellipses',
     'width': '50%'
   };
-
+  
+  //Set default state
   state = {
     bounds: null,
     center: {
@@ -52,7 +59,8 @@ export default class GoogleMapsWithSearchBox extends Component {
       lat: this.props.loc.lat || 48,
       lng: this.props.loc.long || -122
     },
-
+    
+    //Create events array with data structure that I can use for imported GoogleMap Component. Also filters out events that doesn't have a lat / long assigned to them. 
     events: this.props.events.map((event) => {
       if (event.event_lat === null || event.event_long === null) {
         return null;
@@ -71,25 +79,23 @@ export default class GoogleMapsWithSearchBox extends Component {
   };
 
   handleBoundsChanged () {
-
-    // console.log('this.refs.map.getBounds()', this.refs.map.getBounds());
-    // console.log('this.refs.map', this.refs.map);
     this.setState({
       bounds: this.refs.map.getBounds(),
       center: this.refs.map.getCenter()
     });
-
   }
 
   handlePlacesChanged () {
+    //places will be an array of results from searchbox each query. I.E. 'hotels' will have multiple queries.
     const places = this.refs.searchBox.getPlaces();
 
+    //Use the first of those results to set the center of the map.
     this.setState({
-      center: {lat: places[0].geometry.location.lat(), lng: places[0].geometry.location.lng()}
-      // markers: markers
+      center: {
+        lat: places[0].geometry.location.lat(), 
+        lng: places[0].geometry.location.lng()
+      }
     });
-
-    return;
   }
 
   handleMarkerClick(event) {
@@ -107,40 +113,24 @@ export default class GoogleMapsWithSearchBox extends Component {
       .then(() => { this.context.router.push('/event/' + event.id); });
   }
 
-
+  //Pop up window when you click on the Pin in the mini-maps
   renderInfoWindow(ref, event) {
     return (
       <InfoWindow
         key={`${ref}_info_window`}
-        // content={this.infoWindowContCreator(event)}
         onCloseclick={this.handleMarkerClose.bind(this, event)} >
-
+        
         <div>
-
           <b> {event.event_name} </b>
-
           <br/>
-
           {event.event_date.slice(0,10)}
-
           <br/>
-
           <a onClick={this.onClick.bind(this, event)}> More Info </a>
-
         </div>
 
       </InfoWindow>
     );
   }
-
-
-  // <SearchBox
-  //   bounds={this.state.bounds}
-  //   controlPosition={google.maps.ControlPosition.TOP_LEFT}
-  //   onPlacesChanged={() => this.handlePlacesChanged()}
-  //   ref="searchBox"
-  //   placeholder="Search Nearby"
-  //   style={GoogleMapsWithSearchBox.inputStyle} />
 
   render () {
 
@@ -163,22 +153,24 @@ export default class GoogleMapsWithSearchBox extends Component {
               defaultZoom={11}
               onBoundsChanged={() => this.handleBoundsChanged()}
               ref="map">
-
+              
+              {/*  Creates all the markers for all events  */}
               {this.state.events.map((event, index) => {
 
                 const ref = `marker_${index}`;
-
+                
                 return (
                   <Marker
                     key={index}
-                    ref={ref}
+                    ref={ref} 
                     position={event.marker.position}
                     onClick={this.handleMarkerClick.bind(this, event)} >
                     {event.marker.showInfo ? this.renderInfoWindow(ref, event) : null}
                   </Marker>
                 );
               })}
-
+              
+              {/* Creates the Radius circle */}
               {
                 <Circle key='circle' center={this.state.centerPin} radius={this.props.radius.miles*1609.344}
                   options={{

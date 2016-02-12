@@ -17,15 +17,18 @@ class FeatEvents extends React.Component {
   static contextTypes = {
     router: PropTypes.object
   };
-
+  
+  //fetch one event and save to Redux state when user clicks on a card
   handleClkMoreInfo(event) {
     this.props.fetchOneEvent(event.id)
       .then(() => { this.context.router.push('/event/' + event.id); });
   }
 
   render() {
+    
     return (
       <div className="row">
+        {/*  sorts events by distance from User's location  */}
         {this.props.events.sort((a, b) => (
           (b.num_of_people_joined - a.num_of_people_joined)))
           .sort((a, b) => {
@@ -37,7 +40,6 @@ class FeatEvents extends React.Component {
             if (adist < bdist) {
               return -1;
             }
-            // a must be equal to b
             return 0;
           })
           .map( (event, index) => (
@@ -45,14 +47,9 @@ class FeatEvents extends React.Component {
         ))}
       </div>
     );
+    
   }
 }
-
-
-//make sure this.props.events is an array
-// FeatEvents.propTypes = {
-//   events : React.PropTypes.array.isRequired
-// }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchOneEvent }, dispatch);

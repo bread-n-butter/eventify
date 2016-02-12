@@ -1,10 +1,10 @@
 /**
- *    Joined Events Component
+ *    
+ *    Joined Events Component.
  *
  */
 
 import React, { Component, PropTypes } from 'react';
-
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 //Components
@@ -22,7 +22,6 @@ export default class FeaturedEventsList extends Component {
   handleClick(event) {
     this.props.select(event.id)
       .then(() => { this.context.router.push('/event/' + event.id); });
-
   }
 
   updateRadius(miles) {
@@ -55,14 +54,11 @@ export default class FeaturedEventsList extends Component {
             if (adist < bdist) {
               return -1;
             }
-            // a must be equal to b
             return 0;
           })
             //calculate distance of each event
             .filter((event) => {
-              console.log('Length of this.props.data is ', this.props.data);
               let dist = Helpers.distance(event.event_lat, event.event_long, this.props.user.loc.lat, this.props.user.loc.long);
-              console.log('dist is ', dist, ' and event name is ', event.event_name);
               return dist < this.props.user.radius.miles;
             })
             .map((event, index) => (

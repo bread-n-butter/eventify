@@ -73,7 +73,6 @@ module.exports = {
 
   addEvent: function(req, res) {
     var data = req.body;
-    console.log(data);
     new Event({
       event_name: data.eventName,
       event_date: data.date,
@@ -138,7 +137,6 @@ module.exports = {
 
   unjoinEvent: function(req, res){
     var data = req.body;
-    console.log(data);
     EventUser
     .where({event_id: data.eventId, user_id: data.userId})
     .fetch({require: true})
@@ -169,28 +167,4 @@ module.exports = {
   }
 
 };
-
-//curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events
-//curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:8080/api/events/1
-
-/**
- *    DummyData
- */
-
- //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"third test party","numOfPeopleJoined":"30", "totalPeople": "30", "pricePerPerson":"30", "description":"will test work", "userId": "1"}' http://localhost:3000/api/events
-
- //curl -H "Content-Type: application/json" -X POST -d '{"firstName":"Kristen","lastName":"Haydel"}' http://localhost:3000/api/users
-
- //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Mini Medical School","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
-
- //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Walla Walla Wine","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
-
- //curl -H "Content-Type: application/json" -X POST -d '{"eventName":"Northwest Flower & Garden Show","numOfPeopleJoined":"10", "totalPeople":"20", "pricePerPerson":"30", "description":"Awesome event dude"}' http://localhost:3000/api/events
-
- //curl -i -X PUT -H "Content-Type:application/json" http://localhost:3000/api/events/1 -d '{"eventName":"third test2 party","numOfPeopleJoined":"30", "totalPeople": "20", "pricePerPerson":"60", "description":"will dis work"}'
-
-
-//curl -H "Content-Type: application/json" -X PUT -d '{"eventName":"third test2 party","numOfPeopleJoined":"30", "totalPeople": "20", "pricePerPerson":"60", "description":"will dis work"}' http://localhost:3000/api/events/2
-
-//curl -X "DELETE" http://localhost:3000/api/events/3
 

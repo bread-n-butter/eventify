@@ -9,9 +9,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
 var cors = require('express-cors');
-var url = require('url');
 var myproxy = require('http-proxy-middleware');
-//var mysql = require('mysql');
 
 var app = express();
 var isDevelopment = (process.env.NODE_ENV !== 'production');
@@ -84,7 +82,7 @@ if (isDevelopment) {
       target:  'http://localhost:8080/'
     }]
   });
-   // devServer.use('/api/events', myproxy(url.parse('http//localhost:8080')));
+
   devServer.use(cors());
 
   devServer.listen(3000, 'localhost', function (err) {

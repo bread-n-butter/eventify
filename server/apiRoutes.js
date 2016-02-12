@@ -9,6 +9,9 @@ if (isDevelopment) {
 }
 
 module.exports = function (apiRouter, passport) {
+/**********************************************************
+*************** API Routing for DB Querying ***************
+***********************************************************/
   apiRouter.post('/payments', stripeController.payForEvent);
   apiRouter.get('/events', eventController.getAllEvents);
   apiRouter.post('/events', eventController.addEvent);
@@ -30,6 +33,10 @@ module.exports = function (apiRouter, passport) {
   apiRouter.post('/events/:eventId/:userId', eventController.joinEvent);
   apiRouter.delete('/events/:eventId/:userId', eventController.unjoinEvent);
 
+/************************************************
+************** Authentication *******************
+*************************************************/
+
   apiRouter.get('/loggedin', function(req, res) {
     if (req.isAuthenticated()) {
       var user = req.user.attributes;
@@ -47,7 +54,6 @@ module.exports = function (apiRouter, passport) {
       failureRedirect: '/#/',
       failureFlash: true
     }), function(req, res) {
-      // console.log('Req inside of callback is', req);
       res.redirect('/#/dashboard/');
     });
 
@@ -102,17 +108,9 @@ module.exports = function (apiRouter, passport) {
       }
     });
   });
-
-/*
-  function isLoggedIn(req, res, next) {
-    // if user is authenticated in the session, carry on
-    console.log('isauthed?', req.isAuthenticated());
-    if (req.isAuthenticated())
-      return next();
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-  }*/
-
+/**************************************************************
+*************** Making url params accessible to req.body ****** 
+***************************************************************/
   apiRouter.param('eventId', function(req, res, next, eventId){
     req.body.eventId = eventId;
     next();

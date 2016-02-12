@@ -1,4 +1,4 @@
-
+//Establishing database connection
 var knex = require('knex')({
   client: 'mysql',
   connection: process.env.DATABASE_URL || {
@@ -40,7 +40,6 @@ knex.schema.hasTable('events').then(function(exists){
       events.increments();
       events.string('event_name', 100);
       events.dateTime('event_date');
-      events.time('event_time');
       events.integer('num_of_people_joined');
       events.integer('total_number_of_people_req');
       events.integer('price_per_person');

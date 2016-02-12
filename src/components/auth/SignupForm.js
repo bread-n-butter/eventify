@@ -1,7 +1,12 @@
-import React from 'react';
+/* This code is not currently in use but
+*  is being kept here for future implementation
+*  of local authentication.
+*/
+
+import React, { Component } from 'react';
 import TextField from 'material-ui/lib/text-field';
 
-class SignupForm extends React.Component {
+class SignupForm extends Component {
   render() {
     return (
       <div>

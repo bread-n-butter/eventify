@@ -8,11 +8,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { browserHistory, Router, hashHistory } from 'react-router';
+import { Router, hashHistory } from 'react-router';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import promise from 'redux-promise';
 import createLogger from 'redux-logger';
 
-//Middleware for dispatching functions for delayed execution 
+//Middleware for dispatching functions for delayed execution
 import thunkMiddleware from 'redux-thunk';
 
 import routes from './config/routes';
@@ -24,6 +25,9 @@ const createStoreWithMiddleware = applyMiddleware(
   promise,
   logger
 )(createStore);
+
+// Need to call this for date and timepickers to work in create/edit event pages
+injectTapEventPlugin();
 
 // render the DOM based on the routes.js file replacing the DIV element with 'id' in the index.html
 ReactDOM.render(

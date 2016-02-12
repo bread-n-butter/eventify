@@ -1,3 +1,7 @@
+/*
+*  Top-level component for editing an event
+*/
+
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { auth, editEvent, updateEventLocation, fetchOneEvent } from '../../actions/';
@@ -34,10 +38,12 @@ class EditEventPage extends Component {
   }
 
   handleSubmit(data) {
+    // Submitting data not handled by redux-form
     data.lat = this.props.createEventLocation.lat;
     data.long = this.props.createEventLocation.long;
     data.addressLabel = this.props.createEventLocation.address;
     data.image_url = this.props.imageUrl;
+
     const formattedDate = Moment(data.date).format('YYYY-MM-DD HH:mm:ss');
     data.date = formattedDate;
     this.props.editEvent(this.props.event.id, data)

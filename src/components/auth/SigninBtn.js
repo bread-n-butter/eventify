@@ -1,3 +1,9 @@
+/* This code is not currently in use but
+*  is being kept here for future implementation
+*  of local authentication.
+*/
+
+
 import React from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
 
@@ -15,7 +21,7 @@ class SigninBtn extends React.Component {
   render() {
     return (
       <FlatButton
-        label = "Log In With Facebook"
+        label = "Sign In"
         style = {style}
       />
     );

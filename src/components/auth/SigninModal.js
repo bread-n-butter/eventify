@@ -1,11 +1,16 @@
+/*
+*  Top-level component for signing in
+*/
+
+
+
 import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
 import LoginFBBtn from './LoginFBBtn';
-import SigninForm from './SigninForm';
 
 
-const customContentStyle = {
+const contentStyle = {
   width: '50%',
   maxWidth: '450px',
   textAlign: 'center'
@@ -37,16 +42,6 @@ class SigninModal extends React.Component {
   }
 
   render() {
-    /*const actions = [
-      <FlatButton
-        label="Log In"
-        primary={true}
-        onClick={() => this.handleClose()} />,
-      <FlatButton
-        label="Cancel"
-        secondary={true}
-        onClick={() => this.handleClose()} />
-    ];*/
 
     return (
       <div>
@@ -58,11 +53,12 @@ class SigninModal extends React.Component {
           title = "Eventify"
           modal = {false}
           open = {this.state.open}
-          contentStyle = {customContentStyle}
+          contentStyle = {contentStyle}
           titleStyle = {titleStyle}
           onRequestClose={this.handleClose}>
           <LoginFBBtn />
-          {/*OR
+          {/* keep this code here for future local authentication implementation
+          OR
           <SigninForm />*/}
         </Dialog>
       </div>

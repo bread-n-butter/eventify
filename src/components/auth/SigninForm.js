@@ -1,3 +1,8 @@
+/* This code is not currently in use but
+*  is being kept here for future implementation
+*  of local authentication.
+*/
+
 import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 

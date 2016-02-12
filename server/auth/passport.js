@@ -1,8 +1,6 @@
-var LocalStrategy = require('passport-local').Strategy;
+//var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-// load up the user model
-// TODO: change this to query using Bookshelf/mySQL
 var User = require('../config/models/user');
 
 // load the auth variables
@@ -115,7 +113,6 @@ module.exports = function(passport) {
       // facebook will send back the token and profile
       function(token, refreshToken, profile, done) {
 
-        console.log(profile);
         // asynchronous
         process.nextTick(function() {
           // find the user in the database based on their facebook id

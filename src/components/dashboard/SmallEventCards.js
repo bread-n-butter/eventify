@@ -20,14 +20,19 @@ class SmallEventCards extends Component {
   }
 
   render() {
+    
     const event = this.props.event;
+    
     return (
+      
       <li className="collection-item avatar valign-wrapper">
+      
         <img
           src={event.image_url || 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg'}
           alt={'thumbnail for ' + event.event_name}
           className="circle"
           onClick={(e) => { e.preventDefault(); this.props.onClick(); }} />
+          
         <ul>
           <li
             className="title"
@@ -37,6 +42,7 @@ class SmallEventCards extends Component {
           </li>
           <li>{ Moment(event.event_date).format('MMMM Do YYYY') }</li>
         </ul>
+        
         { this.props.createdList ?
           <a
             style={{cursor: 'pointer'}}
@@ -45,7 +51,9 @@ class SmallEventCards extends Component {
               <i className='material-icons'>settings</i>
           </a>
         : null }
+        
       </li>
+      
     );
   }
 }

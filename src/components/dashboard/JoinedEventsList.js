@@ -1,5 +1,6 @@
 /**
- *    Joined Events Component
+ *    
+ *    Joined Events List 
  *
  */
 

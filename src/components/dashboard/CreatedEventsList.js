@@ -1,5 +1,8 @@
 /**
- *    Created Events by User Component
+ *    
+ *    Created Events List by User
+ *    
+ *    This component builds many separate 'SmallEventCards' components
  *
  */
 import React, { Component, PropTypes } from 'react';

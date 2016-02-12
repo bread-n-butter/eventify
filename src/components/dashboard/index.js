@@ -1,3 +1,8 @@
+/**
+ *    
+ *    Top - Level Component for Dashboard
+ *    
+ */
 import React, { Component, PropTypes } from 'react';
 
 import { connect } from 'react-redux';

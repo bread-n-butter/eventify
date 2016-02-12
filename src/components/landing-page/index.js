@@ -1,14 +1,13 @@
 /**
  *
- *    LANDING PAGE
+ *    Top - Level for Landing Page
  *
- *    Contains Navigation Bar, Banner, Search Box, and Featured Events
+ *    Contains Navigation Bar, Banner, Search Box, and Featured Events, About the Team page
  *
  */
 import React from 'react';
 
 //Import Components
-//import Banner from './Banner';
 import EventList from './FeatEvents';
 import BannerImage from './BannerImage';
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';

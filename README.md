@@ -11,7 +11,7 @@ Crowdfund an event with friends or strangers!
 
   - __Product Owner | Full-Stack Engineer__: Delphine Foo-Matkin
   - __Scrum Master | Full-Stack Engineer__: Kristen Haydel
-  - __Front End Engineer | User Experience Design__: Vincent Jo, 
+  - __Front End Engineer | User Experience Design__: Vincent Jo
   - __Full-Stack Engineer | DevOps Specialist__: Oleg Umarov
 
 

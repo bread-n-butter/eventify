@@ -8,7 +8,6 @@ import { createEvent, setEventDate } from '../../actions/';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
 import UploadFile from './UploadFile';
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
 
@@ -52,7 +51,6 @@ const validate = values => {
 class CreateEventForm extends Component {
 
   componentWillMount() {
-    // Need to call injectTapEventPlugin for datepicker to appear
 
     this.props.initializeForm({
       eventName: '',
@@ -86,7 +84,7 @@ class CreateEventForm extends Component {
     }
   }
 
-  redFontStyles() {
+  errorStyle() {
     return {
       'color' : 'red'
     };
@@ -105,11 +103,9 @@ class CreateEventForm extends Component {
    */
   handleDateSubmit(date, event, dateOrTime) {
 
-    //initializing value
     if (date.value === '') {
       date.onChange(event);
 
-    //control for different cases
     } else {
 
       switch(dateOrTime) {
@@ -145,16 +141,15 @@ class CreateEventForm extends Component {
 
   render() {
 
-    const {fields: {
-        eventName,
-        description,
-        totalPeople,
-        pricePerPerson,
-        date,
-        lat,
-        long,
-        address
-      }, handleSubmit} = this.props;
+    const { fields:  {  eventName,
+                        description,
+                        totalPeople,
+                        pricePerPerson,
+                        date,
+                        lat,
+                        long,
+                        address
+                      }, handleSubmit } = this.props;
 
     return (
 
@@ -173,32 +168,44 @@ class CreateEventForm extends Component {
 
             <div>
               <label>Event Name</label>
-              <input style={this.validationStyles(!(eventName.touched && eventName.error))} type="text" placeholder="Event name - choose something catchy!" {...eventName}/>
-              {eventName.touched && eventName.error && <div styles={this.redFontStyles()}>{eventName.error}</div>}
+              <input
+                style={this.validationStyles(!(eventName.touched && eventName.error))}
+                type="text"
+                placeholder="Event name - choose something catchy!" {...eventName}/>
+              {eventName.touched && eventName.error && <div styles={this.errorStyle()}>{eventName.error}</div>}
             </div>
 
             <br/>
 
             <div>
               <label>Description</label>
-              <input style={this.validationStyles(!(description.touched && description.error))} type="text" placeholder="Describe your super fun event" {...description}/>
-              {description.touched && description.error && <div styles={this.redFontStyles()}>{description.error}</div>}
+              <input
+                style={this.validationStyles(!(description.touched && description.error))}
+                type="text"
+                placeholder="Describe your super fun event" {...description}/>
+              {description.touched && description.error && <div styles={this.errorStyle()}>{description.error}</div>}
             </div>
 
             <br/>
 
             <div>
               <label>Total Number of People Needed</label>
-              <input style={this.validationStyles(!(totalPeople.touched && totalPeople.error))} type="text" placeholder="Minimum number of people needed to kickstart this event" {...totalPeople}/>
-              {totalPeople.touched && totalPeople.error && <div styles={this.redFontStyles()}>{totalPeople.error}</div>}
+              <input
+                style={this.validationStyles(!(totalPeople.touched && totalPeople.error))}
+                type="text"
+                placeholder="Minimum number of people needed to kickstart this event" {...totalPeople}/>
+              {totalPeople.touched && totalPeople.error && <div styles={this.errorStyle()}>{totalPeople.error}</div>}
             </div>
 
             <br/>
 
             <div>
               <label>Price Per Person</label>
-              <input style={this.validationStyles(!(pricePerPerson.touched && pricePerPerson.error))} type="text" placeholder="Price per person for minimum number of people" {...pricePerPerson}/>
-              {pricePerPerson.touched && pricePerPerson.error && <div styles={this.redFontStyles()}>{pricePerPerson.error}</div>}
+              <input
+                style={this.validationStyles(!(pricePerPerson.touched && pricePerPerson.error))}
+                type="text"
+                placeholder="Price per person for minimum number of people" {...pricePerPerson}/>
+              {pricePerPerson.touched && pricePerPerson.error && <div styles={this.errorStyle()}>{pricePerPerson.error}</div>}
             </div>
 
             <br/>

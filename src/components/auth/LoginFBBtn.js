@@ -23,10 +23,10 @@ class SignupBtn extends Component {
   render() {
     return (
       <FlatButton
-        label = "Log In With Facebook"
-        style = {style}
-        linkButton = {true}
-        href = 'api/auth/facebook'
+        label="Log In With Facebook"
+        style={style}
+        linkButton={true}
+        href="api/auth/facebook"
       />
     );
   }

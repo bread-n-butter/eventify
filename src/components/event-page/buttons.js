@@ -2,12 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import StripeCheckout from './payment';
 import FlatButton from 'material-ui/lib/flat-button';
 
-const styles = {
-  button: {
-
-  }
-};
-
 export default class Buttons extends Component {
 
   constructor(props) {
@@ -51,13 +45,13 @@ export default class Buttons extends Component {
   }
 
   render() {
-    // Created events
+    // Buttons displayed if the user is the creator of the event
     if(this.props.user.id === this.props.data.creator){
       return (
         <div style={{marginLeft: '1.3rem'}}>
           <FlatButton
             style={{color: '#db436c'}}
-            label="edit"
+            label="Edit"
             onClick={ this.edit.bind(this) }
           />
           <FlatButton
@@ -73,13 +67,13 @@ export default class Buttons extends Component {
         </div>
       );
 
-      //Joined events
+    // Buttons displayed if the has joined the event
     } else if(this.userEvent()) {
       return (
         <div>
           <FlatButton
             style={{color: '#db436c'}}
-            label="un-join"
+            label="Un-join"
             onClick={this.unjoin.bind(this)}
           />
           <FlatButton
@@ -91,11 +85,10 @@ export default class Buttons extends Component {
         </div>
       );
     }
-
+    // Buttons displayed if the user is not the creator and has not yet joined the event
     return (
       <div>
           <StripeCheckout
-            style={ styles.button }
             pay={ this.props.pay }
             event={ this.props.data }
             join={ this.props.joinEvent }
@@ -108,7 +101,7 @@ export default class Buttons extends Component {
             label="Back"
             onClick={ this.goBack.bind(this) }
           />
-          
+
       </div>
     );
   }

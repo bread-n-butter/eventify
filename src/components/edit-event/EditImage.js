@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dropzone from 'react-dropzone';
 import { uploadImage } from '../../actions/';
+import FlatButton from 'material-ui/lib/flat-button';
+
 
 class EditImage extends Component {
 
@@ -14,6 +16,7 @@ class EditImage extends Component {
       file: true
     };
   }
+
   upload(files) {
     const file = files[0];
     this.props.uploadImage(file);
@@ -69,7 +72,11 @@ class EditImage extends Component {
             <div className="center-align">Invalid file type. Please use jpeg, bmp, gif or png.</div> :
             <div className="center-align">Drag and drop an image here or click to select a file to upload</div> }
         </Dropzone>
-        : <button onClick={this.remove.bind(this)}>Remove file</button>}
+        : <FlatButton
+            onClick={this.remove.bind(this)}
+            style={{color: '#db436c'}}>
+            Remove image
+          </FlatButton>}
           {this.state.file ?
             <div>
               <h6>Your Event Image:</h6>

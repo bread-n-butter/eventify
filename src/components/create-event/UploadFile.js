@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dropzone from 'react-dropzone';
@@ -12,6 +12,7 @@ class UploadFile extends Component {
     super(props);
     this.state = { rejected: false };
   }
+
   upload(files) {
     let file = files[0];
 
@@ -24,6 +25,7 @@ class UploadFile extends Component {
     });
   }
 
+  // File will be rejected if it's the wrong type
   reject() {
     this.setState({rejected: true});
   }
@@ -42,45 +44,46 @@ class UploadFile extends Component {
     return (
       <div>
         {!this.state.accepted ?
-        <Dropzone
-          onDropAccepted={this.upload.bind(this)}
-          onDropRejected={this.reject.bind(this)}
-          style = {{
-            width: 200,
-            height: 200,
-            margin: '20px auto',
-            borderWidth: '4px',
-            borderColor: '#767b91',
-            borderStyle: 'dashed',
-            borderRadius: '5px',
-            padding: '20px'
-          }}
-          activeStyle = {{
-            borderStyle: 'solid',
-            backgroundColor: '#eee'
-          }}
-          rejectStyle = {{
-            borderStyle: 'solid',
-            backgroundColor: '#ffdddd'
-          }}
-          multiple={false}
-          accept="image/jpeg, image/png, image/bmp, image/gif">
-          { this.state.rejected ?
-            <div className="center-align">Invalid file type. Please use jpeg, bmp, gif or png.</div> :
-            <div className="center-align">Drag and drop an image here or click to select a file to upload</div> }
-        </Dropzone>
+          <Dropzone
+            onDropAccepted={this.upload.bind(this)}
+            onDropRejected={this.reject.bind(this)}
+            style = {{
+              width: 200,
+              height: 200,
+              margin: '20px auto',
+              borderWidth: '4px',
+              borderColor: '#767b91',
+              borderStyle: 'dashed',
+              borderRadius: '5px',
+              padding: '20px'
+            }}
+            activeStyle = {{
+              borderStyle: 'solid',
+              backgroundColor: '#eee'
+            }}
+            rejectStyle = {{
+              borderStyle: 'solid',
+              backgroundColor: '#ffdddd'
+            }}
+            multiple={false}
+            accept="image/jpeg, image/png, image/bmp, image/gif">
+            { this.state.rejected ?
+              <div className="center-align">Invalid file type. Please use jpeg, bmp, gif or png.</div> :
+              <div className="center-align">Drag and drop an image here or click to select a file to upload</div> }
+          </Dropzone>
         : <FlatButton
             onClick={this.remove.bind(this)}
             style={{color: '#db436c'}}>
             Remove image
           </FlatButton>}
-          {this.state.file ?
+        {this.state.file ?
+          <div>
+            <h6>Image to upload:</h6>
             <div>
-              <h6>Image to upload:</h6>
-              <div>
-                <img src={this.state.file.preview} style={{maxWidth: '200px'}} />
-              </div>
-            </div> : null}
+              <img src={this.state.file.preview} style={{maxWidth: '200px'}} />
+            </div>
+          </div>
+        : null}
       </div>
     );
   }

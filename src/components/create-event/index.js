@@ -52,14 +52,11 @@ class CreateEventPage extends Component {
     data.addressLabel = this.props.createEventLocation.address;
     data.userId = this.props.userId;
 
-    //Upload default image src if none provided
     data.image_url = this.props.imageUrl === '' ? 'https://s3-us-west-1.amazonaws.com/eventify-photos/scavenger-hunt-square-500.jpg' : this.props.imageUrl;
 
-    //Format date appropriate for our backend
     const finalDate = Moment(data.date).format('YYYY-MM-DD HH:mm:ss');
     data.date = finalDate;
 
-    //Dispatch createEvent Action to Redux State which will in turn make a POST request to the server.
     this.props.createEvent(data)
       .then(() => { this.context.router.push('/dashboard'); });
   }
@@ -69,9 +66,15 @@ class CreateEventPage extends Component {
 
       <div className="container center-div">
 
-        <h1 className="center-align" style={{paddingTop: '50px', marginTop: '0px'}}>Create An Event</h1>
+        <h1
+          className="center-align"
+          style={{paddingTop: '50px', marginTop: '0px'}}>
+          Create An Event
+        </h1>
 
-        <CreateEventForm onSubmit={this.handleSubmit.bind(this)} updateEventLocation={this.props.updateEventLocation}/>
+        <CreateEventForm
+          onSubmit={this.handleSubmit.bind(this)}
+          updateEventLocation={this.props.updateEventLocation}/>
 
       </div>
 
@@ -84,12 +87,9 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({updateEventLocation, createEvent, auth}, dispatch);
 }
 
-//Set up this.props.newEventPosted (this component's state) to Redux Store's state.events.createdEvent.
-//Why? state.events.createdEvent has the latest added Event. If you look at createEvent action and reducer function, you can see that it will create a new property on the State called createEvent. And whenever that updates, this Component's state will update which will trigger a redirect.
 function mapStateToProps(state) {
   return {
     createEventLocation: state.events.createEventLocation,
-    newEventPosted: state.events.createdEvent,
     imageUrl: state.events.imageUrl,
     eventDate: state.events.eventDate,
     userId: state.user.id,

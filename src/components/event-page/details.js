@@ -29,7 +29,7 @@ export default class Details extends Component {
     return (
       <div className="flow-text" style={styles.general}>
 
-        <div className="" style={ styles.map } className='center-align'>
+        <div style={ styles.map } className="center-align">
           <Map lat={this.props.data.event_lat} long={this.props.data.event_long}/>
         </div>
 
@@ -38,8 +38,8 @@ export default class Details extends Component {
         </div>
 
 
-        <div className='row'>
-          <div className='col s10 offset-s1'>
+        <div className="row">
+          <div className="col s10 offset-s1">
 
             <div style={ styles.progress }>
               <ProgressBar data={ this.props.data } />

@@ -6,7 +6,7 @@ import Moment from 'moment';
 import JoinedUsersList from './JoinedUsersList';
 
 //fb share button
-import { ShareButtons, ShareCounts, generateShareIcon } from 'react-share';
+import { ShareButtons, generateShareIcon } from 'react-share';
 
 import { joinEvent, deleteEvent, fetchJoinedUsers, payForEvent, fetchOneEvent, unjoinEvent  } from '../../actions/';
 
@@ -55,7 +55,7 @@ class Event extends Component {
     return (
       <div className="container">
 
-        <div className='row' style={ styles.main }>
+        <div className="row" style={ styles.main }>
 
           <div className='col m6 s12'>
 

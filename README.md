@@ -1,12 +1,17 @@
+![frontpage](https://cloud.githubusercontent.com/assets/13400593/13030374/8f359b42-d25d-11e5-9df5-df947cf8715f.jpg)
+
+![dashboard](https://cloud.githubusercontent.com/assets/13400593/13030382/ac34a7f6-d25d-11e5-8ab4-2c9e7703029d.png)
+
 # Eventify
 
 Crowdfund an event with friends or strangers!
 
 ## Team
 
-  - __Product Owner__: Delphine Foo-Matkin
-  - __Scrum Master__: Kristen Haydel
-  - __Development Team Members__: Vincent Jo, Oleg Umarov
+  - __Product Owner | Full-Stack Engineer__: Delphine Foo-Matkin
+  - __Scrum Master | Full-Stack Engineer__: Kristen Haydel
+  - __Front End Engineer | User Experience Design__: Vincent Jo, 
+  - __Full-Stack Engineer | DevOps Specialist__: Oleg Umarov
 
 
 ## Table of Contents
@@ -36,8 +41,6 @@ From within the root directory:
 ```sh
 npm install
 ```
-
-
 
 ## Contributing
 
@@ -70,7 +73,7 @@ and look. To add records to the database just run:
 ```
 
 ### DB Schema
-There are two types of objects stored in the database: users and event To minimize http requests on the server, when retrieved, all references to other objects will be fully populated with complete objects, not just is numbers. The schema are as follows:
+There are two types of objects stored in the database: users and event. To minimize http requests on the server, when retrieved, all references to other objects will be fully populated with complete objects, not just is numbers. The schema are as follows:
 
 ####[User](server/config/controllers/userController.js)
 ```javascript

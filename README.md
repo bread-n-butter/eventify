@@ -1,8 +1,9 @@
 # Eventify
 
-![frontpage](https://cloud.githubusercontent.com/assets/13400593/13030374/8f359b42-d25d-11e5-9df5-df947cf8715f.jpg)
 
-![dashboard](https://cloud.githubusercontent.com/assets/13400593/13030382/ac34a7f6-d25d-11e5-8ab4-2c9e7703029d.png)
+![frontPage](https://cloud.githubusercontent.com/assets/13400593/13030382/ac34a7f6-d25d-11e5-8ab4-2c9e7703029d.png)
+
+![dashboard](https://cloud.githubusercontent.com/assets/13400593/13030374/8f359b42-d25d-11e5-9df5-df947cf8715f.jpg)
 
 Crowdfund an event with friends or strangers!
 

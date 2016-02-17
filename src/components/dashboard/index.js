@@ -5,19 +5,19 @@
  */
 import React, { Component, PropTypes } from 'react';
 
+//Redux stuff
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, fetchOneEvent, auth, selectEvent, updateRadius } from '../../actions/';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, fetchOneEvent, auth, selectEvent, updateRadius } from '../../redux/actions/';
 
+//Lo-dash
 import { take } from 'lodash';
 
 //Components
 import Spinner from '../../helpers/spinner.js';
-
 import FeaturedEventsList from './FeaturedEventsList';
 import JoinedEventsList from './JoinedEventsList';
 import CreatedEventsList from './CreatedEventsList';
-
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
 import GoogleMapsWithSearchBox from './GoogleMapsWithSearchBox';
 
@@ -82,7 +82,7 @@ class Dashboard extends Component {
         
         <div className="row">
           <GoogleMapsSearchBar
-            updateLocation={(d) => this.handleLocationSubmit(d)} />
+            updateLocation={(d) => this.handleLocationSubmit(d)} initialValue={'Please Enter a Location'} />
         </div>
         
         <div className="row">

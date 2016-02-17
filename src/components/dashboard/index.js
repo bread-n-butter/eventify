@@ -19,7 +19,7 @@ import FeaturedEventsList from './FeaturedEventsList';
 import JoinedEventsList from './JoinedEventsList';
 import CreatedEventsList from './CreatedEventsList';
 import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
-import GoogleMapsWithSearchBox from './GoogleMapsWithSearchBox';
+import GoogleMaps from './GoogleMapsWithSearchBox';
 
 class Dashboard extends Component {
 
@@ -95,7 +95,7 @@ class Dashboard extends Component {
           <div className="col s4">
           
             <div className='row' style={{height: '400px'}}>
-              <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc} radius={this.props.user.radius}/>
+              <GoogleMaps select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc} radius={this.props.user.radius}/>
             </div>
             
             <div>

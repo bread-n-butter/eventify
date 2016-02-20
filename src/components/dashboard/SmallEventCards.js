@@ -5,7 +5,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchOneEvent } from '../../actions';
+import { fetchOneEvent } from '../../redux/actions';
 import Moment from 'moment';
 
 class SmallEventCards extends Component {

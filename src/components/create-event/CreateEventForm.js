@@ -4,7 +4,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { createEvent, setEventDate } from '../../actions/';
+import { createEvent, setEventDate } from '../../redux/actions/';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

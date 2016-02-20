@@ -11,7 +11,7 @@ import React, {Component, PropTypes} from 'react';
 import Moment from 'moment';
 
 //Initializes state for the form that was populated and submitted
-import { initialize } from 'redux-form';
+// import { initialize } from 'redux-form';
 
 //To bind this component to Redux's state
 import { connect } from 'react-redux';
@@ -21,8 +21,7 @@ import { bindActionCreators } from 'redux';
 import CreateEventForm from './CreateEventForm';
 
 //Get Action Factories to use in this Component to manipulate the Redux State
-import { auth, createEvent, updateEventLocation } from '../../actions/';
-
+import { auth, createEvent, updateEventLocation } from '../../redux/actions/';
 
 class CreateEventPage extends Component {
 

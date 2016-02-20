@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { logout } from '../../actions/index';
+import { logout } from '../../redux/actions/index';
 
 class LogoutBtn extends Component {
   static contextTypes = {

@@ -18,8 +18,11 @@ import Spinner from '../../helpers/spinner.js';
 import FeaturedEventsList from './FeaturedEventsList';
 import JoinedEventsList from './JoinedEventsList';
 import CreatedEventsList from './CreatedEventsList';
-import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
+import GoogleAPISearchBar from '../searchbar/GoogleMapsSearchBar';
 import GoogleMaps from './GoogleMapsWithSearchBox';
+
+//Helper functions
+import getUserLocation from '../../helpers/get-current-location';
 
 class Dashboard extends Component {
 
@@ -28,9 +31,7 @@ class Dashboard extends Component {
   };
 
   componentWillMount() {
-    //Check for autorization when User visits the Dashboard
-    //and Grabs all the events needed to populate Dashboard
-    //redirect them to '/' when not authorized
+    //Check for authorization & grab events
     this.props.auth().then(() => {
       if(!this.props.isLoggedIn) {
         this.context.router.push('/');
@@ -42,19 +43,7 @@ class Dashboard extends Component {
   }
   
   componentDidMount() {
-    //Get user's current location through Google Chrome's navigator API and update User's location
-    //when the Component mounts
-    let startPos;
-    let that = this;
-    const geoSuccess = function(position) {
-      startPos = position;
-      that.props.updateUserLocation({
-        lat : startPos.coords.latitude,
-        long : startPos.coords.longitude,
-        address: undefined
-      });
-    };
-    navigator.geolocation.getCurrentPosition(geoSuccess);
+    // getUserLocation(this.props.updateUserLocation);
   }
 
   handleLocationSubmit(suggest) {
@@ -81,7 +70,7 @@ class Dashboard extends Component {
       <div className="dashboard">
         
         <div className="row">
-          <GoogleMapsSearchBar
+          <GoogleAPISearchBar
             updateLocation={(d) => this.handleLocationSubmit(d)} initialValue={'Please Enter a Location'} />
         </div>
         

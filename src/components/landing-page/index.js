@@ -16,7 +16,7 @@ import AboutUs from '../about-us/AboutUs';
 //Redux Connectors
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth } from '../../actions/';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth } from '../../redux/actions';
 
 
 //Helpers for HTTP requests

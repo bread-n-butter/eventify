@@ -4,6 +4,9 @@
  *
  */
 
+//mike@michaelfulton.co
+//timcmiller@live.com
+
 import axios from 'axios';
 
 export const UNJOIN_EVENT = 'UNJOIN_EVENT';

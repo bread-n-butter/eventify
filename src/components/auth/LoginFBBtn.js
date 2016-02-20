@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { auth } from '../../actions/index';
+import { auth } from '../../redux/actions/index';
 
 
 const style = {

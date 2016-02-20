@@ -1,7 +1,14 @@
+/**
+ *    
+ *    Top - Level Nav-Bar Component
+ *    
+ */
+
+//React - Redux
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { auth } from '../../actions/index';
+import { auth } from '../../redux/actions/index';
 import { Link } from 'react-router';
 
 //Material UI component imports

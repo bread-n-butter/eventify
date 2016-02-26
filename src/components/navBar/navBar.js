@@ -41,6 +41,10 @@ class NavBar extends Component {
   goToDash() {
     this.context.router.push('/dashboard');
   }
+  
+  handleToggle() {
+    this.setState({leftNav: !this.state.leftNav});
+  }
 
   render() {
     if (this.props.isLoggedIn) {
@@ -64,8 +68,6 @@ class NavBar extends Component {
         </div>
       );
     }
-    
-    //               <a onClick={this.setState({leftNav: {open: !this.state.leftNav.open}})} class="button-collapse"><i class="material-icons">menu</i></a>
 
     return (
       <div>
@@ -74,23 +76,24 @@ class NavBar extends Component {
             <div className="nav-wrapper">
               <a href="#" className="brand-logo">Eventify</a>
               
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li> <SignupModal /></li>
-                <li> <SigninModal /></li>
-              </ul>
-              
-              <ul id="nav-mobile" className="right hide-on-med-and-up">
-                <li> 
-                  <a onClick={() => this.setState({leftNav: !this.state.leftNav})}><i className="material-icons">menu</i></a>
+              <ul id="nav-mobile">
+                <li className='right hide-on-small-only'> <SignupModal /></li>
+                <li className='right hide-on-small-only'> <SigninModal /></li>
+                <li className='left hide-on-med-and-up'> 
+                  <a onClick={() => this.handleToggle()}><i className="material-icons">menu</i></a>
                 </li>
               </ul>
-              
               
             </div>
           </nav>
         </div>
-        <LeftNav open={this.state.leftNav}>
-          <MenuItem>Menu Item</MenuItem>
+        <LeftNav 
+          docked={false}
+          open={this.state.leftNav}
+          onRequestChange={leftNav => this.setState({leftNav})}
+        >
+          <SignupModal menuItem={true} /> 
+          <SigninModal /> 
         </LeftNav>
       </div>
     );

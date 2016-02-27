@@ -1,12 +1,23 @@
-/*
-*  Top-level component for signing in
-*/
-
-
+/**
+ *    
+ *    Sign-in Modal
+ *    
+ *    Optional :
+ *    
+ *    @props {Boolean} this.props.menuItem 
+ *    if the sign-up button is part of LeftNav,
+ *    return a MenuItem instead of FlatButton.
+ *    
+ */
 
 import React from 'react';
+
+//Material UI
 import Dialog from 'material-ui/lib/dialog';
 import FlatButton from 'material-ui/lib/flat-button';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+
+//Components
 import LoginFBBtn from './LoginFBBtn';
 
 
@@ -42,6 +53,32 @@ class SigninModal extends React.Component {
   }
 
   render() {
+    
+    if (this.props.menuItem) {
+      return (
+        <div>
+        
+          <MenuItem
+            onTouchTap = {() => this.handleOpen()}>
+            Sign In
+            <Dialog
+              title = "Eventify"
+              modal = {false}
+              open = {this.state.open}
+              contentStyle = {contentStyle}
+              titleStyle = {titleStyle}
+              onRequestClose={() => this.handleClose()}>
+              <LoginFBBtn />
+              {/* keep this code here for future local authentication implementation
+              OR
+              <SigninForm />*/}
+            </Dialog>
+          </MenuItem>
+          
+        </div>
+
+      );
+    }
 
     return (
       <div>

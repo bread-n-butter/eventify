@@ -6,7 +6,7 @@
  *    
  *    @props {Boolean} this.props.menuItem 
  *    if the sign-up button is part of LeftNav,
- *    return a MenuItem instead of FlatButton. 
+ *    return a MenuItem instead of FlatButton.
  *    
  */
 

@@ -1,5 +1,18 @@
+/**
+ *    
+ *    Create Event Button
+ *    
+ *    Optional :
+ *    
+ *    @props {Boolean} this.props.menuItem 
+ *    if the sign-up button is part of LeftNav,
+ *    return a MenuItem instead of FlatButton.
+ *    
+ */
+
 import React, { Component, PropTypes } from 'react';
 import FlatButton from 'material-ui/lib/flat-button';
+import MenuItem from 'material-ui/lib/menus/menu-item';
 
 
 class CreateEventBtn extends Component {
@@ -12,6 +25,15 @@ class CreateEventBtn extends Component {
   }
 
   render() {
+    
+    if (this.props.menuItem) {
+      return (
+          <MenuItem onTouchTap={() => this.goToCreate()} style={{color: '#53b3cb'}}>
+            Create Event
+          </MenuItem>
+      );
+    }
+    
     return (
       <FlatButton
         label = "Create Event"

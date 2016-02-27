@@ -53,19 +53,42 @@ class NavBar extends Component {
           <nav  role="navigation">
             <div className="nav-wrapper">
               <Link to="/dashboard" className="brand-logo">Eventify</Link>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
-                  <li>
+              
+                <ul id="nav-mobile">
+                  <li className='right hide-on-small-only'>
                     <CreateEventBtn />
                   </li>
-                  <li> <FlatButton
+                  <li className='right hide-on-small-only'> 
+                    <FlatButton
                          label = "Dashboard"
                          style = {{color: '#53b3cb'}}
-                         onClick = {this.goToDash.bind(this)}/></li>
-                  <li><LogoutBtn /></li>
+                         onClick = {this.goToDash.bind(this)}/>
+                  </li>
+                  <li className='right hide-on-small-only'><LogoutBtn />
+                  </li>
+                  <li className='left hide-on-med-and-up'> 
+                    <a onClick={() => this.handleToggle()}><i className="material-icons">menu</i></a>
+                  </li>
+                  
                 </ul>
+                
             </div>
           </nav>
+          <LeftNav 
+            docked={false}
+            open={this.state.leftNav}
+            onRequestChange={leftNav => this.setState({leftNav})}
+          >
+          
+            <CreateEventBtn menuItem={true} /> 
+            <MenuItem onTouchTap={this.goToDash.bind(this)} style={{color: '#53b3cb'}}>
+              Dashboard
+            </MenuItem>
+            <LogoutBtn menuItem={true} /> 
+            
+          </LeftNav>
         </div>
+        
       );
     }
 
@@ -92,8 +115,10 @@ class NavBar extends Component {
           open={this.state.leftNav}
           onRequestChange={leftNav => this.setState({leftNav})}
         >
+        
           <SignupModal menuItem={true} /> 
-          <SigninModal /> 
+          <SigninModal menuItem={true} /> 
+          
         </LeftNav>
       </div>
     );

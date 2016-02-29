@@ -59,7 +59,9 @@ class SigninModal extends React.Component {
         <div>
         
           <MenuItem
-            onTouchTap = {() => this.handleOpen()}>
+            onTouchTap = {() => this.handleOpen()}
+            style={{color: '#53b3cb'}}
+          >
             Sign In
             <Dialog
               title = "Eventify"

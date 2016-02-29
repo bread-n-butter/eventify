@@ -19,7 +19,6 @@ import CreateEventBtn from '../create-event/CreateEventBtn';
 import FlatButton from 'material-ui/lib/flat-button';
 import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
-import RaisedButton from 'material-ui/lib/raised-button';
 
 class NavBar extends Component {
   
@@ -43,11 +42,12 @@ class NavBar extends Component {
   }
   
   handleToggle() {
+    console.log('Inside of handleToggle');
     this.setState({leftNav: !this.state.leftNav});
   }
 
   render() {
-    if (this.props.isLoggedIn) {
+    if (this.props.isLoggedIn === true) {
       return (
         <div className='navbar-fixed'>
           <nav  role="navigation">
@@ -55,18 +55,27 @@ class NavBar extends Component {
               <Link to="/dashboard" className="brand-logo">Eventify</Link>
               
                 <ul id="nav-mobile">
-                  <li className='right hide-on-small-only'>
-                    <CreateEventBtn />
-                  </li>
-                  <li className='right hide-on-small-only'> 
-                    <FlatButton
-                         label = "Dashboard"
-                         style = {{color: '#53b3cb'}}
-                         onClick = {this.goToDash.bind(this)}/>
-                  </li>
-                  <li className='right hide-on-small-only'><LogoutBtn />
-                  </li>
-                  <li className='left hide-on-med-and-up'> 
+                
+                  <div className='right'>
+                  
+                    <li className='hide-on-med-and-down'>
+                      <CreateEventBtn />
+                    </li>
+                    
+                    <li className='hide-on-med-and-down'> 
+                      <FlatButton
+                           label = "Dashboard"
+                           style = {{color: '#53b3cb'}}
+                           onClick = {this.goToDash.bind(this)}/>
+                    </li>
+                    
+                    <li className='hide-on-med-and-down'>
+                      <LogoutBtn />
+                    </li>
+                  
+                  </div>
+                  
+                  <li className='right hide-on-large-only'> 
                     <a onClick={() => this.handleToggle()}><i className="material-icons">menu</i></a>
                   </li>
                   
@@ -76,22 +85,23 @@ class NavBar extends Component {
           </nav>
           <LeftNav 
             docked={false}
+            openRight={true}
             open={this.state.leftNav}
             onRequestChange={leftNav => this.setState({leftNav})}
           >
           
-            <CreateEventBtn menuItem={true} /> 
-            <MenuItem onTouchTap={this.goToDash.bind(this)} style={{color: '#53b3cb'}}>
+            <CreateEventBtn closeLeftNav={() => this.handleToggle()} menuItem={true} /> 
+            <MenuItem onTouchTap={() => {this.handleToggle(); this.goToDash();}} style={{color: '#53b3cb'}}>
               Dashboard
             </MenuItem>
-            <LogoutBtn menuItem={true} /> 
+            <LogoutBtn closeLeftNav={() => this.handleToggle()} menuItem={true} /> 
             
           </LeftNav>
         </div>
         
       );
     }
-
+      
     return (
       <div>
         <div className='navbar-fixed'>
@@ -100,9 +110,9 @@ class NavBar extends Component {
               <a href="#" className="brand-logo">Eventify</a>
               
               <ul id="nav-mobile">
-                <li className='right hide-on-small-only'> <SignupModal /></li>
-                <li className='right hide-on-small-only'> <SigninModal /></li>
-                <li className='left hide-on-med-and-up'> 
+                <li className='right hide-on-med-and-down'> <SignupModal /></li>
+                <li className='right hide-on-med-and-down'> <SigninModal /></li>
+                <li className='right hide-on-large-only'> 
                   <a onClick={() => this.handleToggle()}><i className="material-icons">menu</i></a>
                 </li>
               </ul>
@@ -112,16 +122,18 @@ class NavBar extends Component {
         </div>
         <LeftNav 
           docked={false}
+          openRight={true}
           open={this.state.leftNav}
           onRequestChange={leftNav => this.setState({leftNav})}
         >
         
-          <SignupModal menuItem={true} /> 
-          <SigninModal menuItem={true} /> 
+          <SignupModal closeLeftNav={() => this.setState({leftNav: false})} menuItem={true} /> 
+          <SigninModal closeLeftNav={() => this.setState({leftNav: false})} menuItem={true} /> 
           
         </LeftNav>
       </div>
     );
+    
   }
 }
 

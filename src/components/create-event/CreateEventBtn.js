@@ -23,13 +23,24 @@ class CreateEventBtn extends Component {
   goToCreate() {
     this.context.router.push('/create');
   }
+  
+  handleClickMenuBtn() {
+    this.props.closeLeftNav(); 
+    this.goToCreate();
+  }
+  
+  handleClickFlatBtn() {
+    this.goToCreate();
+  }
 
   render() {
     
     if (this.props.menuItem) {
       return (
-          <MenuItem onTouchTap={() => this.goToCreate()} style={{color: '#53b3cb'}}>
-            Create Event
+          <MenuItem 
+            onTouchTap={() => {this.handleClickMenuBtn();}} 
+            style={{color: '#53b3cb'}}>
+              Create Event
           </MenuItem>
       );
     }
@@ -38,7 +49,7 @@ class CreateEventBtn extends Component {
       <FlatButton
         label = "Create Event"
         style = {{color: '#53b3cb', border: '2px solid #53b3cb'}}
-        onClick = {this.goToCreate.bind(this)}
+        onClick = {() => {this.handleClickFlatBtn();}}
       />
     );
   }

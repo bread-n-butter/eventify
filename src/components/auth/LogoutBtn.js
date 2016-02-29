@@ -30,12 +30,21 @@ class LogoutBtn extends Component {
         this.context.router.push('/');
       });
   }
+  
+  handleClickMenuBtn() {
+    this.props.closeLeftNav(); 
+    this.handleLogout();
+  }
+  
+  handleClickFlatBtn() {
+    this.handleLogout();
+  }
 
   render() {
     
     if (this.props.menuItem) {
       return (
-        <MenuItem onTouchTap={() => this.handleLogout()} style={{color: '#53b3cb'}}> 
+        <MenuItem onTouchTap={() => this.handleClickMenuBtn()} style={{color: '#53b3cb'}}> 
           Log Out
         </MenuItem>
       );
@@ -45,7 +54,7 @@ class LogoutBtn extends Component {
       <FlatButton
         label="Log Out"
         style={{color: '#53b3cb'}}
-        onClick={this.handleLogout.bind(this)}
+        onClick={() => this.handleClickFlatBtn()}
       />
     );
   }

@@ -2,7 +2,8 @@
  *
  *    Main Page for Create Event
  *
- *    This is a Top-Level Element. It contains another component that has fields.
+ *    This is a Top-Level Element. 
+ *    It contains another component that has fields.
  *
  */
 

@@ -76,12 +76,12 @@ class Dashboard extends Component {
         
         <div className="row">
         
-          <div className="col s8">
+          <div className="col s12 m8">
             <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
             <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={events} user={this.props.user} updateRadius={this.props.updateRadius} />
           </div>
           
-          <div className="col s4">
+          <div className="col m4 hide-on-small-only">
           
             <div className='row' style={{height: '400px'}}>
               <GoogleMaps select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc} radius={this.props.user.radius}/>

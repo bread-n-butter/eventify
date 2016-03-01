@@ -16,8 +16,6 @@ body {
  *  Landing PAge
  *
  */
-
-
 .video-background {
     overflow: hidden;
     height: 600px;
@@ -33,11 +31,13 @@ body {
   color: white;
   font-weight: 600;
   text-align: center;
+  font-size: 8vw;
 }
 
 .hero-header-sub {
   color: white;
   font-weight: 400;
+  font-size: 6vw;
 }
 
 
@@ -186,9 +186,9 @@ input {
 }
 
 /**
- *    
+ *
  *    Dashboard Large Cards
- *    
+ *
  */
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
   color: #db436c;

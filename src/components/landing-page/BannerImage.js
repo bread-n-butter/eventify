@@ -1,5 +1,5 @@
 /**
- *    
+ *
  *    Banner Image
  *
  */
@@ -12,7 +12,6 @@ class BannerImage extends React.Component {
       bottom: '0',
       position: 'absolute',
       height: 'auto',
-      width: '100%',
       display: 'inline-block',
       boxSizing: 'border-box',
       'OObjectFit': 'fill'

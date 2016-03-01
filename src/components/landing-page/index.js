@@ -99,7 +99,7 @@ class Landing extends React.Component {
       boxSizing: 'border-box',
       fontSize: '14px',
       lineHeight: '1.43',
-      'WebkitFontSmoothing': 'antialiased'
+      WebkitFontSmoothing: 'antialiased'
     };
   }
 
@@ -181,7 +181,6 @@ class Landing extends React.Component {
         <div className="row">
 
           <div style={this.containerStyle()} className='hero' >
-
 
             <div className='hero__background' style={this.videoContStyle()}>
 

@@ -24,6 +24,11 @@ import CreateEventForm from './CreateEventForm';
 //Get Action Factories to use in this Component to manipulate the Redux State
 import { auth, createEvent, updateEventLocation } from '../../redux/actions/';
 
+//Material UI
+import Card from 'material-ui/lib/card/card';
+import CardText from 'material-ui/lib/card/card-text';
+import CardTitle from 'material-ui/lib/card/card-title';
+
 class CreateEventPage extends Component {
 
   //For routing
@@ -63,19 +68,32 @@ class CreateEventPage extends Component {
 
   render() {
     return (
+      
+      <div className='row'>
+      
+        <div className='col s12'>
+        
+          <Card>
+          
+            <CardText>
 
-      <div className="container center-div">
-
-        <h1
-          className="center-align"
-          style={{paddingTop: '50px', marginTop: '0px'}}>
-          Create An Event
-        </h1>
-
-        <CreateEventForm
-          onSubmit={this.handleSubmit.bind(this)}
-          updateEventLocation={this.props.updateEventLocation}/>
-
+                <CardTitle 
+                  title={'Create an event'}
+                />
+                
+                <CardText>
+                  <CreateEventForm
+                    onSubmit={this.handleSubmit.bind(this)}
+                    updateEventLocation={this.props.updateEventLocation}
+                  />
+                </CardText>
+              
+            </CardText>
+          
+          </Card>
+        
+        </div>
+      
       </div>
 
     );

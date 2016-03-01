@@ -1,7 +1,7 @@
 /**
- *    
+ *
  *    Top - Level Nav-Bar Component
- *    
+ *
  */
 
 //React - Redux
@@ -11,7 +11,7 @@ import { bindActionCreators } from 'redux';
 import { auth } from '../../redux/actions/index';
 import { Link } from 'react-router';
 
-//Material UI 
+//Material UI
 import SignupModal from '../auth/SignupModal';
 import SigninModal from '../auth/SigninModal';
 import LogoutBtn from '../auth/LogoutBtn';
@@ -21,11 +21,11 @@ import LeftNav from 'material-ui/lib/left-nav';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 
 class NavBar extends Component {
-  
+
   static contextTypes = {
     router: PropTypes.object
   };
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -40,9 +40,8 @@ class NavBar extends Component {
   goToDash() {
     this.context.router.push('/dashboard');
   }
-  
+
   handleToggle() {
-    console.log('Inside of handleToggle');
     this.setState({leftNav: !this.state.leftNav});
   }
 
@@ -52,88 +51,88 @@ class NavBar extends Component {
         <div className='navbar-fixed'>
           <nav  role="navigation">
             <div className="nav-wrapper">
-              <Link to="/dashboard" className="brand-logo">Eventify</Link>
-              
+              <Link to="/" className="brand-logo">Eventify</Link>
+
                 <ul id="nav-mobile">
-                
+
                   <div className='right'>
                   
                     <li className='hide-on-med-and-down'>
                       <CreateEventBtn />
                     </li>
-                    
-                    <li className='hide-on-med-and-down'> 
+
+                    <li className='hide-on-med-and-down'>
                       <FlatButton
                            label = "Dashboard"
                            style = {{color: '#53b3cb'}}
                            onClick = {this.goToDash.bind(this)}/>
                     </li>
-                    
+
                     <li className='hide-on-med-and-down'>
                       <LogoutBtn />
                     </li>
-                  
+
                   </div>
-                  
-                  <li className='right hide-on-large-only'> 
+
+                  <li className='right hide-on-large-only'>
                     <a onClick={() => this.handleToggle()}><i className="material-icons">menu</i></a>
                   </li>
-                  
+
                 </ul>
-                
+
             </div>
           </nav>
-          <LeftNav 
+          <LeftNav
             docked={false}
             openRight={true}
             open={this.state.leftNav}
             onRequestChange={leftNav => this.setState({leftNav})}
           >
-          
-            <CreateEventBtn closeLeftNav={() => this.handleToggle()} menuItem={true} /> 
+
+            <CreateEventBtn closeLeftNav={() => this.handleToggle()} menuItem={true} />
             <MenuItem onTouchTap={() => {this.handleToggle(); this.goToDash();}} style={{color: '#53b3cb'}}>
               Dashboard
             </MenuItem>
-            <LogoutBtn closeLeftNav={() => this.handleToggle()} menuItem={true} /> 
-            
+            <LogoutBtn closeLeftNav={() => this.handleToggle()} menuItem={true} />
+
           </LeftNav>
         </div>
-        
+
       );
     }
-      
+
     return (
       <div>
         <div className='navbar-fixed'>
           <nav role="navigation" style={{position: 'fixed' , zIndex: '100'}}>
             <div className="nav-wrapper">
               <a href="#" className="brand-logo">Eventify</a>
-              
+
               <ul id="nav-mobile">
                 <li className='right hide-on-med-and-down'> <SignupModal /></li>
                 <li className='right hide-on-med-and-down'> <SigninModal /></li>
-                <li className='right hide-on-large-only'> 
+                <li className='right hide-on-large-only'>
                   <a onClick={() => this.handleToggle()}><i className="material-icons">menu</i></a>
                 </li>
               </ul>
-              
+
             </div>
           </nav>
         </div>
-        <LeftNav 
+        <LeftNav
           docked={false}
           openRight={true}
           open={this.state.leftNav}
           onRequestChange={leftNav => this.setState({leftNav})}
         >
-        
-          <SignupModal closeLeftNav={() => this.setState({leftNav: false})} menuItem={true} /> 
-          <SigninModal closeLeftNav={() => this.setState({leftNav: false})} menuItem={true} /> 
-          
+
+          <SignupModal closeLeftNav={() => this.setState({leftNav: false})} menuItem={true} />
+          <SigninModal closeLeftNav={() => this.setState({leftNav: false})} menuItem={true} />
+
         </LeftNav>
       </div>
     );
-    
+
   }
 }
 

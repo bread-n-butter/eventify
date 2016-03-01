@@ -1,5 +1,13 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   background-color: #F8F8FA;
+  overflow-x: hidden;
 }
 
 /* From AirBnB */

@@ -1,3 +1,38 @@
+@media (max-width: 600px) {
+  .hero-header {
+    font-size: 3em;
+  }
+
+  .hero-header-sub {
+    font-size: 1.3em;
+  }
+
+  .hero-aboutus {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+}
+
+@media (min-width: 601px) {
+  .hero-aboutus {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-aboutus {
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -39,13 +74,11 @@ body {
   color: white;
   font-weight: 600;
   text-align: center;
-  font-size: 8vw;
 }
 
 .hero-header-sub {
   color: white;
   font-weight: 400;
-  font-size: 6vw;
 }
 
 

@@ -155,7 +155,7 @@ class CreateEventForm extends Component {
 
       <div className="row">
 
-        <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
+        <div className="col s12 m6" style={{float: 'none', margin: '20px auto'}}>
 
           <form onSubmit={handleSubmit}>
 

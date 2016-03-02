@@ -9,6 +9,7 @@ class BannerImage extends React.Component {
 
   bannerStyle() {
     return {
+      width: '2000px',
       bottom: '0',
       position: 'absolute',
       height: 'auto',
@@ -20,7 +21,9 @@ class BannerImage extends React.Component {
 
   render() {
     return (
-      <img src='../../assets/lights-party-dancing-music-resized.jpg' style={this.bannerStyle()}/>
+      <img
+        src='../../assets/lights-party-dancing-music-resized.jpg' style={this.bannerStyle()}
+      />
     );
   }
 }

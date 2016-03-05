@@ -216,7 +216,7 @@ class Landing extends React.Component {
 
         </div>
 
-        <GoogleMapsSearchBar updateLocation={(d) => this.handleLocationSubmit(d)}/>
+        <GoogleMapsSearchBar initialValue='Search by Location' updateLocation={(d) => this.handleLocationSubmit(d)}/>
         <div className="container" style={{marginTop: '7%'}}>
           <EventList events={this.state.filteredEvents} user={this.props.user}  location={this.state.location}/>
         </div>

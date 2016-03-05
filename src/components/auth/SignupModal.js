@@ -1,13 +1,16 @@
 /**
- *    
+ *
  *    Sign-up Modal
- *    
+ *
  *    Optional :
- *    
- *    @props {Boolean} this.props.menuItem 
+ *
+ *    @props {Boolean} this.props.menuItem
  *    if the sign-up button is part of LeftNav,
  *    return a MenuItem instead of FlatButton.
- *    
+ *
+ *    @props {Function} this.props.closeLeftNav
+ *    close the LeftNav, parent component
+ *
  */
 
 import React from 'react';
@@ -49,17 +52,20 @@ class SignupModal extends React.Component {
   }
 
   handleClose() {
+    if (this.props.menuItem) {
+      this.props.closeLeftNav();
+    }
     this.setState({open: false});
   }
 
   render() {
-    
+
     if (this.props.menuItem) {
       return (
         <div>
-        
-          <MenuItem 
-            style={{color: '#53b3cb'}}  
+
+          <MenuItem
+            style={{color: '#53b3cb'}}
             onTouchTap={() => this.handleOpen()}
           >
             Sign Up
@@ -76,7 +82,7 @@ class SignupModal extends React.Component {
               <SignupForm />*/}
             </Dialog>
           </MenuItem>
-          
+
 
         </div>
       );
@@ -94,7 +100,7 @@ class SignupModal extends React.Component {
           open={this.state.open}
           contentStyle={contentStyle}
           titleStyle={titleStyle}
-          onRequestClose={this.handleClose}>
+          onRequestClose={() => this.handleClose()}>
           <LoginFBBtn />
           {/* keep this code here for future local authentication implementation
           OR

@@ -6,7 +6,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchOneEvent } from '../../redux/actions/';
+import { fetchOneEvent } from '../../actions/';
 
 import Card from './EventCard';
 

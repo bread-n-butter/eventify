@@ -8,7 +8,7 @@ import JoinedUsersList from './JoinedUsersList';
 //fb share button
 import { ShareButtons, generateShareIcon } from 'react-share';
 
-import { joinEvent, deleteEvent, fetchJoinedUsers, payForEvent, fetchOneEvent, unjoinEvent  } from '../../redux/actions/';
+import { joinEvent, deleteEvent, fetchJoinedUsers, payForEvent, fetchOneEvent, unjoinEvent  } from '../../actions/';
 
 import Details from './details';
 import Buttons from './buttons';

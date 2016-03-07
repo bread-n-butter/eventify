@@ -13,16 +13,12 @@ export default class Buttons extends Component {
   };
 
   userEvent() {
-    if (this.props.joined) {
-      return this.props.joined.reduce((result, item) => {
-        if(item.id === this.props.data.id) {
-          result = true;
-        }
-        return result;
-      }, false);
-    }
-
-    return false;
+    return this.props.joined.reduce((result, item) => {
+      if(item.id === this.props.data.id) {
+        result = true;
+      }
+      return result;
+    }, false);
   }
 
   goBack() {

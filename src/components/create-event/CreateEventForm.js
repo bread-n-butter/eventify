@@ -4,7 +4,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { createEvent, setEventDate } from '../../actions/';
+import { createEvent, setEventDate } from '../../redux/actions/';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -94,7 +94,7 @@ class CreateEventForm extends Component {
    *
    *    Handles Date & Time submission.
    *
-   *    Handles 2 cases where user picks Date first and Time second, and vice versa.
+   *    Handles 2 cases where user picks Date first and Time second, and vice versa. I am using this function to update one Date() instance, thus control for updating is required.
    *
    *    @param  {Object} date  Date Object from Redux - State. Contains methods and props.
    *    @param  {?} err  when the component errors
@@ -102,40 +102,27 @@ class CreateEventForm extends Component {
    *
    */
   handleDateSubmit(date, event, dateOrTime) {
-
     if (date.value === '') {
       date.onChange(event);
-
     } else {
-
       switch(dateOrTime) {
-
       case 'date':
-
         let year = event.getUTCDay();
         let month = event.getMonth();
         let day = event.getUTCDate();
-
         date.value.setFullYear(year);
         date.value.setMonth(month);
         date.value.setDate(day);
-
         date.onChange(date.value);
         break;
-
       case 'time':
-
         let hour = event.getHours();
         let minutes = event.getMinutes();
-
         date.value.setHours(hour);
         date.value.setMinutes(minutes);
-
         date.onChange(date.value);
         break;
-
       }
-
     }
   }
 
@@ -155,7 +142,7 @@ class CreateEventForm extends Component {
 
       <div className="row">
 
-        <div className="col s6" style={{float: 'none', margin: '20px auto'}}>
+        <div className="col s12 m6" style={{float: 'none', margin: '20px auto'}}>
 
           <form onSubmit={handleSubmit}>
 
@@ -231,7 +218,7 @@ class CreateEventForm extends Component {
 
             <div>
               <label>Address</label>
-              <GoogleMapsSearchBar updateLocation={(s) => this.updateLocation(s)} />
+              <GoogleMapsSearchBar initialValue='Your event location' updateLocation={(s) => this.updateLocation(s)} />
             </div>
 
             <br/>

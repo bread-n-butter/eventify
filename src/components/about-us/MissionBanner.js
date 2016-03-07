@@ -2,17 +2,16 @@ import React from 'react';
 
 
 class MissionBanner extends React.Component {
-  
+
   heroStyle() {
     return {
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: '50%',
-      padding: '200px',
       backgroundColor: 'rgba(36, 63, 115, 0.91)'
     };
   }
-  
+
   heroMsgStyle() {
     return {
       width : '95%',
@@ -24,37 +23,37 @@ class MissionBanner extends React.Component {
       color: 'white'
     };
   }
-  
+
   render() {
     return (
-      
+
       <div className='row'>
-      
+
         <div className='about-us-wrapper'>
-        
+
           <div className='hero-aboutus' style={this.heroStyle()}>
-            
+
             <div className='hero-message'style={this.heroMsgStyle()}>
-              
-              <div> 
-              
+
+              <div>
+
                 <h1 className='hero-header' >We're on a mission to kick loneliness in the ass!</h1>
-                
+
                 <h5 style={{fontWeight: '200'}}>
-                  We believe that having fun is a huge part of life, and being lonely sucks. 
+                  We believe that having fun is a huge part of life, and being lonely sucks.
                   So join up, and create and join some events!
                 </h5>
-                
+
               </div>
-              
+
             </div>
-            
-          </div> 
-          
+
+          </div>
+
         </div>
-      
+
       </div>
-    
+
     );
   }
 }

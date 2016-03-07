@@ -4,7 +4,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { auth, editEvent, updateEventLocation, fetchOneEvent } from '../../actions/';
+import { auth, editEvent, updateEventLocation, fetchOneEvent } from '../../redux/actions/';
 import { bindActionCreators } from 'redux';
 import Moment from 'moment';
 import EditEventForm from './EditEventForm';

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Dropzone from 'react-dropzone';
-import { uploadImage } from '../../actions/';
+import { uploadImage } from '../../redux/actions/';
 import FlatButton from 'material-ui/lib/flat-button';
 
 

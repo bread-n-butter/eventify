@@ -150,7 +150,7 @@ module.exports = function(passport) {
       // pull in our app id and secret from our authConfig.js file
       clientID        : process.env.FACEBOOK_APP_ID,
       clientSecret    : process.env.FACEBOOK_SECRET,
-      callbackURL     : 'https://breadnbutter.herokuapp.com/api/auth/facebook/callback'
+      callbackURL     : 'https://event-ify.herokuapp.com/api/auth/facebook/callback'
     },
       // facebook will send back the token and profile
       function(token, refreshToken, profile, done) {

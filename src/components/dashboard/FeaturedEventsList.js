@@ -40,7 +40,7 @@ export default class FeaturedEventsList extends Component {
             min={1}
             max={100}
             onChange={(e, value) => {this.updateRadius(value); }}
-            style={{width: '100%', padding: '1.2rem 0.75rem 0' }} />
+            style={{width: '75%', padding: '1.2rem 0.75rem 0' }} />
         </div>
 
 

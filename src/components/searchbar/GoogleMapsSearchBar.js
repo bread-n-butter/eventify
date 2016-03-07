@@ -1,22 +1,19 @@
 /**
  *
- *    Search Box Component for Searching Google Maps Locations
- *    
- *    Required:
- *    
- *    @props {Function} 'updateLocation' [data handler function when user selects a location from suggestions]
- *    
- *    @props {String} 'initialValue' [value that shows up as a placeholder in the searchbox]
- *    
+ *    Component for Searching Google Maps Locations
+ *
  */
 import React from 'react';
 
-//Components
+// import Geosuggest from 'react-geosuggest';
+
+//Import not from NPM but from actual files
 import Geosuggest from './react-geosuggest/Geosuggest';
 
+import GetLocationBtn from './GetLocationBtn';
 
 class GoogleMapsSearchBar extends React.Component {
-  
+
   inputStyles() {
     return {
       'border': '1px solid transparent',
@@ -46,10 +43,5 @@ class GoogleMapsSearchBar extends React.Component {
     );
   }
 }
-
-GoogleMapsSearchBar.propTypes = { 
-  updateLocation: React.PropTypes.func.isRequired, 
-  initialValue: React.PropTypes.string.isRequired 
-};
 
 export default GoogleMapsSearchBar;

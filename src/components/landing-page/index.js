@@ -16,7 +16,7 @@ import AboutUs from '../about-us/AboutUs';
 //Redux Connectors
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth } from '../../redux/actions';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, auth } from '../../actions/';
 
 
 //Helpers for HTTP requests
@@ -99,7 +99,7 @@ class Landing extends React.Component {
       boxSizing: 'border-box',
       fontSize: '14px',
       lineHeight: '1.43',
-      WebkitFontSmoothing: 'antialiased'
+      'WebkitFontSmoothing': 'antialiased'
     };
   }
 
@@ -182,6 +182,7 @@ class Landing extends React.Component {
 
           <div style={this.containerStyle()} className='hero' >
 
+
             <div className='hero__background' style={this.videoContStyle()}>
 
               <BannerImage />
@@ -216,7 +217,7 @@ class Landing extends React.Component {
 
         </div>
 
-        <GoogleMapsSearchBar initialValue='Search by Location' updateLocation={(d) => this.handleLocationSubmit(d)}/>
+        <GoogleMapsSearchBar updateLocation={(d) => this.handleLocationSubmit(d)}/>
         <div className="container" style={{marginTop: '7%'}}>
           <EventList events={this.state.filteredEvents} user={this.props.user}  location={this.state.location}/>
         </div>

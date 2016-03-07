@@ -2,8 +2,7 @@
  *
  *    Main Page for Create Event
  *
- *    This is a Top-Level Element. 
- *    It contains another component that has fields.
+ *    This is a Top-Level Element. It contains another component that has fields.
  *
  */
 
@@ -12,7 +11,7 @@ import React, {Component, PropTypes} from 'react';
 import Moment from 'moment';
 
 //Initializes state for the form that was populated and submitted
-// import { initialize } from 'redux-form';
+import { initialize } from 'redux-form';
 
 //To bind this component to Redux's state
 import { connect } from 'react-redux';
@@ -22,12 +21,8 @@ import { bindActionCreators } from 'redux';
 import CreateEventForm from './CreateEventForm';
 
 //Get Action Factories to use in this Component to manipulate the Redux State
-import { auth, createEvent, updateEventLocation } from '../../redux/actions/';
+import { auth, createEvent, updateEventLocation } from '../../actions/';
 
-//Material UI
-import Card from 'material-ui/lib/card/card';
-import CardText from 'material-ui/lib/card/card-text';
-import CardTitle from 'material-ui/lib/card/card-title';
 
 class CreateEventPage extends Component {
 
@@ -68,32 +63,19 @@ class CreateEventPage extends Component {
 
   render() {
     return (
-      
-      <div className='row'>
-      
-        <div className='col s12'>
-        
-          <Card>
-          
-            <CardText>
 
-                <CardTitle 
-                  title={'Create an event'}
-                />
-                
-                <CardText>
-                  <CreateEventForm
-                    onSubmit={this.handleSubmit.bind(this)}
-                    updateEventLocation={this.props.updateEventLocation}
-                  />
-                </CardText>
-              
-            </CardText>
-          
-          </Card>
-        
-        </div>
-      
+      <div className="container center-div">
+
+        <h1
+          className="center-align"
+          style={{paddingTop: '50px', marginTop: '0px'}}>
+          Create An Event
+        </h1>
+
+        <CreateEventForm
+          onSubmit={this.handleSubmit.bind(this)}
+          updateEventLocation={this.props.updateEventLocation}/>
+
       </div>
 
     );

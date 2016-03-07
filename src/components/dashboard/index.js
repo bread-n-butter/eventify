@@ -5,24 +5,21 @@
  */
 import React, { Component, PropTypes } from 'react';
 
-//Redux stuff
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, fetchOneEvent, auth, selectEvent, updateRadius } from '../../redux/actions/';
+import { updateUserLocation, fetchCreatedEvents, fetchJoinedEvents, fetchEvents, fetchOneEvent, auth, selectEvent, updateRadius } from '../../actions/';
 
-//Lo-dash
 import { take } from 'lodash';
 
 //Components
 import Spinner from '../../helpers/spinner.js';
+
 import FeaturedEventsList from './FeaturedEventsList';
 import JoinedEventsList from './JoinedEventsList';
 import CreatedEventsList from './CreatedEventsList';
-import GoogleAPISearchBar from '../searchbar/GoogleMapsSearchBar';
-import GoogleMaps from './GoogleMapsWithSearchBox';
 
-//Helper functions
-import getUserLocation from '../../helpers/get-current-location';
+import GoogleMapsSearchBar from '../searchbar/GoogleMapsSearchBar';
+import GoogleMapsWithSearchBox from './GoogleMapsWithSearchBox';
 
 class Dashboard extends Component {
 
@@ -31,7 +28,9 @@ class Dashboard extends Component {
   };
 
   componentWillMount() {
-    //Check for authorization & grab events
+    //Check for autorization when User visits the Dashboard
+    //and Grabs all the events needed to populate Dashboard
+    //redirect them to '/' when not authorized
     this.props.auth().then(() => {
       if(!this.props.isLoggedIn) {
         this.context.router.push('/');
@@ -43,7 +42,19 @@ class Dashboard extends Component {
   }
   
   componentDidMount() {
-    // getUserLocation(this.props.updateUserLocation);
+    //Get user's current location through Google Chrome's navigator API and update User's location
+    //when the Component mounts
+    let startPos;
+    let that = this;
+    const geoSuccess = function(position) {
+      startPos = position;
+      that.props.updateUserLocation({
+        lat : startPos.coords.latitude,
+        long : startPos.coords.longitude,
+        address: undefined
+      });
+    };
+    navigator.geolocation.getCurrentPosition(geoSuccess);
   }
 
   handleLocationSubmit(suggest) {
@@ -70,21 +81,21 @@ class Dashboard extends Component {
       <div className="dashboard">
         
         <div className="row">
-          <GoogleAPISearchBar
-            updateLocation={(d) => this.handleLocationSubmit(d)} initialValue={'Please Enter a Location'} />
+          <GoogleMapsSearchBar
+            updateLocation={(d) => this.handleLocationSubmit(d)} />
         </div>
         
         <div className="row">
         
-          <div className="col s12 m8">
+          <div className="col s8">
             <h3 style={{fontWeight: 600, paddingLeft: '0.60rem'}}>Featured events</h3>
             <FeaturedEventsList select={this.props.fetchOneEvent} radius={10000} data={events} user={this.props.user} updateRadius={this.props.updateRadius} />
           </div>
           
-          <div className="col m4 hide-on-small-only">
+          <div className="col s4">
           
             <div className='row' style={{height: '400px'}}>
-              <GoogleMaps select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc} radius={this.props.user.radius}/>
+              <GoogleMapsWithSearchBox select={this.props.fetchOneEvent} events={events} loc={this.props.user.loc} radius={this.props.user.radius}/>
             </div>
             
             <div>
